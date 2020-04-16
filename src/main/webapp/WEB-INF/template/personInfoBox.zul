@@ -1,0 +1,36 @@
+<zk xmlns="native" xmlns:z="zul">
+    <div class="person-info rounded p-1 ${color}">
+        <div class="row">
+        	
+        	<!-- Left icon -->
+            <div class="col-3 text-left px-4">
+                <h2>
+                	<i class="${icon} text-black-50 h3"/>
+                </h2>
+                <h6>${state.bedRoom}</h6>
+            </div>
+        	
+        	<!-- Right icon -->
+            <div class="col-8 px-4">
+            	<!-- Name -->
+            	<h5>${state.name}</h5>
+            	
+            	<!-- bodyTemperature -->
+            	<h6 class="text-black-50">溫度: ${state.bodyTemperature} C</h6>
+            	
+            	<!-- heartBeat -->
+            	<h6 class="text-black-50">心跳: ${state.heartBeat} 次/分</h6>
+            	
+            	<!-- breathRate -->
+            	<h6 class="text-black-50">呼吸: ${state.breathRate} 次/分</h6>
+        
+				<!-- 
+                <h6 class="text-black-50">${state.type}</h6>
+                <h4>${state.value}</h4>
+                <z:label sclass="text-success" value="@init(state.ratio)@converter('org.zkoss.admin.converter.PercentageConverter')"/>
+          		-->   
+            </div>
+            
+        </div>
+    </div>
+</zk>

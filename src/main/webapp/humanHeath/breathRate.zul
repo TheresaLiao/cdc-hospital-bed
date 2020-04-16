@@ -1,0 +1,10 @@
+<panel xmlns:n="native" title="Breath Rate" border="normal" height="100%"
+       viewModel="@id('vm')@init('org.itri.view.humanhealth.BreathRateView')" >
+    <panelchildren>
+         <bs-row>
+            <n:div class="col-12">
+                <charts id="breathRateChart" type="areaspline" title="Breath Rate"/>
+            </n:div>
+        </bs-row>
+    </panelchildren>
+</panel>

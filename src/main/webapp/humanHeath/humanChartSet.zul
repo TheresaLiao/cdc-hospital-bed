@@ -1,0 +1,18 @@
+<zk xmlns:n="native">
+	
+ 	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+    		 <apply templateURI="humanHeath/heartbeat.zul"/>
+    	</n:div>
+ 	</bs-row>
+ 	
+ 	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+            <apply templateURI="humanHeath/breathRate.zul"/>
+        </n:div>
+ 	</bs-row> 	
+   
+    <apply templateURI="humanHeath/sleepingInfoSet.zul"/>
+     
+	
+</zk>

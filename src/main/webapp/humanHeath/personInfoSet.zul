@@ -1,0 +1,11 @@
+<zk xmlns:n="native">
+    <nodom viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfos')">
+       <forEach items="@init(vm.states)">
+            <n:div sclass="col-md-12 p-1">
+                <person-info state="@init(each)"
+                           icon="@init(each.type)@converter('org.zkoss.admin.converter.TypeIconConverter')"
+                           color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')"/>
+            </n:div>
+        </forEach>
+    </nodom>
+</zk>

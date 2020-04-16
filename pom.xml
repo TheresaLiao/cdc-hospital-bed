@@ -1,26 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-        http://maven.apache.org/xsd/maven-4.0.0.xsd">
- <modelVersion>4.0.0</modelVersion>
- <groupId>org</groupId>
- <artifactId>cdc-hospital-bed</artifactId>
- <version>0.0.1-SNAPSHOT</version>
- <packaging>war</packaging>
-
- <properties>
-  	<zk.version>8.0.1.1</zk.version>
- 	<boostrap.version>8.6.2-Eval</boostrap.version>
-  	<maven.compiler.source>1.8</maven.compiler.source>
-	<maven.compiler.target>1.8</maven.compiler.target>
- </properties>
- <licenses>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	 <groupId>org</groupId>
+	<artifactId>cdc-hospital-bed</artifactId>
+	<version>8.6.2-Eval</version>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<packaging>war</packaging>
+	<name>The ZK Administration Template Project</name>
+	<description>An example project to demonstrate how to build an administration system</description>
+	<licenses>
 		<license>
 			<name>GNU LESSER GENERAL PUBLIC LICENSE, Version 3</name>
 			<url>http://www.gnu.org/licenses/lgpl.html</url>
 			<distribution>repo</distribution>
 		</license>
- </licenses>
- <repositories>
+	</licenses>
+	<repositories>
 		<repository>
 			<id>ZK CE</id>
 			<name>ZK CE Repository</name>
@@ -32,65 +30,21 @@
 			<url>https://mavensync.zkoss.org/eval</url>
 		</repository>
 	</repositories>
-
- <dependencies>
-  
-  <dependency>
-   <groupId>org.zkoss.zk</groupId>
-   <artifactId>zk</artifactId>
-   <version>${zk.version}</version>
-  </dependency>
-   
-  <dependency>
-   <groupId>org.zkoss.zk</groupId>
-   <artifactId>zhtml</artifactId>
-   <version>${zk.version}</version>
-  </dependency>
-   
-  <dependency>
-   <groupId>org.zkoss.zk</groupId>
-   <artifactId>zul</artifactId>
-   <version>${zk.version}</version>
-  </dependency>
-   
-  <dependency>
-   <groupId>org.zkoss.common</groupId>
-   <artifactId>zcommon</artifactId>
-   <version>${zk.version}</version>
-  </dependency>
-   
-  <dependency>
-   <groupId>org.zkoss.common</groupId>
-   <artifactId>zweb</artifactId>
-   <version>${zk.version}</version>
-  </dependency>
-   
-  <dependency>
-   <groupId>org.zkoss.common</groupId>
-   <artifactId>zel</artifactId>
-   <version>${zk.version}</version>
-  </dependency>
-   
-  <dependency>
-   <groupId>org.zkoss.zk</groupId>
-   <artifactId>zkbind</artifactId>
-   <version>${zk.version}</version>
-  </dependency>
- 
-  		<dependency>
+	<dependencies>
+		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkmax</artifactId>
-			<version>${boostrap.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zuti</artifactId>
-			<version>${boostrap.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.theme</groupId>
 			<artifactId>iceblue_c</artifactId>
-			<version>${boostrap.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.chart</groupId>
@@ -102,6 +56,22 @@
 			<artifactId>bootstrap</artifactId>
 			<version>4.3.1</version>
 		</dependency>
- </dependencies>
-
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<!-- Run with Jetty -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.19.v20190610</version>
+				<configuration>
+					<webAppConfig>
+						<contextPath>/${project.artifactId}</contextPath>
+					</webAppConfig>
+					<scanIntervalSeconds>5</scanIntervalSeconds>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

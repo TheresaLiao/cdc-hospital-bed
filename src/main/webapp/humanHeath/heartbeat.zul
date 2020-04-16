@@ -1,0 +1,10 @@
+<panel xmlns:n="native" title="Heart Rate" border="normal" height="100%"
+       viewModel="@id('vm')@init('org.itri.view.humanhealth.HeartBeatView')" >
+    <panelchildren>
+         <bs-row>
+            <n:div class="col-12">
+                <charts id="chart" type="areaspline" hflex="1" title="HeartBeat"/>
+            </n:div>
+        </bs-row>
+    </panelchildren>
+</panel>
