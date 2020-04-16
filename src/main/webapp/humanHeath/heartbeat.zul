@@ -3,7 +3,7 @@
     <panelchildren>
          <bs-row>
             <n:div class="col-12">
-                <charts id="chart" type="areaspline" hflex="1" title="HeartBeat"/>
+                <charts id="heartbeatchart" type="areaspline" hflex="1" title="心率"/>
             </n:div>
         </bs-row>
     </panelchildren>

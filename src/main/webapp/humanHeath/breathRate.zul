@@ -3,7 +3,7 @@
     <panelchildren>
          <bs-row>
             <n:div class="col-12">
-                <charts id="breathRateChart" type="areaspline" title="Breath Rate"/>
+                <charts id="breathbeatchart" type="areaspline"  hflex="1" title="呼吸頻率"/>
             </n:div>
         </bs-row>
     </panelchildren>

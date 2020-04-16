@@ -14,15 +14,15 @@ public class BreathRateDao {
 	  private static List<BreathRate> heatBeatList = new LinkedList<>();
 
 	 
-	    public static String[] LINE_NAMES = {"Limit", "Current", "Low2"};
+	    public static String[] LINE_NAMES = {"Limit", "Current", "Low"};
 
 	    static {
 	        revenueModel = new DefaultCategoryModel();
 	        for (String month : Util.MONTHS) {
 	        
-	            revenueModel.setValue(LINE_NAMES[0], month, 88);
-	            revenueModel.setValue(LINE_NAMES[1], month, Util.random.nextInt(110));
-	            revenueModel.setValue(LINE_NAMES[2], month, 75);
+	            revenueModel.setValue(LINE_NAMES[0], month, 20);
+	            revenueModel.setValue(LINE_NAMES[1], month, Util.random.nextInt(21));
+	            revenueModel.setValue(LINE_NAMES[2], month, 12);
 	        }
 
 //	        productImportModel = new DefaultCategoryModel();
@@ -34,8 +34,8 @@ public class BreathRateDao {
 
 	        for (String name : LINE_NAMES) {
 	        	BreathRate product = new BreathRate(name);
-	            product.setQuantity(Util.nextInt(20, 100));
-	            product.setPrice(Util.nextInt(100,1000) / 10);
+	            product.setQuantity(Util.nextInt(12, 20));
+	            product.setPrice(Util.nextInt(10,21) / 10);
 	   
 	            heatBeatList.add(product);
 	        }

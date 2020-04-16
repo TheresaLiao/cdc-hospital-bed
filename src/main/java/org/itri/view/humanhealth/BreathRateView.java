@@ -10,7 +10,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 
 public class BreathRateView {
 
-    @Wire
+    @Wire("charts#breathbeatchart")
     Charts chart;
 
     @AfterCompose
@@ -21,7 +21,7 @@ public class BreathRateView {
 
         chart.getTitle().setX(-20);
         chart.getSubtitle().setX(-20);
-        chart.getYAxis().setTitle("times");
+        chart.getYAxis().setTitle("Times");
         
         PlotLine plotLine = new PlotLine();
         plotLine.setValue(0);
@@ -30,7 +30,7 @@ public class BreathRateView {
         chart.getPlotOptions().getAreaSpline().setFillOpacity(0.1);
         chart.getPlotOptions().getAreaSpline().getMarker().setEnabled(false);
         chart.getYAxis().addPlotLine(plotLine);
-        chart.getTooltip().setValueSuffix("$");
+        //chart.getTooltip().setValueSuffix("$");
 
         Legend legend = chart.getLegend();
         legend.setLayout("vertical");

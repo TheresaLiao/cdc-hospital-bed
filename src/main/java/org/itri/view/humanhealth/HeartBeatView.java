@@ -10,7 +10,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 
 public class HeartBeatView {
 
-    @Wire
+    @Wire("charts#heartbeatchart")
     Charts chart;
 
     @AfterCompose
@@ -31,7 +31,7 @@ public class HeartBeatView {
         chart.getPlotOptions().getAreaSpline().setFillOpacity(0.1);
         chart.getPlotOptions().getAreaSpline().getMarker().setEnabled(false);
         chart.getYAxis().addPlotLine(plotLine);
-       // chart.getTooltip().setValueSuffix("$");
+        //chart.getTooltip().setValueSuffix("$");
 
         Legend legend = chart.getLegend();
         legend.setLayout("vertical");

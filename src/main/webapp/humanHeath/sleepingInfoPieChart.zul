@@ -1,6 +1,6 @@
 <zk xmlns:n="native">
     <idspace>
-    <panel title="Pie Chart" border="normal" viewModel="@id('vm')@init('org.itri.view.sleepingInfo.SleepingInfoPieChart')">
+    <panel title="Sleep persent" border="normal" viewModel="@id('vm')@init('org.itri.view.sleepingInfo.SleepingInfoPieChart')">
         <panelchildren>
             <charts id="chart" type="pie" title="" hflex="1"/>
         </panelchildren>

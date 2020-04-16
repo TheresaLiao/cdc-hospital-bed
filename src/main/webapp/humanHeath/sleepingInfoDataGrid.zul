@@ -1,5 +1,5 @@
 <zk xmlns:n="native">
-    <panel title="DataGrid" border="normal" viewModel="@id('vm')@init('org.itri.view.sleepingInfo.SleepingInfoDataGridView')" height="100%">
+    <panel title="Sleep Raw Data" border="normal" viewModel="@id('vm')@init('org.itri.view.sleepingInfo.SleepingInfoDataGridView')" height="100%">
         <panelchildren>
         <listbox hflex="1" model="@init(vm.activityList)">
             <listhead>
