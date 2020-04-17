@@ -4,7 +4,8 @@
             <n:div sclass="col-md-12 p-1">
                 <person-info state="@init(each)"
                            icon="@init(each.type)@converter('org.zkoss.admin.converter.TypeIconConverter')"
-                           color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')"/>
+                           color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')"
+                           statutIcon="@init(each.status)@converter('org.itri.converter.StatusIconConverter')"/>
             </n:div>
         </forEach>
     </nodom>

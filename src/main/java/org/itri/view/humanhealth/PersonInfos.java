@@ -4,7 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.itri.view.humanhealth.dao.PersonState;
+import org.itri.view.humanhealth.dao.Status;
 import org.zkoss.admin.ecommerce.dao.Type;
+
 import org.zkoss.bind.annotation.Init;
 
 public class PersonInfos {
@@ -29,6 +31,7 @@ public class PersonInfos {
 	            state.setType(Type.values()[0]);
 	            state.setValue(1317 * (i + 1));
 	            state.setRatio(0.329);
+	            state.setStatus(Status.values()[1]);
 	            
 	            states.add(state);
 	        }

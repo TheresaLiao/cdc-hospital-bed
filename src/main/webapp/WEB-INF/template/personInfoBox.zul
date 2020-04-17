@@ -11,7 +11,7 @@
             </div>
         	
         	<!-- Right icon -->
-            <div class="col-8 px-4">
+            <div class="col-5 px-4">
             	<!-- Name -->
             	<h5>${state.name}</h5>
             	
@@ -29,6 +29,11 @@
                 <h4>${state.value}</h4>
                 <z:label sclass="text-success" value="@init(state.ratio)@converter('org.zkoss.admin.converter.PercentageConverter')"/>
           		-->   
+            </div>
+             <div class="col-3 text-left px-4">
+                <h2>
+                	<i class="${statutIcon} text-black-50 h3"/>
+                </h2>
             </div>
             
         </div>

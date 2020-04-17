@@ -1,0 +1,10 @@
+<panel xmlns:n="native" title="血氧飽和度" border="normal" height="100%"
+       viewModel="@id('vm')@init('org.itri.view.humanhealth.Spo2View')" >
+    <panelchildren>
+         <bs-row>
+            <n:div class="col-12">
+                <charts id="spo2chart" type="areaspline"  hflex="1" title="血氧飽和度"/>
+            </n:div>
+        </bs-row>
+    </panelchildren>
+</panel>

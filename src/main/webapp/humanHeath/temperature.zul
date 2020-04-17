@@ -1,0 +1,10 @@
+<panel xmlns:n="native" title="體溫" border="normal" height="100%"
+       viewModel="@id('vm')@init('org.itri.view.humanhealth.TemperatureView')" >
+    <panelchildren>
+         <bs-row>
+            <n:div class="col-12">
+                <charts id="tchart" type="areaspline"  hflex="1" title="體溫"/>
+            </n:div>
+        </bs-row>
+    </panelchildren>
+</panel>

@@ -10,9 +10,18 @@
  		<n:div sclass="col-lg-12 p-1">
             <apply templateURI="humanHeath/breathRate.zul"/>
         </n:div>
- 	</bs-row> 	
-   
-    <apply templateURI="humanHeath/sleepingInfoSet.zul"/>
-     
-	
+ 	</bs-row>
+ 	
+ 	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+            <apply templateURI="humanHeath/spo2.zul"/>
+        </n:div>
+ 	</bs-row>
+ 	
+ 	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+            <apply templateURI="humanHeath/temperature.zul"/>
+        </n:div>
+ 	</bs-row>
+ 	
 </zk>

@@ -5,11 +5,11 @@
         </n:div>
     </bs-row>
     <bs-row>
-    	<n:div sclass="col-md-3 p-1">
+    	<n:div sclass="col-3 p-1">
     		<apply templateURI="humanHeath/personInfoSet.zul"/>
     	</n:div>
  		
-    	<n:div sclass="col-md-9 p-1">
+    	<n:div sclass="col-9 p-1">
     		 <apply templateURI="humanHeath/humanChartSet.zul"/>
     	</n:div>
     	

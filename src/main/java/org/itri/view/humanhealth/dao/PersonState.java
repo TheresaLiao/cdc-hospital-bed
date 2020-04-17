@@ -8,8 +8,24 @@ public class PersonState {
 	private int heartBeat;
 	private double bodyTemperature;
 	private int breathRate;
+	private Type type;
+	private int value;
+	private double ratio;
+	private Status status;
+	
+	
 	public int getBreathRate() {
 		return breathRate;
+	}
+
+
+	public Status getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 
@@ -37,9 +53,7 @@ public class PersonState {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	private Type type;
-	private int value;
-	private double ratio;
+	
 	    
 	public String getName() {
 		return name;

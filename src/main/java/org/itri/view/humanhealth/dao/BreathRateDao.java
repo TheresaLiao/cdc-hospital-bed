@@ -10,27 +10,18 @@ import java.util.*;
  */
 public class BreathRateDao {
 	  private static CategoryModel revenueModel;
-//	  private static CategoryModel productImportModel;
+
 	  private static List<BreathRate> heatBeatList = new LinkedList<>();
+	  public static String[] LINE_NAMES = {"Emergency", "Warning", "Low"};
 
-	 
-	    public static String[] LINE_NAMES = {"Limit", "Current", "Low"};
-
-	    static {
+	  static {
 	        revenueModel = new DefaultCategoryModel();
 	        for (String month : Util.MONTHS) {
-	        
-	            revenueModel.setValue(LINE_NAMES[0], month, 20);
+	            revenueModel.setValue(LINE_NAMES[0], month, 45);
+	            revenueModel.setValue(LINE_NAMES[2], month, 30);
 	            revenueModel.setValue(LINE_NAMES[1], month, Util.random.nextInt(21));
-	            revenueModel.setValue(LINE_NAMES[2], month, 12);
 	        }
 
-//	        productImportModel = new DefaultCategoryModel();
-//	        for (String month : Util.MONTHS) {
-//	            productImportModel.setValue(LINE_NAMES[0], month, Util.random.nextInt(10000));
-//	            productImportModel.setValue(LINE_NAMES[1], month, Util.random.nextInt(10000));
-//	            productImportModel.setValue(LINE_NAMES[2], month, Util.random.nextInt(10000));
-//	        }
 
 	        for (String name : LINE_NAMES) {
 	        	BreathRate product = new BreathRate(name);
@@ -44,12 +35,5 @@ public class BreathRateDao {
 	    static public CategoryModel getRevenueModel() {
 	        return revenueModel;
 	    }
-	    
-//	    static public List<BreathRate> queryHeartBeat(){
-//	        return heatBeatList;
-//	    }
-//
-//	    public static ChartsModel getProductImportData() {
-//	        return productImportModel;
-//	    }
+	   
 }
