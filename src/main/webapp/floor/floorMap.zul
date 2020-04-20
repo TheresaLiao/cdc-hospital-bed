@@ -1,7 +1,0 @@
-<zk xmlns:n="native">
-	<panel xmlns:n="native" title="Map" border="normal" height="100%">
-		<panelchildren>
-         	<image src="/resources/image/samplefloor.jpg"/>
-		</panelchildren>
-	</panel>
-</zk>

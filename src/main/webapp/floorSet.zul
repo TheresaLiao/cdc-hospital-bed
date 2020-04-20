@@ -26,15 +26,13 @@
 	</bs-row>
 	
 	<!-- room info -->
-	<bs-row style="min-height: 50px">
-		<hlayout width="100%">
-			<n:div sclass="col-md-6 p-1">
-				<apply templateURI="floor/floorMap.zul"/>
-			</n:div>
-			<n:div sclass="col-md-6 p-1">
-				<apply templateURI="floor/roomInfo.zul"/>
-			</n:div>
-		</hlayout>
-		
-	</bs-row>	
+	<div sclass="row">
+		<n:div sclass="col-md-5">
+			<image src="/resources/image/samplefloor.jpg"/>
+		</n:div>
+		<n:div sclass="col-md-7">
+			<apply templateURI="floor/roomInfo.zul"/>
+		</n:div>
+	</div>
+	 
 </zk>

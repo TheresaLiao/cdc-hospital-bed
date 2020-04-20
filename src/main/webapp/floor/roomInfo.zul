@@ -1,20 +1,22 @@
 <zk xmlns:n="native">
-    <panel title="Room Info" border="normal" viewModel="@id('vm')@init('org.zkoss.admin.ecommerce.ProductVM')">
+    <panel title="Room Info" border="normal" viewModel="@id('vm')@init('org.itri.view.roomInfo.RoomInfoView')" height="100%">
         <panelchildren>
-            <listbox hflex="1" model="@init(vm.productList)" >
+            <listbox  model="@init(vm.roomInfoList)" >
                 <listhead >
-                    <listheader label="Name" ></listheader>
-                    <listheader label="Quantity" ></listheader>
-                    <listheader label="Price" ></listheader>
-                    <listheader label="Amount" ></listheader>
+                	<listheader label="房號" ></listheader>
+                    <listheader label="姓名" ></listheader>
+                    <listheader label="溫度" ></listheader>
+                    <listheader label="心跳" ></listheader>
+                    <listheader label="呼吸" ></listheader>
                 </listhead>
             </listbox>
             <template name="model">
                 <listitem>
+                	<listcell label="@init(each.bedRoom)"/>
                     <listcell label="${each.name}"/>
-                    <listcell label="@init(each.quantity)"/>
-                    <listcell label="@init(('$' += each.price))" />
-                    <listcell label="@init(('$' += each.amount))" />
+                    <listcell label="@init(each.bodyTemperature)"/>
+                    <listcell label="@init(each.heartBeat)"/>
+                    <listcell label="@init(each.breathRate)"/>
                 </listitem>
             </template>
         </panelchildren>
