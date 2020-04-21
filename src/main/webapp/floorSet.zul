@@ -1,9 +1,15 @@
+<?link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"?>
+<?link rel="stylesheet" href="resources/css/zk-admin-bootstrap-theme.css"?>
+<?link rel="stylesheet" href="resources/css/layout.css" ?>
+<?link rel="stylesheet" href="resources/css/zk-bootstrap.css" ?>
 <zk xmlns:n="native">
 	<!-- page -->
 	
 	
 	<!-- floor : select floor-->
 	<bs-row>
+		
+		
 		<!-- button list -->
 		<menupopup id="floors">
 			<menuitem label="B2" />
@@ -27,14 +33,13 @@
 	
 	<!-- room info -->
 	<div sclass="row">
-		<n:div sclass="col-md-12">
-			<image src="/resources/image/samplefloor.jpg" width="100%" height="100%"/>
+		<n:div sclass="col-md-11">
+			<image src="/resources/image/MapImages/samplefloor.jpg" width="90%" height="90%"/>
 		</n:div>
 		<!-- 
 		<n:div sclass="col-md-7">
 			<apply templateURI="floor/roomInfo.zul"/>
 		</n:div>
 		 -->
-	</div>
-	 
+	</div> 
 </zk>

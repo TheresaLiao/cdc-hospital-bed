@@ -15,8 +15,8 @@ public class StatusIconConverter implements Converter<String, Status, Component>
     static private Map<Status, String> iconMap = new HashMap() {{
         put(Status.DegreeRed, "/cdc-hospital-bed/resources/image/MapImages/icon_waring_temperature_r2.png");
         put(Status.DegreeGreen, "/cdc-hospital-bed/resources/image/MapImages/icon_waring_temperature_g.png");
-        put(Status.HeartbeatRed, "/resources/image/MapImages/icon_waring_heart_r2.png");
-        put(Status.HeartbeatGreen, "/resources/image/MapImages/icon_waring_heart_g.png");
+        put(Status.HeartbeatRed, "/cdc-hospital-bed/resources/image/MapImages/icon_waring_heart_r2.png");
+        put(Status.HeartbeatGreen, "/cdc-hospital-bed/resources/image/MapImages/icon_waring_heart_g.png");
        
         
       // resources/image/MapImages/icon_indicator_g_01.png
