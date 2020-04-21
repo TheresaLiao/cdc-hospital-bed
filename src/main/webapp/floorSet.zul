@@ -27,12 +27,14 @@
 	
 	<!-- room info -->
 	<div sclass="row">
-		<n:div sclass="col-md-5">
-			<image src="/resources/image/samplefloor.jpg"/>
+		<n:div sclass="col-md-12">
+			<image src="/resources/image/samplefloor.jpg" width="100%" height="100%"/>
 		</n:div>
+		<!-- 
 		<n:div sclass="col-md-7">
 			<apply templateURI="floor/roomInfo.zul"/>
 		</n:div>
+		 -->
 	</div>
 	 
 </zk>

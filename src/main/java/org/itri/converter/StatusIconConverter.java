@@ -13,11 +13,13 @@ import java.util.*;
  */
 public class StatusIconConverter implements Converter<String, Status, Component> {
     static private Map<Status, String> iconMap = new HashMap() {{
-        put(Status.DegreeRed, "z-icon-group");
-        put(Status.DegreeGreen, "z-icon-list");
-        put(Status.HeartbeatRed, "z-icon-phone");
-        put(Status.HeartbeatGreen, "z-icon-tasks");
+        put(Status.DegreeRed, "/cdc-hospital-bed/resources/image/MapImages/icon_waring_temperature_r2.png");
+        put(Status.DegreeGreen, "/cdc-hospital-bed/resources/image/MapImages/icon_waring_temperature_g.png");
+        put(Status.HeartbeatRed, "/resources/image/MapImages/icon_waring_heart_r2.png");
+        put(Status.HeartbeatGreen, "/resources/image/MapImages/icon_waring_heart_g.png");
        
+        
+      // resources/image/MapImages/icon_indicator_g_01.png
     }};
 
     @Override
