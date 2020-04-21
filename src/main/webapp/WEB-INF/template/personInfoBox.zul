@@ -23,12 +23,6 @@
             	
             	<!-- breathRate -->
             	<h6 class="text-black-50">呼吸: ${state.breathRate} 次/分</h6>
-        
-				<!-- 
-                <h6 class="text-black-50">${state.type}</h6>
-                <h4>${state.value}</h4>
-                <z:label sclass="text-success" value="@init(state.ratio)@converter('org.zkoss.admin.converter.PercentageConverter')"/>
-          		-->   
             </div>
              <div class="col-3 text-left px-4">
                 <h2>

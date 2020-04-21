@@ -8,8 +8,6 @@
 	
 	<!-- floor : select floor-->
 	<bs-row>
-		
-		
 		<!-- button list -->
 		<menupopup id="floors">
 			<menuitem label="B2" />
@@ -33,13 +31,11 @@
 	
 	<!-- room info -->
 	<div sclass="row">
-		<n:div sclass="col-md-11">
+		<n:div sclass="col-md-9">
 			<image src="/resources/image/MapImages/samplefloor.jpg" width="90%" height="90%"/>
 		</n:div>
-		<!-- 
-		<n:div sclass="col-md-7">
-			<apply templateURI="floor/roomInfo.zul"/>
+		<n:div sclass="col-md-3">
+			<apply templateURI="floor/floorSummary.zul"/>
 		</n:div>
-		 -->
 	</div> 
 </zk>

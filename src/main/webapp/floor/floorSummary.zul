@@ -1,0 +1,28 @@
+<zk xmlns="native" xmlns:z="zul">
+	 <div class="col-12 px-4">
+	 
+		<h5>2F</h5>
+		<h5>樓層健康狀態</h5>
+		<div class="row">
+			<image src="/cdc-hospital-bed/resources/image/MapImages/icon_indicator_g_02.png"/>
+			<h7>正常</h7>	
+			<h7>25/29</h7>	
+		</div>
+		<div class="row">
+			<image src="/cdc-hospital-bed/resources/image/MapImages/icon_indicator_y_02.png"/>
+			<h7>警示</h7>
+			<h7>3</h7>	
+		</div>
+		<div class="row">
+			<image src="/cdc-hospital-bed/resources/image/MapImages/icon_indicator_r_02.png"/>
+			<h7>警急狀況</h7>
+			<h7>1</h7>	
+		</div>
+		<div class="row">
+			<image src="/cdc-hospital-bed/resources/image/MapImages/icon_indicator_no_02.png"/>
+			<h7>空床</h7>
+			<h7>0</h7>	
+		</div>
+		
+	</div>
+</zk>
