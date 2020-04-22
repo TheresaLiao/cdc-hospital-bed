@@ -1,4 +1,4 @@
-package org.itri.view;
+package org.itri.view.admin;
 
 
 import org.itri.view.navigation.NavigationMdel;

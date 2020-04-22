@@ -3,8 +3,32 @@
 <?link rel="stylesheet" href="resources/css/layout.css" ?>
 <?link rel="stylesheet" href="resources/css/zk-bootstrap.css" ?>
 <zk xmlns:n="native">
-    <hlayout viewModel="@id('vm')@init('org.itri.view.MainView')" width="100%">
-   
+	<!-- floor : select floor-->
+	<div>	
+		<menupopup id="floors">
+			<menuitem label="B2" />
+			<menuitem label="B1" />
+			<menuitem label="1F" />
+			<menuitem label="2F" />
+			<menuitem label="3F" />
+			<menuitem label="4F" />
+			<menuitem label="5F" />
+			<menuitem label="6F" />
+			<menuitem label="7F" />
+			<menuitem label="8F" />
+		</menupopup>
+		<div class="btn-group">
+			<button dir="reverse" sclass="p-3" class="btn-default btn-sm dropdown-toggle"
+					popup="floors, after_start" iconSclass="caret">
+					2F
+			</button>
+		</div>
+		
+	</div>
+	
+	<!-- Main Page -->
+    <hlayout viewModel="@id('vm')@init('org.itri.view.admin.MainView')" width="100%">
+    	<apply templateURI="longBar.zul" />
         <div sclass="container-fluid" hflex="1">
             <apply templateURI="@load(vm.navigationModel.contentUrl)"/>
         </div>

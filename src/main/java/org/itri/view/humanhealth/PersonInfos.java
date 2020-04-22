@@ -19,14 +19,16 @@ public class PersonInfos {
 
 	    private void queryStates() {
 	        states = new LinkedList<>();
-	        for (int i = 0 ; i < 810 ; i++){
+	        for (int i = 0 ; i < 15 ; i++){
+	        	for (int j = 0 ; j < 4 ; j++){	
 	            PersonState state = new PersonState();
 	            
 	            state.setName("Lee John "+String.valueOf(i));
 	            state.setBodyTemperature(39.5);
 	            state.setHeartBeat(118);
 	            state.setBreathRate(20);
-	            state.setBedRoom("307-" + String.valueOf(i+1));
+	            state.setBedRoom("2" + String.format("%02d",(i+1))+"-"+String.valueOf(j+1));
+	            state.setSpo2(90);
 	            
 	            state.setType(Type.values()[0]);
 	            state.setValue(1317 * (i + 1));
@@ -34,6 +36,7 @@ public class PersonInfos {
 	            state.setStatus(Status.values()[1]);
 	            
 	            states.add(state);
+	        	}
 	        }
 	    }
 

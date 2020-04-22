@@ -3,34 +3,45 @@
         <div class="row">
         	
         	<!-- Left icon -->
-            <div class="col-3 text-left px-4">
+            <div class="col-5 text-left px-4">
+            	<!-- Name -->
+            	<h6>${state.name}</h6>
                 <h2>
-                	<i class="${icon} text-black-50 h3"/>
+                	<!-- <i class="${icon} text-black-50 h3"/> -->
+                	<image src="/cdc-hospital-bed/resources/image/MapImages/icon-bed54.png" />
                 </h2>
                 <h6>${state.bedRoom}</h6>
             </div>
         	
         	<!-- Right icon -->
-            <div class="col-5 px-4">
-            	<!-- Name -->
-            	<h5>${state.name}</h5>
-            	
-            	<!-- bodyTemperature -->
-            	<h6 class="text-black-50">溫度: ${state.bodyTemperature} C</h6>
+            <div class="col-7 px-1">
             	
             	<!-- heartBeat -->
-            	<h6 class="text-black-50">心跳: ${state.heartBeat} 次/分</h6>
+            	<div class="row">
+            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-heart-27g.png"/>
+            		<h6 class="text-black-50">心跳: ${state.heartBeat} 次/分</h6>
+            	</div>
+            	
+            	
+            	<!-- bodyTemperature -->
+            	<div class="row">
+            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-degree-27g.png"/>
+            		<h6 class="text-black-50">溫度: ${state.bodyTemperature} C</h6>
+            	</div>
+            	
+            	<!-- spo2 -->
+            	<div class="row">
+            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-Blood-oxygen-27g.png"/>
+            		<h6 class="text-black-50">血氧: ${state.spo2} mmHg</h6>
+            	</div>
             	
             	<!-- breathRate -->
-            	<h6 class="text-black-50">呼吸: ${state.breathRate} 次/分</h6>
+            	<div class="row">
+            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-caugh-27g.png"/>
+            		<h6 class="text-black-50">呼吸: ${state.breathRate} 次/分</h6>
+            	</div>
             </div>
-             <div class="col-3 text-left px-4">
-                <h2>
-                	
-                	<image src="${statutIcon}" />
-                </h2>
-            </div>
-            
+
         </div>
     </div>
 </zk>

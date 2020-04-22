@@ -1,17 +1,17 @@
 <zk xmlns:n="native">
     <bs-row>
         <n:div sclass="col p-1">
-            <n:span class="z-label font-weight-bold">Bed Info</n:span>
+            <n:span class="z-label font-weight-bold">病房資訊</n:span>
         </n:div>
     </bs-row>
     <bs-row>
-    	<n:div sclass="col-3 p-1">
+    	<n:div sclass="col-12 p-1">
     		<apply templateURI="humanHeath/personInfoSet.zul"/>
     	</n:div>
- 		
+ 		<!-- 
     	<n:div sclass="col-9 p-1">
     		 <apply templateURI="humanHeath/humanChartSet.zul"/>
     	</n:div>
-    	
+    	 -->
     </bs-row>    
 </zk>

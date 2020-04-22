@@ -4,30 +4,11 @@
 <?link rel="stylesheet" href="resources/css/zk-bootstrap.css" ?>
 <zk xmlns:n="native">
 	<!-- page -->
-	
-	
-	<!-- floor : select floor-->
 	<bs-row>
-		<!-- button list -->
-		<menupopup id="floors">
-			<menuitem label="B2" />
-			<menuitem label="B1" />
-			<menuitem label="1F" />
-			<menuitem label="2F" />
-			<menuitem label="3F" />
-			<menuitem label="4F" />
-			<menuitem label="5F" />
-			<menuitem label="6F" />
-			<menuitem label="7F" />
-			<menuitem label="8F" />
-		</menupopup>
-		<div class="btn-group">
-			<button dir="reverse" class="btn-default btn-sm dropdown-toggle"
-					popup="floors, after_start" iconSclass="caret">
-					2F
-			</button>
-		</div>
-	</bs-row>
+        <n:div sclass="col p-3">
+            <n:span class="z-label font-weight-bold">病房配置圖</n:span>
+        </n:div>
+    </bs-row>
 	
 	<!-- room info -->
 	<div sclass="row">

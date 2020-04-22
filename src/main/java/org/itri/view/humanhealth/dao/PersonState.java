@@ -9,10 +9,21 @@ public class PersonState {
 	private double bodyTemperature;
 	private int breathRate;
 	private Type type;
+	
 	private int value;
 	private double ratio;
 	private Status status;
+	private int spo2;
 	
+	
+	public int getSpo2() {
+		return spo2;
+	}
+
+
+	public void setSpo2(int spo2) {
+		this.spo2 = spo2;
+	}
 	
 	public int getBreathRate() {
 		return breathRate;
