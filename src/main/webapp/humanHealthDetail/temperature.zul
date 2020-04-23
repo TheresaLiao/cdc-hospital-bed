@@ -1,6 +1,23 @@
 <panel xmlns:n="native" title="體溫" border="normal" height="100%"
        viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.TemperatureView')" >
     <panelchildren>
+    	 <bs-row>
+            <n:div class="col-lg-1">
+                From
+            </n:div>
+            <n:div class="col-lg-2">
+                <datebox hflex="1"/>
+            </n:div>
+            <n:div class="col-lg-1">
+                To
+            </n:div>
+            <n:div class="col-lg-2">
+                <datebox hflex="1"/>
+            </n:div>
+            <n:div class="col-lg-1">
+                <button label="查詢"/>
+            </n:div>
+         </bs-row>
          <bs-row>
             <n:div class="col-12">
                 <charts id="tchart" type="areaspline"  hflex="1" title="體溫"/>
