@@ -1,4 +1,4 @@
-package org.itri.view.humanhealth.dao;
+package org.itri.view.humanhealth.detail;
 
 import org.zkoss.admin.util.Util;
 import org.zkoss.chart.model.*;
@@ -8,10 +8,10 @@ import java.util.*;
 /**
  * Data access object
  */
-public class TemperatureDao {
+public class Spo2Dao {
 	  private static CategoryModel revenueModel;
 
-	  private static List<Temperature> heatBeatList = new LinkedList<>();
+	  private static List<Spo2> heatBeatList = new LinkedList<>();
 	  public static String[] LINE_NAMES = {"Emergency", "Warning", "current"};
 
 	  static {
@@ -24,7 +24,7 @@ public class TemperatureDao {
 
 
 	        for (String name : LINE_NAMES) {
-	        	Temperature product = new Temperature(name);
+	        	Spo2 product = new Spo2(name);
 	            product.setQuantity(Util.nextInt(50,85));
 	            product.setPrice(Util.nextInt(50,85));
 	   

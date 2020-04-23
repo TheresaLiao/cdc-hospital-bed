@@ -1,6 +1,5 @@
 package org.itri.view.humanhealth.detail;
 
-import org.itri.view.humanhealth.dao.TemperatureDao;
 import org.zkoss.admin.util.*;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.chart.*;
@@ -21,7 +20,7 @@ public class TemperatureView {
 
         chart.getTitle().setX(-20);
         chart.getSubtitle().setX(-20);
-        chart.getYAxis().setTitle("Times");
+        chart.getYAxis().setTitle("¢XC");
         
         PlotLine plotLine = new PlotLine();
         plotLine.setValue(0);

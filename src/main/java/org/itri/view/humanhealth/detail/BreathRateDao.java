@@ -1,4 +1,4 @@
-package org.itri.view.humanhealth.dao;
+package org.itri.view.humanhealth.detail;
 
 import org.zkoss.admin.util.Util;
 import org.zkoss.chart.model.*;

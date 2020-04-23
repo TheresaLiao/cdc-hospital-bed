@@ -1,6 +1,5 @@
 package org.itri.view.humanhealth.detail;
 
-import org.itri.view.humanhealth.dao.BreathRateDao;
 import org.zkoss.admin.util.*;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.chart.*;

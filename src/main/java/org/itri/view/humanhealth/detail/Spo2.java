@@ -1,4 +1,4 @@
-package org.itri.view.humanhealth.dao;
+package org.itri.view.humanhealth.detail;
 
 public class Spo2 {
     private String name;

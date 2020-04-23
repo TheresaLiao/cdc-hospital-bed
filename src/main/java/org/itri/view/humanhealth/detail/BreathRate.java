@@ -1,11 +1,11 @@
-package org.itri.view.humanhealth.dao;
+package org.itri.view.humanhealth.detail;
 
-public class Temperature {
+public class BreathRate {
     private String name;
     private int quantity;
     private double price;
 
-    public Temperature(String name){
+    public BreathRate(String name){
         this.name = name;
     }
 

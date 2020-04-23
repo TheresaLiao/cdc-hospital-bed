@@ -1,6 +1,5 @@
 package org.itri.view.humanhealth.detail;
 
-import org.itri.view.humanhealth.dao.Spo2Dao;
 import org.zkoss.admin.util.*;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.chart.*;
