@@ -1,5 +1,5 @@
 <panel xmlns:n="native" title="血氧飽和度" border="normal" height="100%"
-       viewModel="@id('vm')@init('org.itri.view.humanhealth.Spo2View')" >
+       viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.Spo2View')" >
     <panelchildren>
          <bs-row>
             <n:div class="col-12">

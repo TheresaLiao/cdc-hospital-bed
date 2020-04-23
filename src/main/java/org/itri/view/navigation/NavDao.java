@@ -10,13 +10,17 @@ public class NavDao {
     }
 
     static public void initMenus(){
-        Menu menuFloorSet = new Menu("floorSet", "z-icon-home");
+        Menu menuFloorSet = new Menu("樓層管理", "z-icon-home");
         menuFloorSet.setPath(NavigationMdel.DASHBOARD_FLOORSET_ZUL);
         menuList.add(menuFloorSet);
         
-        Menu menuHuamanHealth = new Menu("huamanHealth", "z-icon-home");
-        menuHuamanHealth.setPath(NavigationMdel.DASHBOARD_HUAMANHEALTH_ZUL);
+        Menu menuHuamanHealth = new Menu("房間資訊", "z-icon-home");
+        menuHuamanHealth.setPath(NavigationMdel.DASHBOARD_HUMANHEALTH_ZUL);
         menuList.add(menuHuamanHealth);
+        
+        Menu menuHuamanChartSet = new Menu("個人資訊", "z-icon-home");
+        menuHuamanChartSet.setPath(NavigationMdel.DASHBOARD_HUMANCHARTSET_ZUL);
+        menuList.add(menuHuamanChartSet);
     }
 
     static public List<Menu> queryMenu(){

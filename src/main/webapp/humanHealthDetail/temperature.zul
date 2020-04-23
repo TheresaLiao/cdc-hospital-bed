@@ -1,5 +1,5 @@
 <panel xmlns:n="native" title="體溫" border="normal" height="100%"
-       viewModel="@id('vm')@init('org.itri.view.humanhealth.TemperatureView')" >
+       viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.TemperatureView')" >
     <panelchildren>
          <bs-row>
             <n:div class="col-12">

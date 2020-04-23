@@ -1,0 +1,39 @@
+<zk xmlns:n="native">
+	<bs-row>
+        <n:div sclass="col p-1">
+            <n:span class="z-label font-weight-bold">病人資訊</n:span>
+        </n:div>
+    </bs-row>
+    
+    <nodom viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
+       <forEach items="@init(vm.states)">
+            <n:div sclass="col-12 p-1">
+                <person-info-detail state="@init(each)"
+                             		color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')"/>
+            </n:div>
+        </forEach>
+    </nodom>
+    
+	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+            <apply templateURI="humanHealthDetail/temperature.zul"/>
+        </n:div>
+ 	</bs-row>
+ 	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+    		 <apply templateURI="humanHealthDetail/heartbeat.zul"/>
+    	</n:div>
+ 	</bs-row>
+ 	
+ 	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+            <apply templateURI="humanHealthDetail/breathRate.zul"/>
+        </n:div>
+ 	</bs-row>
+ 	
+ 	<bs-row style="min-height: 500px">
+ 		<n:div sclass="col-lg-12 p-1">
+            <apply templateURI="humanHealthDetail/spo2.zul"/>
+        </n:div>
+ 	</bs-row> 	
+</zk>

@@ -1,5 +1,5 @@
 <panel xmlns:n="native" title="呼吸頻率" border="normal" height="100%"
-       viewModel="@id('vm')@init('org.itri.view.humanhealth.BreathRateView')" >
+       viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.BreathRateView')" >
     <panelchildren>
          <bs-row>
             <n:div class="col-12">

@@ -21,9 +21,16 @@
 		<template-uri>/WEB-INF/template/stateBox.zul</template-uri>
 	</component>
 	<stylesheet href="/resources/css/state-box.css" type="text/css"/>
+	
 	<component>
 		<component-name>person-info</component-name>
 		<template-uri>/WEB-INF/template/personInfoBox.zul</template-uri>
+	</component>
+	<stylesheet href="/resources/css/person-info.css" type="text/css"/>
+	
+	<component>
+		<component-name>person-info-detail</component-name>
+		<template-uri>/WEB-INF/template/personInfoBoxDetail.zul</template-uri>
 	</component>
 	<stylesheet href="/resources/css/person-info.css" type="text/css"/>
 	
@@ -32,6 +39,7 @@
 		<template-uri>/WEB-INF/template/infoBox.zul</template-uri>
 	</component>
 	<stylesheet href="/resources/css/info-box.css" type="text/css"/>
+	
 	<component>
 		<component-name>sleep-info-box</component-name>
 		<template-uri>/WEB-INF/template/sleepInfoBox.zul</template-uri>

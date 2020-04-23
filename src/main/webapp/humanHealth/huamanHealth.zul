@@ -6,12 +6,8 @@
     </bs-row>
     <bs-row>
     	<n:div sclass="col-12 p-1">
-    		<apply templateURI="humanHeath/personInfoSet.zul"/>
+    		<apply templateURI="humanHealth/personInfoSet.zul"/>
     	</n:div>
- 		<!-- 
-    	<n:div sclass="col-9 p-1">
-    		 <apply templateURI="humanHeath/humanChartSet.zul"/>
-    	</n:div>
-    	 -->
+ 		
     </bs-row>    
 </zk>

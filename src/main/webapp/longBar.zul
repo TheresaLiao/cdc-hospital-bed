@@ -1,6 +1,6 @@
 <zk xmlns:n="native" xmlns="http://www.zkoss.org/2005/zul">
     <div sclass="sidebar"  viewModel="@id('vm')@init('org.itri.view.admin.longBarView')">
-        <navbar orient="vertical" collapsed="@load(vm.collapsed)">
+        <navbar orient="horizontal" collapsed="@load(vm.collapsed)">
             <apply template="iterate" menuItems="@load(vm.menuList)"/>
         </navbar>
     </div>

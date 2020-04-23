@@ -1,6 +1,6 @@
-package org.itri.view.humanhealth;
+package org.itri.view.humanhealth.detail;
 
-import org.itri.view.humanhealth.dao.Spo2Dao;
+import org.itri.view.humanhealth.dao.BreathRateDao;
 import org.zkoss.admin.util.*;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.chart.*;
@@ -8,16 +8,16 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 
-public class Spo2View {
+public class BreathRateView {
 
-    @Wire("charts#spo2chart")
+    @Wire("charts#breathbeatchart")
     Charts chart;
 
     @AfterCompose
     public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
         Selectors.wireComponents(view, this, false);
 
-        chart.setModel(Spo2Dao.getRevenueModel());
+        chart.setModel(BreathRateDao.getRevenueModel());
 
         chart.getTitle().setX(-20);
         chart.getSubtitle().setX(-20);

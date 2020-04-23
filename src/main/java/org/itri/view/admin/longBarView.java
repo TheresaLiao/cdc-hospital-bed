@@ -21,15 +21,9 @@ public class longBarView {
 
     @Command
     public void navigate(@BindingParam("menu")Menu menu){
-    	
         String targetPath = menu.getPath();
-        System.out.println(menu.getLabel());
        
         if (!targetPath.equals(NavigationMdel.BLANK_ZUL)) {
-        	System.out.println("IN");
-        	System.out.println(navigationModel.getContentUrl());
-        	System.out.println(targetPath);
-        	 
             navigationModel.setContentUrl(targetPath);
             BindUtils.postNotifyChange(null, null, navigationModel, "contentUrl");
         }
