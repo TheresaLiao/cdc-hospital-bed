@@ -7,7 +7,7 @@ public class NavigationMdel {
     
     public static final String BLANK_ZUL = "/blank.zul";
 
-    private String contentUrl = DASHBOARD_FLOORSET_ZUL;
+    private String contentUrl = DASHBOARD_HUMANCHARTSET_ZUL;
 
     public String getContentUrl() {
         return contentUrl;

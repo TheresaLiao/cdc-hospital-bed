@@ -1,7 +1,8 @@
 <?link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"?>
-<?link rel="stylesheet" href="resources/css/zk-admin-bootstrap-theme.css"?>
 <?link rel="stylesheet" href="resources/css/layout.css" ?>
+<?link rel="stylesheet" href="resources/css/zk-admin-bootstrap-theme.css"?>
 <?link rel="stylesheet" href="resources/css/zk-bootstrap.css" ?>
+
 <zk xmlns:n="native">
     <hlayout viewModel="@id('vm')@init('org.itri.view.admin.MainView')" width="100%">
     	<bs-row>
@@ -21,7 +22,7 @@
         	</n:div>
         
         	<!-- Main Page -->
-         	<n:div sclass="col-12 p-1">
+         	<n:div sclass="col-12">
         		<div sclass="container" hflex="1">
             		<apply templateURI="@load(vm.navigationModel.contentUrl)"/>
         		</div>

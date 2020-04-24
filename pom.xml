@@ -20,6 +20,10 @@
 	</licenses>
 	<repositories>
 		<repository>
+			<id>ZK EE</id>
+			<url>https://maven.zkoss.org/repo/zk/ee</url>
+		</repository>
+		<repository>
 			<id>ZK CE</id>
 			<name>ZK CE Repository</name>
 			<url>https://mavensync.zkoss.org/maven2</url>
@@ -29,6 +33,7 @@
 			<name>ZK Evaluation Repository</name>
 			<url>https://mavensync.zkoss.org/eval</url>
 		</repository>
+		
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -45,6 +50,11 @@
 			<groupId>org.zkoss.theme</groupId>
 			<artifactId>iceblue_c</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.theme</groupId>
+			<artifactId>montana_c</artifactId>
+			<version>8.6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.chart</groupId>

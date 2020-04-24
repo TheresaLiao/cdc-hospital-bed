@@ -1,41 +1,64 @@
 package org.itri.view.humanhealth.detail;
 
-import org.zkoss.admin.util.*;
-import org.zkoss.bind.annotation.*;
-import org.zkoss.chart.*;
-import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.select.Selectors;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import org.zkoss.chart.Charts;
+import org.zkoss.chart.Options;
+import org.zkoss.chart.PlotLine;
+import org.zkoss.chart.Point;
+import org.zkoss.chart.Series;
+import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Window;
 
-public class Spo2View {
-
-    @Wire("charts#spo2chart")
+public class Spo2View extends SelectorComposer<Window> {
+    @Wire
     Charts chart;
+    Calendar cal = Calendar.getInstance();
+    
+    public void doAfterCompose(Window comp) throws Exception {
+        super.doAfterCompose(comp);
 
-    @AfterCompose
-    public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
-        Selectors.wireComponents(view, this, false);
-
-        chart.setModel(Spo2Dao.getRevenueModel());
-
-        chart.getTitle().setX(-20);
-        chart.getSubtitle().setX(-20);
-        chart.getYAxis().setTitle("Times");
+      
         
+        Options options = new Options();
+        options.getGlobal().setUseUTC(false);
+        chart.setOptions(options);
+        chart.setAnimation(true);
+        
+        chart.getXAxis().setType("datetime");
+        chart.getXAxis().setTickPixelInterval(150);
+        
+        chart.getYAxis().setTitle("Value");
         PlotLine plotLine = new PlotLine();
         plotLine.setValue(0);
         plotLine.setWidth(1);
         plotLine.setColor("#808080");
-        chart.getPlotOptions().getAreaSpline().setFillOpacity(0.1);
-        chart.getPlotOptions().getAreaSpline().getMarker().setEnabled(false);
         chart.getYAxis().addPlotLine(plotLine);
-        //chart.getTooltip().setValueSuffix("$");
+        
+        chart.getTooltip().setHeaderFormat("<b>{series.name}</b><br/>");
+        chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
+        
+        chart.getLegend().setEnabled(false);
+    
+        chart.getExporting().setEnabled(false);
 
-        Legend legend = chart.getLegend();
-        legend.setLayout("vertical");
-        legend.setAlign("right");
-        legend.setVerticalAlign("middle");
-        legend.setBorderWidth(0);
-        Util.setupColor(chart);
+        Series series = chart.getSeries();
+        series.setName("Random data");
+        
+        
+        for (int i = -19; i <= 0; i++) {
+            Point point = new Point(new Date().getTime()/1000, Math.random());
+            series.addPoint(point);
+        }
+    }
+
+    @Listen("onTimer = #timer")
+    public void updateData() {
+        chart.getSeries().addPoint(new Point(new Date().getTime()/1000, Math.random()),
+                true, true, true);
     }
 }

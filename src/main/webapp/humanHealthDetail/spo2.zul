@@ -1,7 +1,7 @@
-<panel xmlns:n="native" title="血氧飽和度" border="normal" height="100%"
-       viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.Spo2View')" >
+<panel xmlns:n="native" title="血氧飽和度" border="normal" height="100%" >
     <panelchildren>
-    	  <bs-row>
+
+ 		<bs-row>
             <n:div class="col-lg-1">
                 From
             </n:div>
@@ -18,10 +18,9 @@
                 <button label="查詢"/>
             </n:div>
          </bs-row>
-         <bs-row>
-            <n:div class="col-12">
-                <charts id="spo2chart" type="areaspline"  hflex="1" title="血氧飽和度"/>
-            </n:div>
-        </bs-row>
-    </panelchildren>
+         <window apply="org.itri.view.humanhealth.detail.Spo2View">
+			<charts id="chart" type="spline" marginRight="10" title="血氧飽和度" />
+    		<timer id="timer" delay="1000" running="true" repeats="true" />
+		</window>
+	</panelchildren>
 </panel>

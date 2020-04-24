@@ -5,7 +5,7 @@
         </n:div>
     </bs-row>
     <bs-row>
-    	<n:div sclass="col-12 p-1">
+    	<n:div sclass="col p-1">
     		<apply templateURI="humanHealth/personInfoSet.zul"/>
     	</n:div>
     </bs-row>    
