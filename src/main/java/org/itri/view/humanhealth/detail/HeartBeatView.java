@@ -14,7 +14,7 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
-public class HeartbeatView extends SelectorComposer<Window> {
+public class HeartBeatView extends SelectorComposer<Window> {
     @Wire
     Charts chart;
     Calendar cal = Calendar.getInstance();

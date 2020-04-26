@@ -3,42 +3,41 @@
         <div class="row">
         	
         	<!-- Left icon -->
-            <div class="col-5 text-left px-4">
+            <div class="col-4 text-left  text-margin  px-4">
             	<!-- Name -->
-            	<h6>${state.name}</h6>
-                <h2>
-                	<!-- <i class="${icon} text-black-50 h3"/> -->
-                	<image src="/cdc-hospital-bed/resources/image/MapImages/icon-bed54.png" />
-                </h2>
-                <h6>${state.bedRoom}</h6>
+            	<image src="/cdc-hospital-bed/resources/image/MapImages/icon_indicator_g_02.png"/>
+            	<h6 class="text-white">${state.name}</h6>
+                <h6 class="text-white">${state.bedRoom}</h6>
             </div>
         	
         	<!-- Right icon -->
-            <div class="col-7 px-1">
+            <div class="col-8 px-1">
             	
             	<!-- heartBeat -->
             	<div class="row">
-            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-heart-27g.png"/>
-            		<h6 class="text-black-50">心跳: ${state.heartBeat} 次/分</h6>
+            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-heart-27r.png"/>
+            		<h6 class="text-danger">心跳: </h6>
+            		<h3 class="text-danger">${state.heartBeat}</h3>
+            		<h6 class="text-danger"> 心次/分</h6>
             	</div>
             	
-            	
-            	<!-- bodyTemperature -->
             	<div class="row">
-            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-degree-27g.png"/>
-            		<h6 class="text-black-50">溫度: ${state.bodyTemperature} C</h6>
-            	</div>
-            	
-            	<!-- spo2 -->
-            	<div class="row">
+            		<!-- spo2 -->
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-Blood-oxygen-27g.png"/>
-            		<h6 class="text-black-50">血氧: ${state.spo2} mmHg</h6>
+            		<h6 class="text-primary">血氧: </h6>
+            		<h3 class="text-primary">${state.spo2}</h3>
+            		<h6 class="text-primary"> mmHg</h6>
             	</div>
             	
-            	<!-- breathRate -->
+            	
             	<div class="row">
+            		<!-- breathRate -->
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-caugh-27g.png"/>
-            		<h6 class="text-black-50">呼吸: ${state.breathRate} 次/分</h6>
+            		<h6 class="text-white">呼吸: ${state.breathRate} 次/分</h6>
+            		
+            		<!-- bodyTemperature -->
+            		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-degree-27g.png"/>
+            		<h6 class="text-success">溫度: ${state.bodyTemperature} C</h6>
             	</div>
             </div>
 

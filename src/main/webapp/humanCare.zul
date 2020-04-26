@@ -8,22 +8,22 @@
     	<bs-row>
     	
     		<!-- Navigation -->
-    	 	<n:div sclass="col-12 p-1">
+    	 	<n:div sclass="col-12">
     	 		<div sclass="container" hflex="1">
     				<apply templateURI="longBar.zul" />
     			</div>
     		</n:div>
     	
     		<!-- floor : select floor-->
-    	 	<n:div sclass="col-12 p-1">
-    	 		<div sclass="container" hflex="1">
+    	 	<n:div sclass="col-12">
+    	 		<div sclass="container-fluid" hflex="1">
     				<apply templateURI="floorMenu.zul" />
     			</div>
         	</n:div>
         
         	<!-- Main Page -->
          	<n:div sclass="col-12">
-        		<div sclass="container" hflex="1">
+        		<div sclass="container-fluid" hflex="1">
             		<apply templateURI="@load(vm.navigationModel.contentUrl)"/>
         		</div>
         	</n:div>

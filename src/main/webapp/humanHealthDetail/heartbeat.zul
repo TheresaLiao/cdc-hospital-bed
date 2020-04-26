@@ -18,7 +18,7 @@
                 <button label="查詢"/>
             </n:div>
          </bs-row>
-         <window apply="org.itri.view.humanhealth.detail.HeartbeatView">
+         <window apply="org.itri.view.humanhealth.detail.HeartBeatView">
 			<charts id="chart" type="spline" marginRight="10" title="心率" />
     		<timer id="timer" delay="1000" running="true" repeats="true" />
 		</window>

@@ -5,36 +5,37 @@
         	<!-- Left icon -->
             <div class="col-4 text-left">
             	<!-- Name -->
-            	<h3>${state.name}</h3>
+            	<h3 class="text-white">${state.name}</h3>
               
             </div>
         	
         	<!-- Right icon -->
             <div class="col-4 px-1">
+            
             	<!-- heartBeat -->
             	<div class="row">
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-heart-27g.png"/>
-            		<h5 class="text-black-50">心跳: ${state.heartBeat} 次/分</h5>
+            		<h5 class="text-white">心跳: ${state.heartBeat} 次/分</h5>
             	</div>
             	
             	
             	<!-- bodyTemperature -->
             	<div class="row">
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-degree-27g.png"/>
-            		<h5 class="text-black-50">溫度: ${state.bodyTemperature} C</h5>
+            		<h5 class="text-white">溫度: ${state.bodyTemperature} C</h5>
             	</div>
             </div>
             <div class="col-4 px-1">
             	<!-- spo2 -->
             	<div class="row">
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-Blood-oxygen-27g.png"/>
-            		<h5 class="text-black-50">血氧: ${state.spo2} mmHg</h5>
+            		<h5 class="text-white">血氧: ${state.spo2} mmHg</h5>
             	</div>
             	
             	<!-- breathRate -->
             	<div class="row">
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-caugh-27g.png"/>
-            		<h5 class="text-black-50">呼吸: ${state.breathRate} 次/分</h5>
+            		<h5 class="text-white">呼吸: ${state.breathRate} 次/分</h5>
             	</div>
             </div>
 
