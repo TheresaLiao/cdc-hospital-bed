@@ -12,7 +12,7 @@ import org.zkoss.admin.ecommerce.dao.Type;
 import org.zkoss.bind.annotation.Init;
 
 public class PersonInfos {
-	private List<PersonState> dataList;
+	private List<PersonState> states;
 	private PersonInfosDaoHibernateImpl hqe;
 
 	@Init
@@ -22,29 +22,32 @@ public class PersonInfos {
 	}
 
 	private void queryStates() {
-
-		
 		List<Patient> patientList = hqe.getPatientList();
 
-		dataList = new LinkedList<>();
+		states = new LinkedList<>();
 
 		for (Patient p : patientList) {
-			PersonState data = new PersonState();
+			PersonState state = new PersonState();
 			
-			data.setName(p.getPatientInfos().stream().findFirst().get().getName());
-			data.setBedRoom("201-1");
+			state.setName(p.getPatientInfos().stream().findFirst().get().getName());
+			state.setBedRoom("201-1");
+			System.out.print(state.getName());
 			
-			data.setHeartBeat(p.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
-			data.setSpo2(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
-			data.setBreathRate( p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
-			data.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
-
-			dataList.add(data);
-
+			if(p.getPatientInfos().stream().findFirst().get().getPatient().getPatientId() == 1) {
+				
+				state.setHeartBeat(p.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
+				state.setSpo2(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
+				state.setBreathRate( p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
+				state.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
+			}
+			
+			state.setStatus(Status.DegreeGreen);
+			state.setType(Type.Customer);
+			states.add(state);
 		}
 	}
 
 	public List<PersonState> getDataList() {
-		return dataList;
+		return states;
 	}
 }

@@ -1,6 +1,5 @@
 <panel xmlns:n="native" title="體溫" border="normal" height="100%" >
     <panelchildren>
-
  		<bs-row>
             <n:div class="col-lg-1">
                 From

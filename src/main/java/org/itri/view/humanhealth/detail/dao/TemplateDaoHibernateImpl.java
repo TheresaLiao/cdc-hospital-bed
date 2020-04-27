@@ -1,4 +1,4 @@
-package org.itri.view.humanhealth.dao;
+package org.itri.view.humanhealth.detail.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.itri.view.humanhealth.hibernate.Patient;
 import org.itri.view.util.HibernateUtil;
 
-public class PersonInfosDaoHibernateImpl {
+public class TemplateDaoHibernateImpl {
 	
 	public List<Patient> getPatientList() {
 		Session session = HibernateUtil.getSessionFactory().openSession();

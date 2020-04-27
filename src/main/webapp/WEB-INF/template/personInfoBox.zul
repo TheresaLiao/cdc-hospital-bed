@@ -6,7 +6,7 @@
             <div class="col-4 text-left  text-margin  px-4">
             	<!-- Name -->
             	<image src="/cdc-hospital-bed/resources/image/MapImages/icon_indicator_g_02.png"/>
-            	<h6 class="text-white">${state.name}</h6>
+            	<h4 class="text-white">${state.name}</h4>
                 <h6 class="text-white">${state.bedRoom}</h6>
             </div>
         	

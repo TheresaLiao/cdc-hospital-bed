@@ -9,6 +9,7 @@ public class PersonState {
 	private String bodyTemperature;
 	private String breathRate;
 	private Type type;
+	private String bedRoom;
 	
 	private int value;
 	private double ratio;
@@ -43,7 +44,7 @@ public class PersonState {
 	public void setBreathRate(String breathRate) {
 		this.breathRate = breathRate;
 	}
-	private String bedRoom;
+	
 	
 	
 	public Type getType() {

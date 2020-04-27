@@ -1,6 +1,6 @@
 <zk xmlns:n="native">
     <nodom viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfos')">
-       <forEach items="@init(vm.states)">
+       <forEach items="@init(vm.dataList)">
             <n:div sclass="col-12 col-lg-3 p-1">
                 <person-info state="@init(each)"
                              color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')"/>

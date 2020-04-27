@@ -3,41 +3,65 @@ package org.itri.view.humanhealth.detail;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.PersonState;
 import org.itri.view.humanhealth.dao.Status;
+import org.itri.view.humanhealth.hibernate.Patient;
 import org.zkoss.admin.ecommerce.dao.Type;
 
 import org.zkoss.bind.annotation.Init;
 
 public class PersonInfo {
 	  private List<PersonState> states;
+	  private PersonInfosDaoHibernateImpl hqe;
 
 	    @Init
 	    public void init(){
+	    	hqe = new PersonInfosDaoHibernateImpl();
 	        queryStates();
 	    }
 
 	    private void queryStates() {
+	    	List<Patient> patientList = hqe.getPatientList();
 	        states = new LinkedList<>();
-	        for (int i = 0 ; i < 1 ; i++){
-	        	for (int j = 0 ; j < 1 ; j++){	
-	            PersonState state = new PersonState();
-	            
+	        
+//	       
+//	        for (int i = 0 ; i < 1 ; i++){
+//	        	for (int j = 0 ; j < 1 ; j++){	
+//	            PersonState state = new PersonState();
+//	            
 //	            state.setName("Lee John "+String.valueOf(i));
-//	            state.setBodyTemperature(39.5);
-//	            state.setHeartBeat(118);
-//	            state.setBreathRate(20);
+//	            state.setBodyTemperature("39.5");
+//	            state.setHeartBeat("39.5");
+//	            state.setBreathRate("39.5");
 //	            state.setBedRoom("2" + String.format("%02d",(i+1))+"-"+String.valueOf(j+1));
-//	            state.setSpo2(90);
-	            
-	            state.setType(Type.values()[0]);
-	            state.setValue(1317 * (i + 1));
-	            state.setRatio(0.329);
-	            state.setStatus(Status.values()[1]);
-	            
-	            states.add(state);
-	        	}
-	        }
+//	            state.setSpo2("39.5");
+//	            
+//	            state.setType(Type.values()[0]);
+//	            state.setValue(1317 * (i + 1));
+//	            state.setRatio(0.329);
+//	            state.setStatus(Status.values()[1]);
+//	            
+//	            states.add(state);
+//	        	}
+//	        }
+//	        
+//
+//			for (Patient p : patientList) {
+				PersonState state = new PersonState();
+				
+				state.setName(patientList.get(0).getPatientInfos().stream().findFirst().get().getName());
+				state.setBedRoom("201-1");
+				
+				state.setHeartBeat(patientList.get(0).getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
+				state.setSpo2(patientList.get(0).getRtOximeterRecords().stream().findFirst().get().getOximeterData());
+				state.setBreathRate(patientList.get(0).getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
+				state.setBodyTemperature(patientList.get(0).getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
+				state.setStatus(Status.DegreeGreen);
+
+				states.add(state);
+//			}
+			
 	    }
 
 	    public List<PersonState> getStates() {
