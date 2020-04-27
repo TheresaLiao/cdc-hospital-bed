@@ -1,7 +1,7 @@
 package org.itri.view.navigation;
 
 public class NavigationMdel {
-	public static final String DASHBOARD_FLOORSET_ZUL = "/floor/floorSet.zul";
+	//public static final String DASHBOARD_FLOORSET_ZUL = "/floor/floorSet.zul";
     public static final String DASHBOARD_HUMANHEALTH_ZUL = "/humanHealth/huamanHealth.zul";
     public static final String DASHBOARD_HUMANCHARTSET_ZUL = "/humanHealthDetail/humanChartSet.zul";
     

@@ -4,43 +4,47 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.itri.view.humanhealth.dao.PersonState;
+import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.Status;
+import org.itri.view.humanhealth.hibernate.Patient;
 import org.zkoss.admin.ecommerce.dao.Type;
 
 import org.zkoss.bind.annotation.Init;
 
 public class PersonInfos {
-	  private List<PersonState> states;
+	private List<PersonState> dataList;
+	private PersonInfosDaoHibernateImpl hqe;
 
-	    @Init
-	    public void init(){
-	        queryStates();
-	    }
+	@Init
+	public void init() {
+		hqe = new PersonInfosDaoHibernateImpl();
+		queryStates();
+	}
 
-	    private void queryStates() {
-	        states = new LinkedList<>();
-	        for (int i = 0 ; i < 15 ; i++){
-	        	for (int j = 0 ; j < 4 ; j++){	
-	            PersonState state = new PersonState();
-	            
-	            state.setName("Lee John "+String.valueOf(i));
-	            state.setBodyTemperature(39.5);
-	            state.setHeartBeat(118);
-	            state.setBreathRate(20);
-	            state.setBedRoom("2" + String.format("%02d",(i+1))+"-"+String.valueOf(j+1));
-	            state.setSpo2(90);
-	            
-	            state.setType(Type.values()[0]);
-	            state.setValue(1317 * (i + 1));
-	            state.setRatio(0.329);
-	            state.setStatus(Status.values()[1]);
-	            
-	            states.add(state);
-	        	}
-	        }
-	    }
+	private void queryStates() {
 
-	    public List<PersonState> getStates() {
-	        return states;
-	    }
+		
+		List<Patient> patientList = hqe.getPatientList();
+
+		dataList = new LinkedList<>();
+
+		for (Patient p : patientList) {
+			PersonState data = new PersonState();
+			
+			data.setName(p.getPatientInfos().stream().findFirst().get().getName());
+			data.setBedRoom("201-1");
+			
+			data.setHeartBeat(p.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
+			data.setSpo2(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
+			data.setBreathRate( p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
+			data.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
+
+			dataList.add(data);
+
+		}
+	}
+
+	public List<PersonState> getDataList() {
+		return dataList;
+	}
 }

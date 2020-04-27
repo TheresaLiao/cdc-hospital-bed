@@ -118,7 +118,7 @@ public class RtOximeterRecord implements java.io.Serializable {
 		return this.heartRateStatus;
 	}
 
-	public void setHeartRateStatuis(String heartRateStatus) {
+	public void setHeartRateStatus(String heartRateStatus) {
 		this.heartRateStatus = heartRateStatus;
 	}
 

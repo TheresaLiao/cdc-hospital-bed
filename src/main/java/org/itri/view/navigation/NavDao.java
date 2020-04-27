@@ -10,9 +10,9 @@ public class NavDao {
     }
 
     static public void initMenus(){
-        Menu menuFloorSet = new Menu("樓層管理", "z-icon-home");
-        menuFloorSet.setPath(NavigationMdel.DASHBOARD_FLOORSET_ZUL);
-        menuList.add(menuFloorSet);
+//        Menu menuFloorSet = new Menu("樓層管理", "z-icon-home");
+//        menuFloorSet.setPath(NavigationMdel.DASHBOARD_FLOORSET_ZUL);
+//        menuList.add(menuFloorSet);
         
         Menu menuHuamanHealth = new Menu("房間資訊", "z-icon-home");
         menuHuamanHealth.setPath(NavigationMdel.DASHBOARD_HUMANHEALTH_ZUL);

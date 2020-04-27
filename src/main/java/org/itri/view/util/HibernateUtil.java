@@ -11,6 +11,7 @@ public class HibernateUtil {
 
 	/** The session factory. */
 	private static SessionFactory sessionFactory;
+	
 	static {
 		try {
 			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();

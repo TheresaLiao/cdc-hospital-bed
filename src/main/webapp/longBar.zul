@@ -10,16 +10,7 @@
             <apply template="@load(empty each.subMenus?'menuitem':'menu')" menuItem="@init(each)"/>
         </forEach>
     </template>
-   
-   <!-- 
-    <template name="menu">
-        <nav label="@init(menuItem.label)" iconSclass="@init(menuItem.icon)"
-             badgeText="@init(vm.collapsed ? '': menuItem.counter)">
-            <apply template="iterate" menuItems="@init(menuItem.subMenus)"/>
-        </nav>
-    </template>
-    -->
-    
+  
     <template name="menuitem">
         <navitem label="@init(menuItem.label)" iconSclass="@init(menuItem.icon)"
                  onClick="@command('navigate', menu=each)"

@@ -5,27 +5,27 @@ import org.zkoss.admin.ecommerce.dao.Type;
 public class PersonState {
 
 	private String name;
-	private int heartBeat;
-	private double bodyTemperature;
-	private int breathRate;
+	private String heartBeat;
+	private String bodyTemperature;
+	private String breathRate;
 	private Type type;
 	
 	private int value;
 	private double ratio;
 	private Status status;
-	private int spo2;
+	private String spo2;
 	
 	
-	public int getSpo2() {
+	public String getSpo2() {
 		return spo2;
 	}
 
 
-	public void setSpo2(int spo2) {
+	public void setSpo2(String spo2) {
 		this.spo2 = spo2;
 	}
 	
-	public int getBreathRate() {
+	public String getBreathRate() {
 		return breathRate;
 	}
 
@@ -40,7 +40,7 @@ public class PersonState {
 	}
 
 
-	public void setBreathRate(int breathRate) {
+	public void setBreathRate(String breathRate) {
 		this.breathRate = breathRate;
 	}
 	private String bedRoom;
@@ -84,16 +84,16 @@ public class PersonState {
 	public void setRatio(double ratio) {
 		this.ratio = ratio;
 	}
-	public int getHeartBeat() {
+	public String getHeartBeat() {
 		return heartBeat;
 	}
-	public void setHeartBeat(int heartBeat) {
+	public void setHeartBeat(String heartBeat) {
 		this.heartBeat = heartBeat;
 	}
-	public double getBodyTemperature() {
+	public String getBodyTemperature() {
 		return bodyTemperature;
 	}
-	public void setBodyTemperature(double bodyTemperature) {
+	public void setBodyTemperature(String bodyTemperature) {
 		this.bodyTemperature = bodyTemperature;
 	}
 	
