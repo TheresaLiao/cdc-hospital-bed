@@ -1,11 +1,4 @@
 <zk xmlns:n="native">
-	<!-- 
-	<bs-row>
-        <n:div sclass="col p-1">
-            <n:span class="z-label font-weight-bold">病人資訊</n:span>
-        </n:div>
-    </bs-row>
-     -->
     <nodom viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
        <forEach items="@init(vm.states)">
             <n:div sclass="col-12 p-1">

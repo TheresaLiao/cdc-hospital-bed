@@ -33,13 +33,13 @@ public class PersonInfos {
 			state.setBedRoom("201-1");
 			System.out.print(state.getName());
 			
-			if(p.getPatientInfos().stream().findFirst().get().getPatient().getPatientId() == 1) {
+//			if(p.getPatientInfos().stream().findFirst().get().getPatient().getPatientId() == 1) {
 				
 				state.setHeartBeat(p.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
 				state.setSpo2(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 				state.setBreathRate( p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 				state.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
-			}
+//			}
 			
 			state.setStatus(Status.DegreeGreen);
 			state.setType(Type.Customer);

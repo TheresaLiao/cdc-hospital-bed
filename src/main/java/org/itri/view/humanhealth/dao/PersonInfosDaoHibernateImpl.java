@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.itri.view.humanhealth.hibernate.Patient;
 import org.itri.view.util.HibernateUtil;
@@ -23,6 +24,7 @@ public class PersonInfosDaoHibernateImpl {
 			
 			Criteria criteria = session.createCriteria(Patient.class);
 			criteria.add(Restrictions.eq("isDeleted", false));
+			criteria.addOrder(Order.asc("patientId"));
 			tempPatientList = criteria.list();
 			
 			for (Patient p : tempPatientList) {

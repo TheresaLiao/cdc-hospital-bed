@@ -18,7 +18,7 @@
             </n:div>
          </bs-row>
          <window apply="org.itri.view.humanhealth.detail.TemperatureView">
-			<charts id="chart" type="spline" marginRight="10" title="體溫" />
+			<charts id="chart" type="spline" title="體溫" />
     		<timer id="timer" delay="1000" running="true" repeats="true" />
 		</window>
 	</panelchildren>
