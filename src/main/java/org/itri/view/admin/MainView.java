@@ -1,6 +1,5 @@
 package org.itri.view.admin;
 
-
 import org.itri.view.navigation.NavigationMdel;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;

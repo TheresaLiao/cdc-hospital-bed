@@ -1,5 +1,6 @@
 package org.itri.view.humanhealth.detail;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.detail.dao.TemperatureViewDaoHibernateImpl;
 import org.itri.view.humanhealth.hibernate.Patient;
 import org.itri.view.humanhealth.hibernate.RtTempPadRecord;
+import org.itri.view.humanhealth.hibernate.TempPadRecord;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.chart.Charts;
 import org.zkoss.chart.Options;
@@ -26,6 +28,37 @@ public class TemperatureView extends SelectorComposer<Window> {
 	
 	Calendar cal = Calendar.getInstance();
 
+	public void setAndRefreshChart() {
+		Options options = new Options();
+		options.getGlobal().setUseUTC(false);
+		chart.setOptions(options);
+		
+		chart.setAnimation(true);
+		chart.setBackgroundColor("black");
+
+		chart.getXAxis().setType("datetime");
+		chart.getXAxis().setTickPixelInterval(150);
+
+		chart.getYAxis().setTitle("C");
+		PlotLine plotLine = new PlotLine();
+		plotLine.setValue(0);
+		plotLine.setWidth(1);
+		plotLine.setColor("#808080");
+		chart.getYAxis().addPlotLine(plotLine);
+
+		chart.getTooltip().setHeaderFormat("<b>{series.name}</b><br/>");
+		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
+		chart.getLegend().setEnabled(false);
+		chart.getExporting().setEnabled(false);
+
+		Series series = chart.getSeries();
+		series.setName("Temperature data");
+
+		for (Point p : getTempPadRecordList()) {
+			series.addPoint(p);
+		}
+	}
+	
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
 
@@ -64,6 +97,7 @@ public class TemperatureView extends SelectorComposer<Window> {
 		chart.getSeries().addPoint(getRtTempPadRecordList(), true, true, true);
 	}
 
+	//Get real time data
 	private Point getRtTempPadRecordList() {
 		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
 		List<RtTempPadRecord> rtTempPadRecordList = hqe.getRtTempPadRecordList();
@@ -76,5 +110,19 @@ public class TemperatureView extends SelectorComposer<Window> {
 			}
 		}
 		return new Point(new Date().getTime(), 0);
+	}
+	
+	//Get history data
+	private List<Point> getTempPadRecordList() {
+		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
+		List<TempPadRecord> tempPadRecordList = hqe.getTempPadRecordList();
+		List<Point> resp = new ArrayList<Point>();
+		for (TempPadRecord tt : tempPadRecordList) {
+			String data = tt.getBodyTempData();
+			Date time = tt.getTimeCreated();
+			long patientId = tt.getPatient().getPatientId();
+			resp.add(new Point(time.getTime(), Double.valueOf(data)));
+		}
+		return resp;
 	}
 }

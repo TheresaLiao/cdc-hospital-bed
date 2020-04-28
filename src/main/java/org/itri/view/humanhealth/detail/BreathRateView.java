@@ -20,8 +20,10 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
 public class BreathRateView extends SelectorComposer<Window> {
-    @Wire
+	
+	@Wire("charts#breathRateChart")
     Charts chart;
+	
     Calendar cal = Calendar.getInstance();
     
     public void doAfterCompose(Window comp) throws Exception {
@@ -36,7 +38,7 @@ public class BreathRateView extends SelectorComposer<Window> {
         chart.getXAxis().setType("datetime");
         chart.getXAxis().setTickPixelInterval(150);
         
-        chart.getYAxis().setTitle("Value");
+        chart.getYAxis().setTitle("¦¸/¤À");
         PlotLine plotLine = new PlotLine();
         plotLine.setValue(0);
         plotLine.setWidth(1);

@@ -9,37 +9,48 @@ import org.zkoss.zk.ui.event.SerializableEventListener;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Window;
 
 public class humanChartsEvent extends SelectorComposer {
-	
+
 	@Wire
-	Window mainWindow; 
+	Window mainWindow;
+	
+	@Wire("datebox#humanChartDateBox")
+	Datebox humanChartDateBox;
 
 	@Wire
 	Button humanChartDateBtn;
+
+//	@Wire("#temperatureWin #temperatureChart")
+//	Charts temperatureChart;
+//
+//	@Wire("#heartBeatWin #heartBeatChart")
+//	Charts heartBeatChart;
+//
+//	@Wire("#breathRateWin #breathRateChart")
+//	Charts breathRateChart;
+//
+//	@Wire("#oximeterWin #oximeterChart")
+//	Charts oximeterChart;
 	
-	@Wire("charts#temperatureChart")
-	Charts chart;
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
-		
+
 		super.doAfterCompose(comp);
-		
+
 		EventListener actionListener = new SerializableEventListener() {
 			private static final long serialVersionUID = 1L;
 
 			public void onEvent(Event event) throws Exception {
 				System.out.println(event.getName());
 				System.out.println("test");
-				
-//				if(chart.isInvalidated()) {
-//					System.out.print(chart.getTitle());
-//				}
+				System.out.println(humanChartDateBox.getValue().getTime());
 			}
 		};
-		
+
 		humanChartDateBtn.addEventListener(Events.ON_CLICK, actionListener);
 	}
 

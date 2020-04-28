@@ -7,30 +7,53 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.itri.view.humanhealth.hibernate.RtTempPadRecord;
+import org.itri.view.humanhealth.hibernate.TempPadRecord;
 import org.itri.view.util.HibernateUtil;
 
 public class TemperatureViewDaoHibernateImpl {
-	
+
 	public List<RtTempPadRecord> getRtTempPadRecordList() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List<RtTempPadRecord> rtTempPadRecordList = new ArrayList<RtTempPadRecord>();
-		try{
+		try {
 			tx = session.beginTransaction();
-			
+
 			Criteria criteria = session.createCriteria(RtTempPadRecord.class);
 			rtTempPadRecordList = criteria.list();
-		
+
 			tx.commit();
-		} 
-		catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
-		}
-		finally {
+		} finally {
 			session.close();
 		}
 		return rtTempPadRecordList;
+	}
+
+	public List<TempPadRecord> getTempPadRecordList() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = null;
+		List<TempPadRecord> tempPadRecordList = new ArrayList<TempPadRecord>();
+		try {
+			tx = session.beginTransaction();
+
+			Criteria criteria = session.createCriteria(TempPadRecord.class);
+			criteria.add(Restrictions.eq("patientId", 1));
+			criteria.addOrder(Order.asc("timeCreated"));
+			tempPadRecordList = criteria.list();
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return tempPadRecordList;
 	}
 }

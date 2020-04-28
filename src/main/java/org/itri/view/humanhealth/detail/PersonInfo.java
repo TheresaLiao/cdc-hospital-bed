@@ -30,7 +30,7 @@ public class PersonInfo {
 		state.setBedRoom("201-1");
 
 		state.setHeartBeat(patientList.get(0).getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
-		state.setSpo2(patientList.get(0).getRtOximeterRecords().stream().findFirst().get().getOximeterData());
+		state.setOximeter(patientList.get(0).getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 		state.setBreathRate(patientList.get(0).getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 		state.setBodyTemperature(patientList.get(0).getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
 		state.setStatus(Status.DegreeGreen);

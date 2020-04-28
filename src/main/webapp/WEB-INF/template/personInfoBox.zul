@@ -1,5 +1,5 @@
 <zk xmlns="native" xmlns:z="zul">
-    <div class="person-info rounded p-1 ${color}">
+    <div  class="person-info rounded p-1 ${color}" id="${state.id} }">
         <div class="row">
         	
         	<!-- Left icon -->
@@ -25,7 +25,7 @@
             		<!-- spo2 -->
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-Blood oxygen-27b.png"/>
             		<h6 class="text-primary">血氧: </h6>
-            		<h3 class="text-primary">${state.spo2}</h3>
+            		<h3 class="text-primary">${state.oximeter}</h3>
             		<h6 class="text-primary"> mmHg</h6>
             	</div>
             	

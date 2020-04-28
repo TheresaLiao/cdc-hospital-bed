@@ -18,9 +18,11 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
-public class Spo2View extends SelectorComposer<Window> {
-	@Wire
+public class OximeterView extends SelectorComposer<Window> {
+	
+	@Wire("charts#oximeterChart")
 	Charts chart;
+	
 	Calendar cal = Calendar.getInstance();
 
 	public void doAfterCompose(Window comp) throws Exception {

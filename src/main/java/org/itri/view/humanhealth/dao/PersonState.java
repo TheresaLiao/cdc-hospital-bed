@@ -4,6 +4,7 @@ import org.zkoss.admin.ecommerce.dao.Type;
 
 public class PersonState {
 
+	private String id;
 	private String name;
 	private String heartBeat;
 	private String bodyTemperature;
@@ -13,18 +14,17 @@ public class PersonState {
 	
 	private int value;
 	private double ratio;
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	private Status status;
-	private String spo2;
+	private String oximeter;
 	
-	
-	public String getSpo2() {
-		return spo2;
-	}
-
-
-	public void setSpo2(String spo2) {
-		this.spo2 = spo2;
-	}
 	
 	public String getBreathRate() {
 		return breathRate;
@@ -33,6 +33,16 @@ public class PersonState {
 
 	public Status getStatus() {
 		return status;
+	}
+
+
+	public String getOximeter() {
+		return oximeter;
+	}
+
+
+	public void setOximeter(String oximeter) {
+		this.oximeter = oximeter;
 	}
 
 

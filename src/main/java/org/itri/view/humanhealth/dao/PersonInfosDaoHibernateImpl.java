@@ -28,6 +28,7 @@ public class PersonInfosDaoHibernateImpl {
 			tempPatientList = criteria.list();
 			
 			for (Patient p : tempPatientList) {
+				Hibernate.initialize(p.getRoom());
 				Hibernate.initialize(p.getPatientInfos());
 				Hibernate.initialize(p.getRtHeartRhythmRecords());
 				Hibernate.initialize(p.getRtOximeterRecords());

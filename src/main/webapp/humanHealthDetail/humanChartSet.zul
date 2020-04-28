@@ -13,39 +13,44 @@
 		apply="org.itri.view.humanhealth.detail.control.humanChartsEvent">
 		<bs-row>
 			<n:div class="col-lg-3 col-md-3 col-sm-3">
-				<datebox hflex="1" />
+				<datebox id="humanChartDateBox" hflex="1" />
 			</n:div>
 			<n:div class="col-1">
 				<button id="humanChartDateBtn" label="查詢" />
 			</n:div>
 		</bs-row>
-		
+
 		<!-- temperature -->
-		<bs-row>
-			<n:div sclass="col-lg-12">
-				<apply templateURI="humanHealthDetail/temperature.zul" />
-			</n:div>
-		</bs-row>
-		
+		<window id="temperatureWin"
+			apply="org.itri.view.humanhealth.detail.TemperatureView">
+			<charts id="temperatureChart" type="spline" title="體溫"
+				marginRight="10" />
+			<timer id="timer" delay="1000" running="true"
+				repeats="true" />
+		</window>
+
 		<!-- heart sbeat -->
-		<bs-row>
-			<n:div sclass="col-lg-12">
-				<apply templateURI="humanHealthDetail/heartbeat.zul" />
-			</n:div>
-		</bs-row>
+		<window id="heartBeatWin"
+			apply="org.itri.view.humanhealth.detail.HeartBeatView">
+			<charts id="heartBeatChart" type="spline" title="心率" />
+			<timer id="timer" delay="1000" running="true"
+				repeats="true" />
+		</window>
 
 		<!-- breathRate -->
-		<bs-row>
-			<n:div sclass="col-lg-12">
-				<apply templateURI="humanHealthDetail/breathRate.zul" />
-			</n:div>
-		</bs-row>
-		
+		<window id="breathRateWin"
+			apply="org.itri.view.humanhealth.detail.BreathRateView">
+			<charts id="breathRateChart" type="spline" title="呼吸頻率" />
+			<timer id="timer" delay="1000" running="true"
+				repeats="true" />
+		</window>
+
 		<!-- Oximeter -->
-		<bs-row>
-			<n:div sclass="col-lg-12">
-				<apply templateURI="humanHealthDetail/spo2.zul" />
-			</n:div>
-		</bs-row>
+		<window id="oximeterWin"
+			apply="org.itri.view.humanhealth.detail.OximeterView">
+			<charts id="oximeterChart" type="spline" title="血氧飽和度" />
+			<timer id="timer" delay="1000" running="true"
+				repeats="true" />
+		</window>
 	</window>
 </zk>

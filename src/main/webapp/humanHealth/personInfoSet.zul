@@ -1,10 +1,21 @@
 <zk xmlns:n="native">
-    <nodom viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfos')">
-       <forEach items="@init(vm.dataList)">
-            <n:div sclass="col-12 col-lg-3 col-md-6 p-1">
-                <person-info state="@init(each)"
-                             color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')"/>
-            </n:div>
-        </forEach>
-    </nodom>
+	<window apply="org.itri.view.humanhealth.PersonInfoView">
+		<nodom
+			viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfos')">
+			<forEach items="@init(vm.dataList)">
+				<n:div sclass="col-12 col-lg-3 col-md-6 p-1">
+					<person-info state="@init(each)"
+						color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')" />
+				</n:div>
+			</forEach>
+		</nodom>
+		<timer id="timer1234" delay="3000" running="true" repeats="true" />
+		<!-- 
+			<timer id="" delay="1000" repeats="true">
+			<attribute name="onTimer">
+			System.out.print("test");      
+			</attribute>
+			</timer> 
+		-->
+	</window>
 </zk>

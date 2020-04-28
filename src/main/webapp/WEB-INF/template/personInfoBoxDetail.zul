@@ -29,7 +29,7 @@
             	<!-- spo2 -->
             	<div class="row">
             		<image src="/cdc-hospital-bed/resources/image/MapImages/icon-Blood oxygen-27b.png"/>
-            		<h3 class="text-primary">血氧: ${state.spo2} mmHg</h3>
+            		<h3 class="text-primary">血氧: ${state.oximeter} mmHg</h3>
             	</div>
             	
             	<!-- breathRate -->

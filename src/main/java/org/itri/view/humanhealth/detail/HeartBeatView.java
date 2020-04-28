@@ -17,8 +17,10 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
 public class HeartBeatView extends SelectorComposer<Window> {
-	@Wire
+	
+	@Wire("charts#heartBeatChart")
 	Charts chart;
+	
 	Calendar cal = Calendar.getInstance();
 
 	public void doAfterCompose(Window comp) throws Exception {
