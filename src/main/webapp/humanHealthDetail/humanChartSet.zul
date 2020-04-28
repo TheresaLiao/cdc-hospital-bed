@@ -1,35 +1,51 @@
 <zk xmlns:n="native">
-    <nodom viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
-       <forEach items="@init(vm.states)">
-            <n:div sclass="col-12 p-1">
-                <person-info-detail state="@init(each)"
-                             		color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')"/>
-            </n:div>
-        </forEach>
-    </nodom>
-   
-   	<bs-row style="min-height: 500px">
- 		<n:div sclass="col-lg-12 p-1">
-            <apply templateURI="humanHealthDetail/temperature.zul"/>
-        </n:div>
- 	</bs-row>
- 	
- 	<bs-row style="min-height: 500px">
- 		<n:div sclass="col-lg-12 p-1">
-    		 <apply templateURI="humanHealthDetail/heartbeat.zul"/>
-    	</n:div>
- 	</bs-row>
- 	
- 	<bs-row style="min-height: 500px">
- 		<n:div sclass="col-lg-12 p-1">
-            <apply templateURI="humanHealthDetail/breathRate.zul"/>
-        </n:div>
- 	</bs-row>
- 	
- 	
- 	<bs-row style="min-height: 500px">
- 		<n:div sclass="col-lg-12 p-1">
-            <apply templateURI="humanHealthDetail/spo2.zul"/>
-        </n:div>
- 	</bs-row> 	
+	<nodom
+		viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
+		<forEach items="@init(vm.states)">
+			<n:div sclass="col-12 p-1">
+				<person-info-detail state="@init(each)"
+					color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')" />
+			</n:div>
+		</forEach>
+	</nodom>
+
+	<window id="mainWindow"
+		apply="org.itri.view.humanhealth.detail.control.humanChartsEvent">
+		<bs-row>
+			<n:div class="col-lg-3 col-md-3 col-sm-3">
+				<datebox hflex="1" />
+			</n:div>
+			<n:div class="col-1">
+				<button id="humanChartDateBtn" label="查詢" />
+			</n:div>
+		</bs-row>
+		
+		<!-- temperature -->
+		<bs-row>
+			<n:div sclass="col-lg-12">
+				<apply templateURI="humanHealthDetail/temperature.zul" />
+			</n:div>
+		</bs-row>
+		
+		<!-- heart sbeat -->
+		<bs-row>
+			<n:div sclass="col-lg-12">
+				<apply templateURI="humanHealthDetail/heartbeat.zul" />
+			</n:div>
+		</bs-row>
+
+		<!-- breathRate -->
+		<bs-row>
+			<n:div sclass="col-lg-12">
+				<apply templateURI="humanHealthDetail/breathRate.zul" />
+			</n:div>
+		</bs-row>
+		
+		<!-- Oximeter -->
+		<bs-row>
+			<n:div sclass="col-lg-12">
+				<apply templateURI="humanHealthDetail/spo2.zul" />
+			</n:div>
+		</bs-row>
+	</window>
 </zk>

@@ -33,7 +33,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
 
-		chart.getYAxis().setTitle("Value");
+		chart.getYAxis().setTitle("¦¸");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);

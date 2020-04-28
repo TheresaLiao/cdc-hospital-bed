@@ -35,7 +35,7 @@ public class Spo2View extends SelectorComposer<Window> {
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
 
-		chart.getYAxis().setTitle("Value");
+		chart.getYAxis().setTitle("mmHg");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
@@ -50,7 +50,7 @@ public class Spo2View extends SelectorComposer<Window> {
 		chart.getExporting().setEnabled(false);
 
 		Series series = chart.getSeries();
-		series.setName("Oximeter data");
+		series.setName("Oximeter");
 
 		for (int i = -19; i <= 0; i++) {
 			series.addPoint(getOximeterRecordList());

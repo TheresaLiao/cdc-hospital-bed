@@ -21,8 +21,9 @@ import org.zkoss.zul.Window;
 
 public class TemperatureView extends SelectorComposer<Window> {
 
-	@Wire
+	@Wire("charts#temperatureChart")
 	Charts chart;
+	
 	Calendar cal = Calendar.getInstance();
 
 	public void doAfterCompose(Window comp) throws Exception {
@@ -31,13 +32,14 @@ public class TemperatureView extends SelectorComposer<Window> {
 		Options options = new Options();
 		options.getGlobal().setUseUTC(false);
 		chart.setOptions(options);
+		
 		chart.setAnimation(true);
 		chart.setBackgroundColor("black");
 
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
 
-		chart.getYAxis().setTitle("Value");
+		chart.getYAxis().setTitle("C");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);

@@ -1,23 +1,5 @@
 <panel xmlns:n="native" title="呼吸頻率" border="normal" height="100%" >
     <panelchildren>
-
- 		<bs-row>
-            <n:div class="col-lg-1">
-                From
-            </n:div>
-            <n:div class="col-lg-2">
-                <datebox hflex="1"/>
-            </n:div>
-            <n:div class="col-lg-1">
-                To
-            </n:div>
-            <n:div class="col-lg-2">
-                <datebox hflex="1"/>
-            </n:div>
-            <n:div class="col-lg-1">
-                <button label="查詢"/>
-            </n:div>
-         </bs-row>
          <window apply="org.itri.view.humanhealth.detail.BreathRateView">
 			<charts id="chart" type="spline" title="呼吸頻率" />
     		<timer id="timer" delay="1000" running="true" repeats="true" />
