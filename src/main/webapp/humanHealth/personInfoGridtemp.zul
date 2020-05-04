@@ -1,0 +1,30 @@
+<zk xmlns:n="native">
+
+	<paging id="pg" pageSize="10" />
+	<nodom
+		viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfos')">
+		<window apply="org.zkoss.bind.BindComposer">
+			<grid model="@bind(vm.states)" mold="paging"
+				paginal="${pg}">
+				<columns>
+					<column label="Room" />
+					<column label="Heart Beat" />
+					<column label="oximeter" />
+					<column label="Breath Rate" />
+					<column label="Body Temperature" />
+				</columns>
+				<template name="model">
+					<row>
+						<label value="@bind(each.bedRoom)" />
+						<label value="@bind(each.heartBeat)" />
+						<label value="@bind(each.oximeter)" />
+						<label value="@bind(each.breathRate)" />
+						<label value="@bind(each.bodyTemperature)" />
+					</row>
+				</template>
+			</grid>
+			<timer id="timer1234" delay="2000" running="true"
+				repeats="true" onTimer="@command('refreshInfo')" />
+		</window>
+	</nodom>
+</zk>

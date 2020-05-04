@@ -1,7 +1,7 @@
 <zk xmlns="native" xmlns:z="zul">
-    <div  class="person-info rounded p-1 ${color}" id="${state.id} }">
+    <div  class="person-info rounded p-1 ${color}" id="${state.id}">
         <div class="row">
-        	
+     
         	<!-- Left icon -->
             <div class="col-4 text-left  text-margin  px-4">
             	<!-- Name -->

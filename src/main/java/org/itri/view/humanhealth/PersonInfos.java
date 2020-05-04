@@ -8,7 +8,9 @@ import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.Status;
 import org.itri.view.humanhealth.hibernate.Patient;
 import org.zkoss.admin.ecommerce.dao.Type;
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.bind.annotation.NotifyChange;
 
 public class PersonInfos {
 
@@ -21,11 +23,21 @@ public class PersonInfos {
 		queryStates();
 	}
 
+	public List<PersonState> getStates() {
+		return states;
+	}
+
+	@NotifyChange({ "states" })
+	@Command
+	public void refreshInfo() {
+
+		hqe = new PersonInfosDaoHibernateImpl();
+		queryStates();
+	}
+
 	private void queryStates() {
 		List<Patient> patientList = hqe.getPatientList();
-
 		states = new LinkedList<>();
-
 		for (Patient p : patientList) {
 			PersonState state = new PersonState();
 
@@ -37,15 +49,10 @@ public class PersonInfos {
 			state.setOximeter(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 			state.setBreathRate(p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 			state.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
-
 			state.setStatus(Status.DegreeGreen);
 			state.setType(Type.Customer);
 			states.add(state);
 		}
-	}
-
-	public List<PersonState> getDataList() {
-		return states;
 	}
 
 }

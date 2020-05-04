@@ -11,101 +11,97 @@ public class PersonState {
 	private String breathRate;
 	private Type type;
 	private String bedRoom;
-	
+	private Status status;
+	private String oximeter;
 	private int value;
 	private double ratio;
+
 	public String getId() {
 		return id;
 	}
 
-
 	public void setId(String id) {
 		this.id = id;
 	}
-	private Status status;
-	private String oximeter;
-	
-	
+
 	public String getBreathRate() {
 		return breathRate;
 	}
-
 
 	public Status getStatus() {
 		return status;
 	}
 
-
 	public String getOximeter() {
 		return oximeter;
 	}
-
 
 	public void setOximeter(String oximeter) {
 		this.oximeter = oximeter;
 	}
 
-
 	public void setStatus(Status status) {
 		this.status = status;
 	}
 
-
 	public void setBreathRate(String breathRate) {
 		this.breathRate = breathRate;
 	}
-	
-	
-	
+
 	public Type getType() {
 		return type;
 	}
 
-	
 	public String getBedRoom() {
 		return bedRoom;
 	}
-
 
 	public void setBedRoom(String bedRoom) {
 		this.bedRoom = bedRoom;
 	}
 
-
 	public void setType(Type type) {
 		this.type = type;
 	}
-	
-	    
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public int getValue() {
 		return value;
 	}
+
 	public void setValue(int value) {
 		this.value = value;
 	}
+
 	public double getRatio() {
 		return ratio;
 	}
+
 	public void setRatio(double ratio) {
 		this.ratio = ratio;
 	}
+
 	public String getHeartBeat() {
 		return heartBeat;
 	}
+
 	public void setHeartBeat(String heartBeat) {
 		this.heartBeat = heartBeat;
 	}
+
 	public String getBodyTemperature() {
 		return bodyTemperature;
 	}
+
 	public void setBodyTemperature(String bodyTemperature) {
 		this.bodyTemperature = bodyTemperature;
 	}
-	
+
 }
