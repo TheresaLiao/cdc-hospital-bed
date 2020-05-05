@@ -41,7 +41,6 @@ public class PersonInfos {
 		for (Patient p : patientList) {
 			PersonState state = new PersonState();
 
-			state.setId("personInfo-" + p.getPatientId());
 			state.setName(p.getPatientInfos().stream().findFirst().get().getName());
 			state.setBedRoom(p.getRoom().getRoomNum());
 
@@ -49,7 +48,7 @@ public class PersonInfos {
 			state.setOximeter(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 			state.setBreathRate(p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 			state.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
-			state.setStatus(Status.DegreeGreen);
+			// state.setStatus(Status.DegreeGreen);
 			state.setType(Type.Customer);
 			states.add(state);
 		}

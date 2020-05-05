@@ -1,0 +1,67 @@
+<zk xmlns:n="native">
+	<nodom
+		viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfoView')">
+		<vlayout children="@bind(vm.personStateList)">
+			<template name="children">
+
+				<zk xmlns="native" xmlns:z="zul">
+					<div class="person-info rounded col-12 #0093F9">
+						<div class="row">
+							<!-- Left icon -->
+							<div
+								class="col-4 text-left text-margin #0093F9">
+								<!-- Name -->
+								<h6 class="text-white">
+									${each.bedRoom}
+								</h6>
+								<image
+									content="@load(each.totalStatus)@converter('org.itri.view.humanhealth.converter.StatusImageConverter')" />
+							</div>
+
+							<!-- Right icon -->
+							<div class="col-8 px-1">
+								<!-- heartBeat -->
+								<div class="row">
+									<h6 class="text-danger">hr:</h6>
+									<h3 class="text-danger">
+										${each.heartBeat}
+									</h3>
+									<h6 class="text-danger">bpm</h6>
+								</div>
+
+								<div class="row">
+									<!-- spo2 -->
+									<h6 class="text-primary">SpO2:</h6>
+									<h3 class="text-primary">
+										${each.oximeter}
+									</h3>
+									<h6 class="text-primary">%</h6>
+								</div>
+
+
+								<div class="row">
+									<!-- breathRate -->
+									<h6 class="text-white">
+										Rr: ${each.breathRate} 次
+									</h6>
+								</div>
+
+								<div class="row">
+									<!-- bodyTemperature -->
+									<h6 class="text-success">
+										Temp: ${each.bodyTemperature} °C
+									</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</zk>
+
+			</template>
+		</vlayout>
+		<!-- 
+			<timer id="timer1234" delay="1000" running="true" repeats="true"
+			onTimer="@command('refreshInfo')" />
+		-->
+	</nodom>
+</zk>

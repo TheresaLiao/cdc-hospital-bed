@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.PersonState;
-import org.itri.view.humanhealth.dao.Status;
 import org.itri.view.humanhealth.hibernate.Patient;
-import org.zkoss.admin.ecommerce.dao.Type;
 
 import org.zkoss.bind.annotation.Init;
 
@@ -33,7 +31,7 @@ public class PersonInfo {
 		state.setOximeter(patientList.get(0).getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 		state.setBreathRate(patientList.get(0).getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 		state.setBodyTemperature(patientList.get(0).getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
-		state.setStatus(Status.DegreeGreen);
+		//state.setStatus(Status.DegreeGreen);
 
 		states.add(state);
 

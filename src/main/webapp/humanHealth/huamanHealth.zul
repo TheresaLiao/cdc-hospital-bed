@@ -1,7 +1,7 @@
 <zk xmlns:n="native">
 	<bs-row>
 		<n:div sclass="col p-1">
-			<apply templateURI="humanHealth/personInfoGrid.zul" />
+			<apply templateURI="humanHealth/personInfoCard.zul" />
 		</n:div>
 	</bs-row>
 </zk>

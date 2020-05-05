@@ -4,32 +4,26 @@ import org.zkoss.admin.ecommerce.dao.Type;
 
 public class PersonState {
 
-	private String id;
 	private String name;
 	private String heartBeat;
 	private String bodyTemperature;
 	private String breathRate;
 	private Type type;
 	private String bedRoom;
-	private Status status;
 	private String oximeter;
-	private int value;
-	private double ratio;
 
-	public String getId() {
-		return id;
+	private Status totalStatus;
+
+	public Status getTotalStatus() {
+		return totalStatus;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setTotalStatus(Status totalStatus) {
+		this.totalStatus = totalStatus;
 	}
 
 	public String getBreathRate() {
 		return breathRate;
-	}
-
-	public Status getStatus() {
-		return status;
 	}
 
 	public String getOximeter() {
@@ -38,10 +32,6 @@ public class PersonState {
 
 	public void setOximeter(String oximeter) {
 		this.oximeter = oximeter;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
 	}
 
 	public void setBreathRate(String breathRate) {
@@ -70,22 +60,6 @@ public class PersonState {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
-	}
-
-	public double getRatio() {
-		return ratio;
-	}
-
-	public void setRatio(double ratio) {
-		this.ratio = ratio;
 	}
 
 	public String getHeartBeat() {
