@@ -31,7 +31,7 @@ public class PersonInfo {
 	}
 
 	private void queryStates() {
-		List<Patient> patientList = hqe.getPatientList();
+		List<Patient> patientList = hqe.getPatientListById();
 		Patient p = patientList.get(0);
 
 		personState = new PersonState();
