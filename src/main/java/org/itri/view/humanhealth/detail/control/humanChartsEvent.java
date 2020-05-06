@@ -16,25 +16,12 @@ public class humanChartsEvent extends SelectorComposer {
 
 	@Wire
 	Window mainWindow;
-	
+
 	@Wire("datebox#humanChartDateBox")
 	Datebox humanChartDateBox;
 
 	@Wire
 	Button humanChartDateBtn;
-
-//	@Wire("#temperatureWin #temperatureChart")
-//	Charts temperatureChart;
-//
-//	@Wire("#heartBeatWin #heartBeatChart")
-//	Charts heartBeatChart;
-//
-//	@Wire("#breathRateWin #breathRateChart")
-//	Charts breathRateChart;
-//
-//	@Wire("#oximeterWin #oximeterChart")
-//	Charts oximeterChart;
-	
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {

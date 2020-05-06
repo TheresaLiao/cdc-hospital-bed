@@ -12,13 +12,15 @@ public class PersonState {
 	private String bedRoom;
 	private String oximeter;
 
-	private Status totalStatus;
+	private String totalStatus;
 
-	public Status getTotalStatus() {
+	
+
+	public String getTotalStatus() {
 		return totalStatus;
 	}
 
-	public void setTotalStatus(Status totalStatus) {
+	public void setTotalStatus(String totalStatus) {
 		this.totalStatus = totalStatus;
 	}
 

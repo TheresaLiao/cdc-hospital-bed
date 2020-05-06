@@ -1,17 +1,21 @@
 package org.itri.view.humanhealth.detail;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.PersonState;
 import org.itri.view.humanhealth.hibernate.Patient;
-
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.bind.annotation.NotifyChange;
 
 public class PersonInfo {
-	private List<PersonState> states;
+
+	private PersonState personState;
+
 	private PersonInfosDaoHibernateImpl hqe;
+	static String NORMAL_PATH = "./resources/image/MapImages/icon_indicator_no_01.png";
+	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_r_01.png";
 
 	@Init
 	public void init() {
@@ -19,25 +23,37 @@ public class PersonInfo {
 		queryStates();
 	}
 
+	@NotifyChange({ "personState" })
+	@Command
+	public void refreshPatientInfo() {
+		hqe = new PersonInfosDaoHibernateImpl();
+		queryStates();
+	}
+
 	private void queryStates() {
 		List<Patient> patientList = hqe.getPatientList();
-		states = new LinkedList<>();
-		PersonState state = new PersonState();
+		Patient p = patientList.get(0);
 
-		state.setName(patientList.get(0).getPatientInfos().stream().findFirst().get().getName());
-		state.setBedRoom("201-1");
+		personState = new PersonState();
 
-		state.setHeartBeat(patientList.get(0).getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
-		state.setOximeter(patientList.get(0).getRtOximeterRecords().stream().findFirst().get().getOximeterData());
-		state.setBreathRate(patientList.get(0).getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
-		state.setBodyTemperature(patientList.get(0).getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
-		//state.setStatus(Status.DegreeGreen);
+		personState.setName(p.getPatientInfos().stream().findFirst().get().getName());
+		personState.setBedRoom(p.getRoom().getRoomNum());
 
-		states.add(state);
+		personState.setHeartBeat(p.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
+		personState.setOximeter(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
+		personState.setBreathRate(p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
+		personState.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
+
+		personState.setTotalStatus(NORMAL_PATH);
+		if ((p.getHeartRateStatus().equals("W") && p.getBodyTempStatus().equals("W"))
+				|| (p.getHeartRateStatus().equals("W") && p.getBreathStatus().equals("W"))
+				|| (p.getBodyTempStatus().equals("W") && p.getBreathStatus().equals("W"))) {
+			personState.setTotalStatus(WARNING_PATH);
+		}
 
 	}
 
-	public List<PersonState> getStates() {
-		return states;
+	public PersonState getPersonState() {
+		return personState;
 	}
 }

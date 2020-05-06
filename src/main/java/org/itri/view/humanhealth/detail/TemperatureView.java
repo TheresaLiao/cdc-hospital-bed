@@ -25,14 +25,14 @@ public class TemperatureView extends SelectorComposer<Window> {
 
 	@Wire("charts#temperatureChart")
 	Charts chart;
-	
+
 	Calendar cal = Calendar.getInstance();
 
 	public void setAndRefreshChart() {
 		Options options = new Options();
 		options.getGlobal().setUseUTC(false);
 		chart.setOptions(options);
-		
+
 		chart.setAnimation(true);
 		chart.setBackgroundColor("black");
 
@@ -58,35 +58,33 @@ public class TemperatureView extends SelectorComposer<Window> {
 			series.addPoint(p);
 		}
 	}
-	
+
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
 
+		// Component Setting
 		Options options = new Options();
 		options.getGlobal().setUseUTC(false);
 		chart.setOptions(options);
-		
 		chart.setAnimation(true);
 		chart.setBackgroundColor("black");
-
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
-
 		chart.getYAxis().setTitle("C");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
 		plotLine.setColor("#808080");
 		chart.getYAxis().addPlotLine(plotLine);
-
 		chart.getTooltip().setHeaderFormat("<b>{series.name}</b><br/>");
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
 		chart.getLegend().setEnabled(false);
 		chart.getExporting().setEnabled(false);
-
+		
 		Series series = chart.getSeries();
 		series.setName("Temperature data");
 
+		// init point
 		for (int i = -19; i <= 0; i++) {
 			series.addPoint(getRtTempPadRecordList());
 		}
@@ -97,10 +95,12 @@ public class TemperatureView extends SelectorComposer<Window> {
 		chart.getSeries().addPoint(getRtTempPadRecordList(), true, true, true);
 	}
 
-	//Get real time data
+	// Get real time data
 	private Point getRtTempPadRecordList() {
+
 		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
 		List<RtTempPadRecord> rtTempPadRecordList = hqe.getRtTempPadRecordList();
+		
 		for (RtTempPadRecord tt : rtTempPadRecordList) {
 			String data = tt.getBodyTempData();
 			Date time = tt.getLastUpdated();
@@ -111,8 +111,8 @@ public class TemperatureView extends SelectorComposer<Window> {
 		}
 		return new Point(new Date().getTime(), 0);
 	}
-	
-	//Get history data
+
+	// Get history data
 	private List<Point> getTempPadRecordList() {
 		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
 		List<TempPadRecord> tempPadRecordList = hqe.getTempPadRecordList();

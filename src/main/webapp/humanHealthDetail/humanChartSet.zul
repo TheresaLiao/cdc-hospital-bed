@@ -1,12 +1,67 @@
 <zk xmlns:n="native">
 	<nodom
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
-		<forEach items="@init(vm.states)">
-			<n:div sclass="col-12 p-1">
-				<person-info-detail state="@init(each)"
-					color="@init(each.type)@converter('org.zkoss.admin.converter.TypeColorConverter')" />
-			</n:div>
-		</forEach>
+		<vlayout children="@bind(vm.personState)">
+			<template name="children">
+
+				<zk xmlns="native" xmlns:z="zul">
+					<div class="person-info rounded col-12 #0093F9">
+						<div class="row">
+							<!-- Left icon -->
+							<div
+								class="col-4 text-left text-margin #0093F9">
+								<!-- Name -->
+								<h6 class="text-white">
+									${each.bedRoom}
+								</h6>
+								<image id="totalStatusImg"
+									src="${each.totalStatus}" />
+							</div>
+
+							<!-- Right icon -->
+							<div class="col-8 px-1">
+								<!-- heartBeat -->
+								<div class="row text-bottom">
+									<h6 class="text-danger">hr:</h6>
+									<h3 class="text-danger">
+										${each.heartBeat}
+									</h3>
+									<h6 class="text-danger">bpm</h6>
+								</div>
+
+								<div class="row">
+									<!-- spo2 -->
+									<h6 class="text-primary">SpO2:</h6>
+									<h3 class="text-primary">
+										${each.oximeter}
+									</h3>
+									<h6 class="text-primary">%</h6>
+								</div>
+
+
+								<div class="row">
+									<!-- breathRate -->
+									<h6 class="text-white">
+										Rr: ${each.breathRate} 次
+									</h6>
+								</div>
+
+								<div class="row">
+									<!-- bodyTemperature -->
+									<h6 class="text-success">
+										Temp: ${each.bodyTemperature} °C
+									</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</zk>
+
+			</template>
+		</vlayout>
+		<timer id="timer1234" delay="1000" running="true" repeats="true"
+			onTimer="@command('refreshPatientInfo')" />
+
 	</nodom>
 
 	<window id="mainWindow"

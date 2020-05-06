@@ -16,6 +16,8 @@ public class PersonInfoView {
 
 	private List<PersonState> personStateList;
 	private PersonInfosDaoHibernateImpl hqe;
+	static String NORMAL_PATH = "./resources/image/MapImages/icon_indicator_no_01.png";
+	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_r_01.png";
 
 	@Init
 	public void init() {
@@ -49,9 +51,14 @@ public class PersonInfoView {
 			patient.setBreathRate(p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 			patient.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
 
-			patient.setTotalStatus(Status.NORMAL);
+			patient.setTotalStatus(NORMAL_PATH);
+			if ((p.getHeartRateStatus().equals("W") && p.getBodyTempStatus().equals("W"))
+					|| (p.getHeartRateStatus().equals("W") && p.getBreathStatus().equals("W"))
+					|| (p.getBodyTempStatus().equals("W") && p.getBreathStatus().equals("W"))) {
+				patient.setTotalStatus(WARNING_PATH);
+			}
 
-			patient.setType(Type.Customer);
+			
 			personStateList.add(patient);
 		}
 	}
