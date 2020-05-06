@@ -15,7 +15,7 @@ public class PersonInfo {
 
 	private PersonInfosDaoHibernateImpl hqe;
 	static String NORMAL_PATH = "./resources/image/MapImages/icon_indicator_no_01.png";
-	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_r_01.png";
+	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_o_01.png";
 
 	@Init
 	public void init() {

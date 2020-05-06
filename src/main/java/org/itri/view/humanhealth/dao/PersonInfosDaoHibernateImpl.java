@@ -25,6 +25,10 @@ public class PersonInfosDaoHibernateImpl {
 			Criteria criteria = session.createCriteria(Patient.class);
 			criteria.add(Restrictions.eq("isDeleted", false));
 			criteria.addOrder(Order.asc("patientId"));
+			
+			long patientId = 1;
+			criteria.add(Restrictions.eq("patientId", patientId));
+			
 			tempPatientList = criteria.list();
 			
 			for (Patient p : tempPatientList) {

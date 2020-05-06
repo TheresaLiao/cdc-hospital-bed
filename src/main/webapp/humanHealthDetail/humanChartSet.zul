@@ -61,7 +61,6 @@
 		</vlayout>
 		<timer id="timer1234" delay="1000" running="true" repeats="true"
 			onTimer="@command('refreshPatientInfo')" />
-
 	</nodom>
 
 	<window id="mainWindow"
