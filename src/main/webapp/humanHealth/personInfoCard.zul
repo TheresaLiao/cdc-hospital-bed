@@ -1,7 +1,7 @@
 <zk xmlns:n="native">
 	<nodom
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfoView')">
-		<vlayout children="@bind(vm.personStateList)">
+		<vlayout children="@bind(vm.personStateList)" spacing="0">
 			<template name="children">
 
 				<zk xmlns="native" xmlns:z="zul">
@@ -24,20 +24,16 @@
 
 								<!-- heartBeat -->
 								<div class="row">
-									<h6 class="text-danger">hr:</h6>
 									<h3 class="text-danger">
-										${each.heartBeat}
+										hr:${each.heartBeat} bpm
 									</h3>
-									<h6 class="text-danger">bpm</h6>
 								</div>
 
 								<!-- spo2 -->
 								<div class="row">
-									<h6 class="text-primary">SpO2:</h6>
 									<h3 class="text-primary">
-										${each.oximeter}
+										SpO2:${each.oximeter}%
 									</h3>
-									<h6 class="text-primary">%</h6>
 								</div>
 
 								<!-- breathRate -->

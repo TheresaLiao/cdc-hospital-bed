@@ -4,6 +4,7 @@ import org.zkoss.admin.ecommerce.dao.Type;
 
 public class PersonState {
 
+	private long id;
 	private String name;
 	private String heartBeat;
 	private String bodyTemperature;
@@ -12,9 +13,15 @@ public class PersonState {
 	private String bedRoom;
 	private String oximeter;
 
-	private String totalStatus;
+	public long getId() {
+		return id;
+	}
 
-	
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	private String totalStatus;
 
 	public String getTotalStatus() {
 		return totalStatus;

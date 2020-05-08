@@ -22,6 +22,7 @@ public class TemperatureView extends SelectorComposer<Window> {
 	@Wire("charts#temperatureChart")
 	Charts chart;
 
+
 	public void doAfterCompose(Window comp) throws Exception {
 
 		// Component Setting
@@ -60,6 +61,7 @@ public class TemperatureView extends SelectorComposer<Window> {
 				series.addPoint(nowPoint);
 			}
 		}
+		
 	}
 
 	@Listen("onTimer = #timer")

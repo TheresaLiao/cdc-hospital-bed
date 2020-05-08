@@ -57,7 +57,7 @@ public class TemperatureViewDaoHibernateImpl {
 			Date now = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(now);
-			calendar.add(Calendar.HOUR, -1);
+			calendar.add(Calendar.MINUTE, -5);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 
 			criteria.addOrder(Order.asc("timeCreated"));
