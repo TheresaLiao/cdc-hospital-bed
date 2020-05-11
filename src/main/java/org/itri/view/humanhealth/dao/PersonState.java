@@ -12,6 +12,15 @@ public class PersonState {
 	private Type type;
 	private String bedRoom;
 	private String oximeter;
+	private Integer totalNewsScore;
+
+	public Integer getTotalNewsScore() {
+		return totalNewsScore;
+	}
+
+	public void setTotalNewsScore(Integer totalNewsScore) {
+		this.totalNewsScore = totalNewsScore;
+	}
 
 	public long getId() {
 		return id;

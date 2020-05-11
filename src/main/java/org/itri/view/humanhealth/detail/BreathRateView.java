@@ -15,17 +15,19 @@ import org.zkoss.chart.Options;
 import org.zkoss.chart.PlotLine;
 import org.zkoss.chart.Point;
 import org.zkoss.chart.Series;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
-public class BreathRateView extends SelectorComposer<Window> {
+public class BreathRateView extends SelectorComposer<Component> {
 
-	@Wire("charts#breathRateChart")
-	Charts chart;
-
-	public void doAfterCompose(Window comp) throws Exception {
+	@Wire
+	private Charts chart;
+	
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
 
 		// Component Setting
 		super.doAfterCompose(comp);
@@ -70,10 +72,10 @@ public class BreathRateView extends SelectorComposer<Window> {
 		}
 	}
 
-	@Listen("onTimer = #timer")
-	public void updateData() {
-		chart.getSeries().addPoint(getRtHeartRhythmRecordList(), true, true, true);
-	}
+//	@Listen("onTimer = #timer")
+//	public void updateData() {
+//		chart.getSeries().addPoint(getRtHeartRhythmRecordList(), true, true, true);
+//	}
 
 	// Get history data
 	private List<Point> getHeartRhythmRecordList() {

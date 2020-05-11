@@ -1,5 +1,5 @@
 package org.itri.view.humanhealth.hibernate;
-// Generated 2020/4/24 �U�� 08:59:27 by Hibernate Tools 4.0.0.Final
+// Generated 2020/4/24 �U�� 08:08:16 by Hibernate Tools 4.0.0.Final
 import javax.persistence.GeneratedValue;import javax.persistence.SequenceGenerator;import javax.persistence.GenerationType;
 import java.util.Date;
 import java.util.HashSet;
@@ -25,11 +25,16 @@ public class Patient implements java.io.Serializable {
 	private long patientId;
 	private Room room;
 	private String heartRateStatus;
+	private Integer heartRateNewsScore;
 	private String oximeterStatus;
+	private Integer oximeterNewsScore;
 	private String bodyTempStatus;
+	private Integer bodyTempNewsScore;
 	private String breathStatus;
+	private Integer breathNewsScore;
 	private String pmFiveStatus;
 	private String mattressStatus;
+	private Integer totalNewsScore;
 	private Date timeCreated;
 	private boolean isDeleted;
 	private Set<PatientInfo> patientInfos = new HashSet<PatientInfo>(0);
@@ -51,8 +56,29 @@ public class Patient implements java.io.Serializable {
 	public Patient() {
 	}
 
+	public Patient(Room room, String heartRateStatus, Integer heartRateNewsScore, String oximeterStatus, 
+			Integer oximeterNewsScore, String bodyTempStatus, Integer bodyTempNewsScore, 
+			String breathStatus, Integer breathNewsScore, String pmFiveStatus, String mattressStatus, 
+			Integer totalNewsScore, Date timeCreated, boolean isDeleted) {
+		this.room = room;
+		this.heartRateStatus = heartRateStatus;
+		this.heartRateNewsScore = heartRateNewsScore;
+		this.oximeterStatus = oximeterStatus;
+		this.oximeterNewsScore = oximeterNewsScore;
+		this.bodyTempStatus = bodyTempStatus;
+		this.bodyTempNewsScore = bodyTempNewsScore;
+		this.breathStatus = breathStatus;
+		this.breathNewsScore = breathNewsScore;		
+		this.pmFiveStatus = pmFiveStatus;
+		this.mattressStatus = mattressStatus;
+		this.totalNewsScore = totalNewsScore;
+		this.timeCreated = timeCreated;
+		this.isDeleted = isDeleted;
+	}
+	
 	public Patient(long patientId, Room room, String heartRateStatus, String oximeterStatus, String bodyTempStatus,
-			String breathStatus, String pmFiveStatus, String mattressStatus, Date timeCreated, boolean isDeleted) {
+			String breathStatus, String pmFiveStatus, String mattressStatus, Integer totalNewsScore, 
+			Date timeCreated, boolean isDeleted) {
 		this.patientId = patientId;
 		this.room = room;
 		this.heartRateStatus = heartRateStatus;
@@ -61,12 +87,14 @@ public class Patient implements java.io.Serializable {
 		this.breathStatus = breathStatus;
 		this.pmFiveStatus = pmFiveStatus;
 		this.mattressStatus = mattressStatus;
+		this.totalNewsScore = totalNewsScore;
 		this.timeCreated = timeCreated;
 		this.isDeleted = isDeleted;
 	}
 
 	public Patient(long patientId, Room room, String heartRateStatus, String oximeterStatus, String bodyTempStatus,
-			String breathStatus, String pmFiveStatus, String mattressStatus, Date timeCreated, boolean isDeleted,
+			String breathStatus, String pmFiveStatus, String mattressStatus, Integer totalNewsScore, 
+			Date timeCreated, boolean isDeleted,
 			Set<PatientInfo> patientInfos, Set<RtTempPadRecord> rtTempPadRecords,
 			Set<RtHeartRhythmRecord> rtHeartRhythmRecords, Set<MattressRecord> mattressRecords,
 			Set<RtMattressRecord> rtMattressRecords, Set<OximeterRecord> oximeterRecords,
@@ -82,6 +110,7 @@ public class Patient implements java.io.Serializable {
 		this.breathStatus = breathStatus;
 		this.pmFiveStatus = pmFiveStatus;
 		this.mattressStatus = mattressStatus;
+		this.totalNewsScore = totalNewsScore;
 		this.timeCreated = timeCreated;
 		this.isDeleted = isDeleted;
 		this.patientInfos = patientInfos;
@@ -130,6 +159,15 @@ public class Patient implements java.io.Serializable {
 	public void setHeartRateStatus(String heartRateStatus) {
 		this.heartRateStatus = heartRateStatus;
 	}
+	
+	@Column(name = "heart_rate_news_score")
+	public Integer getHeartRateNewsScore() {
+		return this.heartRateNewsScore;
+	}
+
+	public void setHeartRateNewsScore(Integer heartRateNewsScore) {
+		this.heartRateNewsScore = heartRateNewsScore;
+	}
 
 	@Column(name = "oximeter_status", nullable = false, length = 32)
 	public String getOximeterStatus() {
@@ -138,6 +176,15 @@ public class Patient implements java.io.Serializable {
 
 	public void setOximeterStatus(String oximeterStatus) {
 		this.oximeterStatus = oximeterStatus;
+	}
+	
+	@Column(name = "oximeter_news_score")
+	public Integer getOximeterNewsScore() {
+		return this.oximeterNewsScore;
+	}
+
+	public void setOximeterNewsScore(Integer oximeterNewsScore) {
+		this.oximeterNewsScore = oximeterNewsScore;
 	}
 
 	@Column(name = "body_temp_status", nullable = false, length = 32)
@@ -148,6 +195,15 @@ public class Patient implements java.io.Serializable {
 	public void setBodyTempStatus(String bodyTempStatus) {
 		this.bodyTempStatus = bodyTempStatus;
 	}
+	
+	@Column(name = "body_temp_news_score")
+	public Integer getBodyTempNewsScore() {
+		return this.bodyTempNewsScore;
+	}
+
+	public void setBodyTempNewsScore(Integer bodyTempNewsScore) {
+		this.bodyTempNewsScore = bodyTempNewsScore;
+	}
 
 	@Column(name = "breath_status", nullable = false, length = 32)
 	public String getBreathStatus() {
@@ -156,6 +212,15 @@ public class Patient implements java.io.Serializable {
 
 	public void setBreathStatus(String breathStatus) {
 		this.breathStatus = breathStatus;
+	}
+	
+	@Column(name = "breath_news_score")
+	public Integer getBreathNewsScore() {
+		return this.breathNewsScore;
+	}
+
+	public void setBreathNewsScore(Integer breathNewsScore) {
+		this.breathNewsScore = breathNewsScore;
 	}
 
 	@Column(name = "pm_five_status", nullable = false, length = 32)
@@ -174,6 +239,15 @@ public class Patient implements java.io.Serializable {
 
 	public void setMattressStatus(String mattressStatus) {
 		this.mattressStatus = mattressStatus;
+	}
+	
+	@Column(name = "total_news_score", nullable = false)
+	public Integer getTotalNewsScore() {
+		return this.totalNewsScore;
+	}
+
+	public void setTotalNewsScore(Integer totalNewsScore) {
+		this.totalNewsScore = totalNewsScore;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

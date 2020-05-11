@@ -3,93 +3,125 @@
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
 		<vlayout children="@bind(vm.personStateList)" spacing="0">
 			<template name="children">
-
-				<zk xmlns="native" xmlns:z="zul">
+				<!-- 
+					<zk xmlns="native" xmlns:z="zul">
 					<div class="person-info rounded col-lg-3 #0093F9">
-						<div class="row">
-							<!-- Left icon -->
-							<div
-								class="col-4 text-left text-margin #0093F9">
-								<!-- Name -->
-								<h6 class="text-white">
-									${each.bedRoom}
-								</h6>
-								<image id="totalStatusImg"
-									src="${each.totalStatus}" />
-							</div>
-
-							<!-- Right icon -->
-							<div class="col-8 px-1">
-								<!-- heartBeat -->
-								<div class="row text-bottom">
-									<h6 class="text-danger">hr:</h6>
-									<h3 class="text-danger">
-										${each.heartBeat}
-									</h3>
-									<h6 class="text-danger">bpm</h6>
-								</div>
-
-								<div class="row">
-									<!-- spo2 -->
-									<h6 class="text-primary">SpO2:</h6>
-									<h3 class="text-primary">
-										${each.oximeter}
-									</h3>
-									<h6 class="text-primary">%</h6>
-								</div>
-
-
-								<div class="row">
-									<!-- breathRate -->
-									<h6 class="text-white">
-										Rr: ${each.breathRate} 次
-									</h6>
-								</div>
-
-								<div class="row">
-									<!-- bodyTemperature -->
-									<h6 class="text-success">
-										Temp: ${each.bodyTemperature} °C
-									</h6>
-								</div>
-							</div>
-						</div>
+					<div class="row">
+					<div class="col-4 text-left text-margin #0093F9">
+					
+					<h6 class="text-white">${each.bedRoom}</h6>
+					<image id="totalStatusImg" src="${each.totalStatus}" />
 					</div>
-				</zk>
+					
+					<div class="col-8 px-1">
+					
+					<div class="row text-bottom">
+					<h6 class="text-danger">hr:</h6>
+					<h3 class="text-danger">${each.heartBeat}</h3>
+					<h6 class="text-danger">bpm</h6>
+					</div>
+					
+					<div class="row">
+					
+					<h6 class="text-primary">SpO2:</h6>
+					<h3 class="text-primary">${each.oximeter}</h3>
+					<h6 class="text-primary">%</h6>
+					</div>
+					
+					
+					<div class="row">
+					
+					<h6 class="text-white">Rr: ${each.breathRate} 次</h6>
+					</div>
+					
+					<div class="row">
+					
+					<h6 class="text-success">
+					Temp: ${each.bodyTemperature} °C
+					</h6>
+					</div>
+					</div>
+					</div>
+					</div>
+					</zk>
+				-->
+				<!-- one person -->
+				<div class="row col-lg-6">
 
+					<!-- HeartBeat -->
+					<window
+						apply="org.itri.view.humanhealth.detail.HeartBeatView">
+						<charts id="chart" type="spline" title="心率" />
+					</window>
+					<zk xmlns="native" xmlns:z="zul">
+						<h3 class="text-danger">${each.heartBeat}</h3>
+					</zk>
+
+					<!-- oximeter -->
+					<window
+						apply="org.itri.view.humanhealth.detail.OximeterView">
+						<charts id="chart" type="spline" title="血氧飽和度" />
+					</window>
+					<zk xmlns="native" xmlns:z="zul">
+						<h3 class="text-primary">${each.oximeter}</h3>
+					</zk>
+
+					<!-- BreathRate -->
+					<window
+						apply="org.itri.view.humanhealth.detail.BreathRateView">
+						<charts id="chart" type="spline" title="呼吸頻率" />
+					</window>
+					<zk xmlns="native" xmlns:z="zul">
+						<h3 class="text-white">${each.breathRate}</h3>
+					</zk>
+
+					<!-- Temperature -->
+					<window
+						apply="org.itri.view.humanhealth.detail.TemperatureView">
+						<charts id="chart" type="spline" title="體溫" />
+					</window>
+					<zk xmlns="native" xmlns:z="zul">
+						<h3 class="text-success">
+							${each.bodyTemperature}
+						</h3>
+					</zk>
+				</div>
 			</template>
 		</vlayout>
-		<timer id="timer1234" delay="1000" running="true" repeats="true"
+		<!-- 
+			<timer id="timer1234" delay="1000" running="true" repeats="true"
 			onTimer="@command('refreshPatientInfo')" />
+		-->
 	</nodom>
-	
-	<!-- temperature -->
-	<window id="temperatureWin"
+
+
+	<!-- 	
+		<window id="temperatureWin"
 		apply="org.itri.view.humanhealth.detail.TemperatureView">
 		<charts id="temperatureChart" type="spline" title="體溫"
-			marginRight="10" />
+		marginRight="10" />
 		<timer id="timer" delay="1000" running="true" repeats="true" />
-	</window>
-
-
-	<!-- heart sbeat -->
-	<window id="heartBeatWin"
+		</window>
+		
+		
+		<window id="heartBeatWin"
 		apply="org.itri.view.humanhealth.detail.HeartBeatView">
 		<charts id="heartBeatChart" type="spline" title="心率" />
 		<timer id="timer" delay="1000" running="true" repeats="true" />
-	</window>
-
-	<!-- breathRate -->
-	<window id="breathRateWin"
+		</window>
+		
+		
+		<window id="breathRateWin"
 		apply="org.itri.view.humanhealth.detail.BreathRateView">
 		<charts id="breathRateChart" type="spline" title="呼吸頻率" />
 		<timer id="timer" delay="1000" running="true" repeats="true" />
-	</window>
-
-	<!-- Oximeter -->
-	<window id="oximeterWin"
+		</window>
+		
+		
+		<window id="oximeterWin"
 		apply="org.itri.view.humanhealth.detail.OximeterView">
 		<charts id="oximeterChart" type="spline" title="血氧飽和度" />
 		<timer id="timer" delay="1000" running="true" repeats="true" />
-	</window>
+		</window>
+	-->
 </zk>

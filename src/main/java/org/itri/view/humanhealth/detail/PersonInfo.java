@@ -9,6 +9,8 @@ import org.itri.view.humanhealth.hibernate.Patient;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.chart.Charts;
+import org.zkoss.zk.ui.select.annotation.Wire;
 
 public class PersonInfo {
 
@@ -21,6 +23,7 @@ public class PersonInfo {
 	public void init() {
 		hqe = new PersonInfosDaoHibernateImpl();
 		queryStates();
+
 	}
 
 	@NotifyChange({ "personStateList" })
@@ -42,23 +45,21 @@ public class PersonInfo {
 			PersonState patient = new PersonState();
 
 			patient.setId(p.getPatientId());
-			System.out.println(patient.getId());
-
 			patient.setName(p.getPatientInfos().stream().findFirst().get().getName());
 			patient.setBedRoom(p.getRoom().getRoomNum());
 			patient.setHeartBeat(p.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
 			patient.setOximeter(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 			patient.setBreathRate(p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 			patient.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
+			patient.setTotalNewsScore(p.getTotalNewsScore());
 
 			patient.setTotalStatus(NORMAL_PATH);
-			if ((p.getHeartRateStatus().equals("W") && p.getBodyTempStatus().equals("W"))
-					|| (p.getHeartRateStatus().equals("W") && p.getBreathStatus().equals("W"))
-					|| (p.getBodyTempStatus().equals("W") && p.getBreathStatus().equals("W"))) {
+			if (patient.getTotalNewsScore() > 5) {
 				patient.setTotalStatus(WARNING_PATH);
 			}
 
 			personStateList.add(patient);
+
 		}
 	}
 }

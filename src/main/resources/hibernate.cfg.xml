@@ -63,5 +63,6 @@
         <mapping class="org.itri.view.humanhealth.hibernate.HealthStatus" />
         <mapping class="org.itri.view.humanhealth.hibernate.PmFiveRecord" />
         <mapping class="org.itri.view.humanhealth.hibernate.TempPadRecord" />
+        <mapping class="org.itri.view.humanhealth.hibernate.NewsScoreThreshold" />
     </session-factory>
 </hibernate-configuration>

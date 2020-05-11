@@ -12,19 +12,17 @@ import org.zkoss.chart.Options;
 import org.zkoss.chart.PlotLine;
 import org.zkoss.chart.Point;
 import org.zkoss.chart.Series;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Window;
 
-public class TemperatureView extends SelectorComposer<Window> {
+public class TemperatureView extends SelectorComposer<Component> {
+	@Wire
+	private Charts chart;
 
-	@Wire("charts#temperatureChart")
-	Charts chart;
-
-
-	public void doAfterCompose(Window comp) throws Exception {
-
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
 		// Component Setting
 		super.doAfterCompose(comp);
 		Options options = new Options();
@@ -44,9 +42,11 @@ public class TemperatureView extends SelectorComposer<Window> {
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
 		chart.getLegend().setEnabled(false);
 		chart.getExporting().setEnabled(false);
+		
 
 		Series series = chart.getSeries();
 		series.setName("Temperature data");
+		chart.setTitle("change");
 
 		// init point
 		List<Point> histData = getTempPadRecordList();
@@ -61,13 +61,12 @@ public class TemperatureView extends SelectorComposer<Window> {
 				series.addPoint(nowPoint);
 			}
 		}
-		
 	}
 
-	@Listen("onTimer = #timer")
-	public void updateData() {
-		chart.getSeries().addPoint(getRtTempPadRecordList(), true, true, true);
-	}
+//	@Listen("onTimer = #timer")
+//	public void updateData() {
+//		chart.getSeries().addPoint(getRtTempPadRecordList(), true, true, true);
+//	}
 
 	// Get history data
 	private List<Point> getTempPadRecordList() {

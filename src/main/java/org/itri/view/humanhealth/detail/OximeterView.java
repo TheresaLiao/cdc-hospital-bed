@@ -11,17 +11,19 @@ import org.zkoss.chart.Options;
 import org.zkoss.chart.PlotLine;
 import org.zkoss.chart.Point;
 import org.zkoss.chart.Series;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
-public class OximeterView extends SelectorComposer<Window> {
+public class OximeterView extends SelectorComposer<Component> {
 
-	@Wire("charts#oximeterChart")
-	Charts chart;
+	@Wire
+	private Charts chart;
 
-	public void doAfterCompose(Window comp) throws Exception {
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
 
 		// Component Setting
 		super.doAfterCompose(comp);
@@ -53,7 +55,7 @@ public class OximeterView extends SelectorComposer<Window> {
 		if (histData.size() == 0) {
 			System.out.println("no history data in oximeter");
 			for (int i = -19; i <= 0; i++) {
-				
+
 				Point nowPoint = getRtOximeterRecordList();
 				nowPoint.setX(new Date().getTime() + i * 1000);
 				series.addPoint(nowPoint);
@@ -61,10 +63,10 @@ public class OximeterView extends SelectorComposer<Window> {
 		}
 	}
 
-	@Listen("onTimer = #timer")
-	public void updateData() {
-		chart.getSeries().addPoint(getRtOximeterRecordList(), true, true, true);
-	}
+//	@Listen("onTimer = #timer")
+//	public void updateData() {
+//		chart.getSeries().addPoint(getRtOximeterRecordList(), true, true, true);
+//	}
 
 	// Get history data
 	private List<Point> getOximeterRecordList() {
