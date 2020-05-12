@@ -24,7 +24,7 @@ public class BreathRateViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(RtHeartRhythmRecord.class);
 			
-			long patientId = 1;
+			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 			
 			rtHeartRhythmRecordList = criteria.list();
@@ -46,7 +46,7 @@ public class BreathRateViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(HeartRhythmRecord.class);
 
-			long patientId = 1;
+			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 
 			Date now = new Date();

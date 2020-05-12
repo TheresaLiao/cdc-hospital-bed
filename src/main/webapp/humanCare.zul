@@ -4,24 +4,25 @@
 <?link rel="stylesheet" href="resources/css/zk-bootstrap.css" ?>
 
 <zk xmlns:n="native">
-	<style>body { background-color: #000000; }</style> 
+	<style>body { background-color: #000000; }</style>
 	<hlayout viewModel="@id('vm')@init('org.itri.view.admin.MainView')"
 		width="100%">
 		<bs-row>
 			<!-- Navigation -->
-			<n:div sclass="col-12 container-fluid">
+			<n:div sclass="col container-fluid">
 				<div hflex="1">
 					<apply templateURI="longBar.zul" />
 				</div>
 			</n:div>
 
 			<!-- floor : select floor-->
-			<n:div sclass="col-12 container-fluid">
+			<!-- 
+				<n:div sclass="col-12 container-fluid">
 				<div hflex="1">
-					<apply templateURI="floorMenu.zul" />
+				<apply templateURI="floorMenu.zul" />
 				</div>
-			</n:div>
-
+				</n:div>
+			-->
 			<!-- Main Page -->
 			<n:div sclass="col-12 container-fluid">
 				<div sclass="container-fluid" hflex="1">

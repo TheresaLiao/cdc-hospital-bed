@@ -39,7 +39,7 @@ public class PersonInfo {
 
 	private void queryStates() {
 
-		List<Patient> patientList = hqe.getPatientList();
+		List<Patient> patientList = hqe.getPatientTotalNewsScoreFourList();
 		personStateList = new LinkedList<>();
 		for (Patient p : patientList) {
 			PersonState patient = new PersonState();

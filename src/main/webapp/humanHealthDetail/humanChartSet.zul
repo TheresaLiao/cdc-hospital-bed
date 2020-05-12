@@ -1,91 +1,190 @@
-<zk xmlns:n="native">
+<zk xmlns:n="native" xmlns:z="zul">
 	<nodom
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
 		<vlayout children="@bind(vm.personStateList)" spacing="0">
 			<template name="children">
-				<!-- 
-					<zk xmlns="native" xmlns:z="zul">
-					<div class="person-info rounded col-lg-3 #0093F9">
-					<div class="row">
-					<div class="col-4 text-left text-margin #0093F9">
-					
-					<h6 class="text-white">${each.bedRoom}</h6>
-					<image id="totalStatusImg" src="${each.totalStatus}" />
-					</div>
-					
-					<div class="col-8 px-1">
-					
-					<div class="row text-bottom">
-					<h6 class="text-danger">hr:</h6>
-					<h3 class="text-danger">${each.heartBeat}</h3>
-					<h6 class="text-danger">bpm</h6>
-					</div>
-					
-					<div class="row">
-					
-					<h6 class="text-primary">SpO2:</h6>
-					<h3 class="text-primary">${each.oximeter}</h3>
-					<h6 class="text-primary">%</h6>
-					</div>
-					
-					
-					<div class="row">
-					
-					<h6 class="text-white">Rr: ${each.breathRate} 次</h6>
-					</div>
-					
-					<div class="row">
-					
-					<h6 class="text-success">
-					Temp: ${each.bodyTemperature} °C
-					</h6>
-					</div>
-					</div>
-					</div>
-					</div>
-					</zk>
-				-->
+
 				<!-- one person -->
-				<div class="row col-lg-6">
+				<n:div sclass="row rounded col-lg-6 #0093F9">
 
-					<!-- HeartBeat -->
-					<window
-						apply="org.itri.view.humanhealth.detail.HeartBeatView">
-						<charts id="chart" type="spline" title="心率" />
-					</window>
-					<zk xmlns="native" xmlns:z="zul">
-						<h3 class="text-danger">${each.heartBeat}</h3>
-					</zk>
+					<panel xmlns:n="native" title="${each.bedRoom}"
+						border="normal" hflex="1">
+						<panelchildren>
 
-					<!-- oximeter -->
-					<window
-						apply="org.itri.view.humanhealth.detail.OximeterView">
-						<charts id="chart" type="spline" title="血氧飽和度" />
-					</window>
-					<zk xmlns="native" xmlns:z="zul">
-						<h3 class="text-primary">${each.oximeter}</h3>
-					</zk>
+							<!-- HeartBeat -->
+							<bs-row>
+								<window style="padding: 0px;"
+									apply="org.itri.view.humanhealth.detail.HeartBeatView">
+									<charts id="chart" type="spline"
+										height="100" title="" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+								<n:div sclass="col p-1">
+									<zk xmlns="native" xmlns:z="zul"
+										hflex="1">
+										<bs-row class="row col px-1">
 
-					<!-- BreathRate -->
-					<window
-						apply="org.itri.view.humanhealth.detail.BreathRateView">
-						<charts id="chart" type="spline" title="呼吸頻率" />
-					</window>
-					<zk xmlns="native" xmlns:z="zul">
-						<h3 class="text-white">${each.breathRate}</h3>
-					</zk>
+											<!-- left spec -->
+											<div class="col-3">
+												<h6
+													class="text-danger font-weight-bold">
+													hr
+												</h6>
+												<h6
+													class="text-danger">
+													100
+												</h6>
+												<h6
+													class="text-danger">
+													55
+												</h6>
+											</div>
 
-					<!-- Temperature -->
-					<window
-						apply="org.itri.view.humanhealth.detail.TemperatureView">
-						<charts id="chart" type="spline" title="體溫" />
-					</window>
-					<zk xmlns="native" xmlns:z="zul">
-						<h3 class="text-success">
-							${each.bodyTemperature}
-						</h3>
-					</zk>
-				</div>
+											<!-- right value -->
+											<div hflex="1">
+												<h2
+													class="text-danger">
+													${each.heartBeat}
+													bmp
+												</h2>
+											</div>
+										</bs-row>
+									</zk>
+								</n:div>
+							</bs-row>
+
+
+							<!-- oximeter -->
+							<bs-row>
+								<window style="padding: 0px;"
+									apply="org.itri.view.humanhealth.detail.OximeterView">
+									<charts id="chart" type="spline"
+										title="" height="100" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+
+								<n:div sclass="col p-1">
+									<zk xmlns="native" xmlns:z="zul"
+										hflex="1">
+										<div class="row col px-1">
+
+											<!-- left spec -->
+											<div class="col-3">
+												<h6
+													class="text-primary font-weight-bold">
+													SpO2
+												</h6>
+												<h6
+													class="text-primary">
+													100
+												</h6>
+												<h6
+													class="text-primary">
+													90
+												</h6>
+											</div>
+
+											<!-- right value -->
+											<div hflex="1">
+												<h3
+													class="text-primary">
+													${each.oximeter} %
+												</h3>
+											</div>
+										</div>
+									</zk>
+								</n:div>
+							</bs-row>
+
+							<!-- BreathRate -->
+							<bs-row>
+								<window style="padding: 0px;"
+									apply="org.itri.view.humanhealth.detail.BreathRateView">
+									<charts id="chart" type="spline"
+										title="" height="100" />
+								</window>
+
+								<n:div sclass="col p-1 ">
+									<zk xmlns="native" xmlns:z="zul"
+										width="100%">
+										<div class="row col px-1">
+
+											<!-- left spec -->
+											<div class="col-3">
+												<h6
+													class="text-white font-weight-bold">
+													Rr
+												</h6>
+												<h6
+													class="text-white">
+													20
+												</h6>
+												<h6
+													class="text-white">
+													10
+												</h6>
+											</div>
+
+											<!-- right value -->
+											<div hflex="1">
+												<h6
+													class="text-white">
+													${each.breathRate} 次
+												</h6>
+											</div>
+										</div>
+									</zk>
+								</n:div>
+							</bs-row>
+
+							<!-- Temperature -->
+							<bs-row>
+								<window style="padding: 0px;"
+									apply="org.itri.view.humanhealth.detail.TemperatureView">
+									<charts id="chart" type="spline"
+										title="" height="100" />
+								</window>
+								<n:div sclass="col p-1">
+									<zk xmlns="native" xmlns:z="zul"
+										hflex="1">
+										<div class="row col px-1">
+
+											<!-- left spec -->
+											<div class="col-3">
+												<h6
+													class="text-success font-weight-bold">
+													Temp
+												</h6>
+												<h6
+													class="text-success">
+													39.0
+												</h6>
+												<h6
+													class="text-success">
+													36.0
+												</h6>
+											</div>
+
+											<!-- right value -->
+											<div hflex="1">
+												<h6
+													class="text-success">
+													${each.bodyTemperature}
+													°C
+												</h6>
+											</div>
+										</div>
+									</zk>
+								</n:div>
+							</bs-row>
+
+						</panelchildren>
+					</panel>
+
+				</n:div>
+
 			</template>
 		</vlayout>
 		<!-- 

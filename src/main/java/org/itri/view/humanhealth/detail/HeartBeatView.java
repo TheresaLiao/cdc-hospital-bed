@@ -51,13 +51,14 @@ public class HeartBeatView extends SelectorComposer<Component> {
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList();
+
 		for (Point p : histData) {
 			series.addPoint(p);
 		}
+
 		if (histData.size() == 0) {
 			System.out.println("no history data in heart beat");
 			for (int i = -19; i <= 0; i++) {
-
 				Point nowPoint = getRtHeartRhythmRecordList();
 				nowPoint.setX(new Date().getTime() + i * 1000);
 				series.addPoint(nowPoint);
@@ -65,23 +66,25 @@ public class HeartBeatView extends SelectorComposer<Component> {
 		}
 	}
 
-//	@Listen("onTimer = #timer")
-//	public void updateData() {
-//		chart.getSeries().addPoint(getRtHeartRhythmRecordList(), true, true, true);
-//	}
+	@Listen("onTimer = #timer")
+	public void updateData() {
+		chart.getSeries().addPoint(getRtHeartRhythmRecordList(), true, true, true);
+	}
 
 	// Get history data
 	private List<Point> getHeartRhythmRecordList() {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
 		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList();
 
-		List<Point> resp = new ArrayList<Point>();
-
+		int i = heartRhythmRecordList.size() * (-1);
+		List<Point> resp = new ArrayList<Point>();		
 		for (HeartRhythmRecord tt : heartRhythmRecordList) {
+			i++;
 			String data = tt.getHeartRateData();
 			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime(), Double.valueOf(data)));
+			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
 		}
+
 		return resp;
 	}
 

@@ -72,21 +72,22 @@ public class BreathRateView extends SelectorComposer<Component> {
 		}
 	}
 
-//	@Listen("onTimer = #timer")
-//	public void updateData() {
-//		chart.getSeries().addPoint(getRtHeartRhythmRecordList(), true, true, true);
-//	}
+	@Listen("onTimer = #timer")
+	public void updateData() {
+		chart.getSeries().addPoint(getRtHeartRhythmRecordList(), true, true, true);
+	}
 
 	// Get history data
 	private List<Point> getHeartRhythmRecordList() {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
 		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList();
 
+		int i = heartRhythmRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
 		for (HeartRhythmRecord tt : heartRhythmRecordList) {
 			String data = tt.getBreathData();
 			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime(), Double.valueOf(data)));
+			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
 		}
 		return resp;
 	}

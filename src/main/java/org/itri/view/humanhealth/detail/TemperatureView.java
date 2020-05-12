@@ -46,7 +46,6 @@ public class TemperatureView extends SelectorComposer<Component> {
 
 		Series series = chart.getSeries();
 		series.setName("Temperature data");
-		chart.setTitle("change");
 
 		// init point
 		List<Point> histData = getTempPadRecordList();
@@ -63,21 +62,22 @@ public class TemperatureView extends SelectorComposer<Component> {
 		}
 	}
 
-//	@Listen("onTimer = #timer")
-//	public void updateData() {
-//		chart.getSeries().addPoint(getRtTempPadRecordList(), true, true, true);
-//	}
+	@Listen("onTimer = #timer")
+	public void updateData() {
+		chart.getSeries().addPoint(getRtTempPadRecordList(), true, true, true);
+	}
 
 	// Get history data
 	private List<Point> getTempPadRecordList() {
 		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
 		List<TempPadRecord> tempPadRecordList = hqe.getTempPadRecordList();
 
+		int i = tempPadRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
 		for (TempPadRecord tt : tempPadRecordList) {
 			String data = tt.getBodyTempData();
 			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime(), Double.valueOf(data)));
+			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
 		}
 		return resp;
 	}

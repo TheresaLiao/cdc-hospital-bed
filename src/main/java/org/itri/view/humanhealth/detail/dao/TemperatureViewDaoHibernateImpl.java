@@ -26,7 +26,7 @@ public class TemperatureViewDaoHibernateImpl {
 
 			Criteria criteria = session.createCriteria(RtTempPadRecord.class);
 			
-			long patientId = 1;
+			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 			
 			rtTempPadRecordList = criteria.list();
@@ -51,7 +51,7 @@ public class TemperatureViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 
 			Criteria criteria = session.createCriteria(TempPadRecord.class);
-			long patientId = 1;
+			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 
 			Date now = new Date();

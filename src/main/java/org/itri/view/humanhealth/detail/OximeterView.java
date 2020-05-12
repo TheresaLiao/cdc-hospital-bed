@@ -63,21 +63,22 @@ public class OximeterView extends SelectorComposer<Component> {
 		}
 	}
 
-//	@Listen("onTimer = #timer")
-//	public void updateData() {
-//		chart.getSeries().addPoint(getRtOximeterRecordList(), true, true, true);
-//	}
+	@Listen("onTimer = #timer")
+	public void updateData() {
+		chart.getSeries().addPoint(getRtOximeterRecordList(), true, true, true);
+	}
 
 	// Get history data
 	private List<Point> getOximeterRecordList() {
 		RtOximeterViewDaoHibernateImpl hqe = new RtOximeterViewDaoHibernateImpl();
 		List<OximeterRecord> oximeterRecordList = hqe.getOximeterRecordList();
 
+		int i = oximeterRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
 		for (OximeterRecord tt : oximeterRecordList) {
 			String data = tt.getOximeterData();
 			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime(), Double.valueOf(data)));
+			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
 		}
 		return resp;
 	}

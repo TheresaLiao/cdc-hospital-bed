@@ -26,7 +26,7 @@ public class RtOximeterViewDaoHibernateImpl {
 
 			Criteria criteria = session.createCriteria(RtOximeterRecord.class);
 			
-			long patientId = 1;
+			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 			
 			oximeterRecordList = criteria.list();
@@ -51,7 +51,7 @@ public class RtOximeterViewDaoHibernateImpl {
 
 			Criteria criteria = session.createCriteria(OximeterRecord.class);
 
-			long patientId = 1;
+			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 
 			Date now = new Date();
