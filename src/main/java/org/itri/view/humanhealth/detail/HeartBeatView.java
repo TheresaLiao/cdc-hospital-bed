@@ -1,7 +1,6 @@
 package org.itri.view.humanhealth.detail;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -19,16 +18,19 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
-public class HeartBeatView extends SelectorComposer<Component> {
+public class HeartBeatView extends SelectorComposer<Window> {
+
+	private long patientId = 2;
 
 	@Wire
 	private Charts chart;
 
 	@Override
-	public void doAfterCompose(Component comp) throws Exception {
+	public void doAfterCompose(Window comp) throws Exception {
 
 		// Component Setting
 		super.doAfterCompose(comp);
+
 		Options options = new Options();
 		options.getGlobal().setUseUTC(false);
 		chart.setOptions(options);
@@ -74,10 +76,10 @@ public class HeartBeatView extends SelectorComposer<Component> {
 	// Get history data
 	private List<Point> getHeartRhythmRecordList() {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
-		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList();
+		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList(patientId);
 
 		int i = heartRhythmRecordList.size() * (-1);
-		List<Point> resp = new ArrayList<Point>();		
+		List<Point> resp = new ArrayList<Point>();
 		for (HeartRhythmRecord tt : heartRhythmRecordList) {
 			i++;
 			String data = tt.getHeartRateData();
@@ -91,7 +93,7 @@ public class HeartBeatView extends SelectorComposer<Component> {
 	// Get real time data
 	private Point getRtHeartRhythmRecordList() {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
-		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = hqe.getRtHeartRhythmRecordList();
+		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = hqe.getRtHeartRhythmRecordList(patientId);
 		for (RtHeartRhythmRecord tt : rtHeartRhythmRecordList) {
 			String data = tt.getHeartRateData();
 			Date time = tt.getLastUpdated();

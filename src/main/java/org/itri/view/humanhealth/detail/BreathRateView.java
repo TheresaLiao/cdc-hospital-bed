@@ -22,7 +22,8 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
 public class BreathRateView extends SelectorComposer<Component> {
-
+	
+	private long patientId = 2;
 	@Wire
 	private Charts chart;
 	
@@ -80,7 +81,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 	// Get history data
 	private List<Point> getHeartRhythmRecordList() {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
-		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList();
+		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList(patientId);
 
 		int i = heartRhythmRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
@@ -95,7 +96,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 	// Get real time data
 	private Point getRtHeartRhythmRecordList() {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
-		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = hqe.getRtHeartRhythmRecordList();
+		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = hqe.getRtHeartRhythmRecordList(patientId);
 		for (RtHeartRhythmRecord tt : rtHeartRhythmRecordList) {
 			String data = tt.getBreathData();
 			Date time = tt.getLastUpdated();

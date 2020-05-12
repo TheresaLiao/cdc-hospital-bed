@@ -58,7 +58,6 @@ public class PersonInfosDaoHibernateImpl {
 			Criteria criteria = session.createCriteria(Patient.class);
 			criteria.add(Restrictions.eq("isDeleted", false));
 			criteria.addOrder(Order.desc("totalNewsScore"));
-			// criteria.setFirstResult(0);
 			criteria.setMaxResults(4);
 			tempPatientList = criteria.list();
 

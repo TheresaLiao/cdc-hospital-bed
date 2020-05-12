@@ -1,7 +1,9 @@
 package org.itri.view.humanhealth.detail;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.PersonState;
@@ -9,8 +11,8 @@ import org.itri.view.humanhealth.hibernate.Patient;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.chart.Charts;
-import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zul.Window;
 
 public class PersonInfo {
 
@@ -23,7 +25,6 @@ public class PersonInfo {
 	public void init() {
 		hqe = new PersonInfosDaoHibernateImpl();
 		queryStates();
-
 	}
 
 	@NotifyChange({ "personStateList" })
@@ -57,9 +58,7 @@ public class PersonInfo {
 			if (patient.getTotalNewsScore() > 5) {
 				patient.setTotalStatus(WARNING_PATH);
 			}
-
 			personStateList.add(patient);
-
 		}
 	}
 }

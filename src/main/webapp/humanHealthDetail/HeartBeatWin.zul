@@ -1,0 +1,6 @@
+<window style="padding: 0px;" title="${each.id}"
+	apply="org.itri.view.humanhealth.detail.HeartBeatView">
+
+	<charts id="chart" type="spline" height="100" title="" />
+	<timer id="timer" delay="1000" running="true" repeats="true" />
+</window>

@@ -13,13 +13,18 @@
 
 							<!-- HeartBeat -->
 							<bs-row>
+								<!-- Chart -->
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.detail.HeartBeatView">
 									<charts id="chart" type="spline"
 										height="100" title="" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
+									<n:input type="hidden"
+										value="${each.id}" />
 								</window>
+
+								<!-- Current Status -->
 								<n:div sclass="col p-1">
 									<zk xmlns="native" xmlns:z="zul"
 										hflex="1">
@@ -187,40 +192,9 @@
 
 			</template>
 		</vlayout>
-		<!-- 
-			<timer id="timer1234" delay="1000" running="true" repeats="true"
-			onTimer="@command('refreshPatientInfo')" />
-		-->
+
+		<timer id="timer1234" delay="60000" running="true"
+			repeats="true" onTimer="@command('refreshPatientInfo')" />
+
 	</nodom>
-
-
-	<!-- 	
-		<window id="temperatureWin"
-		apply="org.itri.view.humanhealth.detail.TemperatureView">
-		<charts id="temperatureChart" type="spline" title="體溫"
-		marginRight="10" />
-		<timer id="timer" delay="1000" running="true" repeats="true" />
-		</window>
-		
-		
-		<window id="heartBeatWin"
-		apply="org.itri.view.humanhealth.detail.HeartBeatView">
-		<charts id="heartBeatChart" type="spline" title="心率" />
-		<timer id="timer" delay="1000" running="true" repeats="true" />
-		</window>
-		
-		
-		<window id="breathRateWin"
-		apply="org.itri.view.humanhealth.detail.BreathRateView">
-		<charts id="breathRateChart" type="spline" title="呼吸頻率" />
-		<timer id="timer" delay="1000" running="true" repeats="true" />
-		</window>
-		
-		
-		<window id="oximeterWin"
-		apply="org.itri.view.humanhealth.detail.OximeterView">
-		<charts id="oximeterChart" type="spline" title="血氧飽和度" />
-		<timer id="timer" delay="1000" running="true" repeats="true" />
-		</window>
-	-->
 </zk>

@@ -16,17 +16,15 @@ import org.itri.view.util.HibernateUtil;
 
 public class BreathRateViewDaoHibernateImpl {
 
-	public List<RtHeartRhythmRecord> getRtHeartRhythmRecordList() {
+	public List<RtHeartRhythmRecord> getRtHeartRhythmRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = new ArrayList<RtHeartRhythmRecord>();
 		try {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(RtHeartRhythmRecord.class);
-			
-			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
-			
+
 			rtHeartRhythmRecordList = criteria.list();
 			tx.commit();
 		} catch (Exception e) {
@@ -38,15 +36,13 @@ public class BreathRateViewDaoHibernateImpl {
 		return rtHeartRhythmRecordList;
 	}
 
-	public List<HeartRhythmRecord> getHeartRhythmRecordList() {
+	public List<HeartRhythmRecord> getHeartRhythmRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List<HeartRhythmRecord> heartRhythmRecordList = new ArrayList<HeartRhythmRecord>();
 		try {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(HeartRhythmRecord.class);
-
-			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 
 			Date now = new Date();
