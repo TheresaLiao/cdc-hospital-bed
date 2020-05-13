@@ -16,7 +16,7 @@ import org.itri.view.util.HibernateUtil;
 
 public class RtOximeterViewDaoHibernateImpl {
 
-	public List<RtOximeterRecord> getRtOximeterRecordList() {
+	public List<RtOximeterRecord> getRtOximeterRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List<RtOximeterRecord> oximeterRecordList = new ArrayList<RtOximeterRecord>();
@@ -25,10 +25,7 @@ public class RtOximeterViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 
 			Criteria criteria = session.createCriteria(RtOximeterRecord.class);
-			
-			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
-			
 			oximeterRecordList = criteria.list();
 
 			tx.commit();
@@ -41,7 +38,7 @@ public class RtOximeterViewDaoHibernateImpl {
 		return oximeterRecordList;
 	}
 
-	public List<OximeterRecord> getOximeterRecordList() {
+	public List<OximeterRecord> getOximeterRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List<OximeterRecord> oximeterRecordList = new ArrayList<OximeterRecord>();
@@ -50,14 +47,12 @@ public class RtOximeterViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 
 			Criteria criteria = session.createCriteria(OximeterRecord.class);
-
-			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 
 			Date now = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(now);
-			calendar.add(Calendar.MINUTE, -5);
+			calendar.add(Calendar.MINUTE, -3);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 
 			criteria.addOrder(Order.asc("timeCreated"));

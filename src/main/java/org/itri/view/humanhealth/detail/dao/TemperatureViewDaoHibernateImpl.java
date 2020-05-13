@@ -1,6 +1,5 @@
 package org.itri.view.humanhealth.detail.dao;
 
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,20 +16,15 @@ import org.itri.view.util.HibernateUtil;
 
 public class TemperatureViewDaoHibernateImpl {
 
-	public List<RtTempPadRecord> getRtTempPadRecordList() {
+	public List<RtTempPadRecord> getRtTempPadRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List<RtTempPadRecord> rtTempPadRecordList = new ArrayList<RtTempPadRecord>();
 		try {
 			tx = session.beginTransaction();
-
 			Criteria criteria = session.createCriteria(RtTempPadRecord.class);
-			
-			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
-			
 			rtTempPadRecordList = criteria.list();
-
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +35,7 @@ public class TemperatureViewDaoHibernateImpl {
 		return rtTempPadRecordList;
 	}
 
-	public List<TempPadRecord> getTempPadRecordList() {
+	public List<TempPadRecord> getTempPadRecordList(long patientId) {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
@@ -51,15 +45,13 @@ public class TemperatureViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 
 			Criteria criteria = session.createCriteria(TempPadRecord.class);
-			long patientId = 2;
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
 
 			Date now = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(now);
-			calendar.add(Calendar.MINUTE, -5);
+			calendar.add(Calendar.MINUTE, -3);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
-
 			criteria.addOrder(Order.asc("timeCreated"));
 			tempPadRecordList = criteria.list();
 

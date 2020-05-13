@@ -48,7 +48,7 @@ public class BreathRateViewDaoHibernateImpl {
 			Date now = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(now);
-			calendar.add(Calendar.MINUTE, -5);
+			calendar.add(Calendar.MINUTE, -3);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 
 			criteria.addOrder(Order.asc("timeCreated"));

@@ -16,10 +16,15 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Textbox;
 
 public class TemperatureView extends SelectorComposer<Component> {
+	private long patientId = 0;
 	@Wire
 	private Charts chart;
+
+	@Wire("#textboxId")
+	private Textbox textboxId;
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
@@ -42,20 +47,21 @@ public class TemperatureView extends SelectorComposer<Component> {
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
 		chart.getLegend().setEnabled(false);
 		chart.getExporting().setEnabled(false);
-		
 
 		Series series = chart.getSeries();
 		series.setName("Temperature data");
 
+		setPatientId(textboxId.getValue());
+
 		// init point
-		List<Point> histData = getTempPadRecordList();
+		List<Point> histData = getTempPadRecordList(getPatientId());
 		for (Point p : histData) {
 			series.addPoint(p);
 		}
 		if (histData.size() == 0) {
 			System.out.println("no history data in temp");
 			for (int i = -19; i <= 0; i++) {
-				Point nowPoint = getRtTempPadRecordList();
+				Point nowPoint = getRtTempPadRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
 				series.addPoint(nowPoint);
 			}
@@ -64,13 +70,23 @@ public class TemperatureView extends SelectorComposer<Component> {
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
-		chart.getSeries().addPoint(getRtTempPadRecordList(), true, true, true);
+		setPatientId(textboxId.getValue());
+		chart.getSeries().addPoint(getRtTempPadRecordList(getPatientId()), true, true, true);
+	}
+
+	public long getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(String patientIdStr) {
+		patientId = Long.parseLong(patientIdStr);
+		this.patientId = patientId;
 	}
 
 	// Get history data
-	private List<Point> getTempPadRecordList() {
+	private List<Point> getTempPadRecordList(long patientId) {
 		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
-		List<TempPadRecord> tempPadRecordList = hqe.getTempPadRecordList();
+		List<TempPadRecord> tempPadRecordList = hqe.getTempPadRecordList(patientId);
 
 		int i = tempPadRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
@@ -83,10 +99,10 @@ public class TemperatureView extends SelectorComposer<Component> {
 	}
 
 	// Get real time data
-	private Point getRtTempPadRecordList() {
+	private Point getRtTempPadRecordList(long patientId) {
 
 		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
-		List<RtTempPadRecord> rtTempPadRecordList = hqe.getRtTempPadRecordList();
+		List<RtTempPadRecord> rtTempPadRecordList = hqe.getRtTempPadRecordList(patientId);
 
 		for (RtTempPadRecord tt : rtTempPadRecordList) {
 			String data = tt.getBodyTempData();

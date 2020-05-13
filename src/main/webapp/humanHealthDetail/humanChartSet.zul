@@ -18,44 +18,48 @@
 									apply="org.itri.view.humanhealth.detail.HeartBeatView">
 									<charts id="chart" type="spline"
 										height="100" title="" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
-									<n:input type="hidden"
-										value="${each.id}" />
 								</window>
 
 								<!-- Current Status -->
 								<n:div sclass="col p-1">
-									<zk xmlns="native" xmlns:z="zul"
-										hflex="1">
+									<window style="padding: 0px;"
+										apply="org.itri.view.humanhealth.detail.HeartBeatCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
 											<div class="col-3">
-												<h6
+												<n:h6
 													class="text-danger font-weight-bold">
 													hr
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-danger">
 													100
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-danger">
 													55
-												</h6>
+												</n:h6>
 											</div>
 
 											<!-- right value -->
-											<div hflex="1">
-												<h2
+											<hlayout sclass="z-valign-bottom">
+												<n:h2 id="h2"
 													class="text-danger">
 													${each.heartBeat}
 													bmp
-												</h2>
-											</div>
+												</n:h2>
+												<textbox visible="false"
+													value="${each.id}" />
+											</hlayout>
 										</bs-row>
-									</zk>
+										<timer id="timer" delay="1000"
+											running="true" repeats="true" />
+									</window>
 								</n:div>
 							</bs-row>
 
@@ -66,6 +70,8 @@
 									apply="org.itri.view.humanhealth.detail.OximeterView">
 									<charts id="chart" type="spline"
 										title="" height="100" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>
@@ -109,6 +115,10 @@
 									apply="org.itri.view.humanhealth.detail.BreathRateView">
 									<charts id="chart" type="spline"
 										title="" height="100" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
 								</window>
 
 								<n:div sclass="col p-1 ">
@@ -150,6 +160,10 @@
 									apply="org.itri.view.humanhealth.detail.TemperatureView">
 									<charts id="chart" type="spline"
 										title="" height="100" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
 								</window>
 								<n:div sclass="col p-1">
 									<zk xmlns="native" xmlns:z="zul"
@@ -192,9 +206,9 @@
 
 			</template>
 		</vlayout>
-
-		<timer id="timer1234" delay="60000" running="true"
+		<!-- 
+			<timer id="timer1234" delay="15000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
-
+		-->
 	</nodom>
 </zk>

@@ -5,12 +5,12 @@
 			<template name="children">
 
 				<zk xmlns="native" xmlns:z="zul">
-					<div class="person-info rounded col-lg-2 #0093F9">
+					<div class="person-info rounded col-lg-2 #FFFFFF">
 						<div class="row">
 
 							<!-- Left icon -->
 							<div
-								class="col-4 text-left text-margin #0093F9">
+								class="col-4 text-left text-margin #FFFFFF">
 								<!-- Name -->
 								<h6 class="text-white">
 									${each.bedRoom}

@@ -12,22 +12,24 @@ import org.zkoss.chart.Options;
 import org.zkoss.chart.PlotLine;
 import org.zkoss.chart.Point;
 import org.zkoss.chart.Series;
-import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 public class HeartBeatView extends SelectorComposer<Window> {
 
-	private long patientId = 2;
+	private long patientId = 0;
 
 	@Wire
 	private Charts chart;
 
+	@Wire("#textboxId")
+	private Textbox textboxId;
+
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
-
 		// Component Setting
 		super.doAfterCompose(comp);
 
@@ -51,8 +53,10 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		Series series = chart.getSeries();
 		series.setName("Heart Beat data");
 
+		setPatientId(textboxId.getValue());
+
 		// init point
-		List<Point> histData = getHeartRhythmRecordList();
+		List<Point> histData = getHeartRhythmRecordList(getPatientId());
 
 		for (Point p : histData) {
 			series.addPoint(p);
@@ -61,7 +65,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		if (histData.size() == 0) {
 			System.out.println("no history data in heart beat");
 			for (int i = -19; i <= 0; i++) {
-				Point nowPoint = getRtHeartRhythmRecordList();
+				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
 				series.addPoint(nowPoint);
 			}
@@ -70,11 +74,22 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
-		chart.getSeries().addPoint(getRtHeartRhythmRecordList(), true, true, true);
+		setPatientId(textboxId.getValue());
+		chart.getSeries().addPoint(getRtHeartRhythmRecordList(getPatientId()), true, true, true);
+	}
+
+	public long getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(String patientIdStr) {
+
+		patientId = Long.parseLong(patientIdStr);
+		this.patientId = patientId;
 	}
 
 	// Get history data
-	private List<Point> getHeartRhythmRecordList() {
+	private List<Point> getHeartRhythmRecordList(long patientId) {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
 		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList(patientId);
 
@@ -91,7 +106,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 	}
 
 	// Get real time data
-	private Point getRtHeartRhythmRecordList() {
+	private Point getRtHeartRhythmRecordList(long patientId) {
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
 		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = hqe.getRtHeartRhythmRecordList(patientId);
 		for (RtHeartRhythmRecord tt : rtHeartRhythmRecordList) {
