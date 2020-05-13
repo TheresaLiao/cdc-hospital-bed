@@ -9,7 +9,7 @@
 		width="100%">
 		<bs-row>
 			<!-- Navigation -->
-			<n:div sclass="col container-fluid">
+			<n:div sclass="col-12 container-fluid">
 				<div hflex="1">
 					<apply templateURI="longBar.zul" />
 				</div>

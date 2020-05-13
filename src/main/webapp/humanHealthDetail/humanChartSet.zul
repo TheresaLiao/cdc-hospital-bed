@@ -49,11 +49,9 @@
 											<!-- right value -->
 											<hlayout
 												sclass="z-valign-bottom">
-												<n:h2 id="h2"
-													class="text-danger">
-													${each.heartBeat}
-													bmp
-												</n:h2>
+												<label
+													class="text-danger h2">
+												</label>
 												<textbox visible="false"
 													value="${each.id}" />
 											</hlayout>
@@ -67,6 +65,7 @@
 
 							<!-- oximeter -->
 							<bs-row>
+								<!-- Chart -->
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.detail.OximeterView">
 									<charts id="chart" type="spline"
@@ -77,41 +76,48 @@
 										running="true" repeats="true" />
 								</window>
 
+								<!-- Current Status -->
 								<n:div sclass="col p-1">
-									<zk xmlns="native" xmlns:z="zul"
-										hflex="1">
-										<div class="row col px-1">
+									<window style="padding: 0px;"
+										apply="org.itri.view.humanhealth.detail.OximeterCurrentView">
+										<bs-row class="row col px-1">
 
 											<!-- left spec -->
 											<div class="col-3">
-												<h6
+												<n:h6
 													class="text-primary font-weight-bold">
 													SpO2
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-primary">
 													100
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-primary">
 													90
-												</h6>
+												</n:h6>
 											</div>
 
 											<!-- right value -->
-											<div hflex="1">
-												<h3
-													class="text-primary">
-													${each.oximeter} %
-												</h3>
-											</div>
-										</div>
-									</zk>
+											<hlayout
+												sclass="z-valign-bottom">
+												<label
+													class="text-primary h2">
+												</label>
+												<textbox visible="false"
+													value="${each.id}" />
+											</hlayout>
+										</bs-row>
+										<timer id="timer" delay="1000"
+											running="true" repeats="true" />
+									</window>
 								</n:div>
 							</bs-row>
 
+
 							<!-- BreathRate -->
 							<bs-row>
+								<!-- Chart -->
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.detail.BreathRateView">
 									<charts id="chart" type="spline"
@@ -122,41 +128,47 @@
 										running="true" repeats="true" />
 								</window>
 
-								<n:div sclass="col p-1 ">
-									<zk xmlns="native" xmlns:z="zul"
-										width="100%">
-										<div class="row col px-1">
+								<!-- Current Status -->
+								<n:div sclass="col p-1">
+									<window style="padding: 0px;"
+										apply="org.itri.view.humanhealth.detail.BreathRateCurrentView">
+										<bs-row class="row col px-1">
 
 											<!-- left spec -->
 											<div class="col-3">
-												<h6
+												<n:h6
 													class="text-white font-weight-bold">
 													Rr
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-white">
 													20
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-white">
 													10
-												</h6>
+												</n:h6>
 											</div>
 
 											<!-- right value -->
-											<div hflex="1">
-												<h6
-													class="text-white">
-													${each.breathRate} 次
-												</h6>
-											</div>
-										</div>
-									</zk>
+											<hlayout
+												sclass="z-valign-bottom">
+												<label
+													class="text-white h6">
+												</label>
+												<textbox visible="false"
+													value="${each.id}" />
+											</hlayout>
+										</bs-row>
+										<timer id="timer" delay="1000"
+											running="true" repeats="true" />
+									</window>
 								</n:div>
 							</bs-row>
 
 							<!-- Temperature -->
 							<bs-row>
+								<!-- Chart -->
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.detail.TemperatureView">
 									<charts id="chart" type="spline"
@@ -166,37 +178,43 @@
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>
+
+								<!-- Current Status -->
 								<n:div sclass="col p-1">
-									<zk xmlns="native" xmlns:z="zul"
-										hflex="1">
-										<div class="row col px-1">
+									<window style="padding: 0px;"
+										apply="org.itri.view.humanhealth.detail.TemperatureCurrentView">
+										<bs-row class="row col px-1">
 
 											<!-- left spec -->
 											<div class="col-3">
-												<h6
+												<n:h6
 													class="text-success font-weight-bold">
 													Temp
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-success">
 													39.0
-												</h6>
-												<h6
+												</n:h6>
+												<n:h6
 													class="text-success">
 													36.0
-												</h6>
+												</n:h6>
 											</div>
 
 											<!-- right value -->
-											<div hflex="1">
-												<h6
-													class="text-success">
-													${each.bodyTemperature}
-													°C
-												</h6>
-											</div>
-										</div>
-									</zk>
+											<hlayout
+												sclass="z-valign-bottom">
+												<label
+													class="text-success h6">
+												</label>
+												<textbox visible="false"
+													value="${each.id}" />
+											</hlayout>
+
+										</bs-row>
+										<timer id="timer" delay="1000"
+											running="true" repeats="true" />
+									</window>
 								</n:div>
 							</bs-row>
 

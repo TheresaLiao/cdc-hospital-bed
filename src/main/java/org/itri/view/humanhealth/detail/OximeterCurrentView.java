@@ -1,23 +1,23 @@
 package org.itri.view.humanhealth.detail;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
-import org.zkoss.zul.Label;
+import org.itri.view.humanhealth.hibernate.Patient;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
-import org.itri.view.humanhealth.hibernate.Patient;
 
-public class HeartBeatCurrentView extends SelectorComposer<Window> {
+public class OximeterCurrentView extends SelectorComposer<Window> {
 
 	@Wire("window > bs-row > hlayout > textbox")
 	private Textbox textboxId;
 
 	@Wire("window > bs-row > hlayout > label")
-	private Label heartBeatLabel;
+	private Label oximeterLabel;
 
-	private static String BMP_STR = "bmp";
+	private static String PERSENT_STR = "%";
 
 	private long patientId = 0;
 
@@ -28,23 +28,23 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		super.doAfterCompose(comp);
 
 		setPatientId(textboxId.getValue());
-		heartBeatLabel.setValue(getHeartBeatValueById(getPatientId()) + BMP_STR);
+		oximeterLabel.setValue(getOximeterValueById(getPatientId()) + PERSENT_STR);
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
 
 		setPatientId(textboxId.getValue());
-		heartBeatLabel.setValue(getHeartBeatValueById(getPatientId()) + BMP_STR);
+		oximeterLabel.setValue(getOximeterValueById(getPatientId()) + PERSENT_STR);
 		System.out.println(getPatientId());
 	}
 
-	private String getHeartBeatValueById(long patientId) {
+	private String getOximeterValueById(long patientId) {
 
 		PersonInfosDaoHibernateImpl hqe = new PersonInfosDaoHibernateImpl();
 		Patient rowData = hqe.getPatientById(patientId);
 		if (rowData != null) {
-			return rowData.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData();
+			return rowData.getRtOximeterRecords().stream().findFirst().get().getOximeterData();
 		}
 		System.out.println("patientId :" + patientId + " can't find.");
 		return "NULL";
@@ -58,4 +58,5 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		patientId = Long.parseLong(patientIdStr);
 		this.patientId = patientId;
 	}
+
 }
