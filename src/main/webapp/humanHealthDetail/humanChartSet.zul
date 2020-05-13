@@ -47,7 +47,8 @@
 											</div>
 
 											<!-- right value -->
-											<hlayout sclass="z-valign-bottom">
+											<hlayout
+												sclass="z-valign-bottom">
 												<n:h2 id="h2"
 													class="text-danger">
 													${each.heartBeat}
@@ -206,9 +207,9 @@
 
 			</template>
 		</vlayout>
-		<!-- 
-			<timer id="timer1234" delay="15000" running="true"
+
+		<timer id="timer1234" delay="15000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
-		-->
+
 	</nodom>
 </zk>
