@@ -26,7 +26,6 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 		
 		// Component Setting
 		super.doAfterCompose(comp);
-
 		setPatientId(textboxId.getValue());
 		temperatureLabel.setValue(getTemperatureValueById(getPatientId()) + DEGREE_CELSIUS_STR);
 	}
@@ -36,7 +35,6 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 
 		setPatientId(textboxId.getValue());
 		temperatureLabel.setValue(getTemperatureValueById(getPatientId()) + DEGREE_CELSIUS_STR);
-		System.out.println(getPatientId());
 	}
 
 	private String getTemperatureValueById(long patientId) {

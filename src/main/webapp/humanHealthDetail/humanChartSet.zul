@@ -7,8 +7,8 @@
 				<!-- one person -->
 				<n:div sclass="row rounded col-lg-6 #0093F9">
 
-					<panel xmlns:n="native" title="${each.bedRoom}"
-						border="normal" hflex="1">
+					<panel title="${each.bedRoom}" border="normal"
+						width="100%">
 						<panelchildren>
 
 							<!-- HeartBeat -->
@@ -225,7 +225,6 @@
 
 			</template>
 		</vlayout>
-
 		<timer id="timer1234" delay="15000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
 

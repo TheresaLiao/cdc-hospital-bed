@@ -26,17 +26,14 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 		
 		// Component Setting
 		super.doAfterCompose(comp);
-
 		setPatientId(textboxId.getValue());
 		breathRateLabel.setValue(getBreathRateValueById(getPatientId()) + TIMES_STR);
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
-
 		setPatientId(textboxId.getValue());
 		breathRateLabel.setValue(getBreathRateValueById(getPatientId()) + TIMES_STR);
-		System.out.println(getPatientId());
 	}
 
 	private String getBreathRateValueById(long patientId) {

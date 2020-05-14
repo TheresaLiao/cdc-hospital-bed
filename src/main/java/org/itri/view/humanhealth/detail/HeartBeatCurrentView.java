@@ -23,20 +23,18 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
-		
+
 		// Component Setting
 		super.doAfterCompose(comp);
-
 		setPatientId(textboxId.getValue());
 		heartBeatLabel.setValue(getHeartBeatValueById(getPatientId()) + BMP_STR);
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
-
 		setPatientId(textboxId.getValue());
 		heartBeatLabel.setValue(getHeartBeatValueById(getPatientId()) + BMP_STR);
-		System.out.println(getPatientId());
+
 	}
 
 	private String getHeartBeatValueById(long patientId) {

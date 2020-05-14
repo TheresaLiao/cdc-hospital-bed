@@ -26,17 +26,14 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 		
 		// Component Setting
 		super.doAfterCompose(comp);
-
 		setPatientId(textboxId.getValue());
 		oximeterLabel.setValue(getOximeterValueById(getPatientId()) + PERSENT_STR);
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
-
 		setPatientId(textboxId.getValue());
 		oximeterLabel.setValue(getOximeterValueById(getPatientId()) + PERSENT_STR);
-		System.out.println(getPatientId());
 	}
 
 	private String getOximeterValueById(long patientId) {
