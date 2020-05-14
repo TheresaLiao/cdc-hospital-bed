@@ -11,8 +11,46 @@ public class PersonState {
 	private String breathRate;
 	private Type type;
 	private String bedRoom;
+
+	public String getHeartRateStatus() {
+		return heartRateStatus;
+	}
+
+	public void setHeartRateStatus(String heartRateStatus) {
+		this.heartRateStatus = heartRateStatus;
+	}
+
+	public String getOximeterStatus() {
+		return oximeterStatus;
+	}
+
+	public void setOximeterStatus(String oximeterStatus) {
+		this.oximeterStatus = oximeterStatus;
+	}
+
+	public String getBodyTempStatus() {
+		return bodyTempStatus;
+	}
+
+	public void setBodyTempStatus(String bodyTempStatus) {
+		this.bodyTempStatus = bodyTempStatus;
+	}
+
+	public String getBreathStatus() {
+		return breathStatus;
+	}
+
+	public void setBreathStatus(String breathStatus) {
+		this.breathStatus = breathStatus;
+	}
+
 	private String oximeter;
 	private Integer totalNewsScore;
+
+	private String heartRateStatus;
+	private String oximeterStatus;
+	private String bodyTempStatus;
+	private String breathStatus;
 
 	public Integer getTotalNewsScore() {
 		return totalNewsScore;

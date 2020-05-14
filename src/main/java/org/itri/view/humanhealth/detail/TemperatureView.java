@@ -63,6 +63,7 @@ public class TemperatureView extends SelectorComposer<Component> {
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtTempPadRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
+				nowPoint.setColor("#15CAB4");
 				series.addPoint(nowPoint);
 			}
 		}
@@ -71,7 +72,9 @@ public class TemperatureView extends SelectorComposer<Component> {
 	@Listen("onTimer = #timer")
 	public void updateData() {
 		setPatientId(textboxId.getValue());
-		chart.getSeries().addPoint(getRtTempPadRecordList(getPatientId()), true, true, true);
+		Point nowPoint = getRtTempPadRecordList(getPatientId());
+		nowPoint.setColor("#15CAB4");
+		chart.getSeries().addPoint(nowPoint, true, true, true);
 	}
 
 	public long getPatientId() {

@@ -52,6 +52,7 @@ public class OximeterView extends SelectorComposer<Component> {
 		chart.getExporting().setEnabled(false);
 		Series series = chart.getSeries();
 		series.setName("Oximeter");
+		series.setColor("#0093f9");
 
 		setPatientId(textboxId.getValue());
 
@@ -66,6 +67,7 @@ public class OximeterView extends SelectorComposer<Component> {
 
 				Point nowPoint = getRtOximeterRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
+				nowPoint.setColor("#0093f9");
 				series.addPoint(nowPoint);
 			}
 		}
@@ -74,7 +76,9 @@ public class OximeterView extends SelectorComposer<Component> {
 	@Listen("onTimer = #timer")
 	public void updateData() {
 		setPatientId(textboxId.getValue());
-		chart.getSeries().addPoint(getRtOximeterRecordList(getPatientId()), true, true, true);
+		Point nowPoint = getRtOximeterRecordList(getPatientId());
+		nowPoint.setColor("#0093f9");
+		chart.getSeries().addPoint(nowPoint, true, true, true);
 	}
 
 	public long getPatientId() {

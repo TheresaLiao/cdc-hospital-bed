@@ -6,9 +6,14 @@
 
 				<!-- one person -->
 				<n:div sclass="row rounded col-lg-6 #0093F9">
+					<style>.test { font-size: 40px; }</style>
 
 					<panel title="${each.bedRoom}" border="normal"
 						width="100%">
+						<caption sclass="test">
+							<label value="" />
+						</caption>
+
 						<panelchildren>
 
 							<!-- HeartBeat -->

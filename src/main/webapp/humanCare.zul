@@ -9,23 +9,9 @@
 		width="100%">
 		<bs-row>
 			<!-- Navigation -->
-			<!-- 
-				<n:div sclass="col-12 container-fluid">
-				<div hflex="1">
-				<apply templateURI="longBar.zul" />
-				</div>
-				</n:div>
-			-->
 			<apply templateURI="longBar.zul" />
 
-			<!-- floor : select floor-->
-			<!-- 
-				<n:div sclass="col-12 container-fluid">
-				<div hflex="1">
-				<apply templateURI="floorMenu.zul" />
-				</div>
-				</n:div>
-			-->
+			<label id="now" sclass="time" />
 			<!-- Main Page -->
 			<n:div sclass="col-12 container-fluid">
 				<div width="100%">

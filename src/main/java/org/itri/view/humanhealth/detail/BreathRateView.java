@@ -75,6 +75,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
+				nowPoint.setColor("#ffffff");
 				series.addPoint(nowPoint);
 			}
 		}
@@ -83,7 +84,9 @@ public class BreathRateView extends SelectorComposer<Component> {
 	@Listen("onTimer = #timer")
 	public void updateData() {
 		setPatientId(textboxId.getValue());
-		chart.getSeries().addPoint(getRtHeartRhythmRecordList(getPatientId()), true, true, true);
+		Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
+		nowPoint.setColor("#ffffff");
+		chart.getSeries().addPoint(nowPoint, true, true, true);
 	}
 
 	public long getPatientId() {

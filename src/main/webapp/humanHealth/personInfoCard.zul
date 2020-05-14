@@ -1,64 +1,80 @@
-<zk xmlns:n="native">
+<zk xmlns:n="native" xmlns:z="zul">
 	<nodom
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.PersonInfoView')">
 		<vlayout children="@bind(vm.personStateList)" spacing="0">
 			<template name="children">
 
-				<zk xmlns="native" xmlns:z="zul">
-					<div class="person-info rounded col-lg-2 #FFFFFF">
-						<div class="row">
+				<!-- one person -->
+				<n:div class="person-info rounded col-lg-2 #0093F9">
+					<div class="row">
 
-							<!-- Left icon -->
-							<div
-								class="col-4 text-left text-margin #FFFFFF">
-								<!-- Name -->
-								<h6 class="text-white">
-									${each.bedRoom}
-								</h6>
-								<image id="totalStatusImg"
-									src="${each.totalStatus}" />
-							</div>
+						<!-- Left icon -->
+						<n:div
+							class="col-4 text-left text-margin #FFFFFF">
+							<!-- Name -->
+							<label class="text-white h6">
+								${each.bedRoom}
+							</label>
+							<image src="${each.totalStatus}" />
+						</n:div>
 
-							<!-- Right icon -->
-							<div class="col-8 px-1">
-
+						<!-- Right icon -->
+						<div
+							sclass="col p-10 background-color: #000000 ;">
+							<window style="padding: 0px;" class="col"
+								apply="org.itri.view.humanhealth.PersonInfoHightLightView">
 								<!-- heartBeat -->
-								<div class="row">
-									<h3 class="text-danger">
+								<div id="heartBeatDiv">
+									<label id="heartBeatLabel"
+										class="h3">
 										hr:${each.heartBeat} bpm
-									</h3>
+									</label>
+									<textbox id="heartBeatStatusText"
+										visible="false" value="${each.heartRateStatus}" />
 								</div>
 
-								<!-- spo2 -->
-								<div class="row">
-									<h3 class="text-primary">
+								<!-- oximeter -->
+								<div id="oximeterDiv">
+									<label id="oximeterLabel"
+										class="h3">
 										SpO2:${each.oximeter}%
-									</h3>
+									</label>
+									<textbox id="oximeterStatusTextbox"
+										visible="false" value="${each.oximeterStatus}" />
 								</div>
 
 								<!-- breathRate -->
-								<div class="row">
-									<h6 class="text-white">
+								<div id="breathRateDiv">
+									<label id="breathRateLabel"
+										class="h6">
 										Rr: ${each.breathRate} 次
-									</h6>
+									</label>
+									<textbox id="breathStatusTextbox"
+										visible="false" value="${each.breathStatus}" />
 								</div>
 
 								<!-- bodyTemperature -->
-								<div class="row">
-									<h6 class="text-success">
+								<div id="tempDiv">
+									<label id="tempLabel" class="h6">
 										Temp: ${each.bodyTemperature} °C
-									</h6>
+									</label>
+									<textbox id="bodyTempStatusTextbox"
+										visible="false" value="${each.bodyTempStatus}" />
 								</div>
-							</div>
+								<timer id="timer" delay="1000"
+									running="true" repeats="true" />
+							</window>
 						</div>
+
 					</div>
-				</zk>
+				</n:div>
+
 
 			</template>
 		</vlayout>
-
-		<timer id="timer1234" delay="1000" running="true" repeats="true"
+		<!-- 
+			<timer id="timer1234" delay="1000" running="true" repeats="true"
 			onTimer="@command('refreshInfo')" />
-
+		-->
 	</nodom>
 </zk>

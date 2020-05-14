@@ -50,15 +50,18 @@ public class PersonInfoView {
 			patient.setOximeter(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 			patient.setBreathRate(p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 			patient.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
+			patient.setTotalNewsScore(p.getTotalNewsScore());
+
+			patient.setHeartRateStatus(p.getHeartRateStatus());
+			patient.setOximeterStatus(p.getOximeterStatus());
+			patient.setBreathStatus(p.getBreathStatus());
+			patient.setBodyTempStatus(p.getBodyTempStatus());
 
 			patient.setTotalStatus(NORMAL_PATH);
-			if ((p.getHeartRateStatus().equals("W") && p.getBodyTempStatus().equals("W"))
-					|| (p.getHeartRateStatus().equals("W") && p.getBreathStatus().equals("W"))
-					|| (p.getBodyTempStatus().equals("W") && p.getBreathStatus().equals("W"))) {
+			if (patient.getTotalNewsScore() > 7) {
 				patient.setTotalStatus(WARNING_PATH);
 			}
 
-			
 			personStateList.add(patient);
 		}
 	}

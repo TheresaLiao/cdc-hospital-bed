@@ -52,6 +52,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		chart.getExporting().setEnabled(false);
 		Series series = chart.getSeries();
 		series.setName("Heart Beat data");
+		series.setColor("#ff4051");
 
 		setPatientId(textboxId.getValue());
 
@@ -66,6 +67,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
+				nowPoint.setColor("#ff4051");
 				series.addPoint(nowPoint);
 			}
 		}
@@ -74,7 +76,8 @@ public class HeartBeatView extends SelectorComposer<Window> {
 	@Listen("onTimer = #timer")
 	public void updateData() {
 		setPatientId(textboxId.getValue());
-		chart.getSeries().addPoint(getRtHeartRhythmRecordList(getPatientId()), true, true, true);
+		Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
+		chart.getSeries().addPoint(nowPoint, true, true, true);
 	}
 
 	public long getPatientId() {
