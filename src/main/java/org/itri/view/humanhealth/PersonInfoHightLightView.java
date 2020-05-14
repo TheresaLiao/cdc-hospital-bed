@@ -55,11 +55,7 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
-//		lb.setValue("The message label");
-
-		// System.out.println(heartRateDiv);
-		// heartRateDiv.setStyle("background-color: #A6C3EA");
-		// System.out.println(Label);
+		comp.setContentStyle("background: " + BLACK_HASH);
 
 		heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
 		oximeterDiv.setStyle("background-color: " + BLACK_HASH);

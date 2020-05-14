@@ -19,9 +19,10 @@
 						</n:div>
 
 						<!-- Right icon -->
-						<div
-							sclass="col p-10 background-color: #000000 ;">
-							<window style="padding: 0px;" class="col"
+						<div sclass="col p-10 ">
+							<window
+								style="padding: 0px; z-window-content background: black;"
+								class="col"
 								apply="org.itri.view.humanhealth.PersonInfoHightLightView">
 								<!-- heartBeat -->
 								<div id="heartBeatDiv">
@@ -72,9 +73,9 @@
 
 			</template>
 		</vlayout>
-		<!-- 
-			<timer id="timer1234" delay="1000" running="true" repeats="true"
+
+		<timer id="timer1234" delay="1000" running="true" repeats="true"
 			onTimer="@command('refreshInfo')" />
-		-->
+
 	</nodom>
 </zk>

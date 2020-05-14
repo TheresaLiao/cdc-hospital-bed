@@ -40,7 +40,7 @@ public class OximeterView extends SelectorComposer<Component> {
 		chart.setBackgroundColor("black");
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
-		chart.getYAxis().setTitle("mmHg");
+		chart.getYAxis().setTitle("%");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);

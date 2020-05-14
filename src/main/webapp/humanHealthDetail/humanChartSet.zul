@@ -23,7 +23,7 @@
 									class="col"
 									apply="org.itri.view.humanhealth.detail.HeartBeatView">
 									<charts id="chart" type="spline"
-										height="100" title="" width="700" />
+										height="100" title="" width="600" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -39,24 +39,23 @@
 											<!-- left spec -->
 											<div
 												class="col-3 text-left ">
-												<n:h6
-													class="text-danger font-weight-bold">
+												<label id="hrLabel"
+													class=" h6">
 													hr
-												</n:h6>
-												<n:h6
-													class="text-danger">
+												</label>
+												<label id="heightLabel"
+													class=" h6">
 													100
-												</n:h6>
-												<n:h6
-													class="text-danger">
+												</label>
+												<label id="lowLabel"
+													class=" h6">
 													55
-												</n:h6>
+												</label>
 											</div>
 
 											<!-- right value -->
-											<vlayout>
-												<label
-													class="text-danger h2">
+											<vlayout class="col">
+												<label class="h2">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
@@ -76,7 +75,7 @@
 									class="col"
 									apply="org.itri.view.humanhealth.detail.OximeterView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="700" />
+										title="" height="100" width="600" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -91,25 +90,24 @@
 
 											<!-- left spec -->
 											<div
-												class="col-3 text-left">
-												<n:h6
-													class="text-primary font-weight-bold">
+												class="col-3 text-left ">
+												<label id="hrLabel"
+													class=" h6">
 													SpO2
-												</n:h6>
-												<n:h6
-													class="text-primary">
+												</label>
+												<label id="heightLabel"
+													class=" h6">
 													100
-												</n:h6>
-												<n:h6
-													class="text-primary">
+												</label>
+												<label id="lowLabel"
+													class=" h6">
 													90
-												</n:h6>
+												</label>
 											</div>
 
 											<!-- right value -->
-											<vlayout class="px-4">
-												<label
-													class="text-primary h3">
+											<vlayout class="col px-4">
+												<label class="h3">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
@@ -129,7 +127,7 @@
 									class="col"
 									apply="org.itri.view.humanhealth.detail.BreathRateView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="700" />
+										title="" height="100" width="600" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -144,25 +142,24 @@
 
 											<!-- left spec -->
 											<div
-												class="col-3 text-left">
-												<n:h6
-													class="text-white font-weight-bold">
-													Rr
-												</n:h6>
-												<n:h6
-													class="text-white">
+												class="col-3 text-left ">
+												<label id="hrLabel"
+													class=" h6">
+													Br
+												</label>
+												<label id="heightLabel"
+													class=" h6">
 													20
-												</n:h6>
-												<n:h6
-													class="text-white">
+												</label>
+												<label id="lowLabel"
+													class=" h6">
 													10
-												</n:h6>
+												</label>
 											</div>
 
 											<!-- right value -->
-											<vlayout class="px-4">
-												<label
-													class="text-white h6">
+											<vlayout class="col px-4">
+												<label class="h6">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
@@ -181,7 +178,7 @@
 									class="col"
 									apply="org.itri.view.humanhealth.detail.TemperatureView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="700" />
+										title="" height="100" width="600" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -196,25 +193,24 @@
 
 											<!-- left spec -->
 											<div
-												class="col-3 text-left">
-												<n:h6
-													class="text-success font-weight-bold">
-													Temp
-												</n:h6>
-												<n:h6
-													class="text-success">
+												class="col-3 text-left ">
+												<label id="hrLabel"
+													class=" h6">
+													Br
+												</label>
+												<label id="heightLabel"
+													class=" h6">
 													39.0
-												</n:h6>
-												<n:h6
-													class="text-success">
+												</label>
+												<label id="lowLabel"
+													class=" h6">
 													36.0
-												</n:h6>
+												</label>
 											</div>
 
 											<!-- right value -->
-											<vlayout class="px-4">
-												<label
-													class="text-success h6">
+											<vlayout class="col px-4">
+												<label class="h6">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
