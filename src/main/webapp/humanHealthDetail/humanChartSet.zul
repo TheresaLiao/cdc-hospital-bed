@@ -173,10 +173,10 @@
 							<bs-row>
 								<!-- Chart -->
 								<window style="padding: 0px;"
-								class="col"
+									class="col"
 									apply="org.itri.view.humanhealth.detail.TemperatureView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="700"/>
+										title="" height="100" width="700" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -228,9 +228,9 @@
 
 			</template>
 		</vlayout>
-		<!-- 
-			<timer id="timer1234" delay="15000" running="true"
+
+		<timer id="timer1234" delay="15000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
-		-->
+
 	</nodom>
 </zk>
