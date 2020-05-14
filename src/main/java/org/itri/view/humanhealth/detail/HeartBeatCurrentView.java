@@ -11,10 +11,10 @@ import org.itri.view.humanhealth.hibernate.Patient;
 
 public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > hlayout > textbox")
+	@Wire("window > bs-row > vlayout > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > hlayout > label")
+	@Wire("window > bs-row > vlayout > label")
 	private Label heartBeatLabel;
 
 	private static String BMP_STR = "bmp";
@@ -34,7 +34,6 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	public void updateData() {
 		setPatientId(textboxId.getValue());
 		heartBeatLabel.setValue(getHeartBeatValueById(getPatientId()) + BMP_STR);
-
 	}
 
 	private String getHeartBeatValueById(long patientId) {

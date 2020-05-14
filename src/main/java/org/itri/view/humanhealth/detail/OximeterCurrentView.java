@@ -11,10 +11,10 @@ import org.zkoss.zul.Window;
 
 public class OximeterCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > hlayout > textbox")
+	@Wire("window > bs-row > vlayout > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > hlayout > label")
+	@Wire("window > bs-row > vlayout > label")
 	private Label oximeterLabel;
 
 	private static String PERSENT_STR = "%";

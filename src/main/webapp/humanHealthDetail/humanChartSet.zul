@@ -15,9 +15,10 @@
 							<bs-row>
 								<!-- Chart -->
 								<window style="padding: 0px;"
+									class="col"
 									apply="org.itri.view.humanhealth.detail.HeartBeatView">
 									<charts id="chart" type="spline"
-										height="100" title="" />
+										height="100" title="" width="700" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -25,13 +26,14 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col-3 p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.HeartBeatCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div class="col-3">
+											<div
+												class="col-3 text-left ">
 												<n:h6
 													class="text-danger font-weight-bold">
 													hr
@@ -47,14 +49,13 @@
 											</div>
 
 											<!-- right value -->
-											<hlayout
-												sclass="align-middle">
+											<vlayout>
 												<label
 													class="text-danger h2">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
-											</hlayout>
+											</vlayout>
 										</bs-row>
 										<timer id="timer" delay="1000"
 											running="true" repeats="true" />
@@ -67,9 +68,10 @@
 							<bs-row>
 								<!-- Chart -->
 								<window style="padding: 0px;"
+									class="col"
 									apply="org.itri.view.humanhealth.detail.OximeterView">
 									<charts id="chart" type="spline"
-										title="" height="100" />
+										title="" height="100" width="700" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -77,13 +79,14 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col-3 p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.OximeterCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div class="col-3">
+											<div
+												class="col-3 text-left">
 												<n:h6
 													class="text-primary font-weight-bold">
 													SpO2
@@ -99,14 +102,13 @@
 											</div>
 
 											<!-- right value -->
-											<hlayout
-												sclass="z-valign-bottom">
+											<vlayout class="px-4">
 												<label
-													class="text-primary h2">
+													class="text-primary h3">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
-											</hlayout>
+											</vlayout>
 										</bs-row>
 										<timer id="timer" delay="1000"
 											running="true" repeats="true" />
@@ -119,9 +121,10 @@
 							<bs-row>
 								<!-- Chart -->
 								<window style="padding: 0px;"
+									class="col"
 									apply="org.itri.view.humanhealth.detail.BreathRateView">
 									<charts id="chart" type="spline"
-										title="" height="100" />
+										title="" height="100" width="700" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -129,13 +132,14 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col-3 p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.BreathRateCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div class="col-3">
+											<div
+												class="col-3 text-left">
 												<n:h6
 													class="text-white font-weight-bold">
 													Rr
@@ -151,14 +155,13 @@
 											</div>
 
 											<!-- right value -->
-											<hlayout
-												sclass="z-valign-bottom">
+											<vlayout class="px-4">
 												<label
 													class="text-white h6">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
-											</hlayout>
+											</vlayout>
 										</bs-row>
 										<timer id="timer" delay="1000"
 											running="true" repeats="true" />
@@ -170,9 +173,10 @@
 							<bs-row>
 								<!-- Chart -->
 								<window style="padding: 0px;"
+								class="col"
 									apply="org.itri.view.humanhealth.detail.TemperatureView">
 									<charts id="chart" type="spline"
-										title="" height="100" />
+										title="" height="100" width="700"/>
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -180,13 +184,14 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col-3 p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.TemperatureCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div class="col-3">
+											<div
+												class="col-3 text-left">
 												<n:h6
 													class="text-success font-weight-bold">
 													Temp
@@ -202,15 +207,13 @@
 											</div>
 
 											<!-- right value -->
-											<hlayout
-												sclass="z-valign-bottom">
+											<vlayout class="px-4">
 												<label
 													class="text-success h6">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
-											</hlayout>
-
+											</vlayout>
 										</bs-row>
 										<timer id="timer" delay="1000"
 											running="true" repeats="true" />
@@ -225,8 +228,9 @@
 
 			</template>
 		</vlayout>
-		<timer id="timer1234" delay="15000" running="true"
+		<!-- 
+			<timer id="timer1234" delay="15000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
-
+		-->
 	</nodom>
 </zk>
