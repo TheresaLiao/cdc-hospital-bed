@@ -48,7 +48,7 @@
 
 											<!-- right value -->
 											<hlayout
-												sclass="z-valign-bottom">
+												sclass="align-middle">
 												<label
 													class="text-danger h2">
 												</label>

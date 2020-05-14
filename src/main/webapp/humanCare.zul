@@ -5,15 +5,18 @@
 
 <zk xmlns:n="native">
 	<style>body { background-color: #000000; }</style>
-	<hlayout viewModel="@id('vm')@init('org.itri.view.admin.MainView')"
+	<vlayout viewModel="@id('vm')@init('org.itri.view.admin.MainView')"
 		width="100%">
 		<bs-row>
 			<!-- Navigation -->
-			<n:div sclass="col-12 container-fluid">
+			<!-- 
+				<n:div sclass="col-12 container-fluid">
 				<div hflex="1">
-					<apply templateURI="longBar.zul" />
+				<apply templateURI="longBar.zul" />
 				</div>
-			</n:div>
+				</n:div>
+			-->
+			<apply templateURI="longBar.zul" />
 
 			<!-- floor : select floor-->
 			<!-- 
@@ -25,11 +28,11 @@
 			-->
 			<!-- Main Page -->
 			<n:div sclass="col-12 container-fluid">
-				<div sclass="container-fluid" hflex="1">
+				<div width="100%">
 					<apply
 						templateURI="@load(vm.navigationModel.contentUrl)" />
 				</div>
 			</n:div>
 		</bs-row>
-	</hlayout>
+	</vlayout>
 </zk>
