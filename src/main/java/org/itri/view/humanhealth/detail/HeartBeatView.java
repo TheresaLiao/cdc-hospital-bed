@@ -57,7 +57,6 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());
-
 		for (Point p : histData) {
 			series.addPoint(p);
 		}
@@ -113,7 +112,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 			String data = tt.getHeartRateData();
 			Date time = tt.getLastUpdated();
 
-			return new Point(new Date().getTime(), Double.valueOf(data));
+			return new Point(time.getTime(), Double.valueOf(data));
 
 		}
 		return new Point(new Date().getTime(), 0);
