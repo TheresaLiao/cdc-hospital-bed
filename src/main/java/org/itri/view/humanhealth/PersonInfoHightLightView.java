@@ -57,49 +57,72 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 		super.doAfterCompose(comp);
 		comp.setContentStyle("background: " + BLACK_HASH);
 
-		heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
-		oximeterDiv.setStyle("background-color: " + BLACK_HASH);
-		breathRateDiv.setStyle("background-color: " + BLACK_HASH);
-		tempDiv.setStyle("background-color: " + BLACK_HASH);
+		if (heartBeatStatusText.getValue().equals("W")) {
+			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
+			heartBeatLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
+			heartBeatLabel.setStyle("color: " + DANGER_HASH);
+		}
 
-		heartBeatLabel.setStyle("color: " + DANGER_HASH);
-		oximeterLabel.setStyle("color: " + PRIMARY_HASH);
-		breathRateLabel.setStyle("color: " + WHITE_HASH);
-		tempLabel.setStyle("color: " + SUCCESS_HASH);
+		if (oximeterStatusTextbox.getValue().equals("W")) {
+			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
+			oximeterLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			oximeterDiv.setStyle("background-color: " + BLACK_HASH);
+			oximeterLabel.setStyle("color: " + PRIMARY_HASH);
+		}
+
+		if (breathStatusTextbox.getValue().equals("W")) {
+			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
+			breathRateLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			breathRateDiv.setStyle("background-color: " + BLACK_HASH);
+			breathRateLabel.setStyle("color: " + WHITE_HASH);
+		}
+
+		if (bodyTempStatusTextbox.getValue().equals("W")) {
+			tempDiv.setStyle("background-color: " + SUCCESS_HASH);
+			tempLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			tempDiv.setStyle("background-color: " + BLACK_HASH);
+			tempLabel.setStyle("color: " + SUCCESS_HASH);
+		}
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
 
-		heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
-		oximeterDiv.setStyle("background-color: " + BLACK_HASH);
-		breathRateDiv.setStyle("background-color: " + BLACK_HASH);
-		tempDiv.setStyle("background-color: " + BLACK_HASH);
-
-		heartBeatLabel.setStyle("color: " + DANGER_HASH);
-		oximeterLabel.setStyle("color: " + PRIMARY_HASH);
-		breathRateLabel.setStyle("color: " + WHITE_HASH);
-		tempLabel.setStyle("color: " + SUCCESS_HASH);
-
-		System.out.println(heartBeatStatusText.getValue() + "," + oximeterStatusTextbox.getValue() + ","
-				+ breathRateLabel.getValue() + "," + tempLabel.getValue());
-
 		if (heartBeatStatusText.getValue().equals("W")) {
 			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
-
+		} else {
+			heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
+			heartBeatLabel.setStyle("color: " + DANGER_HASH);
 		}
+
 		if (oximeterStatusTextbox.getValue().equals("W")) {
 			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
 			oximeterLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			oximeterDiv.setStyle("background-color: " + BLACK_HASH);
+			oximeterLabel.setStyle("color: " + PRIMARY_HASH);
 		}
+
 		if (breathStatusTextbox.getValue().equals("W")) {
 			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			breathRateDiv.setStyle("background-color: " + BLACK_HASH);
+			breathRateLabel.setStyle("color: " + WHITE_HASH);
 		}
+
 		if (bodyTempStatusTextbox.getValue().equals("W")) {
 			tempDiv.setStyle("background-color: " + SUCCESS_HASH);
 			tempLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			tempDiv.setStyle("background-color: " + BLACK_HASH);
+			tempLabel.setStyle("color: " + SUCCESS_HASH);
 		}
 
 	}
