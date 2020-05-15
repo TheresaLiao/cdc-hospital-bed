@@ -53,11 +53,9 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		Series series = chart.getSeries();
 		series.setName("Heart Beat data");
 
-	
 		setPatientId(textboxId.getValue());
-		series.setColorByPoint(true);
 		chart.setColors("#ff4051");
-		chart.getXAxis().setShowEmpty(true);
+		
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());

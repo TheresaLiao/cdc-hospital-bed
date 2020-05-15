@@ -51,9 +51,8 @@ public class OximeterView extends SelectorComposer<Component> {
 		chart.getLegend().setEnabled(false);
 		chart.getExporting().setEnabled(false);
 		Series series = chart.getSeries();
+		
 		series.setName("Oximeter");
-		series.setColor("#0093f9");
-
 		setPatientId(textboxId.getValue());
 
 		// init point
