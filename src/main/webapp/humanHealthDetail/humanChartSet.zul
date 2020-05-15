@@ -61,7 +61,7 @@
 													value="${each.id}" />
 											</vlayout>
 										</bs-row>
-										<timer id="timer" delay="1000"
+										<timer id="timer" delay="100"
 											running="true" repeats="true" />
 									</window>
 								</n:div>
@@ -113,7 +113,7 @@
 													value="${each.id}" />
 											</vlayout>
 										</bs-row>
-										<timer id="timer" delay="1000"
+										<timer id="timer" delay="100"
 											running="true" repeats="true" />
 									</window>
 								</n:div>
@@ -216,7 +216,7 @@
 													value="${each.id}" />
 											</vlayout>
 										</bs-row>
-										<timer id="timer" delay="1000"
+										<timer id="timer" delay="100"
 											running="true" repeats="true" />
 									</window>
 								</n:div>

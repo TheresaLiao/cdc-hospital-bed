@@ -61,8 +61,8 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 	@Listen("onTimer = #timer")
 	public void updateData() {
 		setPatientId(textboxId.getValue());
-		String data = getBreathRateValueById(getPatientId());
-		breathRateLabel.setValue(data + TIMES_STR);
+		String dataStr = getBreathRateValueById(getPatientId());
+		breathRateLabel.setValue(dataStr + TIMES_STR);
 		
 		breathRateDiv.setStyle("background-color: " + GRAY_HASH);
 		vlayout.setStyle("background-color: " + GRAY_HASH);
@@ -72,7 +72,11 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 		lowLabel.setStyle("color: " + WHITE_HASH);
 		breathRateLabel.setStyle("color: " + WHITE_HASH);
 		
-		if (Float.valueOf(data) > 100 && Float.valueOf(data) < 90) {
+		double data = Double.valueOf(dataStr);
+		Double heightData = Double.valueOf("20");
+		Double lowData = Double.valueOf("10");
+		
+		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 		
 			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
 			vlayout.setStyle("background-color: " + WHITE_HASH);

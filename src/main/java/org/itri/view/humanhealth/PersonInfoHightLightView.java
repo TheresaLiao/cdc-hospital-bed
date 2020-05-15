@@ -81,9 +81,13 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 		breathRateLabel.setStyle("color: " + WHITE_HASH);
 		tempLabel.setStyle("color: " + SUCCESS_HASH);
 
+		System.out.println(heartBeatStatusText.getValue() + "," + oximeterStatusTextbox.getValue() + ","
+				+ breathRateLabel.getValue() + "," + tempLabel.getValue());
+
 		if (heartBeatStatusText.getValue().equals("W")) {
 			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
+
 		}
 		if (oximeterStatusTextbox.getValue().equals("W")) {
 			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);

@@ -61,8 +61,8 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	@Listen("onTimer = #timer")
 	public void updateData() {
 		setPatientId(textboxId.getValue());
-		String data = getHeartBeatValueById(getPatientId());
-		heartBeatLabel.setValue(data + BMP_STR);
+		String dataStr = getHeartBeatValueById(getPatientId());
+		heartBeatLabel.setValue(dataStr + BMP_STR);
 
 		heartBeatDiv.setStyle("background-color: " + GRAY_HASH);
 		vlayout.setStyle("background-color: " + GRAY_HASH);
@@ -72,8 +72,12 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		lowLabel.setStyle("color: " + DANGER_HASH);
 		heartBeatLabel.setStyle("color: " + DANGER_HASH);
 
-		if (Float.valueOf(data) > 100 && Float.valueOf(data) < 55) {
-		
+		double data = Double.valueOf(dataStr);
+		Double heightData = Double.valueOf("100");
+		Double lowData = Double.valueOf("55");
+
+		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
+
 			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
 			vlayout.setStyle("background-color: " + DANGER_HASH);
 

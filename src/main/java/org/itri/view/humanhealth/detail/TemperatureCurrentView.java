@@ -62,9 +62,9 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 	public void updateData() {
 
 		setPatientId(textboxId.getValue());
-		String data = getTemperatureValueById(getPatientId());
-		temperatureLabel.setValue(data + DEGREE_CELSIUS_STR);
-		
+		String dataStr = getTemperatureValueById(getPatientId());
+		temperatureLabel.setValue(dataStr + DEGREE_CELSIUS_STR);
+
 		tempDiv.setStyle("background-color: " + GRAY_HASH);
 		vlayout.setStyle("background-color: " + GRAY_HASH);
 
@@ -72,10 +72,13 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 		heightLabel.setStyle("color: " + SUCCESS_HASH);
 		lowLabel.setStyle("color: " + SUCCESS_HASH);
 		temperatureLabel.setStyle("color: " + SUCCESS_HASH);
-		
-		
-		if (Float.valueOf(data) > 39100 && Float.valueOf(data) < 36) {
-		
+
+		double data = Double.valueOf(dataStr);
+		Double heightData = Double.valueOf("39");
+		Double lowData = Double.valueOf("36");
+
+		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
+
 			tempDiv.setStyle("background-color: " + SUCCESS_HASH);
 			vlayout.setStyle("background-color: " + SUCCESS_HASH);
 
@@ -84,7 +87,7 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 			lowLabel.setStyle("color: " + WHITE_HASH);
 			temperatureLabel.setStyle("color: " + WHITE_HASH);
 		}
-		
+
 	}
 
 	private String getTemperatureValueById(long patientId) {

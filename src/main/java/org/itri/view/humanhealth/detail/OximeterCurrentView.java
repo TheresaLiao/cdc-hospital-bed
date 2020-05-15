@@ -61,8 +61,8 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 	@Listen("onTimer = #timer")
 	public void updateData() {
 		setPatientId(textboxId.getValue());
-		String data = getOximeterValueById(getPatientId());
-		oximeterLabel.setValue(data+ PERSENT_STR);
+		String dataStr = getOximeterValueById(getPatientId());
+		oximeterLabel.setValue(dataStr+ PERSENT_STR);
 
 		oximeterDiv.setStyle("background-color: " + GRAY_HASH);
 		vlayout.setStyle("background-color: " + GRAY_HASH);
@@ -72,7 +72,11 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 		lowLabel.setStyle("color: " + PRIMARY_HASH);
 		oximeterLabel.setStyle("color: " + PRIMARY_HASH);
 		
-		if (Float.valueOf(data) > 100 && Float.valueOf(data) < 90) {
+		double data = Double.valueOf(dataStr);
+		Double heightData = Double.valueOf("100");
+		Double lowData = Double.valueOf("90");
+		
+		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 	
 			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
 			vlayout.setStyle("background-color: " + PRIMARY_HASH);
