@@ -38,7 +38,6 @@ public class PersonInfoView {
 	}
 
 	private void queryStates() {
-
 		List<Patient> patientList = hqe.getPatientList();
 		personStateList = new LinkedList<>();
 		for (Patient p : patientList) {

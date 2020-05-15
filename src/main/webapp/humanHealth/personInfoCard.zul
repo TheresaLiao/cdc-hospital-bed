@@ -6,7 +6,7 @@
 
 				<!-- one person -->
 				<n:div class="person-info rounded col-lg-2 #0093F9">
-					<div class="row">
+					<div class="row" >
 
 						<!-- Left icon -->
 						<n:div
@@ -19,7 +19,7 @@
 						</n:div>
 
 						<!-- Right icon -->
-						<div sclass="col p-10 ">
+						<div sclass="col p-1 ">
 							<window
 								style="padding: 0px; z-window-content background: black;"
 								class="col"
@@ -62,8 +62,10 @@
 									<textbox id="bodyTempStatusTextbox"
 										visible="false" value="${each.bodyTempStatus}" />
 								</div>
-								<timer id="timer" delay="100"
+								<!-- 
+									<timer id="timer" delay="100"
 									running="true" repeats="true" />
+								-->
 							</window>
 						</div>
 
@@ -73,9 +75,9 @@
 
 			</template>
 		</vlayout>
-
-		<timer id="timer1234" delay="1000" running="true" repeats="true"
+		<!-- 
+			<timer delay="1000" running="true" repeats="true"
 			onTimer="@command('refreshInfo')" />
-
+		-->
 	</nodom>
 </zk>
