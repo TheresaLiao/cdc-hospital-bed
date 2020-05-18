@@ -33,6 +33,10 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		// Component Setting
 		super.doAfterCompose(comp);
 
+		// set PatientId
+		setPatientId(textboxId.getValue());
+
+		// set charts
 		Options options = new Options();
 		options.getGlobal().setUseUTC(false);
 		chart.setOptions(options);
@@ -40,7 +44,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		chart.setBackgroundColor("black");
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
-		chart.getYAxis().setTitle("bmp");
+		chart.getYAxis().setTitle("");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
@@ -53,9 +57,10 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		Series series = chart.getSeries();
 		series.setName("Heart Beat data");
 
-		setPatientId(textboxId.getValue());
 		chart.setColors("#ff4051");
-		
+		chart.setIgnoreHiddenSeries(true);
+		chart.getYAxis().setMinorTickInterval(0.1);
+//		System.out.println();
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());

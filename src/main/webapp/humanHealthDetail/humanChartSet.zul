@@ -6,21 +6,20 @@
 
 				<!-- one person -->
 				<n:div sclass="row rounded col-lg-6 #0093F9">
-					<style>.test { font-size: 40px; }</style>
+					<style>.titleStyle { font-size: 40px; }</style>
 
 					<panel title="${each.bedRoom}" border="normal"
 						width="100%">
-						<caption sclass="test">
+						<caption sclass="titleStyle">
 							<label value="" />
 						</caption>
 
 						<panelchildren>
-
 							<!-- HeartBeat -->
-							<bs-row>
+							<bs-row class="row py-0">
+
 								<!-- Chart -->
 								<window style="padding: 0px;"
-									class="col"
 									apply="org.itri.view.humanhealth.detail.HeartBeatView">
 									<charts id="chart" type="spline"
 										height="100" title="" width="600" />
@@ -31,7 +30,7 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col-3 p-1">
+								<n:div sclass="col p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.HeartBeatCurrentView">
 										<bs-row class="row col px-1">
@@ -69,10 +68,9 @@
 
 
 							<!-- oximeter -->
-							<bs-row>
+							<bs-row class="row py-0">
 								<!-- Chart -->
 								<window style="padding: 0px;"
-									class="col"
 									apply="org.itri.view.humanhealth.detail.OximeterView">
 									<charts id="chart" type="spline"
 										title="" height="100" width="600" />
@@ -83,7 +81,7 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col-3 p-1">
+								<n:div sclass="col p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.OximeterCurrentView">
 										<bs-row class="row col px-1">
@@ -121,10 +119,9 @@
 
 
 							<!-- BreathRate -->
-							<bs-row>
+							<bs-row class="row py-0">
 								<!-- Chart -->
 								<window style="padding: 0px;"
-									class="col"
 									apply="org.itri.view.humanhealth.detail.BreathRateView">
 									<charts id="chart" type="spline"
 										title="" height="100" width="600" />
@@ -135,7 +132,7 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col-3 p-1">
+								<n:div sclass="col p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.BreathRateCurrentView">
 										<bs-row class="row col px-1">
@@ -172,10 +169,9 @@
 							</bs-row>
 
 							<!-- Temperature -->
-							<bs-row>
+							<bs-row class="row py-0">
 								<!-- Chart -->
 								<window style="padding: 0px;"
-									class="col"
 									apply="org.itri.view.humanhealth.detail.TemperatureView">
 									<charts id="chart" type="spline"
 										title="" height="100" width="600" />
@@ -186,7 +182,7 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col-3 p-1">
+								<n:div sclass="col p-1">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.TemperatureCurrentView">
 										<bs-row class="row col px-1">

@@ -41,29 +41,24 @@ public class BreathRateView extends SelectorComposer<Component> {
 		options.getGlobal().setUseUTC(false);
 		chart.setOptions(options);
 		chart.setAnimation(true);
-
 		chart.setBackgroundColor("black");
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
-
-		chart.getYAxis().setTitle("¦¸/¤À");
+		chart.getYAxis().setTitle("");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
 		plotLine.setColor("#808080");
 		chart.getYAxis().addPlotLine(plotLine);
-
 		chart.getTooltip().setHeaderFormat("<b>{series.name}</b><br/>");
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
-
 		chart.getLegend().setEnabled(false);
-
 		chart.getExporting().setEnabled(false);
-
 		Series series = chart.getSeries();
 		series.setName("Breath Rate data");
 
 		setPatientId(textboxId.getValue());
+		chart.setColors("#ffffff");
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());

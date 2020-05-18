@@ -5,9 +5,12 @@
 			<template name="children">
 
 				<!-- one person -->
-				<n:div class="person-info rounded col-lg-2 #0093F9">
-					<div class="row" >
+				<div class="person-info rounded col-lg-2"
+					apply="org.itri.view.humanhealth.PersonInfoBorderStyleView">
+					<textbox visible="false"
+						value="${each.totalNewsScore}" />
 
+					<div class="row">
 						<!-- Left icon -->
 						<n:div
 							class="col-4 text-left text-margin #FFFFFF">
@@ -15,15 +18,15 @@
 							<label class="text-white h6">
 								${each.bedRoom}
 							</label>
-							<image src="${each.totalStatus}" />
+							<image src="${each.totalStatusImgPath}" />
 						</n:div>
 
 						<!-- Right icon -->
-						<div sclass="col p-1 ">
-							<window
-								style="padding: 0px; z-window-content background: black;"
-								class="col"
+						<n:div style="padding: 0px;" sclass="col-8">
+
+							<window class="col" style="padding: 0px;"
 								apply="org.itri.view.humanhealth.PersonInfoHightLightView">
+
 								<!-- heartBeat -->
 								<div id="heartBeatDiv">
 									<label id="heartBeatLabel"
@@ -67,17 +70,16 @@
 									running="true" repeats="true" />
 								-->
 							</window>
-						</div>
+						</n:div>
 
 					</div>
-				</n:div>
-
+				</div>
 
 			</template>
 		</vlayout>
-		<!-- 
-			<timer delay="1000" running="true" repeats="true"
+
+		<timer delay="1000" running="true" repeats="true"
 			onTimer="@command('refreshInfo')" />
-		-->
+
 	</nodom>
 </zk>

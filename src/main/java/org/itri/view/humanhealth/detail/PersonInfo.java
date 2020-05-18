@@ -51,10 +51,7 @@ public class PersonInfo {
 			patient.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
 			patient.setTotalNewsScore(p.getTotalNewsScore());
 
-			patient.setTotalStatus(NORMAL_PATH);
-			if (patient.getTotalNewsScore() > 5) {
-				patient.setTotalStatus(WARNING_PATH);
-			}
+			
 			personStateList.add(patient);
 		}
 	}

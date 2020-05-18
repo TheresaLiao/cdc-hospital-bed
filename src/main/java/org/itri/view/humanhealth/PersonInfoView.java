@@ -11,6 +11,9 @@ import org.zkoss.admin.ecommerce.dao.Type;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zul.Div;
+import org.zkoss.zul.Vlayout;
+import org.zkoss.zk.ui.select.annotation.Wire;
 
 public class PersonInfoView {
 
@@ -18,6 +21,7 @@ public class PersonInfoView {
 	private PersonInfosDaoHibernateImpl hqe;
 	static String NORMAL_PATH = "./resources/image/MapImages/icon_indicator_bk_01.png";
 	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_o_01.png";
+	static int earlyWarningScore = 7;
 
 	@Init
 	public void init() {
@@ -56,9 +60,9 @@ public class PersonInfoView {
 			patient.setBreathStatus(p.getBreathStatus());
 			patient.setBodyTempStatus(p.getBodyTempStatus());
 
-			patient.setTotalStatus(NORMAL_PATH);
-			if (patient.getTotalNewsScore() > 7) {
-				patient.setTotalStatus(WARNING_PATH);
+			patient.setTotalStatusImgPath(NORMAL_PATH);
+			if (patient.getTotalNewsScore() > earlyWarningScore) {
+				patient.setTotalStatusImgPath(WARNING_PATH);
 			}
 
 			personStateList.add(patient);

@@ -37,7 +37,7 @@ public class TemperatureView extends SelectorComposer<Component> {
 		chart.setBackgroundColor("black");
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
-		chart.getYAxis().setTitle("C");
+		 chart.getYAxis().setTitle("");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
@@ -47,11 +47,11 @@ public class TemperatureView extends SelectorComposer<Component> {
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
 		chart.getLegend().setEnabled(false);
 		chart.getExporting().setEnabled(false);
-
 		Series series = chart.getSeries();
 		series.setName("Temperature data");
 
 		setPatientId(textboxId.getValue());
+		chart.setColors("#15CAB4");
 
 		// init point
 		List<Point> histData = getTempPadRecordList(getPatientId());

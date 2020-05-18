@@ -6,11 +6,19 @@ public class PersonState {
 
 	private long id;
 	private String name;
+	private String bedRoom;
 	private String heartBeat;
 	private String bodyTemperature;
 	private String breathRate;
+	private String oximeter;
 	private Type type;
-	private String bedRoom;
+	private Integer totalNewsScore;
+	private String totalStatusImgPath;
+
+	private String heartRateStatus;
+	private String oximeterStatus;
+	private String bodyTempStatus;
+	private String breathStatus;
 
 	public String getHeartRateStatus() {
 		return heartRateStatus;
@@ -44,14 +52,6 @@ public class PersonState {
 		this.breathStatus = breathStatus;
 	}
 
-	private String oximeter;
-	private Integer totalNewsScore;
-
-	private String heartRateStatus;
-	private String oximeterStatus;
-	private String bodyTempStatus;
-	private String breathStatus;
-
 	public Integer getTotalNewsScore() {
 		return totalNewsScore;
 	}
@@ -68,14 +68,12 @@ public class PersonState {
 		this.id = id;
 	}
 
-	private String totalStatus;
-
-	public String getTotalStatus() {
-		return totalStatus;
+	public String getTotalStatusImgPath() {
+		return totalStatusImgPath;
 	}
 
-	public void setTotalStatus(String totalStatus) {
-		this.totalStatus = totalStatus;
+	public void setTotalStatusImgPath(String totalStatus) {
+		this.totalStatusImgPath = totalStatus;
 	}
 
 	public String getBreathRate() {
