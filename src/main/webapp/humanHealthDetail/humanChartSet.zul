@@ -5,9 +5,9 @@
 			<template name="children">
 
 				<!-- one person -->
-				<n:div sclass="row rounded col-lg-6 #0093F9">
-					<style>.titleStyle { font-size: 40px; }</style>
+				<n:div sclass="row rounded col-lg-6">
 
+					<style>.titleStyle { font-size: 40px; }</style>
 					<panel title="${each.bedRoom}" border="normal"
 						width="100%">
 						<caption sclass="titleStyle">
@@ -19,10 +19,14 @@
 							<bs-row class="row py-0">
 
 								<!-- Chart -->
-								<window style="padding: 0px;"
+								<style>
+									.z-window-content { padding:0px;}
+								</style>
+								<window
+									style="padding: 0px; z-window-content"
 									apply="org.itri.view.humanhealth.detail.HeartBeatView">
 									<charts id="chart" type="spline"
-										height="100" title="" width="600" />
+										height="100" width="600" style="padding: 0px;" title="" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -30,14 +34,15 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col p-1"
+									style="min-width: 240px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.HeartBeatCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div
-												class="col-3 text-left ">
+											<div class="text-right px-3"
+												width="60px" height="92px">
 												<label id="hrLabel"
 													class=" h6">
 													hr
@@ -53,6 +58,10 @@
 											</div>
 
 											<!-- right value -->
+											<style>
+												.test { text-align:
+												center;}
+											</style>
 											<vlayout class="col">
 												<label class="h2">
 												</label>
@@ -81,14 +90,15 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col p-1"
+									style="min-width: 180px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.OximeterCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div
-												class="col-3 text-left ">
+											<div class="text-right px-3"
+												width="60px" height="92px">
 												<label id="hrLabel"
 													class=" h6">
 													SpO2
@@ -132,14 +142,15 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col p-1"
+									style="min-width: 150px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.BreathRateCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div
-												class="col-3 text-left ">
+											<div class="text-right px-3"
+												width="60px" height="92px">
 												<label id="hrLabel"
 													class=" h6">
 													Br
@@ -182,17 +193,18 @@
 								</window>
 
 								<!-- Current Status -->
-								<n:div sclass="col p-1">
+								<n:div sclass="col p-1"
+									style="min-width: 150px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.TemperatureCurrentView">
 										<bs-row class="row col px-1">
 
 											<!-- left spec -->
-											<div
-												class="col-3 text-left ">
-												<label id="hrLabel"
+											<div class="text-right px-3"
+												width="60px" height="92px">
+												<label id="tempLabel"
 													class=" h6">
-													Br
+													Temp
 												</label>
 												<label id="heightLabel"
 													class=" h6">

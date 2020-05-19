@@ -60,7 +60,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		chart.setColors("#ff4051");
 		chart.setIgnoreHiddenSeries(true);
 		chart.getYAxis().setMinorTickInterval(0.1);
-//		System.out.println();
+	
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());

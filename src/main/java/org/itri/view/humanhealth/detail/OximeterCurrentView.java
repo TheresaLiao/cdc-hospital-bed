@@ -39,6 +39,9 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 	private String PRIMARY_HASH = "#0093f9";
 	private String WHITE_HASH = "#ffffff";
 
+	private String heightStr = "100";
+	private String lowStr = "90";
+
 	private long patientId = 0;
 
 	@Override
@@ -46,45 +49,50 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 
 		// Component Setting
 		super.doAfterCompose(comp);
+
+		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
-		oximeterLabel.setValue(getOximeterValueById(getPatientId()) + PERSENT_STR);
+		String dataStr = getOximeterValueById(getPatientId());
+		oximeterLabel.setValue(dataStr + PERSENT_STR);
 
-		oximeterDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
-
-		hrLabel.setStyle("color: " + PRIMARY_HASH);
-		heightLabel.setStyle("color: " + PRIMARY_HASH);
-		lowLabel.setStyle("color: " + PRIMARY_HASH);
-		oximeterLabel.setStyle("color: " + PRIMARY_HASH);
+		hightLightLabel(dataStr);
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
+
+		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getOximeterValueById(getPatientId());
-		oximeterLabel.setValue(dataStr+ PERSENT_STR);
+		oximeterLabel.setValue(dataStr + PERSENT_STR);
 
-		oximeterDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
+		hightLightLabel(dataStr);
+	}
 
-		hrLabel.setStyle("color: " + PRIMARY_HASH);
-		heightLabel.setStyle("color: " + PRIMARY_HASH);
-		lowLabel.setStyle("color: " + PRIMARY_HASH);
-		oximeterLabel.setStyle("color: " + PRIMARY_HASH);
-		
+	private void hightLightLabel(String dataStr) {
+
 		double data = Double.valueOf(dataStr);
-		Double heightData = Double.valueOf("100");
-		Double lowData = Double.valueOf("90");
-		
+		Double heightData = Double.valueOf(heightStr);
+		Double lowData = Double.valueOf(lowStr);
+
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
-	
+
 			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
-			vlayout.setStyle("background-color: " + PRIMARY_HASH);
+			vlayout.setStyle("background-color: " + PRIMARY_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + WHITE_HASH);
 			heightLabel.setStyle("color: " + WHITE_HASH);
 			lowLabel.setStyle("color: " + WHITE_HASH);
 			oximeterLabel.setStyle("color: " + WHITE_HASH);
+		} else {
+			oximeterDiv.setStyle("background-color: " + GRAY_HASH);
+			vlayout.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
+
+			hrLabel.setStyle("color: " + PRIMARY_HASH);
+			heightLabel.setStyle("color: " + PRIMARY_HASH);
+			lowLabel.setStyle("color: " + PRIMARY_HASH);
+			oximeterLabel.setStyle("color: " + PRIMARY_HASH);
+
 		}
 	}
 

@@ -36,55 +36,63 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 
 	private static String TIMES_STR = "¦¸";
 
-	private long patientId = 0;
 	private String BLACK_HASH = "#000000";
 	private String GRAY_HASH = "#2f2f2f";
 	private String WHITE_HASH = "#ffffff";
+
+	private String heightStr = "20";
+	private String lowStr = "10";
+
+	private long patientId = 0;
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
 
 		// Component Setting
 		super.doAfterCompose(comp);
+
+		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
-		breathRateLabel.setValue(getBreathRateValueById(getPatientId()) + TIMES_STR);
+		String dataStr = getBreathRateValueById(getPatientId());
+		breathRateLabel.setValue(dataStr + TIMES_STR);
 
-		breathRateDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
-
-		hrLabel.setStyle("color: " + WHITE_HASH);
-		heightLabel.setStyle("color: " + WHITE_HASH);
-		lowLabel.setStyle("color: " + WHITE_HASH);
-		breathRateLabel.setStyle("color: " + WHITE_HASH);
+		hightLightLabel(dataStr);
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
+
+		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getBreathRateValueById(getPatientId());
 		breathRateLabel.setValue(dataStr + TIMES_STR);
-		
-		breathRateDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
 
-		hrLabel.setStyle("color: " + WHITE_HASH);
-		heightLabel.setStyle("color: " + WHITE_HASH);
-		lowLabel.setStyle("color: " + WHITE_HASH);
-		breathRateLabel.setStyle("color: " + WHITE_HASH);
-		
+		hightLightLabel(dataStr);
+
+	}
+
+	private void hightLightLabel(String dataStr) {
 		double data = Double.valueOf(dataStr);
-		Double heightData = Double.valueOf("20");
-		Double lowData = Double.valueOf("10");
-		
+		Double heightData = Double.valueOf(heightStr);
+		Double lowData = Double.valueOf(lowStr);
+
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
-		
+
 			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
-			vlayout.setStyle("background-color: " + WHITE_HASH);
+			vlayout.setStyle("background-color: " + WHITE_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + BLACK_HASH);
 			heightLabel.setStyle("color: " + BLACK_HASH);
 			lowLabel.setStyle("color: " + BLACK_HASH);
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			breathRateDiv.setStyle("background-color: " + GRAY_HASH);
+			vlayout.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
+
+			hrLabel.setStyle("color: " + WHITE_HASH);
+			heightLabel.setStyle("color: " + WHITE_HASH);
+			lowLabel.setStyle("color: " + WHITE_HASH);
+			breathRateLabel.setStyle("color: " + WHITE_HASH);
 		}
 	}
 

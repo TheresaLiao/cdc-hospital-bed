@@ -14,6 +14,8 @@ import org.itri.view.util.HibernateUtil;
 
 public class PersonInfosDaoHibernateImpl {
 
+	private Integer totalNewsScoreSpec = 7;
+
 	public List<Patient> getPatientList() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
@@ -57,6 +59,7 @@ public class PersonInfosDaoHibernateImpl {
 
 			Criteria criteria = session.createCriteria(Patient.class);
 			criteria.add(Restrictions.eq("isDeleted", false));
+			criteria.add(Restrictions.ge("totalNewsScore", totalNewsScoreSpec));
 			criteria.addOrder(Order.desc("totalNewsScore"));
 			criteria.setMaxResults(4);
 			tempPatientList = criteria.list();

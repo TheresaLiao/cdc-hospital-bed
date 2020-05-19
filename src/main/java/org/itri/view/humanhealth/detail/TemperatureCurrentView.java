@@ -16,8 +16,8 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 	@Wire("window > bs-row > div")
 	private Div tempDiv;
 
-	@Wire("window > bs-row > div > #hrLabel")
-	private Label hrLabel;
+	@Wire("window > bs-row > div > #tempLabel")
+	private Label tempLabel;
 
 	@Wire("window > bs-row > div > #heightLabel")
 	private Label heightLabel;
@@ -39,6 +39,9 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 	private String SUCCESS_HASH = "#15CAB4";
 	private String WHITE_HASH = "#ffffff";
 
+	private String heightStr = "39";
+	private String lowStr = "36";
+
 	private long patientId = 0;
 
 	@Override
@@ -46,48 +49,49 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 
 		// Component Setting
 		super.doAfterCompose(comp);
+
+		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
-		temperatureLabel.setValue(getTemperatureValueById(getPatientId()) + DEGREE_CELSIUS_STR);
+		String dataStr = getTemperatureValueById(getPatientId());
+		temperatureLabel.setValue(dataStr + DEGREE_CELSIUS_STR);
 
-		tempDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
-
-		hrLabel.setStyle("color: " + SUCCESS_HASH);
-		heightLabel.setStyle("color: " + SUCCESS_HASH);
-		lowLabel.setStyle("color: " + SUCCESS_HASH);
-		temperatureLabel.setStyle("color: " + SUCCESS_HASH);
+		hightLightLabel(dataStr);
 	}
 
 	@Listen("onTimer = #timer")
 	public void updateData() {
 
+		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getTemperatureValueById(getPatientId());
 		temperatureLabel.setValue(dataStr + DEGREE_CELSIUS_STR);
 
-		tempDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
+		hightLightLabel(dataStr);
+	}
 
-		hrLabel.setStyle("color: " + SUCCESS_HASH);
-		heightLabel.setStyle("color: " + SUCCESS_HASH);
-		lowLabel.setStyle("color: " + SUCCESS_HASH);
-		temperatureLabel.setStyle("color: " + SUCCESS_HASH);
-
+	private void hightLightLabel(String dataStr) {
 		double data = Double.valueOf(dataStr);
-		Double heightData = Double.valueOf("39");
-		Double lowData = Double.valueOf("36");
+		Double heightData = Double.valueOf(heightStr);
+		Double lowData = Double.valueOf(lowStr);
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
 			tempDiv.setStyle("background-color: " + SUCCESS_HASH);
-			vlayout.setStyle("background-color: " + SUCCESS_HASH);
+			vlayout.setStyle("background-color: " + SUCCESS_HASH + "; " + "text-align: center" + ";");
 
-			hrLabel.setStyle("color: " + WHITE_HASH);
+			tempLabel.setStyle("color: " + WHITE_HASH);
 			heightLabel.setStyle("color: " + WHITE_HASH);
 			lowLabel.setStyle("color: " + WHITE_HASH);
 			temperatureLabel.setStyle("color: " + WHITE_HASH);
-		}
+		} else {
+			tempDiv.setStyle("background-color: " + GRAY_HASH);
+			vlayout.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
+			tempLabel.setStyle("color: " + SUCCESS_HASH);
+			heightLabel.setStyle("color: " + SUCCESS_HASH);
+			lowLabel.setStyle("color: " + SUCCESS_HASH);
+			temperatureLabel.setStyle("color: " + SUCCESS_HASH);
+		}
 	}
 
 	private String getTemperatureValueById(long patientId) {

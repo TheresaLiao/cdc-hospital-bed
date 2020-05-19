@@ -39,6 +39,9 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	private String DANGER_HASH = "#ff4051";
 	private String WHITE_HASH = "#ffffff";
 
+	private String heightStr = "100";
+	private String lowStr = "55";
+
 	private long patientId = 0;
 
 	@Override
@@ -46,45 +49,49 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
 		// Component Setting
 		super.doAfterCompose(comp);
-		setPatientId(textboxId.getValue());
-		heartBeatLabel.setValue(getHeartBeatValueById(getPatientId()) + BMP_STR);
 
-		heartBeatDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
-
-		hrLabel.setStyle("color: " + DANGER_HASH);
-		heightLabel.setStyle("color: " + DANGER_HASH);
-		lowLabel.setStyle("color: " + DANGER_HASH);
-		heartBeatLabel.setStyle("color: " + DANGER_HASH);
-	}
-
-	@Listen("onTimer = #timer")
-	public void updateData() {
+		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getHeartBeatValueById(getPatientId());
 		heartBeatLabel.setValue(dataStr + BMP_STR);
 
-		heartBeatDiv.setStyle("background-color: " + GRAY_HASH);
-		vlayout.setStyle("background-color: " + GRAY_HASH);
+		hightLightLabel(dataStr);
+	}
 
-		hrLabel.setStyle("color: " + DANGER_HASH);
-		heightLabel.setStyle("color: " + DANGER_HASH);
-		lowLabel.setStyle("color: " + DANGER_HASH);
-		heartBeatLabel.setStyle("color: " + DANGER_HASH);
+	@Listen("onTimer = #timer")
+	public void updateData() {
+
+		// get PatientId & find data by PatientId
+		setPatientId(textboxId.getValue());
+		String dataStr = getHeartBeatValueById(getPatientId());
+		heartBeatLabel.setValue(dataStr + BMP_STR);
+
+		hightLightLabel(dataStr);
+	}
+
+	private void hightLightLabel(String dataStr) {
 
 		double data = Double.valueOf(dataStr);
-		Double heightData = Double.valueOf("100");
-		Double lowData = Double.valueOf("55");
+		Double heightData = Double.valueOf(heightStr);
+		Double lowData = Double.valueOf(lowStr);
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
 			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
-			vlayout.setStyle("background-color: " + DANGER_HASH);
+			vlayout.setStyle("background-color: " + DANGER_HASH + ";text-align: center");
 
 			hrLabel.setStyle("color: " + WHITE_HASH);
 			heightLabel.setStyle("color: " + WHITE_HASH);
 			lowLabel.setStyle("color: " + WHITE_HASH);
 			heartBeatLabel.setStyle("color: " + WHITE_HASH);
+		} else {
+			heartBeatDiv.setStyle("background-color: " + GRAY_HASH);
+			vlayout.setStyle("background-color: " + GRAY_HASH + ";text-align: center");
+
+			hrLabel.setStyle("color: " + DANGER_HASH);
+			heightLabel.setStyle("color: " + DANGER_HASH);
+			lowLabel.setStyle("color: " + DANGER_HASH);
+			heartBeatLabel.setStyle("color: " + DANGER_HASH);
 		}
 	}
 

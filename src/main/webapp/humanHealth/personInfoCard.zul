@@ -12,8 +12,8 @@
 
 					<div class="row">
 						<!-- Left icon -->
-						<n:div
-							class="col-4 text-left text-margin #FFFFFF">
+						<n:div class="col-4"
+							style="text-align: center">
 							<!-- Name -->
 							<label class="text-white h6">
 								${each.bedRoom}
@@ -23,8 +23,11 @@
 
 						<!-- Right icon -->
 						<n:div style="padding: 0px;" sclass="col-8">
-
-							<window class="col" style="padding: 0px;"
+							<style>
+								.z-window-content { padding:0px;}
+							</style>
+							<window class="col"
+								style="padding: 0px; z-window-content"
 								apply="org.itri.view.humanhealth.PersonInfoHightLightView">
 
 								<!-- heartBeat -->
