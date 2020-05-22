@@ -7,7 +7,7 @@
 				<!-- one person -->
 				<n:div sclass="row rounded col-lg-6">
 
-					<style>.titleStyle { font-size: 40px; }</style>
+					<style>.titleStyle { font-size: 40px; text-align: center;}</style>
 					<panel title="${each.bedRoom}" border="normal"
 						width="100%">
 						<caption sclass="titleStyle">

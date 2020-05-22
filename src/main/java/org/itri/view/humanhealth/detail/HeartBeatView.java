@@ -22,6 +22,10 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 	private long patientId = 0;
 
+	private String colorRed = "#ff4051";
+	private String colorGray = "#808080";
+	private String colorBlack = "#000000";
+
 	@Wire
 	private Charts chart;
 
@@ -48,19 +52,20 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
-		plotLine.setColor("#808080");
+		plotLine.setColor(colorGray);
 		chart.getYAxis().addPlotLine(plotLine);
 		chart.getTooltip().setHeaderFormat("<b>{series.name}</b><br/>");
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
 		chart.getLegend().setEnabled(false);
 		chart.getExporting().setEnabled(false);
 		Series series = chart.getSeries();
-		series.setName("Heart Beat data");
 
-		chart.setColors("#ff4051");
-		chart.setIgnoreHiddenSeries(true);
-		chart.getYAxis().setMinorTickInterval(0.1);
-	
+		series.setName("Heart Beat data");
+		setPatientId(textboxId.getValue());
+		chart.setColors(colorRed);
+
+		chart.getXAxis().setLineColor(colorBlack);
+		chart.setAlignTicks(false);
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());
@@ -73,7 +78,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
-				nowPoint.setColor("#ff4051");
+				nowPoint.setColor(colorRed);
 				series.addPoint(nowPoint);
 			}
 		}

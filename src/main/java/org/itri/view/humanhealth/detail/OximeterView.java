@@ -55,6 +55,7 @@ public class OximeterView extends SelectorComposer<Component> {
 		series.setName("Oximeter");
 		setPatientId(textboxId.getValue());
 		chart.setColors("#0093f9");
+		chart.getXAxis().setLineColor("#000000");
 
 		// init point
 		List<Point> histData = getOximeterRecordList(getPatientId());

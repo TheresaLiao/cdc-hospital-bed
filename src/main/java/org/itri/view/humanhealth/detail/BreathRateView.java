@@ -59,6 +59,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 
 		setPatientId(textboxId.getValue());
 		chart.setColors("#ffffff");
+		chart.getXAxis().setLineColor("#000000");
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());

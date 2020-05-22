@@ -52,6 +52,7 @@ public class TemperatureView extends SelectorComposer<Component> {
 
 		setPatientId(textboxId.getValue());
 		chart.setColors("#15CAB4");
+		chart.getXAxis().setLineColor("#000000");
 
 		// init point
 		List<Point> histData = getTempPadRecordList(getPatientId());
