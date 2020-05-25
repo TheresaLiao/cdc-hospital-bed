@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Vlayout;
@@ -13,25 +14,25 @@ import org.zkoss.zul.Window;
 
 public class OximeterCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > div")
+	@Wire("window > bs-row > hlayout > div")
 	private Div oximeterDiv;
 
-	@Wire("window > bs-row > div > #hrLabel")
+	@Wire("window > bs-row > hlayout > div > #hrLabel")
 	private Label hrLabel;
 
-	@Wire("window > bs-row > div > #heightLabel")
+	@Wire("window > bs-row > hlayout > div > #heightLabel")
 	private Label heightLabel;
 
-	@Wire("window > bs-row > div > #lowLabel")
+	@Wire("window > bs-row > hlayout > div > #lowLabel")
 	private Label lowLabel;
 
-	@Wire("window > bs-row > vlayout ")
-	private Vlayout vlayout;
+	@Wire("window > bs-row > hlayout ")
+	private Hlayout hlayout;
 
-	@Wire("window > bs-row > vlayout > textbox")
+	@Wire("window > bs-row > hlayout > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > vlayout > label")
+	@Wire("window > bs-row > hlayout > label")
 	private Label oximeterLabel;
 
 	private static String PERSENT_STR = "%";
@@ -78,7 +79,7 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
 			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
-			vlayout.setStyle("background-color: " + PRIMARY_HASH + "; " + "text-align: center" + ";");
+			hlayout.setStyle("background-color: " + PRIMARY_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + WHITE_HASH);
 			heightLabel.setStyle("color: " + WHITE_HASH);
@@ -86,7 +87,7 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 			oximeterLabel.setStyle("color: " + WHITE_HASH);
 		} else {
 			oximeterDiv.setStyle("background-color: " + GRAY_HASH);
-			vlayout.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
+			hlayout.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + PRIMARY_HASH);
 			heightLabel.setStyle("color: " + PRIMARY_HASH);

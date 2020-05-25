@@ -26,15 +26,6 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	@Wire("window > bs-row > hlayout > div > #lowLabel")
 	private Label lowLabel;
 
-//	@Wire("window > bs-row > vlayout ")
-//	private Vlayout vlayout;
-//
-//	@Wire("window > bs-row > vlayout > textbox")
-//	private Textbox textboxId;
-//
-//	@Wire("window > bs-row > vlayout > label")
-//	private Label heartBeatLabel;
-	
 	@Wire("window > bs-row > hlayout ")
 	private Hlayout hlayout;
 
@@ -43,7 +34,6 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
 	@Wire("window > bs-row > hlayout > label")
 	private Label heartBeatLabel;
-	
 
 	private static String BMP_STR = "bmp";
 	private String GRAY_HASH = "#2f2f2f";

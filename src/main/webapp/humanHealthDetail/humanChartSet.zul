@@ -93,35 +93,37 @@
 									style="min-width: 180px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.OximeterCurrentView">
-										<bs-row class="row col px-1">
-
-											<!-- left spec -->
-											<div class="text-right px-3"
-												width="60px" height="92px">
-												<label id="hrLabel"
-													class=" h6">
-													SpO2
-												</label>
-												<label id="heightLabel"
-													class=" h6">
-													100
-												</label>
-												<label id="lowLabel"
-													class=" h6">
-													90
-												</label>
-											</div>
-
-											<!-- right value -->
-											<vlayout class="col px-4">
-												<label class="h3">
-												</label>
-												<textbox visible="false"
-													value="${each.id}" />
-											</vlayout>
-										</bs-row>
 										<timer id="timer" delay="100"
 											running="true" repeats="true" />
+
+										<bs-row class="row col px-1">
+											<hlayout class="col"
+												valign="bottom">
+												<!-- left spec -->
+												<div
+													class="text-right px-3 py-3" width="60px" height="92px">
+													<label id="hrLabel"
+														class=" h6">
+														SpO2
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														100
+													</label>
+													<label id="lowLabel"
+														class=" h6">
+														90
+													</label>
+												</div>
+
+												<!-- right value -->
+												<label class="h3" />
+												<textbox visible="false"
+													value="${each.id}" />
+
+											</hlayout>
+										</bs-row>
+
 									</window>
 								</n:div>
 							</bs-row>
@@ -145,35 +147,36 @@
 									style="min-width: 150px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.BreathRateCurrentView">
-										<bs-row class="row col px-1">
-
-											<!-- left spec -->
-											<div class="text-right px-3"
-												width="60px" height="92px">
-												<label id="hrLabel"
-													class=" h6">
-													Br
-												</label>
-												<label id="heightLabel"
-													class=" h6">
-													20
-												</label>
-												<label id="lowLabel"
-													class=" h6">
-													10
-												</label>
-											</div>
-
-											<!-- right value -->
-											<vlayout class="col px-4">
-												<label class="h6">
-												</label>
-												<textbox visible="false"
-													value="${each.id}" />
-											</vlayout>
-										</bs-row>
 										<timer id="timer" delay="1000"
 											running="true" repeats="true" />
+										<bs-row class="row col px-1">
+											<hlayout class="col"
+												valign="bottom">
+												<!-- left spec -->
+												<div
+													class="text-right px-3 py-3" width="60px" height="92px">
+													<label id="hrLabel"
+														class=" h6">
+														Br
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														20
+													</label>
+													<label id="lowLabel"
+														class=" h6">
+														10
+													</label>
+												</div>
+
+												<!-- right value -->
+												<label class="h6" />
+												<textbox visible="false"
+													value="${each.id}" />
+
+											</hlayout>
+										</bs-row>
+
 									</window>
 								</n:div>
 							</bs-row>
