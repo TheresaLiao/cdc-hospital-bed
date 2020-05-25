@@ -7,7 +7,10 @@
 				<!-- one person -->
 				<n:div sclass="row rounded col-lg-6">
 
-					<style>.titleStyle { font-size: 40px; text-align: center;}</style>
+					<style>
+						.titleStyle { font-size: 40px; text-align:
+						center;}
+					</style>
 					<panel title="${each.bedRoom}" border="normal"
 						width="100%">
 						<caption sclass="titleStyle">
@@ -36,41 +39,37 @@
 								<!-- Current Status -->
 								<n:div sclass="col p-1"
 									style="min-width: 240px">
-									<window style="padding: 0px;"
+									<window style="padding: 0px"
 										apply="org.itri.view.humanhealth.detail.HeartBeatCurrentView">
-										<bs-row class="row col px-1">
-
-											<!-- left spec -->
-											<div class="text-right px-3"
-												width="60px" height="92px">
-												<label id="hrLabel"
-													class=" h6">
-													hr
-												</label>
-												<label id="heightLabel"
-													class=" h6">
-													100
-												</label>
-												<label id="lowLabel"
-													class=" h6">
-													55
-												</label>
-											</div>
-
-											<!-- right value -->
-											<style>
-												.test { text-align:
-												center;}
-											</style>
-											<vlayout class="col">
-												<label class="h2">
-												</label>
-												<textbox visible="false"
-													value="${each.id}" />
-											</vlayout>
-										</bs-row>
 										<timer id="timer" delay="100"
 											running="true" repeats="true" />
+										<bs-row class="row col px-1 ">
+											<hlayout class="col"
+												valign="bottom">
+
+												<!-- left spec -->
+												<div
+													class="text-right px-3 py-3" width="60px" height="92px">
+													<label id="hrLabel"
+														class=" h6">
+														hr
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														100
+													</label>
+													<label id="lowLabel"
+														class=" h6">
+														55
+													</label>
+												</div>
+
+												<!-- right value -->
+												<label class="h1" />
+												<textbox visible="false"
+													value="${each.id}" />
+											</hlayout>
+										</bs-row>
 									</window>
 								</n:div>
 							</bs-row>
@@ -237,9 +236,9 @@
 
 			</template>
 		</vlayout>
-
-		<timer id="timer1234" delay="15000" running="true"
+		<!-- 
+			<timer id="timer1234" delay="15000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
-
+		-->
 	</nodom>
 </zk>
