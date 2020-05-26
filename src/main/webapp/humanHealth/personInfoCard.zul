@@ -34,7 +34,7 @@
 								<div id="heartBeatDiv">
 									<label id="heartBeatLabel"
 										class="h3">
-										hr:${each.heartBeat} bpm
+										Hr:${each.heartBeat} 
 									</label>
 									<textbox id="heartBeatStatusText"
 										visible="false" value="${each.heartRateStatus}" />
@@ -44,7 +44,7 @@
 								<div id="oximeterDiv">
 									<label id="oximeterLabel"
 										class="h3">
-										SpO2:${each.oximeter}%
+										SpO2:${each.oximeter}
 									</label>
 									<textbox id="oximeterStatusTextbox"
 										visible="false" value="${each.oximeterStatus}" />
@@ -54,7 +54,7 @@
 								<div id="breathRateDiv">
 									<label id="breathRateLabel"
 										class="h6">
-										Rr: ${each.breathRate} 次
+										Rr: ${each.breathRate}
 									</label>
 									<textbox id="breathStatusTextbox"
 										visible="false" value="${each.breathStatus}" />
@@ -63,7 +63,7 @@
 								<!-- bodyTemperature -->
 								<div id="tempDiv">
 									<label id="tempLabel" class="h6">
-										Temp: ${each.bodyTemperature} °C
+										Temp: ${each.bodyTemperature} 
 									</label>
 									<textbox id="bodyTempStatusTextbox"
 										visible="false" value="${each.bodyTempStatus}" />

@@ -25,6 +25,11 @@ import org.zkoss.zul.Window;
 public class BreathRateView extends SelectorComposer<Component> {
 
 	private long patientId = 0;
+	
+	private String YELLOW_HASH = "#F8FF70";
+	private String GRAY_HASH = "#808080";
+	private String BLACK_HASH = "#000000";
+	
 
 	@Wire
 	private Charts chart;
@@ -48,7 +53,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
-		plotLine.setColor("#808080");
+		plotLine.setColor(GRAY_HASH);
 		chart.getYAxis().addPlotLine(plotLine);
 		chart.getTooltip().setHeaderFormat("<b>{series.name}</b><br/>");
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
@@ -58,8 +63,8 @@ public class BreathRateView extends SelectorComposer<Component> {
 		series.setName("Breath Rate data");
 
 		setPatientId(textboxId.getValue());
-		chart.setColors("#ffffff");
-		chart.getXAxis().setLineColor("#000000");
+		chart.setColors(YELLOW_HASH);
+		chart.getXAxis().setLineColor(BLACK_HASH);
 
 		// init point
 		List<Point> histData = getHeartRhythmRecordList(getPatientId());
@@ -71,7 +76,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
-				nowPoint.setColor("#ffffff");
+				nowPoint.setColor(YELLOW_HASH);
 				series.addPoint(nowPoint);
 			}
 		}

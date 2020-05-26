@@ -47,10 +47,14 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 	private Textbox bodyTempStatusTextbox;
 
 	private String BLACK_HASH = "#000000";
-	private String DANGER_HASH = "#ff4051";
-	private String PRIMARY_HASH = "#0093f9";
-	private String WHITE_HASH = "#ffffff";
-	private String SUCCESS_HASH = "#15CAB4";
+	//private String DANGER_HASH = "#ff4051";
+	//private String PRIMARY_HASH = "#0093f9";
+	//private String WHITE_HASH = "#ffffff";
+	//private String SUCCESS_HASH = "#15CAB4";
+	
+	private String GREEN_HASH = "#5CE498";
+	private String BLUE_HASH = "#73E9FF";
+	private String YELLOW_HASH = "#F8FF70";
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
@@ -58,35 +62,35 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 		comp.setContentStyle("background: " + BLACK_HASH);
 
 		if (heartBeatStatusText.getValue().equals("W")) {
-			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
+			heartBeatDiv.setStyle("background-color: " + GREEN_HASH);
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
-			heartBeatLabel.setStyle("color: " + DANGER_HASH);
+			heartBeatLabel.setStyle("color: " + GREEN_HASH);
 		}
 
 		if (oximeterStatusTextbox.getValue().equals("W")) {
-			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
+			oximeterDiv.setStyle("background-color: " + BLUE_HASH);
 			oximeterLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			oximeterDiv.setStyle("background-color: " + BLACK_HASH);
-			oximeterLabel.setStyle("color: " + PRIMARY_HASH);
+			oximeterLabel.setStyle("color: " + BLUE_HASH);
 		}
 
 		if (breathStatusTextbox.getValue().equals("W")) {
-			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
+			breathRateDiv.setStyle("background-color: " + YELLOW_HASH);
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			breathRateDiv.setStyle("background-color: " + BLACK_HASH);
-			breathRateLabel.setStyle("color: " + WHITE_HASH);
+			breathRateLabel.setStyle("color: " + YELLOW_HASH);
 		}
 
 		if (bodyTempStatusTextbox.getValue().equals("W")) {
-			tempDiv.setStyle("background-color: " + SUCCESS_HASH);
+			tempDiv.setStyle("background-color: " + GREEN_HASH);
 			tempLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			tempDiv.setStyle("background-color: " + BLACK_HASH);
-			tempLabel.setStyle("color: " + SUCCESS_HASH);
+			tempLabel.setStyle("color: " + GREEN_HASH);
 		}
 	}
 
@@ -94,35 +98,35 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 	public void updateData() {
 
 		if (heartBeatStatusText.getValue().equals("W")) {
-			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
+			heartBeatDiv.setStyle("background-color: " + GREEN_HASH);
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
-			heartBeatLabel.setStyle("color: " + DANGER_HASH);
+			heartBeatLabel.setStyle("color: " + GREEN_HASH);
 		}
 
 		if (oximeterStatusTextbox.getValue().equals("W")) {
-			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
+			oximeterDiv.setStyle("background-color: " + BLUE_HASH);
 			oximeterLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			oximeterDiv.setStyle("background-color: " + BLACK_HASH);
-			oximeterLabel.setStyle("color: " + PRIMARY_HASH);
+			oximeterLabel.setStyle("color: " + BLUE_HASH);
 		}
 
 		if (breathStatusTextbox.getValue().equals("W")) {
-			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
+			breathRateDiv.setStyle("background-color: " + YELLOW_HASH);
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			breathRateDiv.setStyle("background-color: " + BLACK_HASH);
-			breathRateLabel.setStyle("color: " + WHITE_HASH);
+			breathRateLabel.setStyle("color: " + YELLOW_HASH);
 		}
 
 		if (bodyTempStatusTextbox.getValue().equals("W")) {
-			tempDiv.setStyle("background-color: " + SUCCESS_HASH);
+			tempDiv.setStyle("background-color: " + GREEN_HASH);
 			tempLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			tempDiv.setStyle("background-color: " + BLACK_HASH);
-			tempLabel.setStyle("color: " + SUCCESS_HASH);
+			tempLabel.setStyle("color: " + GREEN_HASH);
 		}
 
 	}

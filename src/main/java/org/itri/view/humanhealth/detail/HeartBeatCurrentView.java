@@ -2,43 +2,44 @@ package org.itri.view.humanhealth.detail;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Hbox;
 import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Label;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Vbox;
 import org.zkoss.zul.Vlayout;
 import org.zkoss.zul.Window;
 import org.itri.view.humanhealth.hibernate.Patient;
 
 public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > hlayout > div")
-	private Div heartBeatDiv;
+	@Wire("window > bs-row > hbox > vbox")
+	private Vbox heartBeatVbox;
 
-	@Wire("window > bs-row > hlayout > div > #hrLabel")
+	@Wire("window > bs-row > hbox > vbox > #hrLabel")
 	private Label hrLabel;
 
-	@Wire("window > bs-row > hlayout > div > #heightLabel")
+	@Wire("window > bs-row > hbox > vbox > #heightLabel")
 	private Label heightLabel;
 
-	@Wire("window > bs-row > hlayout > div > #lowLabel")
+	@Wire("window > bs-row > hbox > vbox > #lowLabel")
 	private Label lowLabel;
 
-	@Wire("window > bs-row > hlayout ")
-	private Hlayout hlayout;
+	@Wire("window > bs-row > hbox ")
+	private Hbox hbox;
 
-	@Wire("window > bs-row > hlayout > textbox")
+	@Wire("window > bs-row > hbox > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > hlayout > label")
+	@Wire("window > bs-row > hbox > label")
 	private Label heartBeatLabel;
 
-	private static String BMP_STR = "bmp";
-	private String GRAY_HASH = "#2f2f2f";
-	private String DANGER_HASH = "#ff4051";
-	private String WHITE_HASH = "#ffffff";
+	private String GRAY_HASH = "#2F2F2F";
+	private String GREEN_HASH = "#5CE498";
+	private String BLACK_HASH = "#000000";
 
 	private String heightStr = "100";
 	private String lowStr = "55";
@@ -54,7 +55,7 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getHeartBeatValueById(getPatientId());
-		heartBeatLabel.setValue(dataStr + BMP_STR);
+		heartBeatLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
 	}
@@ -65,7 +66,7 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getHeartBeatValueById(getPatientId());
-		heartBeatLabel.setValue(dataStr + BMP_STR);
+		heartBeatLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
 	}
@@ -78,21 +79,21 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
-			heartBeatDiv.setStyle("background-color: " + DANGER_HASH);
-			hlayout.setStyle("background-color: " + DANGER_HASH + ";text-align: center");
+			heartBeatVbox.setStyle("background-color: " + GREEN_HASH);
+			hbox.setStyle("background-color: " + GREEN_HASH + ";text-align: center");
 
-			hrLabel.setStyle("color: " + WHITE_HASH);
-			heightLabel.setStyle("color: " + WHITE_HASH);
-			lowLabel.setStyle("color: " + WHITE_HASH);
-			heartBeatLabel.setStyle("color: " + WHITE_HASH);
+			hrLabel.setStyle("color: " + BLACK_HASH);
+			heightLabel.setStyle("color: " + BLACK_HASH);
+			lowLabel.setStyle("color: " + BLACK_HASH);
+			heartBeatLabel.setStyle("color: " + BLACK_HASH);
 		} else {
-			heartBeatDiv.setStyle("background-color: " + GRAY_HASH);
-			hlayout.setStyle("background-color: " + GRAY_HASH + ";text-align: center");
+			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
+			hbox.setStyle("background-color: " + GRAY_HASH + ";text-align: center");
 
-			hrLabel.setStyle("color: " + DANGER_HASH);
-			heightLabel.setStyle("color: " + DANGER_HASH);
-			lowLabel.setStyle("color: " + DANGER_HASH);
-			heartBeatLabel.setStyle("color: " + DANGER_HASH);
+			hrLabel.setStyle("color: " + GREEN_HASH);
+			heightLabel.setStyle("color: " + GREEN_HASH);
+			lowLabel.setStyle("color: " + GREEN_HASH);
+			heartBeatLabel.setStyle("color: " + GREEN_HASH);
 		}
 	}
 

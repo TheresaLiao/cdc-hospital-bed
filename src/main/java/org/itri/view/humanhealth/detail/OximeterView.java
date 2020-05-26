@@ -22,6 +22,10 @@ public class OximeterView extends SelectorComposer<Component> {
 
 	private long patientId = 0;
 
+	private String GRAY_HASH = "#808080";
+	private String BLUE_HASH = "#73E9FF";
+	private String BLACK_HASH = "#000000";
+
 	@Wire
 	private Charts chart;
 
@@ -44,18 +48,18 @@ public class OximeterView extends SelectorComposer<Component> {
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
-		plotLine.setColor("#808080");
+		plotLine.setColor(GRAY_HASH);
 		chart.getYAxis().addPlotLine(plotLine);
 		chart.getTooltip().setHeaderFormat("<b>{series.name}</b><br/>");
 		chart.getTooltip().setPointFormat("{point.x:%Y-%m-%d %H:%M:%S}<br>{point.y}");
 		chart.getLegend().setEnabled(false);
 		chart.getExporting().setEnabled(false);
 		Series series = chart.getSeries();
-		
+
 		series.setName("Oximeter");
 		setPatientId(textboxId.getValue());
-		chart.setColors("#0093f9");
-		chart.getXAxis().setLineColor("#000000");
+		chart.setColors(BLUE_HASH);
+		chart.getXAxis().setLineColor(BLACK_HASH);
 
 		// init point
 		List<Point> histData = getOximeterRecordList(getPatientId());
@@ -68,7 +72,7 @@ public class OximeterView extends SelectorComposer<Component> {
 
 				Point nowPoint = getRtOximeterRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
-				nowPoint.setColor("#0093f9");
+				nowPoint.setColor(BLUE_HASH);
 				series.addPoint(nowPoint);
 			}
 		}

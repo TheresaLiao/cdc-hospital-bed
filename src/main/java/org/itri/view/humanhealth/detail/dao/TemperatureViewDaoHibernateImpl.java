@@ -15,6 +15,8 @@ import org.itri.view.humanhealth.hibernate.TempPadRecord;
 import org.itri.view.util.HibernateUtil;
 
 public class TemperatureViewDaoHibernateImpl {
+	
+	private int minusThreeMinit = -3;
 
 	public List<RtTempPadRecord> getRtTempPadRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -50,7 +52,7 @@ public class TemperatureViewDaoHibernateImpl {
 			Date now = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(now);
-			calendar.add(Calendar.MINUTE, -3);
+			calendar.add(Calendar.MINUTE, minusThreeMinit);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 			criteria.addOrder(Order.asc("timeCreated"));
 			tempPadRecordList = criteria.list();

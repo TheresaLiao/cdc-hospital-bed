@@ -6,38 +6,40 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Hbox;
+import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Vbox;
 import org.zkoss.zul.Vlayout;
 import org.zkoss.zul.Window;
 
 public class TemperatureCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > div")
-	private Div tempDiv;
+	@Wire("window > bs-row > hbox > vbox")
+	private Vbox heartBeatVbox;
 
-	@Wire("window > bs-row > div > #tempLabel")
+	@Wire("window > bs-row > hbox > vbox > #tempLabel")
 	private Label tempLabel;
 
-	@Wire("window > bs-row > div > #heightLabel")
+	@Wire("window > bs-row > hbox > vbox > #heightLabel")
 	private Label heightLabel;
 
-	@Wire("window > bs-row > div > #lowLabel")
+	@Wire("window > bs-row > hbox > vbox > #lowLabel")
 	private Label lowLabel;
 
-	@Wire("window > bs-row > vlayout ")
-	private Vlayout vlayout;
+	@Wire("window > bs-row > hbox ")
+	private Hbox hbox;
 
-	@Wire("window > bs-row > vlayout > textbox")
+	@Wire("window > bs-row > hbox > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > vlayout > label")
+	@Wire("window > bs-row > hbox > label")
 	private Label temperatureLabel;
 
-	private static String DEGREE_CELSIUS_STR = "¢XC";
-	private String GRAY_HASH = "#2f2f2f";
-	private String SUCCESS_HASH = "#15CAB4";
-	private String WHITE_HASH = "#ffffff";
+	private String GRAY_HASH = "#2F2F2F";
+	private String BLACK_HASH = "#000000";
+	private String GREEN_HASH = "#5CE498";
 
 	private String heightStr = "39";
 	private String lowStr = "36";
@@ -53,7 +55,7 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getTemperatureValueById(getPatientId());
-		temperatureLabel.setValue(dataStr + DEGREE_CELSIUS_STR);
+		temperatureLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
 	}
@@ -64,7 +66,7 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getTemperatureValueById(getPatientId());
-		temperatureLabel.setValue(dataStr + DEGREE_CELSIUS_STR);
+		temperatureLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
 	}
@@ -76,21 +78,21 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
-			tempDiv.setStyle("background-color: " + SUCCESS_HASH);
-			vlayout.setStyle("background-color: " + SUCCESS_HASH + "; " + "text-align: center" + ";");
+			heartBeatVbox.setStyle("background-color: " + GREEN_HASH);
+			hbox.setStyle("background-color: " + GREEN_HASH + "; " + "text-align: center" + ";");
 
-			tempLabel.setStyle("color: " + WHITE_HASH);
-			heightLabel.setStyle("color: " + WHITE_HASH);
-			lowLabel.setStyle("color: " + WHITE_HASH);
-			temperatureLabel.setStyle("color: " + WHITE_HASH);
+			tempLabel.setStyle("color: " + BLACK_HASH);
+			heightLabel.setStyle("color: " + BLACK_HASH);
+			lowLabel.setStyle("color: " + BLACK_HASH);
+			temperatureLabel.setStyle("color: " + BLACK_HASH);
 		} else {
-			tempDiv.setStyle("background-color: " + GRAY_HASH);
-			vlayout.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
+			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
+			hbox.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
-			tempLabel.setStyle("color: " + SUCCESS_HASH);
-			heightLabel.setStyle("color: " + SUCCESS_HASH);
-			lowLabel.setStyle("color: " + SUCCESS_HASH);
-			temperatureLabel.setStyle("color: " + SUCCESS_HASH);
+			tempLabel.setStyle("color: " + GREEN_HASH);
+			heightLabel.setStyle("color: " + GREEN_HASH);
+			lowLabel.setStyle("color: " + GREEN_HASH);
+			temperatureLabel.setStyle("color: " + GREEN_HASH);
 		}
 	}
 

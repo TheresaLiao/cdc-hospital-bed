@@ -16,6 +16,8 @@ import org.itri.view.util.HibernateUtil;
 
 public class RtOximeterViewDaoHibernateImpl {
 
+	private int minusThreeMinit = -3;
+
 	public List<RtOximeterRecord> getRtOximeterRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
@@ -52,7 +54,7 @@ public class RtOximeterViewDaoHibernateImpl {
 			Date now = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(now);
-			calendar.add(Calendar.MINUTE, -3);
+			calendar.add(Calendar.MINUTE, minusThreeMinit);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 
 			criteria.addOrder(Order.asc("timeCreated"));

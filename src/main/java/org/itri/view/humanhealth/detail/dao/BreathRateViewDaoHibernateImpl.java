@@ -15,6 +15,8 @@ import org.itri.view.humanhealth.hibernate.RtHeartRhythmRecord;
 import org.itri.view.util.HibernateUtil;
 
 public class BreathRateViewDaoHibernateImpl {
+	
+	private int minusThreeMinit = -3;
 
 	public List<RtHeartRhythmRecord> getRtHeartRhythmRecordList(long patientId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -48,7 +50,7 @@ public class BreathRateViewDaoHibernateImpl {
 			Date now = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(now);
-			calendar.add(Calendar.MINUTE, -3);
+			calendar.add(Calendar.MINUTE, minusThreeMinit);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 
 			criteria.addOrder(Order.asc("timeCreated"));

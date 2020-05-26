@@ -6,39 +6,40 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Hbox;
 import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Vbox;
 import org.zkoss.zul.Vlayout;
 import org.zkoss.zul.Window;
 
 public class OximeterCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > hlayout > div")
-	private Div oximeterDiv;
+	@Wire("window > bs-row > hbox > vbox")
+	private Vbox heartBeatVbox;
 
-	@Wire("window > bs-row > hlayout > div > #hrLabel")
+	@Wire("window > bs-row > hbox > vbox > #hrLabel")
 	private Label hrLabel;
 
-	@Wire("window > bs-row > hlayout > div > #heightLabel")
+	@Wire("window > bs-row > hbox > vbox > #heightLabel")
 	private Label heightLabel;
 
-	@Wire("window > bs-row > hlayout > div > #lowLabel")
+	@Wire("window > bs-row > hbox > vbox > #lowLabel")
 	private Label lowLabel;
 
-	@Wire("window > bs-row > hlayout ")
-	private Hlayout hlayout;
+	@Wire("window > bs-row > hbox ")
+	private Hbox hbox;
 
-	@Wire("window > bs-row > hlayout > textbox")
+	@Wire("window > bs-row > hbox > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > hlayout > label")
+	@Wire("window > bs-row > hbox > label")
 	private Label oximeterLabel;
 
-	private static String PERSENT_STR = "%";
-	private String GRAY_HASH = "#2f2f2f";
-	private String PRIMARY_HASH = "#0093f9";
-	private String WHITE_HASH = "#ffffff";
+	private String GRAY_HASH = "#2F2F2F";
+	private String BLACK_HASH = "#000000";
+	private String BLUE_HASH = "#73E9FF";
 
 	private String heightStr = "100";
 	private String lowStr = "90";
@@ -54,7 +55,7 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getOximeterValueById(getPatientId());
-		oximeterLabel.setValue(dataStr + PERSENT_STR);
+		oximeterLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
 	}
@@ -65,7 +66,7 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
 		String dataStr = getOximeterValueById(getPatientId());
-		oximeterLabel.setValue(dataStr + PERSENT_STR);
+		oximeterLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
 	}
@@ -78,21 +79,21 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
-			oximeterDiv.setStyle("background-color: " + PRIMARY_HASH);
-			hlayout.setStyle("background-color: " + PRIMARY_HASH + "; " + "text-align: center" + ";");
+			heartBeatVbox.setStyle("background-color: " + BLUE_HASH);
+			hbox.setStyle("background-color: " + BLUE_HASH + "; " + "text-align: center" + ";");
 
-			hrLabel.setStyle("color: " + WHITE_HASH);
-			heightLabel.setStyle("color: " + WHITE_HASH);
-			lowLabel.setStyle("color: " + WHITE_HASH);
-			oximeterLabel.setStyle("color: " + WHITE_HASH);
+			hrLabel.setStyle("color: " + BLACK_HASH);
+			heightLabel.setStyle("color: " + BLACK_HASH);
+			lowLabel.setStyle("color: " + BLACK_HASH);
+			oximeterLabel.setStyle("color: " + BLACK_HASH);
 		} else {
-			oximeterDiv.setStyle("background-color: " + GRAY_HASH);
-			hlayout.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
+			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
+			hbox.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
-			hrLabel.setStyle("color: " + PRIMARY_HASH);
-			heightLabel.setStyle("color: " + PRIMARY_HASH);
-			lowLabel.setStyle("color: " + PRIMARY_HASH);
-			oximeterLabel.setStyle("color: " + PRIMARY_HASH);
+			hrLabel.setStyle("color: " + BLUE_HASH);
+			heightLabel.setStyle(BLUE_HASH);
+			lowLabel.setStyle("color: " + BLUE_HASH);
+			oximeterLabel.setStyle("color: " + BLUE_HASH);
 
 		}
 	}
