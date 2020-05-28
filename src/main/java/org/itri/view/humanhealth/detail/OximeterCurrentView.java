@@ -91,7 +91,7 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 			hbox.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + BLUE_HASH);
-			heightLabel.setStyle(BLUE_HASH);
+			heightLabel.setStyle("color: " + BLUE_HASH);
 			lowLabel.setStyle("color: " + BLUE_HASH);
 			oximeterLabel.setStyle("color: " + BLUE_HASH);
 

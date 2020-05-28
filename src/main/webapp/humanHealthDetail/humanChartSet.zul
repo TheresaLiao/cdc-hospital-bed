@@ -65,7 +65,7 @@
 												</vbox>
 
 												<!-- right value -->
-												<label class="h1" />
+												<label class="h1 px-3" />
 												<textbox visible="false"
 													value="${each.id}" />
 											</hbox>
@@ -117,7 +117,7 @@
 												</vbox>
 
 												<!-- right value -->
-												<label class="h1" />
+												<label class="h1 px-3" />
 												<textbox visible="false"
 													value="${each.id}" />
 
@@ -171,7 +171,7 @@
 												</vbox>
 
 												<!-- right value -->
-												<label class="h2" />
+												<label class="h2 px-3" />
 												<textbox visible="false"
 													value="${each.id}" />
 											</hbox>
@@ -223,7 +223,7 @@
 												</vbox>
 
 												<!-- right value -->
-												<label class="h2">
+												<label class="h2 px-3">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
