@@ -29,6 +29,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 	private String YELLOW_HASH = "#F8FF70";
 	private String GRAY_HASH = "#808080";
 	private String BLACK_HASH = "#000000";
+	private String WHITE_HASH = "#FFFFFF";
 	
 
 	@Wire
@@ -63,7 +64,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 		series.setName("Breath Rate data");
 
 		setPatientId(textboxId.getValue());
-		chart.setColors(YELLOW_HASH);
+		chart.setColors(WHITE_HASH);
 		chart.getXAxis().setLineColor(BLACK_HASH);
 
 		// init point
@@ -76,7 +77,7 @@ public class BreathRateView extends SelectorComposer<Component> {
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
-				nowPoint.setColor(YELLOW_HASH);
+				nowPoint.setColor(WHITE_HASH);
 				series.addPoint(nowPoint);
 			}
 		}

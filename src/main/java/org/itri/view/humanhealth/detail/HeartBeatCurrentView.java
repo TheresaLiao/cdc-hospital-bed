@@ -40,6 +40,8 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	private String GRAY_HASH = "#2F2F2F";
 	private String GREEN_HASH = "#5CE498";
 	private String BLACK_HASH = "#000000";
+	private String RED_HASH = "#FF0000";
+	
 
 	private String heightStr = "100";
 	private String lowStr = "55";
@@ -79,8 +81,8 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
-			heartBeatVbox.setStyle("background-color: " + GREEN_HASH);
-			hbox.setStyle("background-color: " + GREEN_HASH + ";text-align: center");
+			heartBeatVbox.setStyle("background-color: " + RED_HASH);
+			hbox.setStyle("background-color: " + RED_HASH + ";text-align: center");
 
 			hrLabel.setStyle("color: " + BLACK_HASH);
 			heightLabel.setStyle("color: " + BLACK_HASH);
@@ -90,10 +92,10 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
 			hbox.setStyle("background-color: " + GRAY_HASH + ";text-align: center");
 
-			hrLabel.setStyle("color: " + GREEN_HASH);
-			heightLabel.setStyle("color: " + GREEN_HASH);
-			lowLabel.setStyle("color: " + GREEN_HASH);
-			heartBeatLabel.setStyle("color: " + GREEN_HASH);
+			hrLabel.setStyle("color: " + RED_HASH);
+			heightLabel.setStyle("color: " + RED_HASH);
+			lowLabel.setStyle("color: " + RED_HASH);
+			heartBeatLabel.setStyle("color: " + RED_HASH);
 		}
 	}
 
@@ -102,7 +104,7 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		PersonInfosDaoHibernateImpl hqe = new PersonInfosDaoHibernateImpl();
 		Patient rowData = hqe.getPatientById(patientId);
 		if (rowData != null) {
-			return rowData.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData();
+			return rowData.getRtOximeterRecords().stream().findFirst().get().getHeartRateData();
 		}
 		System.out.println("patientId :" + patientId + " can't find.");
 		return "NULL";

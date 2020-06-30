@@ -40,6 +40,7 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 	private String GRAY_HASH = "#2F2F2F";
 	private String BLACK_HASH = "#000000";
 	private String YELLOW_HASH = "#F8FF70";
+	private String WHITE_HASH = "#FFFFFF";
 
 	private String heightStr = "20";
 	private String lowStr = "10";
@@ -79,8 +80,8 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
-			heartBeatVbox.setStyle("background-color: " + YELLOW_HASH);
-			hbox.setStyle("background-color: " + YELLOW_HASH + "; " + "text-align: center" + ";");
+			heartBeatVbox.setStyle("background-color: " + WHITE_HASH);
+			hbox.setStyle("background-color: " + WHITE_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + BLACK_HASH);
 			heightLabel.setStyle("color: " + BLACK_HASH);
@@ -90,10 +91,10 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
 			hbox.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
-			hrLabel.setStyle("color: " + YELLOW_HASH);
-			heightLabel.setStyle("color: " + YELLOW_HASH);
-			lowLabel.setStyle("color: " + YELLOW_HASH);
-			breathRateLabel.setStyle("color: " + YELLOW_HASH);
+			hrLabel.setStyle("color: " + WHITE_HASH);
+			heightLabel.setStyle("color: " + WHITE_HASH);
+			lowLabel.setStyle("color: " + WHITE_HASH);
+			breathRateLabel.setStyle("color: " + WHITE_HASH);
 		}
 	}
 

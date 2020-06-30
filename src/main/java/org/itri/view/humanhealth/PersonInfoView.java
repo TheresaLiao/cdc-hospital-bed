@@ -49,7 +49,7 @@ public class PersonInfoView {
 
 			patient.setName(p.getPatientInfos().stream().findFirst().get().getName());
 			patient.setBedRoom(p.getRoom().getRoomNum());
-			patient.setHeartBeat(p.getRtHeartRhythmRecords().stream().findFirst().get().getHeartRateData());
+			patient.setHeartBeat(p.getRtOximeterRecords().stream().findFirst().get().getHeartRateData());
 			patient.setOximeter(p.getRtOximeterRecords().stream().findFirst().get().getOximeterData());
 			patient.setBreathRate(p.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 			patient.setBodyTemperature(p.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());

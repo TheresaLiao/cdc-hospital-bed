@@ -6,10 +6,10 @@
 	<session-factory>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.password">123456</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://54.178.235.133/AntiPandemic</property>  
-		<!-- <property name="hibernate.connection.url">jdbc:postgresql://10.99.10.147/AntiPandemic</property> -->
-		<!--<property name="hibernate.connection.url">jdbc:postgresql://10.99.10.195/AntiPandemic</property>-->
-		
+		<!--<property name="hibernate.connection.url">jdbc:postgresql://54.178.235.133/AntiPandemic</property> -->
+		<!--<property name="hibernate.connection.url">jdbc:postgresql://10.99.10.147/AntiPandemic</property> -->
+		<property name="hibernate.connection.url">jdbc:postgresql://10.99.10.195/AntiPandemic</property>
+
 		<property name="hibernate.connection.username">snake_eyes</property>
 		<property name="hibernate.default_schema">public</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.itri.view.humanhealth.detail.dao.BreathRateViewDaoHibernateImpl;
-import org.itri.view.humanhealth.hibernate.HeartRhythmRecord;
-import org.itri.view.humanhealth.hibernate.RtHeartRhythmRecord;
+import org.itri.view.humanhealth.detail.dao.OximeterRecordViewDaoHibernateImpl;
+import org.itri.view.humanhealth.hibernate.OximeterRecord;
+import org.itri.view.humanhealth.hibernate.RtOximeterRecord;
 import org.zkoss.chart.Charts;
 import org.zkoss.chart.Options;
 import org.zkoss.chart.PlotLine;
@@ -21,11 +21,11 @@ import org.zkoss.zul.Window;
 public class HeartBeatView extends SelectorComposer<Window> {
 
 	private long patientId = 0;
-	
+
 	private String GREEN_HASH = "#5CE498";
 	private String GRAY_HASH = "#808080";
 	private String BLACK_HASH = "#000000";
-	
+	private String RED_HASH = "#FF0000";
 
 	@Wire
 	private Charts chart;
@@ -63,7 +63,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 		series.setName("Heart Beat data");
 		setPatientId(textboxId.getValue());
-		chart.setColors(GREEN_HASH);
+		chart.setColors(RED_HASH);
 
 		chart.getXAxis().setLineColor(BLACK_HASH);
 		chart.setAlignTicks(false);
@@ -79,7 +79,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
-				nowPoint.setColor(GREEN_HASH);
+				nowPoint.setColor(RED_HASH);
 				series.addPoint(nowPoint);
 			}
 		}
@@ -104,12 +104,12 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 	// Get history data
 	private List<Point> getHeartRhythmRecordList(long patientId) {
-		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
-		List<HeartRhythmRecord> heartRhythmRecordList = hqe.getHeartRhythmRecordList(patientId);
+		OximeterRecordViewDaoHibernateImpl hqe = new OximeterRecordViewDaoHibernateImpl();
+		List<OximeterRecord> oximeterRecordList = hqe.getOximeterRecordList(patientId);
 
-		int i = heartRhythmRecordList.size() * (-1);
+		int i = oximeterRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
-		for (HeartRhythmRecord tt : heartRhythmRecordList) {
+		for (OximeterRecord tt : oximeterRecordList) {
 			i++;
 			String data = tt.getHeartRateData();
 			Date time = tt.getTimeCreated();
@@ -121,14 +121,12 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 	// Get real time data
 	private Point getRtHeartRhythmRecordList(long patientId) {
-		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
-		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = hqe.getRtHeartRhythmRecordList(patientId);
-		for (RtHeartRhythmRecord tt : rtHeartRhythmRecordList) {
+		OximeterRecordViewDaoHibernateImpl hqe = new OximeterRecordViewDaoHibernateImpl();
+		List<RtOximeterRecord> rtOximeterRecordList = hqe.getRtOximeterRecordList(patientId);
+		for (RtOximeterRecord tt : rtOximeterRecordList) {
 			String data = tt.getHeartRateData();
 			Date time = tt.getLastUpdated();
-
 			return new Point(time.getTime(), Double.valueOf(data));
-
 		}
 		return new Point(new Date().getTime(), 0);
 	}

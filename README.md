@@ -59,3 +59,8 @@ Since this project uses [CSS custom properties](https://developer.mozilla.org/en
 # Publish
 
 jenkins2/job/update_war/
+
+
+# Deploy
+
+mvn -e jetty:run -Djetty.http.port=8888

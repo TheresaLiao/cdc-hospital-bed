@@ -55,6 +55,8 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 	private String GREEN_HASH = "#5CE498";
 	private String BLUE_HASH = "#73E9FF";
 	private String YELLOW_HASH = "#F8FF70";
+	private String RED_HASH = "#FF0000";
+	private String WHITE_HASH = "#FFFFFF";
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
@@ -62,11 +64,11 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 		comp.setContentStyle("background: " + BLACK_HASH);
 
 		if (heartBeatStatusText.getValue().equals("W")) {
-			heartBeatDiv.setStyle("background-color: " + GREEN_HASH);
+			heartBeatDiv.setStyle("background-color: " + RED_HASH);
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
-			heartBeatLabel.setStyle("color: " + GREEN_HASH);
+			heartBeatLabel.setStyle("color: " + RED_HASH);
 		}
 
 		if (oximeterStatusTextbox.getValue().equals("W")) {
@@ -78,11 +80,11 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 		}
 
 		if (breathStatusTextbox.getValue().equals("W")) {
-			breathRateDiv.setStyle("background-color: " + YELLOW_HASH);
+			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			breathRateDiv.setStyle("background-color: " + BLACK_HASH);
-			breathRateLabel.setStyle("color: " + YELLOW_HASH);
+			breathRateLabel.setStyle("color: " + WHITE_HASH);
 		}
 
 		if (bodyTempStatusTextbox.getValue().equals("W")) {
@@ -98,11 +100,11 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 	public void updateData() {
 
 		if (heartBeatStatusText.getValue().equals("W")) {
-			heartBeatDiv.setStyle("background-color: " + GREEN_HASH);
+			heartBeatDiv.setStyle("background-color: " + RED_HASH);
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			heartBeatDiv.setStyle("background-color: " + BLACK_HASH);
-			heartBeatLabel.setStyle("color: " + GREEN_HASH);
+			heartBeatLabel.setStyle("color: " + RED_HASH);
 		}
 
 		if (oximeterStatusTextbox.getValue().equals("W")) {
@@ -114,11 +116,11 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 		}
 
 		if (breathStatusTextbox.getValue().equals("W")) {
-			breathRateDiv.setStyle("background-color: " + YELLOW_HASH);
+			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			breathRateDiv.setStyle("background-color: " + BLACK_HASH);
-			breathRateLabel.setStyle("color: " + YELLOW_HASH);
+			breathRateLabel.setStyle("color: " + WHITE_HASH);
 		}
 
 		if (bodyTempStatusTextbox.getValue().equals("W")) {

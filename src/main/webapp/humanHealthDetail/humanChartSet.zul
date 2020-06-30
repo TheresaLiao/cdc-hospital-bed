@@ -120,7 +120,6 @@
 												<label class="h1 px-3" />
 												<textbox visible="false"
 													value="${each.id}" />
-
 											</hbox>
 										</bs-row>
 
@@ -242,8 +241,9 @@
 		</vlayout>
 
 		<!-- Every 15s refresh person -->
+		<!-- 
 		<timer id="timer1234" delay="15000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
-
+ -->
 	</nodom>
 </zk>
