@@ -18,9 +18,23 @@
 						</caption>
 
 						<panelchildren>
+							<!-- DateRange -->
+							<!-- 
+							<window id="win" title="Car Editor"
+								width="400px" border="normal"
+								apply="org.itri.view.humanhealth.detail.EditController">
+
+								<selectbox id="typesSelectbox"
+									model="${win$composer.typesModel}">
+									<template name="model">
+										<label value="${each.text}" />
+									</template>
+								</selectbox>
+							</window>
+ -->
+
 							<!-- HeartBeat -->
 							<bs-row class="row py-0">
-
 								<!-- Chart -->
 								<style>
 									.z-window-content { padding:0px;}
@@ -222,7 +236,8 @@
 												</vbox>
 
 												<!-- right value -->
-												<label class="h2 px-3">
+												<label
+													class="h2 px-3">
 												</label>
 												<textbox visible="false"
 													value="${each.id}" />
@@ -240,10 +255,10 @@
 			</template>
 		</vlayout>
 
-		<!-- Every 15s refresh person -->
+		<!-- Every 30s refresh person -->
 		<!-- 
-		<timer id="timer1234" delay="15000" running="true"
+			<timer id="timer1234" delay="30000" running="true"
 			repeats="true" onTimer="@command('refreshPatientInfo')" />
- -->
+		-->
 	</nodom>
 </zk>
