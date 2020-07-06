@@ -1,38 +1,34 @@
 <zk xmlns:n="native" xmlns:z="zul">
 	<nodom
-		viewModel="@id('vm')@init('org.itri.view.humanhealth.detail.PersonInfo')">
+		viewModel="@id('vm')@init('org.itri.view.humanhealth.oneperson.detail.PersonInfo')">
+		
+		<!-- DateRange selectbox -->
+		<window id="dateWin" style="padding: 0px; z-window-content"
+			apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm')@init('org.itri.view.humanhealth.oneperson.detail.EditController')">
+			<selectbox model="@load(vm.dateList)"
+				selectedItem="@bind(vm.selectedDate)"
+				onSelect="@command('dateSeleted')">
+				<template name="model">
+					<label value="${each.text}" />
+				</template>
+			</selectbox>
+		</window>
+		
 		<vlayout children="@bind(vm.personStateList)" spacing="0">
 			<template name="children">
 
 				<!-- one person -->
-				<n:div sclass="row rounded col-lg-6">
-
+				<n:div sclass="row rounded col-lg-12">
 					<style>
 						.titleStyle { font-size: 40px; text-align:
 						center;}
 					</style>
-					<panel title="${each.bedRoom}" border="normal"
-						width="100%">
+					<panel title="101" border="normal" width="100%">
 						<caption sclass="titleStyle">
 							<label value="" />
 						</caption>
-
 						<panelchildren>
-							<!-- DateRange -->
-							<!-- 
-							<window id="win" title="Car Editor"
-								width="400px" border="normal"
-								apply="org.itri.view.humanhealth.detail.EditController">
-
-								<selectbox id="typesSelectbox"
-									model="${win$composer.typesModel}">
-									<template name="model">
-										<label value="${each.text}" />
-									</template>
-								</selectbox>
-							</window>
- -->
-
 							<!-- HeartBeat -->
 							<bs-row class="row py-0">
 								<!-- Chart -->
@@ -43,9 +39,9 @@
 									style="padding: 0px; z-window-content"
 									apply="org.itri.view.humanhealth.detail.HeartBeatView">
 									<charts id="chart" type="spline"
-										height="100" width="680" style="padding: 0px;" title="" />
+										height="100" width="1580" style="padding: 0px;" title="" />
 									<textbox id="textboxId"
-										visible="false" value="${each.id}" />th
+										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>
@@ -95,7 +91,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.detail.OximeterView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="680" />
+										title="" height="100" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -148,7 +144,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.detail.BreathRateView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="680" />
+										title="" height="100" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -200,7 +196,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.detail.TemperatureView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="680" />
+										title="" height="100" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<timer id="timer" delay="1000"
@@ -240,7 +236,7 @@
 													class="h2 px-3">
 												</label>
 												<textbox visible="false"
-													value="${each.id}" />
+													value="36" />
 											</hbox>
 										</bs-row>
 									</window>
@@ -254,11 +250,5 @@
 
 			</template>
 		</vlayout>
-
-		<!-- Every 30s refresh person -->
-		<!-- 
-			<timer id="timer1234" delay="30000" running="true"
-			repeats="true" onTimer="@command('refreshPatientInfo')" />
-		-->
 	</nodom>
 </zk>
