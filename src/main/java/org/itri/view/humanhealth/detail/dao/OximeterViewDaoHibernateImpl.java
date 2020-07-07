@@ -14,7 +14,7 @@ import org.itri.view.humanhealth.hibernate.OximeterRecord;
 import org.itri.view.humanhealth.hibernate.RtOximeterRecord;
 import org.itri.view.util.HibernateUtil;
 
-public class RtOximeterViewDaoHibernateImpl {
+public class OximeterViewDaoHibernateImpl {
 
 	private int minusThreeMinit = -3;
 
@@ -61,6 +61,31 @@ public class RtOximeterViewDaoHibernateImpl {
 
 			oximeterRecordList = criteria.list();
 
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return oximeterRecordList;
+	}
+
+	public List<OximeterRecord> getOximeterRecordByDateList(long patientId, Calendar calendar) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = null;
+		List<OximeterRecord> oximeterRecordList = new ArrayList<OximeterRecord>();
+
+		try {
+			tx = session.beginTransaction();
+
+			Criteria criteria = session.createCriteria(OximeterRecord.class);
+			criteria.add(Restrictions.eq("patient.patientId", patientId));
+
+			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
+			criteria.addOrder(Order.asc("timeCreated"));
+			oximeterRecordList = criteria.list();
+			
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

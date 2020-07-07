@@ -66,4 +66,28 @@ public class OximeterRecordViewDaoHibernateImpl {
 		}
 		return oximeterRecordList;
 	}
+
+	public List<OximeterRecord> getOximeterRecordByDateList(long patientId, Calendar calendar) {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = null;
+		List<OximeterRecord> oximeterRecordList = new ArrayList<OximeterRecord>();
+		try {
+			tx = session.beginTransaction();
+			Criteria criteria = session.createCriteria(OximeterRecord.class);
+			criteria.add(Restrictions.eq("patient.patientId", patientId));
+
+			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
+			criteria.addOrder(Order.asc("timeCreated"));
+			oximeterRecordList = criteria.list();
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return oximeterRecordList;
+	}
 }

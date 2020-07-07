@@ -1,21 +1,17 @@
 <zk xmlns:n="native" xmlns:z="zul">
-	<nodom
+	<nodom apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.oneperson.detail.PersonInfo')">
-		
+
 		<!-- DateRange selectbox -->
-		<window id="dateWin" style="padding: 0px; z-window-content"
-			apply="org.zkoss.bind.BindComposer"
-			viewModel="@id('vm')@init('org.itri.view.humanhealth.oneperson.detail.EditController')">
-			<selectbox model="@load(vm.dateList)"
-				selectedItem="@bind(vm.selectedDate)"
-				onSelect="@command('dateSeleted')">
-				<template name="model">
-					<label value="${each.text}" />
-				</template>
-			</selectbox>
-		</window>
-		
-		<vlayout children="@bind(vm.personStateList)" spacing="0">
+		<selectbox model="@load(vm.dateList)"
+			selectedItem="@bind(vm.selectedDate)"
+			onSelect="@command('dateSeleted')">
+			<template name="model">
+				<label value="${each.text}" />
+			</template>
+		</selectbox>
+
+		<vlayout children="@bind(vm.personState)" spacing="0">
 			<template name="children">
 
 				<!-- one person -->
@@ -37,11 +33,13 @@
 								</style>
 								<window
 									style="padding: 0px; z-window-content"
-									apply="org.itri.view.humanhealth.detail.HeartBeatView">
+									apply="org.itri.view.humanhealth.oneperson.detail.HeartBeatView">
 									<charts id="chart" type="spline"
 										height="100" width="1580" style="padding: 0px;" title="" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>
@@ -89,11 +87,13 @@
 							<bs-row class="row py-0">
 								<!-- Chart -->
 								<window style="padding: 0px;"
-									apply="org.itri.view.humanhealth.detail.OximeterView">
+									apply="org.itri.view.humanhealth.oneperson.detail.OximeterView">
 									<charts id="chart" type="spline"
 										title="" height="100" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>
@@ -142,11 +142,13 @@
 							<bs-row class="row py-0">
 								<!-- Chart -->
 								<window style="padding: 0px;"
-									apply="org.itri.view.humanhealth.detail.BreathRateView">
+									apply="org.itri.view.humanhealth.oneperson.detail.BreathRateView">
 									<charts id="chart" type="spline"
 										title="" height="100" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>
@@ -194,11 +196,13 @@
 							<bs-row class="row py-0">
 								<!-- Chart -->
 								<window style="padding: 0px;"
-									apply="org.itri.view.humanhealth.detail.TemperatureView">
+									apply="org.itri.view.humanhealth.oneperson.detail.TemperatureView">
 									<charts id="chart" type="spline"
 										title="" height="100" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>

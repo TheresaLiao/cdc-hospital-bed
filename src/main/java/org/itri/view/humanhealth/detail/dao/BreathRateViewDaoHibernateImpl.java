@@ -15,7 +15,7 @@ import org.itri.view.humanhealth.hibernate.RtHeartRhythmRecord;
 import org.itri.view.util.HibernateUtil;
 
 public class BreathRateViewDaoHibernateImpl {
-	
+
 	private int minusThreeMinit = -3;
 
 	public List<RtHeartRhythmRecord> getRtHeartRhythmRecordList(long patientId) {
@@ -53,6 +53,29 @@ public class BreathRateViewDaoHibernateImpl {
 			calendar.add(Calendar.MINUTE, minusThreeMinit);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 
+			criteria.addOrder(Order.asc("timeCreated"));
+
+			heartRhythmRecordList = criteria.list();
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return heartRhythmRecordList;
+	}
+
+	public List<HeartRhythmRecord> getHeartRhythmRecordByDateList(long patientId, Calendar calendar) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = null;
+		List<HeartRhythmRecord> heartRhythmRecordList = new ArrayList<HeartRhythmRecord>();
+		try {
+			tx = session.beginTransaction();
+			Criteria criteria = session.createCriteria(HeartRhythmRecord.class);
+			criteria.add(Restrictions.eq("patient.patientId", patientId));
+
+			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 			criteria.addOrder(Order.asc("timeCreated"));
 
 			heartRhythmRecordList = criteria.list();

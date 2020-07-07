@@ -1,5 +1,7 @@
 package org.itri.view.humanhealth.dao;
 
+import java.util.Calendar;
+
 import org.zkoss.admin.ecommerce.dao.Type;
 
 public class PersonState {
@@ -14,6 +16,7 @@ public class PersonState {
 	private Type type;
 	private Integer totalNewsScore;
 	private String totalStatusImgPath;
+	private String historyDate;
 
 	private String heartRateStatus;
 	private String oximeterStatus;
@@ -131,5 +134,15 @@ public class PersonState {
 	public void setBodyTemperature(String bodyTemperature) {
 		this.bodyTemperature = bodyTemperature;
 	}
+
+	public String getHistoryDate() {
+		return historyDate;
+	}
+
+	public void setHistoryDate(String historyDate) {
+		this.historyDate = historyDate;
+	}
+
+	
 
 }
