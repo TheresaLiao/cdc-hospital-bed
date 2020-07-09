@@ -2,6 +2,10 @@
 	<nodom apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.oneperson.detail.PersonInfo')">
 
+		<!-- Show username -->
+		<label class="h6 px-3" style="color:white"
+			value="@bind(vm.personState.name)" />
+
 		<!-- DateRange selectbox -->
 		<selectbox model="@load(vm.dateList)"
 			selectedItem="@bind(vm.selectedDate)"
@@ -11,8 +15,10 @@
 			</template>
 		</selectbox>
 
+
 		<vlayout children="@bind(vm.personState)" spacing="0">
 			<template name="children">
+
 
 				<!-- one person -->
 				<n:div sclass="row rounded col-lg-12">
@@ -20,7 +26,8 @@
 						.titleStyle { font-size: 40px; text-align:
 						center;}
 					</style>
-					<panel title="101" border="normal" width="100%">
+					<panel title="${each.bedRoom}" border="normal"
+						width="100%">
 						<caption sclass="titleStyle">
 							<label value="" />
 						</caption>
@@ -35,7 +42,7 @@
 									style="padding: 0px; z-window-content"
 									apply="org.itri.view.humanhealth.oneperson.detail.HeartBeatView">
 									<charts id="chart" type="spline"
-										height="100" width="1580" style="padding: 0px;" title="" />
+										height="150" width="1580" style="padding: 0px;" title="" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
@@ -46,7 +53,7 @@
 
 								<!-- Current Status -->
 								<n:div sclass="col p-1"
-									style="min-width: 180px">
+									style="min-width: 230px">
 									<window style="padding: 0px"
 										apply="org.itri.view.humanhealth.detail.HeartBeatCurrentView">
 										<timer id="timer" delay="100"
@@ -89,7 +96,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.oneperson.detail.OximeterView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="1580" />
+										title="" height="150" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
@@ -100,7 +107,7 @@
 
 								<!-- Current Status -->
 								<n:div sclass="col p-1"
-									style="min-width: 180px">
+									style="min-width: 230px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.OximeterCurrentView">
 										<timer id="timer" delay="100"
@@ -144,7 +151,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.oneperson.detail.BreathRateView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="1580" />
+										title="" height="150" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
@@ -155,7 +162,7 @@
 
 								<!-- Current Status -->
 								<n:div sclass="col p-1"
-									style="min-width: 150px">
+									style="min-width: 230px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.BreathRateCurrentView">
 										<timer id="timer" delay="1000"
@@ -198,7 +205,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.oneperson.detail.TemperatureView">
 									<charts id="chart" type="spline"
-										title="" height="100" width="1580" />
+										title="" height="150" width="1580" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
@@ -209,7 +216,7 @@
 
 								<!-- Current Status -->
 								<n:div sclass="col p-1"
-									style="min-width: 150px">
+									style="min-width: 230px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.detail.TemperatureCurrentView">
 										<timer id="timer" delay="100"

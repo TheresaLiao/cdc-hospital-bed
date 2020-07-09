@@ -1,5 +1,6 @@
 package org.itri.view.humanhealth.oneperson.detail;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -111,13 +112,9 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		OximeterRecordViewDaoHibernateImpl hqe = new OximeterRecordViewDaoHibernateImpl();
 		List<OximeterRecord> oximeterRecordList = hqe.getOximeterRecordByDateList(patientId, getHisDate());
 
-		int i = oximeterRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
-		for (OximeterRecord tt : oximeterRecordList) {
-			i++;
-			String data = tt.getHeartRateData();
-			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
+		for (OximeterRecord item : oximeterRecordList) {
+			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getHeartRateData())));
 		}
 
 		return resp;
@@ -125,7 +122,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 	// Get real time data
 	private Point getRtHeartRhythmRecordList(long patientId) {
-		
+
 		OximeterRecordViewDaoHibernateImpl hqe = new OximeterRecordViewDaoHibernateImpl();
 		List<RtOximeterRecord> rtOximeterRecordList = hqe.getRtOximeterRecordList(patientId);
 		for (RtOximeterRecord tt : rtOximeterRecordList) {

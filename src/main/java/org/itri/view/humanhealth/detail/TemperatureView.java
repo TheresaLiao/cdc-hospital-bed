@@ -19,13 +19,13 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Textbox;
 
 public class TemperatureView extends SelectorComposer<Component> {
-	
+
 	private long patientId = 0;
-	
+
 	private String GREEN_HASH = "#5CE498";
 	private String GRAY_HASH = "#808080";
 	private String BLACK_HASH = "#000000";
-	
+
 	@Wire
 	private Charts chart;
 
@@ -43,7 +43,7 @@ public class TemperatureView extends SelectorComposer<Component> {
 		chart.setBackgroundColor("black");
 		chart.getXAxis().setType("datetime");
 		chart.getXAxis().setTickPixelInterval(150);
-		 chart.getYAxis().setTitle("");
+		chart.getYAxis().setTitle("");
 		PlotLine plotLine = new PlotLine();
 		plotLine.setValue(0);
 		plotLine.setWidth(1);
@@ -100,11 +100,8 @@ public class TemperatureView extends SelectorComposer<Component> {
 
 		int i = tempPadRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
-		for (TempPadRecord tt : tempPadRecordList) {
-			i++;
-			String data = tt.getBodyTempData();
-			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
+		for (TempPadRecord item : tempPadRecordList) {
+			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getBodyTempData())));
 		}
 		return resp;
 	}

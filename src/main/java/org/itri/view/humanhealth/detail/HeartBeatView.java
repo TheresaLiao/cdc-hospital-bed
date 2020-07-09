@@ -109,11 +109,8 @@ public class HeartBeatView extends SelectorComposer<Window> {
 
 		int i = oximeterRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
-		for (OximeterRecord tt : oximeterRecordList) {
-			i++;
-			String data = tt.getHeartRateData();
-			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
+		for (OximeterRecord item : oximeterRecordList) {
+			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getHeartRateData())));
 		}
 
 		return resp;

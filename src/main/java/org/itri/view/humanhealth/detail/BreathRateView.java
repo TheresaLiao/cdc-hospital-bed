@@ -108,11 +108,8 @@ public class BreathRateView extends SelectorComposer<Component> {
 
 		int i = heartRhythmRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
-		for (HeartRhythmRecord tt : heartRhythmRecordList) {
-			i++;
-			String data = tt.getBreathData();
-			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
+		for (HeartRhythmRecord item : heartRhythmRecordList) {
+			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getHeartRateData())));
 		}
 		return resp;
 	}

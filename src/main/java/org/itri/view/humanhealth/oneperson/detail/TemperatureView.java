@@ -103,13 +103,9 @@ public class TemperatureView extends SelectorComposer<Component> {
 		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
 		List<TempPadRecord> tempPadRecordList = hqe.getTempPadRecordByDateList(patientId, getHisDate());
 
-		int i = tempPadRecordList.size() * (-1);
 		List<Point> resp = new ArrayList<Point>();
-		for (TempPadRecord tt : tempPadRecordList) {
-			i++;
-			String data = tt.getBodyTempData();
-			Date time = tt.getTimeCreated();
-			resp.add(new Point(time.getTime() + i * 1000, Double.valueOf(data)));
+		for (TempPadRecord item : tempPadRecordList) {
+			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getBodyTempData())));
 		}
 		return resp;
 	}

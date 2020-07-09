@@ -17,7 +17,7 @@
 			<!-- Main Page -->
 			<n:div sclass="col-12 container-fluid">
 				<div width="99%" style="padding-left: 15px">
-					<apply 
+					<apply
 						templateURI="@load(vm.navigationModel.contentUrl)" />
 				</div>
 			</n:div>

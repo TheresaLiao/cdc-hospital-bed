@@ -8,6 +8,9 @@ import java.util.List;
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.PersonState;
 import org.itri.view.humanhealth.hibernate.Patient;
+import org.itri.view.login.AuthenticationService;
+import org.itri.view.login.AuthenticationServiceImpl;
+import org.itri.view.login.dao.UserCredential;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -20,13 +23,18 @@ public class PersonInfo {
 	private DateKeyValueSelectBox selectedDate;
 	private List<DateKeyValueSelectBox> dateList = new ArrayList<DateKeyValueSelectBox>();
 
-	private long patientId = 1;
+	private UserCredential cre = new UserCredential();
+
 
 	static String NORMAL_PATH = "./resources/image/MapImages/icon_indicator_no_01.png";
 	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_o_01.png";
 
+	AuthenticationService authService = new AuthenticationServiceImpl();
+
 	@Init
 	public void init() {
+		cre = authService.getUserCredential();
+
 		hqe = new PersonInfosDaoHibernateImpl();
 		queryStates();
 
@@ -54,10 +62,10 @@ public class PersonInfo {
 
 	private void queryStates() {
 
-		System.out.println("queryStates");
-		Patient patient = hqe.getPatientById(patientId);
+		Patient patient = hqe.getPatientById(cre.getPatientId());
 		personState = new PersonState();
 
+		personState.setName(cre.getName());
 		personState.setId(patient.getPatientId());
 		personState.setName(patient.getPatientInfos().stream().findFirst().get().getName());
 		personState.setBedRoom(patient.getRoom().getRoomNum());
@@ -66,6 +74,7 @@ public class PersonInfo {
 		personState.setBreathRate(patient.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData());
 		personState.setBodyTemperature(patient.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
 		personState.setTotalNewsScore(patient.getTotalNewsScore());
+
 	}
 
 	public PersonState getPersonState() {
