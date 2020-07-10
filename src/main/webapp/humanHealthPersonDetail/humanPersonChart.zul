@@ -42,7 +42,7 @@
 									style="padding: 0px; z-window-content"
 									apply="org.itri.view.humanhealth.oneperson.detail.HeartBeatView">
 									<charts id="chart" type="spline"
-										height="150" width="1580" style="padding: 0px;" title="" />
+										height="150" width="1080" style="padding: 0px;" title="" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
@@ -96,7 +96,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.oneperson.detail.OximeterView">
 									<charts id="chart" type="spline"
-										title="" height="150" width="1580" />
+										title="" height="150" width="1080" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
@@ -151,7 +151,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.oneperson.detail.BreathRateView">
 									<charts id="chart" type="spline"
-										title="" height="150" width="1580" />
+										title="" height="150" width="1080" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
@@ -205,7 +205,7 @@
 								<window style="padding: 0px;"
 									apply="org.itri.view.humanhealth.oneperson.detail.TemperatureView">
 									<charts id="chart" type="spline"
-										title="" height="150" width="1580" />
+										title="" height="150" width="1080" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
 									<textbox id="textboxHisDate"
