@@ -14,6 +14,8 @@ import org.itri.view.login.dao.UserCredential;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.select.annotation.Listen;
 
 public class PersonInfo {
 
@@ -24,7 +26,6 @@ public class PersonInfo {
 	private List<DateKeyValueSelectBox> dateList = new ArrayList<DateKeyValueSelectBox>();
 
 	private UserCredential cre = new UserCredential();
-
 
 	static String NORMAL_PATH = "./resources/image/MapImages/icon_indicator_no_01.png";
 	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_o_01.png";
@@ -53,6 +54,7 @@ public class PersonInfo {
 		selectedDate = item1;
 	}
 
+	/* Select data and refresh data */
 	@NotifyChange({ "personState" })
 	@Command
 	public void dateSeleted() {
@@ -75,6 +77,17 @@ public class PersonInfo {
 		personState.setBodyTemperature(patient.getRtTempPadRecords().stream().findFirst().get().getBodyTempData());
 		personState.setTotalNewsScore(patient.getTotalNewsScore());
 
+	}
+
+	/* Logout and change page */
+	@Command
+	public void doLogout() {
+		System.out.println("doLogout");
+		System.out.println(cre.getPatientId());
+		System.out.println(cre.getName());
+
+		authService.logout();
+		Executions.sendRedirect("/index.zul");
 	}
 
 	public PersonState getPersonState() {

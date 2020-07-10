@@ -3,8 +3,10 @@
 		viewModel="@id('vm')@init('org.itri.view.humanhealth.oneperson.detail.PersonInfo')">
 
 		<!-- Show username -->
-		<label class="h6 px-3" style="color:white"
+		<!-- 
+			<label class="h6 px-3" style="color:white"
 			value="@bind(vm.personState.name)" />
+		-->
 
 		<!-- DateRange selectbox -->
 		<selectbox model="@load(vm.dateList)"
@@ -14,6 +16,12 @@
 				<label value="${each.text}" />
 			</template>
 		</selectbox>
+
+		<!-- Logout -->
+		<label id="logout" value="Logout" class="h6 px-3"
+			style="color:white; text-decoration: underline; cursor: pointer;"
+			if="${not sessionScope.userCredential.anonymous}"
+			onClick="@command('doLogout')" />
 
 
 		<vlayout children="@bind(vm.personState)" spacing="0">
