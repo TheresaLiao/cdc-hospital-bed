@@ -251,11 +251,9 @@
 												</vbox>
 
 												<!-- right value -->
-												<label
-													class="h2 px-3">
-												</label>
+												<label class="h2 px-3" />
 												<textbox visible="false"
-													value="36" />
+													value="${each.id}" />
 											</hbox>
 										</bs-row>
 									</window>
