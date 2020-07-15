@@ -138,6 +138,7 @@ public class HeartBeatView extends SelectorComposer<Window> {
 		Date now = new Date();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(now);
+		
 		if (value.equals(SelectBoxDao.THREE_MIN)) {
 			calendar.add(Calendar.MINUTE, -3);
 		} else if (value.equals(SelectBoxDao.FIVE_MIN)) {

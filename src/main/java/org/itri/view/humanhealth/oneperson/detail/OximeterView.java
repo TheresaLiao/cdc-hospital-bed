@@ -108,7 +108,7 @@ public class OximeterView extends SelectorComposer<Component> {
 
 		List<Point> resp = new ArrayList<Point>();
 		for (OximeterRecord item : oximeterRecordList) {
-			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getHeartRateData())));
+			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getOximeterData())));
 		}
 		return resp;
 	}
