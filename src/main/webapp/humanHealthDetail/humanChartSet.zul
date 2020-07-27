@@ -20,18 +20,18 @@
 						<panelchildren>
 							<!-- DateRange -->
 							<!-- 
-							<window id="win" title="Car Editor"
+								<window id="win" title="Car Editor"
 								width="400px" border="normal"
 								apply="org.itri.view.humanhealth.detail.EditController">
-
+								
 								<selectbox id="typesSelectbox"
-									model="${win$composer.typesModel}">
-									<template name="model">
-										<label value="${each.text}" />
-									</template>
+								model="${win$composer.typesModel}">
+								<template name="model">
+								<label value="${each.text}" />
+								</template>
 								</selectbox>
-							</window>
- -->
+								</window>
+							-->
 
 							<!-- HeartBeat -->
 							<bs-row class="row py-0">
@@ -45,7 +45,8 @@
 									<charts id="chart" type="spline"
 										height="100" width="680" style="padding: 0px;" title="" />
 									<textbox id="textboxId"
-										visible="false" value="${each.id}" />th
+										visible="false" value="${each.id}" />
+									th
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>

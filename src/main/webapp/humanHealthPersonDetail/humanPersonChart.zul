@@ -59,7 +59,7 @@
 										running="true" repeats="true" />
 								</window>
 
-								<!-- Current Status -->
+
 								<n:div sclass="col p-1"
 									style="min-width: 230px">
 									<window style="padding: 0px"
@@ -67,6 +67,8 @@
 										<timer id="timer" delay="100"
 											running="true" repeats="true" />
 										<bs-row class="row col px-1 ">
+
+											<!-- Current Status -->
 											<hbox class="col"
 												pack="center" align="center">
 												<!-- left spec -->
@@ -92,6 +94,19 @@
 												<textbox visible="false"
 													value="${each.id}" />
 											</hbox>
+
+											<!-- Device Status -->
+											<vbox align="end">
+												<label id="batteryLabel"
+													class=" h7" />
+												<image width="30%"
+													height="30%" id="batteryImg"
+													src="resources/image/icon-battery-w.png" />
+												<image width="30%"
+													height="30%" id="connectImg"
+													src="resources/image/icon-connect-b-ok.png" />
+											</vbox>
+
 										</bs-row>
 									</window>
 								</n:div>
@@ -146,8 +161,18 @@
 												<textbox visible="false"
 													value="${each.id}" />
 											</hbox>
+											<!-- Device Status -->
+											<vbox align="end">
+												<label id="batteryLabel"
+													class=" h7" />
+												<image width="30%"
+													height="30%" id="batteryImg"
+													src="resources/image/icon-battery-w.png" />
+												<image width="30%"
+													height="30%" id="connectImg"
+													src="resources/image/icon-connect-b-ok.png" />
+											</vbox>
 										</bs-row>
-
 									</window>
 								</n:div>
 							</bs-row>
@@ -201,8 +226,18 @@
 												<textbox visible="false"
 													value="${each.id}" />
 											</hbox>
+											<!-- Device Status -->
+											<vbox align="end">
+												<label id="batteryLabel"
+													class=" h7" />
+												<image width="30%"
+													height="30%" id="batteryImg"
+													src="resources/image/icon-battery-w.png" />
+												<image width="30%"
+													height="30%" id="connectImg"
+													src="resources/image/icon-connect-b-ok.png" />
+											</vbox>
 										</bs-row>
-
 									</window>
 								</n:div>
 							</bs-row>
@@ -255,6 +290,17 @@
 												<textbox visible="false"
 													value="${each.id}" />
 											</hbox>
+											<!-- Device Status -->
+											<vbox align="end">
+												<label id="batteryLabel"
+													class=" h7" />
+												<image width="30%"
+													height="30%" id="batteryImg"
+													src="resources/image/icon-battery-w.png" />
+												<image width="30%"
+													height="30%" id="connectImg"
+													src="resources/image/icon-connect-b-ok.png" />
+											</vbox>
 										</bs-row>
 									</window>
 								</n:div>

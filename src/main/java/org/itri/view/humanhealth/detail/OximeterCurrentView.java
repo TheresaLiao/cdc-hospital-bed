@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Hbox;
 import org.zkoss.zul.Hlayout;
+import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Vbox;
@@ -36,6 +37,15 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 
 	@Wire("window > bs-row > hbox > label")
 	private Label oximeterLabel;
+	
+	@Wire("#batteryLabel")
+	private Label batteryLabel;
+
+	@Wire("#batteryImg")
+	private Image batteryImg;
+
+	@Wire("#connectImg")
+	private Image connectImg;
 
 	private String GRAY_HASH = "#2F2F2F";
 	private String BLACK_HASH = "#000000";
@@ -45,6 +55,11 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 	private String lowStr = "90";
 
 	private long patientId = 0;
+	
+	private String BATTERY_WHITE = "resources/image/icon-battery-w.png";
+	private String BATTERY_YELLO = "resources/image/icon-battery-y.png";
+	private String CONNECT_OK = "resources/image/icon-connect-b-ok.png";
+	private String CONNECT_NO = "resources/image/icon-connect-w-no.png";
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
@@ -103,6 +118,7 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 		PersonInfosDaoHibernateImpl hqe = new PersonInfosDaoHibernateImpl();
 		Patient rowData = hqe.getPatientById(patientId);
 		if (rowData != null) {
+			batteryLabel.setValue(rowData.getRtOximeterRecords().stream().findFirst().get().getBatteryLevel()+"%");
 			return rowData.getRtOximeterRecords().stream().findFirst().get().getOximeterData();
 		}
 		System.out.println("patientId :" + patientId + " can't find.");
