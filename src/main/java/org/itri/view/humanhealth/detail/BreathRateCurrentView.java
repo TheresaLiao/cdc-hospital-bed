@@ -38,15 +38,6 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 	@Wire("window > bs-row > hbox > label")
 	private Label breathRateLabel;
 
-	@Wire("#batteryLabel")
-	private Label batteryLabel;
-
-	@Wire("#batteryImg")
-	private Image batteryImg;
-
-	@Wire("#connectImg")
-	private Image connectImg;
-
 	private String GRAY_HASH = "#2F2F2F";
 	private String BLACK_HASH = "#000000";
 	private String YELLOW_HASH = "#F8FF70";
@@ -118,7 +109,6 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 		PersonInfosDaoHibernateImpl hqe = new PersonInfosDaoHibernateImpl();
 		Patient rowData = hqe.getPatientById(patientId);
 		if (rowData != null) {
-			batteryLabel.setValue(rowData.getRtHeartRhythmRecords().stream().findFirst().get().getBatteryLevel()+"%");
 			return rowData.getRtHeartRhythmRecords().stream().findFirst().get().getBreathData();
 		}
 		System.out.println("patientId :" + patientId + " can't find.");

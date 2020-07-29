@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -26,8 +27,12 @@ public class BreathRateViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(RtHeartRhythmRecord.class);
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
-
 			rtHeartRhythmRecordList = criteria.list();
+
+			for (RtHeartRhythmRecord item : rtHeartRhythmRecordList) {
+				Hibernate.initialize(item.getSensor());
+			}
+
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -26,8 +27,11 @@ public class OximeterRecordViewDaoHibernateImpl {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(RtOximeterRecord.class);
 			criteria.add(Restrictions.eq("patient.patientId", patientId));
-
 			rtHeartRhythmRecordList = criteria.list();
+
+			for (RtOximeterRecord item : rtHeartRhythmRecordList) {
+				Hibernate.initialize(item.getSensor());
+			}
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,7 +57,6 @@ public class OximeterRecordViewDaoHibernateImpl {
 			calendar.setTime(now);
 			calendar.add(Calendar.MINUTE, minusThreeMinit);
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
-
 			criteria.addOrder(Order.asc("timeCreated"));
 
 			oximeterRecordList = criteria.list();

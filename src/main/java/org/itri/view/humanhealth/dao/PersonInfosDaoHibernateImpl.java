@@ -37,6 +37,7 @@ public class PersonInfosDaoHibernateImpl {
 				Hibernate.initialize(p.getRtOximeterRecords());
 				Hibernate.initialize(p.getRtHeartRhythmRecords());
 				Hibernate.initialize(p.getRtTempPadRecords());
+				
 				patientList.add(p);
 			}
 			tx.commit();

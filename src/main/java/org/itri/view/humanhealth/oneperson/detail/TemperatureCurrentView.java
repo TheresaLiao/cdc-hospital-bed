@@ -1,7 +1,14 @@
-package org.itri.view.humanhealth.detail;
+package org.itri.view.humanhealth.oneperson.detail;
+
+import java.text.DecimalFormat;
+import java.util.List;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
+import org.itri.view.humanhealth.detail.dao.OximeterRecordViewDaoHibernateImpl;
+import org.itri.view.humanhealth.detail.dao.TemperatureViewDaoHibernateImpl;
 import org.itri.view.humanhealth.hibernate.Patient;
+import org.itri.view.humanhealth.hibernate.RtOximeterRecord;
+import org.itri.view.humanhealth.hibernate.RtTempPadRecord;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -38,6 +45,15 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 	@Wire("window > bs-row > hbox > label")
 	private Label temperatureLabel;
 
+	@Wire("#batteryLabel")
+	private Label batteryLabel;
+
+	@Wire("#batteryImg")
+	private Image batteryImg;
+
+	@Wire("#connectImg")
+	private Image connectImg;
+
 	private String GRAY_HASH = "#2F2F2F";
 	private String BLACK_HASH = "#000000";
 	private String GREEN_HASH = "#5CE498";
@@ -47,10 +63,8 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 
 	private long patientId = 0;
 
-	private String BATTERY_WHITE = "resources/image/icon-battery-w.png";
-	private String BATTERY_YELLO = "resources/image/icon-battery-y.png";
-	private String CONNECT_OK = "resources/image/icon-connect-b-ok.png";
-	private String CONNECT_NO = "resources/image/icon-connect-w-no.png";
+	private String CONNECT_OK = "resources/image/icon2-connect-b-ok.png";
+	private String CONNECT_NO = "resources/image/icon2-connect-b-no.png";
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
@@ -104,16 +118,26 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 
 	private String getTemperatureValueById(long patientId) {
 
-		PersonInfosDaoHibernateImpl hqe = new PersonInfosDaoHibernateImpl();
-		Patient rowData = hqe.getPatientById(patientId);
-		if (rowData != null) {
-			return rowData.getRtTempPadRecords().stream().findFirst().get().getBodyTempData();
+		TemperatureViewDaoHibernateImpl hqe = new TemperatureViewDaoHibernateImpl();
+		List<RtTempPadRecord> rtTempPadRecordList = hqe.getRtTempPadRecordList(patientId);
+		for (RtTempPadRecord item : rtTempPadRecordList) {
+			connectImg.setSrc(getConnectStatusIcon(item.getSensor().getSensorDeviceStatus()));
+			batteryLabel.setValue(getBatteryPersent(item.getBatteryLevel()) + "%");
+			return item.getBodyTempData();
 		}
 		System.out.println("patientId :" + patientId + " can't find.");
 		return "NULL";
 	}
 
-	private String getBatteryPersent(String batteryLevel) {
+	private String getConnectStatusIcon(String deviceStatus) {
+
+		if (deviceStatus.equals("3")) {
+			return CONNECT_OK;
+		}
+		return CONNECT_NO;
+	}
+
+	private int getBatteryPersent(String batteryLevel) {
 
 		// volt top : 4.2 , bottom: 3.65
 		double top = 4.2;
@@ -123,11 +147,11 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 		double gap = top - bottom;
 		double value = Float.valueOf(batteryLevel);
 		if (value < bottom) {
-			return String.valueOf(defaultData);
+			return (int) (defaultData);
 		}
 
 		double data = (value - bottom) / gap;
-		return String.valueOf(data * 100);
+		return (int) (data * 100);
 	}
 
 	public long getPatientId() {

@@ -1,21 +1,20 @@
-package org.itri.view.humanhealth.detail;
+package org.itri.view.humanhealth.oneperson.detail;
 
-import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
-import org.itri.view.humanhealth.hibernate.Patient;
+import java.util.List;
+import org.itri.view.humanhealth.detail.dao.BreathRateViewDaoHibernateImpl;
+import org.itri.view.humanhealth.hibernate.HeartRhythmRecord;
+import org.itri.view.humanhealth.hibernate.RtHeartRhythmRecord;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Div;
 import org.zkoss.zul.Hbox;
-import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Vbox;
-import org.zkoss.zul.Vlayout;
 import org.zkoss.zul.Window;
 
-public class OximeterCurrentView extends SelectorComposer<Window> {
+public class BreathRateCurrentView extends SelectorComposer<Window> {
 
 	@Wire("window > bs-row > hbox > vbox")
 	private Vbox heartBeatVbox;
@@ -36,21 +35,29 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 	private Textbox textboxId;
 
 	@Wire("window > bs-row > hbox > label")
-	private Label oximeterLabel;
+	private Label breathRateLabel;
+
+	@Wire("#batteryLabel")
+	private Label batteryLabel;
+
+	@Wire("#batteryImg")
+	private Image batteryImg;
+
+	@Wire("#connectImg")
+	private Image connectImg;
 
 	private String GRAY_HASH = "#2F2F2F";
 	private String BLACK_HASH = "#000000";
-	private String BLUE_HASH = "#73E9FF";
+	private String YELLOW_HASH = "#F8FF70";
+	private String WHITE_HASH = "#FFFFFF";
 
-	private String heightStr = "100";
-	private String lowStr = "90";
+	private String heightStr = "20";
+	private String lowStr = "10";
 
 	private long patientId = 0;
 
-	private String BATTERY_WHITE = "resources/image/icon-battery-w.png";
-	private String BATTERY_YELLO = "resources/image/icon-battery-y.png";
-	private String CONNECT_OK = "resources/image/icon-connect-b-ok.png";
-	private String CONNECT_NO = "resources/image/icon-connect-w-no.png";
+	private String CONNECT_OK = "resources/image/icon2-connect-b-ok.png";
+	private String CONNECT_NO = "resources/image/icon2-connect-b-no.png";
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
@@ -60,8 +67,8 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
-		String dataStr = getOximeterValueById(getPatientId());
-		oximeterLabel.setValue(dataStr);
+		String dataStr = getBreathRateValueById(getPatientId());
+		breathRateLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
 	}
@@ -71,48 +78,58 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 
 		// get PatientId & find data by PatientId
 		setPatientId(textboxId.getValue());
-		String dataStr = getOximeterValueById(getPatientId());
-		oximeterLabel.setValue(dataStr);
+		String dataStr = getBreathRateValueById(getPatientId());
+		breathRateLabel.setValue(dataStr);
 
 		hightLightLabel(dataStr);
+
 	}
 
 	private void hightLightLabel(String dataStr) {
-
 		double data = Double.valueOf(dataStr);
 		Double heightData = Double.valueOf(heightStr);
 		Double lowData = Double.valueOf(lowStr);
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
-			heartBeatVbox.setStyle("background-color: " + BLUE_HASH);
-			hbox.setStyle("background-color: " + BLUE_HASH + "; " + "text-align: center" + ";");
+			heartBeatVbox.setStyle("background-color: " + WHITE_HASH);
+			hbox.setStyle("background-color: " + WHITE_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + BLACK_HASH);
 			heightLabel.setStyle("color: " + BLACK_HASH);
 			lowLabel.setStyle("color: " + BLACK_HASH);
-			oximeterLabel.setStyle("color: " + BLACK_HASH);
+			breathRateLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
 			hbox.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
-			hrLabel.setStyle("color: " + BLUE_HASH);
-			heightLabel.setStyle("color: " + BLUE_HASH);
-			lowLabel.setStyle("color: " + BLUE_HASH);
-			oximeterLabel.setStyle("color: " + BLUE_HASH);
-
+			hrLabel.setStyle("color: " + WHITE_HASH);
+			heightLabel.setStyle("color: " + WHITE_HASH);
+			lowLabel.setStyle("color: " + WHITE_HASH);
+			breathRateLabel.setStyle("color: " + WHITE_HASH);
 		}
 	}
 
-	private String getOximeterValueById(long patientId) {
+	private String getBreathRateValueById(long patientId) {
 
-		PersonInfosDaoHibernateImpl hqe = new PersonInfosDaoHibernateImpl();
-		Patient rowData = hqe.getPatientById(patientId);
-		if (rowData != null) {
-			return rowData.getRtOximeterRecords().stream().findFirst().get().getOximeterData();
+		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();
+		List<RtHeartRhythmRecord> rtHeartRhythmRecordList = hqe.getRtHeartRhythmRecordList(patientId);
+		for (RtHeartRhythmRecord item : rtHeartRhythmRecordList) {
+			connectImg.setSrc(getConnectStatusIcon(item.getSensor().getSensorDeviceStatus()));
+			batteryLabel.setValue(item.getBatteryLevel() + "%");
+			return item.getBreathData();
 		}
+
 		System.out.println("patientId :" + patientId + " can't find.");
 		return "NULL";
+	}
+
+	private String getConnectStatusIcon(String deviceStatus) {
+
+		if (deviceStatus.equals("3")) {
+			return CONNECT_OK;
+		}
+		return CONNECT_NO;
 	}
 
 	public long getPatientId() {

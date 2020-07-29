@@ -1,5 +1,5 @@
 package org.itri.view.humanhealth.hibernate;
-// Generated 2020/4/24 �U�� 08:59:27 by Hibernate Tools 4.0.0.Final
+// Generated 2020/4/24 �U�� 08:08:16 by Hibernate Tools 4.0.0.Final
 import javax.persistence.GeneratedValue;import javax.persistence.SequenceGenerator;import javax.persistence.GenerationType;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +23,7 @@ public class Sensor implements java.io.Serializable {
 	private SensorType sensorType;
 	private String deviceId;
 	private String sensorName;
+	private String sensorDeviceStatus;
 	private Set<Patient2sensor> patient2sensors = new HashSet<Patient2sensor>(0);
 	private Set<RtHeartRhythmRecord> rtHeartRhythmRecords = new HashSet<RtHeartRhythmRecord>(0);
 	private Set<PmFiveRecord> pmFiveRecords = new HashSet<PmFiveRecord>(0);
@@ -42,6 +43,12 @@ public class Sensor implements java.io.Serializable {
 	public Sensor() {
 	}
 
+	public Sensor(SensorType sensorType, String deviceId, String sensorName) {
+		this.sensorType = sensorType;
+		this.deviceId = deviceId;
+		this.sensorName = sensorName;
+	}
+	
 	public Sensor(long sensorId, SensorType sensorType, String deviceId, String sensorName) {
 		this.sensorId = sensorId;
 		this.sensorType = sensorType;
@@ -116,6 +123,15 @@ public class Sensor implements java.io.Serializable {
 
 	public void setSensorName(String sensorName) {
 		this.sensorName = sensorName;
+	}
+	
+	@Column(name = "sensor_device_status", length = 16)
+	public String getSensorDeviceStatus() {
+		return this.sensorDeviceStatus;
+	}
+
+	public void setSensorDeviceStatus(String sensorDeviceStatus) {
+		this.sensorDeviceStatus = sensorDeviceStatus;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sensor")

@@ -9,7 +9,9 @@ org\itri\view\login\AuthenticationService.class
 org\zkoss\admin\ecommerce\StateVM.class
 org\itri\view\humanhealth\detail\OximeterView.class
 org\itri\view\humanhealth\hibernate\Gateway.class
+org\itri\view\humanhealth\oneperson\detail\OximeterCurrentView.class
 org\zkoss\admin\ecommerce\dao\Type.class
+org\itri\view\humanhealth\oneperson\detail\BreathRateCurrentView.class
 org\zkoss\admin\ecommerce\MarketshareVM.class
 org\itri\view\roomInfo\dao\RoomInfoDao.class
 org\zkoss\admin\util\BsColor.class
@@ -31,6 +33,8 @@ org\zkoss\admin\project\PerformanceVM.class
 org\itri\view\humanhealth\hibernate\Room.class
 org\itri\view\roomInfo\RoomInfoView.class
 org\itri\view\login\dao\UserInfoServiceHibernateImpl.class
+org\itri\view\humanhealth\hibernate\DeviceStatus.class
+org\itri\view\humanhealth\oneperson\detail\HeartBeatCurrentView.class
 org\itri\view\humanhealth\hibernate\HealthType.class
 org\zkoss\admin\project\dao\ProjectDao.class
 org\zkoss\admin\ecommerce\dao\State.class
@@ -85,6 +89,7 @@ org\zkoss\admin\project\dao\Progress.class
 org\zkoss\admin\converter\PercentageConverter.class
 org\itri\view\humanhealth\detail\control\humanChartsEvent$1.class
 org\zkoss\admin\ecommerce\ProductVM.class
+org\itri\view\humanhealth\oneperson\detail\TemperatureCurrentView.class
 org\itri\view\humanhealth\hibernate\NewsScoreThreshold.class
 org\itri\view\humanhealth\oneperson\detail\PersonInfo.class
 org\itri\view\humanhealth\PersonInfoHightLightView.class

@@ -89,5 +89,7 @@
 			class="org.itri.view.humanhealth.hibernate.TempPadRecord" />
 		<mapping
 			class="org.itri.view.humanhealth.hibernate.NewsScoreThreshold" />
+		<mapping
+			class="org.itri.view.humanhealth.hibernate.DeviceStatus" />
 	</session-factory>
 </hibernate-configuration>

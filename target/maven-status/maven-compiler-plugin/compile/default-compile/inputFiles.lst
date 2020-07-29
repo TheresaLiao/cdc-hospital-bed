@@ -46,6 +46,7 @@ D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\v
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\roomInfo\dao\RoomInfo.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\zkoss\admin\util\Util.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\detail\dao\OximeterViewDaoHibernateImpl.java
+D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\OximeterCurrentView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\RtMattressRecord.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\AuditTrail.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\OximeterView.java
@@ -75,7 +76,9 @@ D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\v
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\Users.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\zkoss\admin\project\dao\Progress.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\dao\PersonInfosDaoHibernateImpl.java
+D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\BreathRateCurrentView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\zkoss\admin\converter\PercentageConverter.java
+D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\HeartBeatCurrentView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\login\dao\UserCredential.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\detail\HeartBeatView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\zkoss\admin\MainVM.java
@@ -90,6 +93,7 @@ D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\v
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\navigation\Menu.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\RtTempPadRecord.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\admin\HibernateQueryExample.java
+D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\DeviceStatus.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\admin\longBarView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\detail\HeartBeatCurrentView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\RtRespirationCoughRecord.java
