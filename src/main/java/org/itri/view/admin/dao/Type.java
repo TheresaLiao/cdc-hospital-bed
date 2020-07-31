@@ -1,4 +1,4 @@
-package org.zkoss.admin.ecommerce.dao;
+package org.itri.view.admin.dao;
 
 public enum Type {
     Customer, Order, Task, Request

@@ -5,15 +5,10 @@ import java.util.List;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.dao.PersonState;
-import org.itri.view.humanhealth.dao.Status;
 import org.itri.view.humanhealth.hibernate.Patient;
-import org.zkoss.admin.ecommerce.dao.Type;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.zul.Div;
-import org.zkoss.zul.Vlayout;
-import org.zkoss.zk.ui.select.annotation.Wire;
 
 public class PersonInfoView {
 

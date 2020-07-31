@@ -1,8 +1,7 @@
 package org.itri.view.humanhealth.dao;
 
-import java.util.Calendar;
 
-import org.zkoss.admin.ecommerce.dao.Type;
+import org.itri.view.admin.dao.Type;
 
 public class PersonState {
 

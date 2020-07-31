@@ -110,6 +110,7 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 		}
 	}
 
+	// Get Breath Rate current data per 1 sec
 	private String getBreathRateValueById(long patientId) {
 
 		BreathRateViewDaoHibernateImpl hqe = new BreathRateViewDaoHibernateImpl();

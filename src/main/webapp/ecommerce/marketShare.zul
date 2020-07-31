@@ -1,9 +1,0 @@
-<zk xmlns:n="native">
-    <idspace>
-    <panel title="Market Share" border="normal" viewModel="@id('vm')@init('org.zkoss.admin.ecommerce.MarketshareVM')">
-        <panelchildren>
-            <charts id="chart" type="pie" title="" hflex="1"/>
-        </panelchildren>
-    </panel>
-    </idspace>
-</zk>

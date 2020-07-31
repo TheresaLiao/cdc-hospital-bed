@@ -1,7 +1,7 @@
 package org.zkoss.admin.converter;
 
 
-import org.zkoss.admin.ecommerce.dao.Type;
+import org.itri.view.admin.dao.Type;
 import org.zkoss.bind.*;
 import org.zkoss.zk.ui.Component;
 

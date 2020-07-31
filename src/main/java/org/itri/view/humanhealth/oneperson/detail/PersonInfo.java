@@ -1,8 +1,6 @@
 package org.itri.view.humanhealth.oneperson.detail;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
@@ -15,7 +13,6 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.select.annotation.Listen;
 
 public class PersonInfo {
 
@@ -39,12 +36,12 @@ public class PersonInfo {
 		hqe = new PersonInfosDaoHibernateImpl();
 		queryStates();
 
-		DateKeyValueSelectBox item1 = new DateKeyValueSelectBox(SelectBoxDao.THREE_MIN, "3¤ÀÄÁ");
-		DateKeyValueSelectBox item2 = new DateKeyValueSelectBox(SelectBoxDao.FIVE_MIN, "5¤ÀÄÁ");
-		DateKeyValueSelectBox item3 = new DateKeyValueSelectBox(SelectBoxDao.ONE_HOUR, "1¤p®É");
-		DateKeyValueSelectBox item4 = new DateKeyValueSelectBox(SelectBoxDao.THREE_HOUR, "3¤p®É");
-		DateKeyValueSelectBox item5 = new DateKeyValueSelectBox(SelectBoxDao.HALF_DAY, "12¤p®É ");
-		DateKeyValueSelectBox item6 = new DateKeyValueSelectBox(SelectBoxDao.ONE_DAY, "24¤p®É ");
+		DateKeyValueSelectBox item1 = new DateKeyValueSelectBox(SelectBoxDao.THREE_MIN, "3ï¿½ï¿½ï¿½ï¿½");
+		DateKeyValueSelectBox item2 = new DateKeyValueSelectBox(SelectBoxDao.FIVE_MIN, "5ï¿½ï¿½ï¿½ï¿½");
+		DateKeyValueSelectBox item3 = new DateKeyValueSelectBox(SelectBoxDao.ONE_HOUR, "1ï¿½pï¿½ï¿½");
+		DateKeyValueSelectBox item4 = new DateKeyValueSelectBox(SelectBoxDao.THREE_HOUR, "3ï¿½pï¿½ï¿½");
+		DateKeyValueSelectBox item5 = new DateKeyValueSelectBox(SelectBoxDao.HALF_DAY, "12ï¿½pï¿½ï¿½ ");
+		DateKeyValueSelectBox item6 = new DateKeyValueSelectBox(SelectBoxDao.ONE_DAY, "24ï¿½pï¿½ï¿½ ");
 		dateList.add(item1);
 		dateList.add(item2);
 		dateList.add(item3);

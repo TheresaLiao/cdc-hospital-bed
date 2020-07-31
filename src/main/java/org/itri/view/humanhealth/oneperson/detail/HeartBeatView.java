@@ -1,6 +1,6 @@
 package org.itri.view.humanhealth.oneperson.detail;
 
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;

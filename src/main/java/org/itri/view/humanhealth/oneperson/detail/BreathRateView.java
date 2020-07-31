@@ -6,10 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.itri.view.humanhealth.detail.dao.BreathRateViewDaoHibernateImpl;
-import org.itri.view.humanhealth.detail.dao.TemperatureViewDaoHibernateImpl;
 import org.itri.view.humanhealth.hibernate.HeartRhythmRecord;
 import org.itri.view.humanhealth.hibernate.RtHeartRhythmRecord;
-import org.itri.view.humanhealth.hibernate.RtTempPadRecord;
 import org.zkoss.chart.Charts;
 import org.zkoss.chart.Options;
 import org.zkoss.chart.PlotLine;
@@ -20,7 +18,6 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.Window;
 
 public class BreathRateView extends SelectorComposer<Component> {
 
