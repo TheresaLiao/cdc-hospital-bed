@@ -50,9 +50,6 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	@Wire("#connectImg")
 	private Image connectImg;
 
-	@Wire("#ewuLbl")
-	private Label ewuLbl;
-
 	private String GRAY_HASH = "#2F2F2F";
 	private String GREEN_HASH = "#5CE498";
 	private String BLACK_HASH = "#000000";
@@ -124,7 +121,6 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		for (RtOximeterRecord item : rtOximeterRecordList) {
 			connectImg.setSrc(getConnectStatusIcon(item.getSensor().getSensorDeviceStatus()));
 			batteryLabel.setValue(item.getBatteryLevel() + "%");
-			ewuLbl.setValue(String.valueOf(item.getPatient().getTotalNewsScore()));
 			return item.getHeartRateData();
 		}
 		System.out.println("patientId :" + patientId + " can't find.");
