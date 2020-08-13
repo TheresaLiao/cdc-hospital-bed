@@ -31,6 +31,7 @@ public class OximeterRecordViewDaoHibernateImpl {
 
 			for (RtOximeterRecord item : rtHeartRhythmRecordList) {
 				Hibernate.initialize(item.getSensor());
+				Hibernate.initialize(item.getPatient());
 			}
 			tx.commit();
 		} catch (Exception e) {

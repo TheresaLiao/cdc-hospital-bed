@@ -23,7 +23,6 @@
 			if="${not sessionScope.userCredential.anonymous}"
 			onClick="@command('doLogout')" />
 
-
 		<vlayout children="@bind(vm.personState)" spacing="0">
 			<template name="children">
 
@@ -104,6 +103,7 @@
 														src="resources/image/icon2-battery-w.png" />
 													<image
 														id="connectImg" />
+													<label id="ewuLbl" />
 												</vbox>
 											</hbox>
 										</bs-row>
