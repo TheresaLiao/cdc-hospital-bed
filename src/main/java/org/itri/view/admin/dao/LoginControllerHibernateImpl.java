@@ -8,6 +8,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.itri.view.humanhealth.hibernate.Patient;
 import org.itri.view.humanhealth.hibernate.PatientInfo;
 import org.itri.view.util.HibernateUtil;
 
@@ -28,6 +29,7 @@ public class LoginControllerHibernateImpl {
 			tempPatientInfo = criteria.list();
 			for (PatientInfo p : tempPatientInfo) {
 				Hibernate.initialize(p.getPatient());
+				Hibernate.initialize(p.getPatient().getGateway());
 				return p;
 			}
 

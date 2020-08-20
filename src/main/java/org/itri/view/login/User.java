@@ -16,9 +16,11 @@ import java.util.Date;
  */
 public class User implements Serializable, Cloneable {
 	private static final long serialVersionUID = 1L;
-	String account;
-	String password;
-	long patientId;
+
+	private long patientId;
+	private String account;
+	private String password;
+	private String gatewayDeviceStatus;
 
 	public User() {
 	}
@@ -77,4 +79,15 @@ public class User implements Serializable, Cloneable {
 	public void setPatientId(long patientId) {
 		this.patientId = patientId;
 	}
+
+	public String getGatewayDeviceStatus() {
+		return gatewayDeviceStatus;
+	}
+
+	public void setGatewayDeviceStatus(String gatewayDeviceStatus) {
+		this.gatewayDeviceStatus = gatewayDeviceStatus;
+	}
+
+	
+
 }

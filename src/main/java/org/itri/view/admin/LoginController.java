@@ -13,15 +13,20 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Label;
+import org.zkoss.zul.Messagebox;
 
 public class LoginController extends SelectorComposer<Component> {
 
 	AuthenticationService authService = new AuthenticationServiceImpl();
+	private String deviceConnectionErrorNum = "3";
 
 	@Wire
 	Textbox account;
 	@Wire
 	Textbox password;
+	@Wire
+	Label errorLbl;
 
 	@Listen("onClick=#login; onOK=#loginWin")
 	public void doLogin() throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -30,13 +35,25 @@ public class LoginController extends SelectorComposer<Component> {
 		String username = account.getValue();
 		String pd = password.getValue();
 
-		if (!authService.login(username, pd)) {
-			System.out.println("account or password are not correct.");
+		// check empty
+		if (username.isEmpty() || pd.isEmpty()) {
+			errorLbl.setValue("帳密不可為空白！");
 			return;
 		}
 
-//		UserCredential cre = authService.getUserCredential();
-//		System.out.println(cre.getPatientId());
+		// check login
+		if (!authService.login(username, pd)) {
+			System.out.println("account or password are not correct.");
+			errorLbl.setValue("帳密錯誤！");
+			return;
+		}
+
+		// check GatewayDeviceStatus connect
+		UserCredential cre = authService.getUserCredential();
+		if (!cre.getGatewayDeviceStatus().equals(deviceConnectionErrorNum)) {
+			Messagebox.show("Gateway連接失敗，請聯繫系統人員。");
+			return;
+		}
 
 		Executions.sendRedirect("/humanCare.zul");
 	}

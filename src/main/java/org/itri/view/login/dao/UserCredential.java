@@ -15,16 +15,18 @@ import java.util.Set;
 public class UserCredential implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	String account;
-	String name;
-	long patientId;
+	private String account;
+	private String name;
+	private long patientId;
+	private String gatewayDeviceStatus;
 
 	Set<String> roles = new HashSet<String>();
 
-	public UserCredential(String account, String name, long patientId) {
+	public UserCredential(String account, String name, long patientId, String gatewayDeviceStatus) {
 		this.account = account;
 		this.name = name;
 		this.patientId = patientId;
+		this.gatewayDeviceStatus = gatewayDeviceStatus;
 	}
 
 	public UserCredential() {
@@ -67,6 +69,14 @@ public class UserCredential implements Serializable {
 
 	public void setPatientId(long patientId) {
 		this.patientId = patientId;
+	}
+
+	public String getGatewayDeviceStatus() {
+		return gatewayDeviceStatus;
+	}
+
+	public void setGatewayDeviceStatus(String gatewayDeviceStatus) {
+		this.gatewayDeviceStatus = gatewayDeviceStatus;
 	}
 
 }

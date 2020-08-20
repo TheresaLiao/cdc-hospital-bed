@@ -56,6 +56,8 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 
 	private String CONNECT_OK = "resources/image/icon2-connect-b-ok.png";
 	private String CONNECT_NO = "resources/image/icon2-connect-b-no.png";
+	
+	private String deviceConnectionErrorNum = "3";
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
@@ -125,7 +127,7 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 
 	private String getConnectStatusIcon(String deviceStatus) {
 
-		if (deviceStatus.equals("3")) {
+		if (deviceStatus.equals(deviceConnectionErrorNum)) {
 			return CONNECT_OK;
 		}
 		return CONNECT_NO;

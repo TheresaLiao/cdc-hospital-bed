@@ -14,11 +14,11 @@ public class UserInfoServiceHibernateImpl implements UserInfoService, Serializab
 	private static final long serialVersionUID = 1L;
 
 	private LoginControllerHibernateImpl hqe;
+	private User user = new User();
 
 	public synchronized User findUser(String username, String pd) {
-		System.out.println("findUser");
-		User user = new User(username, pd);
 
+		user = new User(username, pd);
 		hqe = new LoginControllerHibernateImpl();
 
 		// sha256
@@ -43,12 +43,9 @@ public class UserInfoServiceHibernateImpl implements UserInfoService, Serializab
 			return null;
 		}
 
-		long id = patientInfo.getPatient().getPatientId();
-		user.setPatientId(id);
+		user.setPatientId(patientInfo.getPatient().getPatientId());
+		user.setGatewayDeviceStatus(patientInfo.getPatient().getGateway().getGatewayDeviceStatus());
 		return user;
 	}
 
-//	public User updateUser(User user) {
-//		return null;
-//	}
 }

@@ -1,24 +1,16 @@
 package org.itri.view.humanhealth.oneperson.detail;
 
-import java.util.Date;
 import java.util.List;
-
-import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
 import org.itri.view.humanhealth.detail.dao.OximeterRecordViewDaoHibernateImpl;
-import org.zkoss.zul.Div;
 import org.zkoss.zul.Hbox;
-import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
-import org.zkoss.chart.Point;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Vbox;
-import org.zkoss.zul.Vlayout;
 import org.zkoss.zul.Window;
-import org.itri.view.humanhealth.hibernate.Patient;
 import org.itri.view.humanhealth.hibernate.RtOximeterRecord;
 
 public class HeartBeatCurrentView extends SelectorComposer<Window> {
@@ -62,6 +54,8 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
 	private String CONNECT_OK = "resources/image/icon2-connect-b-ok.png";
 	private String CONNECT_NO = "resources/image/icon2-connect-b-no.png";
+
+	private String deviceConnectionErrorNum = "3";
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
@@ -129,7 +123,7 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
 	private String getConnectStatusIcon(String deviceStatus) {
 
-		if (deviceStatus.equals("3")) {
+		if (deviceStatus.equals(deviceConnectionErrorNum)) {
 			return CONNECT_OK;
 		}
 		return CONNECT_NO;

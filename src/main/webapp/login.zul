@@ -20,7 +20,12 @@
 							</row>
 						</rows>
 					</grid>
-					<button id="login" label="Login" />
+
+					<hbox>
+						<button id="login" label="Login" />
+						<label id="errorLbl" style="color:white" />
+					</hbox>
+
 				</vbox>
 			</window>
 
