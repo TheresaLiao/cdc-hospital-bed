@@ -13,6 +13,10 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Hbox;
+import org.zkoss.zul.Panel;
+import org.zkoss.zul.Vlayout;
 
 public class PersonInfo {
 
@@ -28,6 +32,7 @@ public class PersonInfo {
 	static String WARNING_PATH = "./resources/image/MapImages/icon_indicator_o_01.png";
 
 	AuthenticationService authService = new AuthenticationServiceImpl();
+
 
 	@Init
 	public void init() {
@@ -49,6 +54,8 @@ public class PersonInfo {
 		dateList.add(item5);
 		dateList.add(item6);
 		selectedDate = item1;
+
+		
 	}
 
 	/* Select data and refresh data */

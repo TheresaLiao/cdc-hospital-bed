@@ -18,7 +18,7 @@
 		</selectbox>
 
 		<!-- Logout -->
-		<label id="logout" value="Logout" class="h6 px-3"
+		<label value="Logout" class="h6 px-3"
 			style="color:white; text-decoration: underline; cursor: pointer;"
 			if="${not sessionScope.userCredential.anonymous}"
 			onClick="@command('doLogout')" />
@@ -30,15 +30,33 @@
 				<!-- one person -->
 				<n:div sclass="row rounded col-lg-12">
 					<style>
-						.titleStyle { font-size: 40px; text-align:
+						.titleStyle { font-size: 20px; text-align:
 						center;}
 					</style>
-					<panel title="${each.bedRoom} EWS : ${each.totalNewsScore}" border="normal"
+					<panel title="${each.bedRoom}" border="normal"
 						width="100%">
-						<caption sclass="titleStyle">
-							<label value="" />
-						</caption>
+						<caption sclass="titleStyle" />
 						<panelchildren>
+							<!-- EWS -->
+							<bs-row class="row py-0">
+								<n:div sclass="col p-1">
+									<window
+										style="padding: 0px; z-window-content"
+										apply="org.itri.view.humanhealth.oneperson.detail.EwsView">
+										<textbox id="textboxId"
+											visible="false" value="${each.id}" />
+										<box class="col" pack="center"
+											align="center">
+											<label id="ewsLabel"
+												class=" h2">
+											</label>
+										</box>
+										<timer id="timer" delay="1000"
+											running="true" repeats="true" />
+									</window>
+								</n:div>
+							</bs-row>
+
 							<!-- HeartBeat -->
 							<bs-row class="row py-0">
 								<!-- Chart -->
@@ -314,5 +332,9 @@
 
 			</template>
 		</vlayout>
+		<!--  
+			<timer id="timer1234" delay="300" running="true" repeats="true"
+			onTimer="@command('refreshPatientInfo')" />
+		-->
 	</nodom>
 </zk>
