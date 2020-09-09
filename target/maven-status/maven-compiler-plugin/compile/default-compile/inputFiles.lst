@@ -1,3 +1,4 @@
+D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\EwsCurrentView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\admin\dao\LoginControllerHibernateImpl.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\TemperatureCurrentView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\NewsScoreThreshold.java
@@ -40,6 +41,7 @@ D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\v
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\zkoss\admin\util\Util.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\detail\dao\OximeterViewDaoHibernateImpl.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\OximeterCurrentView.java
+D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\NewsRecord.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\RtMattressRecord.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\AuditTrail.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\oneperson\detail\OximeterView.java
@@ -93,6 +95,7 @@ D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\v
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\hibernate\RtPmFiveRecord.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\detail\control\humanChartsEvent.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\login\dao\UserInfoServiceHibernateImpl.java
+D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\detail\dao\EwsViewDaoHibernateImpl.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\humanhealth\detail\OximeterCurrentView.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\login\User.java
 D:\Users\A60144.ITRI\eclipse-workspace\cdc-hospital-bed\src\main\java\org\itri\view\util\HibernateUtil.java
