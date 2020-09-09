@@ -15,31 +15,31 @@ import org.itri.view.humanhealth.hibernate.RtOximeterRecord;
 
 public class HeartBeatCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > hbox > vbox")
+	@Wire("window > bs-row > #curHbox > vbox")
 	private Vbox heartBeatVbox;
 
-	@Wire("window > bs-row > hbox > vbox > #hrLabel")
+	@Wire("window > bs-row > #curHbox > vbox > #hrLabel")
 	private Label hrLabel;
 
-	@Wire("window > bs-row > hbox > vbox > #heightLabel")
+	@Wire("window > bs-row > #curHbox > vbox > #heightLabel")
 	private Label heightLabel;
 
-	@Wire("window > bs-row > hbox > vbox > #lowLabel")
+	@Wire("window > bs-row > #curHbox > vbox > #lowLabel")
 	private Label lowLabel;
 
-	@Wire("window > bs-row > hbox ")
-	private Hbox hbox;
+	@Wire("window > bs-row > #curHbox ")
+	private Hbox curHbox;
 
-	@Wire("window > bs-row > hbox > textbox")
+	@Wire("window > bs-row > #curHbox > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > hbox > label")
+	@Wire("window > bs-row > #curHbox > label")
 	private Label heartBeatLabel;
 
-	@Wire("#batteryLabel")
+	@Wire("window > bs-row > #devStatHbox > #batteryLabel")
 	private Label batteryLabel;
 
-	@Wire("#connectImg")
+	@Wire("window > bs-row > #devStatHbox > vbox > #connectImg")
 	private Image connectImg;
 
 	private String GRAY_HASH = "#2F2F2F";
@@ -91,7 +91,7 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
 			heartBeatVbox.setStyle("background-color: " + RED_HASH);
-			hbox.setStyle("background-color: " + RED_HASH + ";text-align: center");
+			curHbox.setStyle("background-color: " + RED_HASH + ";text-align: center");
 
 			hrLabel.setStyle("color: " + BLACK_HASH);
 			heightLabel.setStyle("color: " + BLACK_HASH);
@@ -99,7 +99,7 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
-			hbox.setStyle("background-color: " + GRAY_HASH + ";text-align: center");
+			curHbox.setStyle("background-color: " + GRAY_HASH + ";text-align: center");
 
 			hrLabel.setStyle("color: " + RED_HASH);
 			heightLabel.setStyle("color: " + RED_HASH);

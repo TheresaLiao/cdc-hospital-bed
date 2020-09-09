@@ -16,34 +16,31 @@ import org.zkoss.zul.Window;
 
 public class BreathRateCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > hbox > vbox")
+	@Wire("window > bs-row > #curHbox > vbox")
 	private Vbox heartBeatVbox;
 
-	@Wire("window > bs-row > hbox > vbox > #hrLabel")
+	@Wire("window > bs-row > #curHbox > vbox > #hrLabel")
 	private Label hrLabel;
 
-	@Wire("window > bs-row > hbox > vbox > #heightLabel")
+	@Wire("window > bs-row > #curHbox > vbox > #heightLabel")
 	private Label heightLabel;
 
-	@Wire("window > bs-row > hbox > vbox > #lowLabel")
+	@Wire("window > bs-row > #curHbox > vbox > #lowLabel")
 	private Label lowLabel;
 
-	@Wire("window > bs-row > hbox ")
-	private Hbox hbox;
+	@Wire("window > bs-row > #curHbox ")
+	private Hbox curHbox;
 
-	@Wire("window > bs-row > hbox > textbox")
+	@Wire("window > bs-row > #curHbox > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > hbox > label")
+	@Wire("window > bs-row > #curHbox > label")
 	private Label breathRateLabel;
 
-	@Wire("#batteryLabel")
+	@Wire("window > bs-row > #devStatHbox > #batteryLabel")
 	private Label batteryLabel;
 
-	@Wire("#batteryImg")
-	private Image batteryImg;
-
-	@Wire("#connectImg")
+	@Wire("window > bs-row > #devStatHbox > vbox > #connectImg")
 	private Image connectImg;
 
 	private String GRAY_HASH = "#2F2F2F";
@@ -58,7 +55,7 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 
 	private String CONNECT_OK = "resources/image/icon2-connect-b-ok.png";
 	private String CONNECT_NO = "resources/image/icon2-connect-b-no.png";
-	
+
 	private String deviceConnectionErrorNum = "3";
 
 	@Override
@@ -95,7 +92,7 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
 			heartBeatVbox.setStyle("background-color: " + WHITE_HASH);
-			hbox.setStyle("background-color: " + WHITE_HASH + "; " + "text-align: center" + ";");
+			curHbox.setStyle("background-color: " + WHITE_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + BLACK_HASH);
 			heightLabel.setStyle("color: " + BLACK_HASH);
@@ -103,7 +100,7 @@ public class BreathRateCurrentView extends SelectorComposer<Window> {
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			heartBeatVbox.setStyle("background-color: " + GRAY_HASH);
-			hbox.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
+			curHbox.setStyle("background-color: " + GRAY_HASH + "; " + "text-align: center" + ";");
 
 			hrLabel.setStyle("color: " + WHITE_HASH);
 			heightLabel.setStyle("color: " + WHITE_HASH);

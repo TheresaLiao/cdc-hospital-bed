@@ -13,20 +13,14 @@ import org.itri.view.humanhealth.hibernate.Patient;
 
 public class EwsCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > hbox ")
+	@Wire("window > bs-row > #curHbox  ")
 	private Hbox hbox;
 
-	@Wire("window > bs-row > hbox > textbox")
+	@Wire("window > bs-row > #curHbox  > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > hbox > label")
+	@Wire("window > bs-row > #curHbox  > label")
 	private Label ewsLabel;
-
-	@Wire("#batteryLabel")
-	private Label batteryLabel;
-
-	@Wire("#connectImg")
-	private Image connectImg;
 
 	private String GREEN_HASH = "#5CE498";
 	private String RED_HASH = "#FF0000";

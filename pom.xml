@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>org.zkoss.chart</groupId>
 			<artifactId>zkcharts</artifactId>
-			<version>3.0.3-Eval</version>
+			<version>3.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
