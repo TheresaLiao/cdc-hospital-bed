@@ -14,13 +14,11 @@ import org.itri.view.util.HibernateUtil;
 
 public class EwsViewDaoHibernateImpl {
 
-	private int minusThreeMinit = -3;
-
 	public List<NewsRecord> getNewsRecordByDateList(long patientId, Calendar calendar) {
-
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List<NewsRecord> newsRecordList = new ArrayList<NewsRecord>();
+
 		try {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(NewsRecord.class);
@@ -28,8 +26,8 @@ public class EwsViewDaoHibernateImpl {
 
 			criteria.add(Restrictions.ge("timeCreated", calendar.getTime()));
 			criteria.addOrder(Order.asc("timeCreated"));
-			newsRecordList = criteria.list();
 
+			newsRecordList = criteria.list();
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

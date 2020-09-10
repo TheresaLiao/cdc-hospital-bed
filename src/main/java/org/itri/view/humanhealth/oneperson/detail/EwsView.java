@@ -80,7 +80,7 @@ public class EwsView extends SelectorComposer<Window> {
 		}
 
 		if (histData.size() == 0) {
-			System.out.println("no history data in heart beat");
+			System.out.println("no history data in ews");
 			for (int i = -19; i <= 0; i++) {
 				Point nowPoint = getRtHeartRhythmRecordList(getPatientId());
 				nowPoint.setX(new Date().getTime() + i * 1000);
