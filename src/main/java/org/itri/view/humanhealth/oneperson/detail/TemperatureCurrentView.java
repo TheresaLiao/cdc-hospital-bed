@@ -54,9 +54,9 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 	private String GRAY_HASH = "#2F2F2F";
 	private String BLACK_HASH = "#000000";
 	private String GREEN_HASH = "#5CE498";
-
-	private String heightStr = "39";
-	private String lowStr = "36";
+	
+	private Double heightData = new Double(39);
+	private Double lowData = new Double(36);
 
 	private long patientId = 0;
 
@@ -92,8 +92,6 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 
 	private void hightLightLabel(String dataStr) {
 		double data = Double.valueOf(dataStr);
-		Double heightData = Double.valueOf(heightStr);
-		Double lowData = Double.valueOf(lowStr);
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 

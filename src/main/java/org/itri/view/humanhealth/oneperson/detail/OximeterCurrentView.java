@@ -46,8 +46,8 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 	private String BLACK_HASH = "#000000";
 	private String BLUE_HASH = "#73E9FF";
 
-	private String heightStr = "100";
-	private String lowStr = "90";
+	private Double heightData = new Double(100);
+	private Double lowData = new Double(90);
 
 	private long patientId = 0;
 
@@ -84,8 +84,6 @@ public class OximeterCurrentView extends SelectorComposer<Window> {
 	private void hightLightLabel(String dataStr) {
 
 		double data = Double.valueOf(dataStr);
-		Double heightData = Double.valueOf(heightStr);
-		Double lowData = Double.valueOf(lowStr);
 
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 

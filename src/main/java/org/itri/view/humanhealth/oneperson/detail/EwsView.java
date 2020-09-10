@@ -111,11 +111,9 @@ public class EwsView extends SelectorComposer<Window> {
 
 	// Get real time data
 	private Point getRtHeartRhythmRecordList(long patientId) {
-
 		PersonInfosDaoHibernateImpl hqe = new PersonInfosDaoHibernateImpl();
 		Patient patient = hqe.getPatientById(patientId);
-
-		return new Point(patient.getTimeCreated().getTime(), Double.valueOf(patient.getTotalNewsScore()));
+		return new Point(patient.getLastUpdated().getTime(), Double.valueOf(patient.getTotalNewsScore()));
 	}
 
 	private Calendar getHisDate() {

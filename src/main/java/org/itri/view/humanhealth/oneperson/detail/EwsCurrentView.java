@@ -13,13 +13,19 @@ import org.itri.view.humanhealth.hibernate.Patient;
 
 public class EwsCurrentView extends SelectorComposer<Window> {
 
-	@Wire("window > bs-row > #curHbox  ")
+	@Wire("window > bs-row > #curHbox > vbox > #tempLabel")
+	private Label tempLabel;
+
+	@Wire("window > bs-row > #curHbox > vbox > #heightLabel")
+	private Label heightLabel;
+
+	@Wire("window > bs-row > #curHbox")
 	private Hbox hbox;
 
-	@Wire("window > bs-row > #curHbox  > textbox")
+	@Wire("window > bs-row > #curHbox > textbox")
 	private Textbox textboxId;
 
-	@Wire("window > bs-row > #curHbox  > label")
+	@Wire("window > bs-row > #curHbox > label")
 	private Label ewsLabel;
 
 	private String GREEN_HASH = "#5CE498";
@@ -59,12 +65,10 @@ public class EwsCurrentView extends SelectorComposer<Window> {
 
 		if (data >= ewsSpec) {
 			hbox.setStyle("background-color: " + RED_HASH + ";text-align: center");
-
 			ewsLabel.setStyle("color: " + WHITE_HASH);
 		} else {
 			hbox.setStyle("text-align: center");
-
-			ewsLabel.setStyle("color: " + GREEN_HASH);
+			ewsLabel.setStyle("color: " + WHITE_HASH);
 		}
 	}
 

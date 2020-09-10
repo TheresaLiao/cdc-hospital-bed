@@ -47,8 +47,8 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	private String BLACK_HASH = "#000000";
 	private String RED_HASH = "#FF0000";
 
-	private String heightStr = "100";
-	private String lowStr = "55";
+	private Double heightData = new Double(100);
+	private Double lowData = new Double(55);
 
 	private long patientId = 0;
 
@@ -85,9 +85,8 @@ public class HeartBeatCurrentView extends SelectorComposer<Window> {
 	private void hightLightLabel(String dataStr) {
 
 		double data = Double.valueOf(dataStr);
-		Double heightData = Double.valueOf(heightStr);
-		Double lowData = Double.valueOf(lowStr);
 
+		// show hight Light
 		if (Double.compare(data, heightData) > 0 || Double.compare(data, lowData) < 0) {
 
 			heartBeatVbox.setStyle("background-color: " + RED_HASH);

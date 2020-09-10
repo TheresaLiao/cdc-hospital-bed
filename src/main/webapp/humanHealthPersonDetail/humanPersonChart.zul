@@ -94,15 +94,15 @@
 
 											<!-- Device Status -->
 											<hbox id="devStatHbox"
-												class="col">
-												<label id="batteryLabel"
-													class=" h7" />
+												class="col-2">
 												<vbox align="end">
 													<image
 														src="resources/image/icon2-battery-w.png" />
 													<image
 														id="connectImg" />
 												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
 											</hbox>
 										</bs-row>
 									</window>
@@ -160,16 +160,15 @@
 											</hbox>
 											<!-- Device Status -->
 											<hbox id="devStatHbox"
-												class="col">
-												<label id="batteryLabel"
-													class=" h7" />
+												class="col-2">
 												<vbox align="end">
-
 													<image
 														id="batteryImg" src="resources/image/icon2-battery-w.png" />
 													<image
 														id="connectImg" />
 												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
 											</hbox>
 										</bs-row>
 									</window>
@@ -197,7 +196,7 @@
 									style="min-width: 230px">
 									<window style="padding: 0px;"
 										apply="org.itri.view.humanhealth.oneperson.detail.BreathRateCurrentView">
-										<timer id="timer" delay="1000"
+										<timer id="timer" delay="100"
 											running="true" repeats="true" />
 										<bs-row class="row col px-1">
 											<hbox class="col-10"
@@ -227,16 +226,15 @@
 											</hbox>
 											<!-- Device Status -->
 											<hbox id="devStatHbox"
-												class="col">
-												<label id="batteryLabel"
-													class=" h7" />
+												class="col-2">
 												<vbox align="end">
-
 													<image
 														id="batteryImg" src="resources/image/icon2-battery-w.png" />
 													<image
 														id="connectImg" />
 												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
 											</hbox>
 										</bs-row>
 									</window>
@@ -293,16 +291,15 @@
 											</hbox>
 											<!-- Device Status -->
 											<hbox id="devStatHbox"
-												class="col">
-												<label id="batteryLabel"
-													class=" h7" />
+												class="col-2">
 												<vbox align="end">
-
 													<image
 														id="batteryImg" src="resources/image/icon2-battery-w.png" />
 													<image
 														id="connectImg" />
 												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
 											</hbox>
 										</bs-row>
 									</window>
@@ -338,12 +335,19 @@
 
 											<!-- Current Status -->
 											<hbox class="col-10"
-												id="curHbox"
-												pack="center" align="center">
+												id="curHbox" pack="center" align="center">
 												<!-- left spec -->
 												<vbox
 													class="text-right px-3" width="60px" pack="center"
 													align="end" height="92px">
+													<label
+														id="tempLabel" class=" h6">
+														EWS
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														4
+													</label>
 												</vbox>
 
 												<!-- right value -->
