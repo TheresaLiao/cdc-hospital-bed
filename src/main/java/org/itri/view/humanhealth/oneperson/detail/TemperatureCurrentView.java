@@ -54,7 +54,7 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 	private String GRAY_HASH = "#2F2F2F";
 	private String BLACK_HASH = "#000000";
 	private String GREEN_HASH = "#5CE498";
-	
+
 	private Double heightData = new Double(39);
 	private Double lowData = new Double(36);
 
@@ -119,7 +119,7 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 		List<RtTempPadRecord> rtTempPadRecordList = hqe.getRtTempPadRecordList(patientId);
 		for (RtTempPadRecord item : rtTempPadRecordList) {
 			connectImg.setSrc(getConnectStatusIcon(item.getSensor().getSensorDeviceStatus()));
-			batteryLabel.setValue(getBatteryPersent(item.getBatteryLevel()) + "%");
+			batteryLabel.setValue(item.getBatteryLevel() + "%");
 			return item.getBodyTempData();
 		}
 		System.out.println("patientId :" + patientId + " can't find.");
@@ -132,23 +132,6 @@ public class TemperatureCurrentView extends SelectorComposer<Window> {
 			return CONNECT_OK;
 		}
 		return CONNECT_NO;
-	}
-
-	private int getBatteryPersent(String batteryLevel) {
-
-		// volt top : 4.2 , bottom: 3.65
-		double top = 4.2;
-		double bottom = 3.65;
-		double defaultData = 1;
-
-		double gap = top - bottom;
-		double value = Float.valueOf(batteryLevel);
-		if (value < bottom) {
-			return (int) (defaultData);
-		}
-
-		double data = (value - bottom) / gap;
-		return (int) (data * 100);
 	}
 
 	public long getPatientId() {
