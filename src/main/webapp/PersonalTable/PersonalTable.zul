@@ -1,0 +1,84 @@
+<zk xmlns:n="native" xmlns:z="zul">
+	<nodom apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('org.itri.view.humanhealth.personal.table.PersonInfoTable')">
+		<bs-row class="row py-0">
+			<vbox>
+				<hbox>
+					<label value="追蹤名單" class="h6 px-3"
+						style="color:white;" />
+					<selectbox model="@load(vm.patientList)"
+						selectedItem="@bind(vm.selectPatient)">
+						<template name="model">
+							<label value="${each.text}" />
+						</template>
+					</selectbox>
+				</hbox>
+
+				<hbox>
+					<label value="查詢起迄日" class="h6 px-3"
+						style="color:white;" />
+					<datebox lenient="false" buttonVisible="true"
+						width="100px" format="yyyy-MM-dd" value="@bind(vm.selectStrDate)" />
+					<timebox format="HH:mm:ss" width="100px"
+						value="@bind(vm.selectStrTime)" />
+					<label value="~" style="color:white;" />
+					<datebox lenient="false" buttonVisible="true"
+						width="100px" format="yyyy-MM-dd" value="@bind(vm.selectEndDate)" />
+					<timebox format="HH:mm:ss" width="100px"
+						value="@bind(vm.selectEndTime)" />
+				</hbox>
+
+				<hbox>
+					<radiogroup
+						selectedItem="@bind(vm.selectedOption)">
+						<radio label="分鐘平均" style="color:white;"
+							value="MINUTELY" selected="true" />
+						<radio id="HOURLY" label="小時平均"
+							style="color:white;" value="HOURLY" />
+						<radio id="DAYLY" label="日平均"
+							style="color:white;" value="DAYLY" />
+						<radio id="MONTHLY" label="月平均"
+							style="color:white;" value="MONTHLY" />
+					</radiogroup>
+				</hbox>
+
+				<hbox>
+					<button onClick="@command('buttonClick')">
+						查詢
+					</button>
+				</hbox>
+			</vbox>
+
+			<!-- Summary -->
+			<panel height="550px">
+				<panelchildren>
+					<listbox hflex="1" mold="paging" pageSize="15"
+						vflex="1" model="@bind(vm.personTableList)">
+						<listhead>
+							<listheader label="時間" />
+							<listheader label="數值" />
+							<listheader label="" />
+							<listheader label="" />
+							<listheader label="" />
+							<listheader label="EWS" />
+						</listhead>
+						<template name="model">
+							<listitem>
+								<listcell label="${each.timeCreated}" />
+								<listcell
+									label="bpm ${each.heartRateData} min" />
+								<listcell
+									label="SpO2% ${each.oximeterData}" />
+								<listcell
+									label="Rr ${each.breathData} 次" />
+								<listcell
+									label="T  ${each.bodyTempData} °C" />
+								<listcell label="${each.newsScore}" />
+							</listitem>
+						</template>
+					</listbox>
+				</panelchildren>
+			</panel>
+		</bs-row>
+	</nodom>
+</zk>

@@ -5,11 +5,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.itri.view.humanhealth.detail.dao.BreathRateViewDaoHibernateImpl;
-import org.itri.view.humanhealth.detail.dao.TemperatureViewDaoHibernateImpl;
 import org.itri.view.humanhealth.hibernate.HeartRhythmRecord;
 import org.itri.view.humanhealth.hibernate.RtHeartRhythmRecord;
 import org.itri.view.humanhealth.hibernate.RtTempPadRecord;
+import org.itri.view.humanhealth.personal.chart.Imp.BreathRateViewDaoHibernateImpl;
+import org.itri.view.humanhealth.personal.chart.Imp.TemperatureViewDaoHibernateImpl;
 import org.zkoss.chart.Charts;
 import org.zkoss.chart.Options;
 import org.zkoss.chart.PlotLine;

@@ -10,21 +10,23 @@ public class NavDao {
 	}
 
 	static public void initMenus() {
-//        Menu menuFloorSet = new Menu("樓層管理", "z-icon-home");
-//        menuFloorSet.setPath(NavigationMdel.DASHBOARD_FLOORSET_ZUL);
-//        menuList.add(menuFloorSet);
 
-		Menu menuHuamanHealth = new Menu("房間資訊", "z-icon-home");
+
+		Menu menuHuamanHealth = new Menu("房間總結資訊", "z-icon-home");
 		menuHuamanHealth.setPath(NavigationMdel.DASHBOARD_HUMANHEALTH_ZUL);
 		menuList.add(menuHuamanHealth);
 
-		Menu menuHuamanChartSet = new Menu("總結資訊", "z-icon-home");
+		Menu menuHuamanChartSet = new Menu("較為嚴重病人", "z-icon-home");
 		menuHuamanChartSet.setPath(NavigationMdel.DASHBOARD_HUMANCHARTSET_ZUL);
 		menuList.add(menuHuamanChartSet);
 
-		Menu menuHuamanPersonChart = new Menu("個人資訊", "z-icon-home");
+		Menu menuHuamanPersonChart = new Menu("病人個別資訊", "z-icon-home");
 		menuHuamanPersonChart.setPath(NavigationMdel.DASHBOARD_HUMANCHARTSET_PERSON_ZUL);
 		menuList.add(menuHuamanPersonChart);
+
+		Menu menuHuamanPersonalTable = new Menu("個人集合資訊", "z-icon-home");
+		menuHuamanPersonalTable.setPath(NavigationMdel.DASHBOARD_HUMANTABLE_PERSON_ZUL);
+		menuList.add(menuHuamanPersonalTable);
 	}
 
 	static public List<Menu> queryMenu() {

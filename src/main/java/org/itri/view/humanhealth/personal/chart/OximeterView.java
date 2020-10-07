@@ -1,6 +1,7 @@
-package org.itri.view.humanhealth.detail;
+package org.itri.view.humanhealth.personal.chart;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +33,9 @@ public class OximeterView extends SelectorComposer<Component> {
 
 	@Wire("#textboxId")
 	private Textbox textboxId;
+
+	@Wire("#textboxHisDate")
+	private Textbox textboxHisDate;
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
@@ -87,25 +91,15 @@ public class OximeterView extends SelectorComposer<Component> {
 		chart.getSeries().addPoint(nowPoint, true, true, true);
 	}
 
-	public long getPatientId() {
-		return patientId;
-	}
-
-	public void setPatientId(String patientIdStr) {
-
-		patientId = Long.parseLong(patientIdStr);
-		this.patientId = patientId;
-	}
-
 	// Get history data
 	private List<Point> getOximeterRecordList(long patientId) {
-		OximeterViewDaoHibernateImpl hqe = new OximeterViewDaoHibernateImpl();
-		List<OximeterRecord> oximeterRecordList = hqe.getOximeterRecordList(patientId);
 
-		int i = oximeterRecordList.size() * (-1);
+		OximeterViewDaoHibernateImpl hqe = new OximeterViewDaoHibernateImpl();
+		List<OximeterRecord> oximeterRecordList = hqe.getOximeterRecordByDateList(patientId, getHisDate());
+
 		List<Point> resp = new ArrayList<Point>();
 		for (OximeterRecord item : oximeterRecordList) {
-			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getHeartRateData())));
+			resp.add(new Point(item.getTimeCreated().getTime(), Double.valueOf(item.getOximeterData())));
 		}
 		return resp;
 	}
@@ -121,5 +115,39 @@ public class OximeterView extends SelectorComposer<Component> {
 
 		}
 		return new Point(new Date().getTime(), 0);
+	}
+
+	private Calendar getHisDate() {
+		String value = textboxHisDate.getValue();
+		Date now = new Date();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(now);
+		if (value.equals(SelectBoxDao.THREE_MIN)) {
+			calendar.add(Calendar.MINUTE, -3);
+		} else if (value.equals(SelectBoxDao.FIVE_MIN)) {
+			calendar.add(Calendar.MINUTE, -5);
+		} else if (value.equals(SelectBoxDao.ONE_HOUR)) {
+			calendar.add(Calendar.HOUR, -1);
+		} else if (value.equals(SelectBoxDao.THREE_HOUR)) {
+			calendar.add(Calendar.HOUR, -3);
+		} else if (value.equals(SelectBoxDao.HALF_DAY)) {
+			calendar.add(Calendar.HOUR, -12);
+		} else if (value.equals(SelectBoxDao.ONE_DAY)) {
+			calendar.add(Calendar.DATE, -1);
+		} else {
+			// default
+			calendar.add(Calendar.MINUTE, -3);
+		}
+		return calendar;
+	}
+
+	public long getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(String patientIdStr) {
+
+		patientId = Long.parseLong(patientIdStr);
+		this.patientId = patientId;
 	}
 }

@@ -1,0 +1,375 @@
+<zk xmlns:n="native" xmlns:z="zul">
+	<nodom apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('org.itri.view.humanhealth.personal.chart.PersonInfo')">
+
+		<!-- Show username -->
+		<!-- 
+			<label class="h6 px-3" style="color:white"
+			value="@bind(vm.personState.name)" />
+		-->
+
+		<!-- DateRange selectbox -->
+		<selectbox model="@load(vm.dateList)"
+			selectedItem="@bind(vm.selectedDate)"
+			onSelect="@command('dateSeleted')">
+			<template name="model">
+				<label value="${each.text}" />
+			</template>
+		</selectbox>
+
+		<!-- Logout -->
+		<label value="Logout" class="h6 px-3"
+			style="color:white; text-decoration: underline; cursor: pointer;"
+			if="${not sessionScope.userCredential.anonymous}"
+			onClick="@command('doLogout')" />
+
+		<vlayout children="@bind(vm.personState)" spacing="0">
+			<template name="children">
+
+
+				<!-- one person -->
+				<n:div sclass="row rounded col-lg-12">
+					<style>
+						.titleStyle { font-size: 20px; text-align:
+						center;}
+					</style>
+					<panel title="${each.bedRoom}" border="normal"
+						width="100%">
+						<caption sclass="titleStyle" />
+						<panelchildren>
+							<!-- HeartBeat -->
+							<bs-row class="row py-0">
+								<!-- Chart -->
+								<style>
+									.z-window-content { padding:0px;}
+								</style>
+								<window
+									style="padding: 0px; z-window-content"
+									apply="org.itri.view.humanhealth.personal.chart.HeartBeatView">
+									<charts id="chart" type="spline"
+										height="150" width="1080" style="padding: 0px;" title="" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+
+								<!-- HeartBeat -->
+								<n:div sclass="col p-1"
+									style="min-width: 230px">
+									<window style="padding: 0px"
+										apply="org.itri.view.humanhealth.personal.chart.HeartBeatCurrentView">
+										<timer id="timer" delay="100"
+											running="true" repeats="true" />
+										<bs-row class="row col px-1 ">
+
+											<!-- Current Status -->
+											<hbox class="col-10"
+												id="curHbox" pack="center" align="center">
+												<!-- left spec -->
+												<vbox
+													class="text-right px-3" width="60px" pack="center"
+													align="end" height="92px">
+													<label id="hrLabel"
+														class=" h6">
+														/min
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														100
+													</label>
+													<label id="lowLabel"
+														class=" h6">
+														55
+													</label>
+												</vbox>
+
+												<!-- right value -->
+												<label class="h1 px-3" />
+												<textbox visible="false"
+													value="${each.id}" />
+											</hbox>
+
+											<!-- Device Status -->
+											<hbox id="devStatHbox"
+												class="col-2">
+												<vbox align="end">
+													<image
+														src="resources/image/icon2-battery-w.png" />
+													<image
+														id="connectImg" />
+												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
+											</hbox>
+										</bs-row>
+									</window>
+								</n:div>
+							</bs-row>
+
+
+							<!-- oximeter -->
+							<bs-row class="row py-0">
+								<!-- Chart -->
+								<window style="padding: 0px;"
+									apply="org.itri.view.humanhealth.personal.chart.OximeterView">
+									<charts id="chart" type="spline"
+										title="" height="150" width="1080" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+
+								<!-- Current Status -->
+								<n:div sclass="col p-1"
+									style="min-width: 230px">
+									<window style="padding: 0px;"
+										apply="org.itri.view.humanhealth.personal.chart.OximeterCurrentView">
+										<timer id="timer" delay="100"
+											running="true" repeats="true" />
+										<bs-row class="row col px-1">
+											<hbox class="col-10"
+												id="curHbox" pack="center" align="center">
+												<!-- left spec -->
+												<vbox
+													class="text-right px-3" width="60px" pack="center"
+													align="end" height="92px">
+													<label id="hrLabel"
+														class=" h6">
+														SpO2 %
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														100
+													</label>
+													<label id="lowLabel"
+														class=" h6">
+														90
+													</label>
+												</vbox>
+
+												<!-- right value -->
+												<label class="h1 px-3" />
+												<textbox visible="false"
+													value="${each.id}" />
+											</hbox>
+											<!-- Device Status -->
+											<hbox id="devStatHbox"
+												class="col-2">
+												<vbox align="end">
+													<image
+														id="batteryImg" src="resources/image/icon2-battery-w.png" />
+													<image
+														id="connectImg" />
+												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
+											</hbox>
+										</bs-row>
+									</window>
+								</n:div>
+							</bs-row>
+
+
+							<!-- BreathRate -->
+							<bs-row class="row py-0">
+								<!-- Chart -->
+								<window style="padding: 0px;"
+									apply="org.itri.view.humanhealth.personal.chart.BreathRateView">
+									<charts id="chart" type="spline"
+										title="" height="150" width="1080" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+
+								<!-- Current Status -->
+								<n:div sclass="col p-1"
+									style="min-width: 230px">
+									<window style="padding: 0px;"
+										apply="org.itri.view.humanhealth.personal.chart.BreathRateCurrentView">
+										<timer id="timer" delay="100"
+											running="true" repeats="true" />
+										<bs-row class="row col px-1">
+											<hbox class="col-10"
+												id="curHbox" pack="center" align="center">
+												<!-- left spec -->
+												<vbox
+													class="text-right px-3" width="60px" pack="center"
+													align="end" height="92px">
+													<label id="hrLabel"
+														class=" h6">
+														/min
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														20
+													</label>
+													<label id="lowLabel"
+														class=" h6">
+														10
+													</label>
+												</vbox>
+
+												<!-- right value -->
+												<label class="h2 px-3" />
+												<textbox visible="false"
+													value="${each.id}" />
+											</hbox>
+											<!-- Device Status -->
+											<hbox id="devStatHbox"
+												class="col-2">
+												<vbox align="end">
+													<image
+														id="batteryImg" src="resources/image/icon2-battery-w.png" />
+													<image
+														id="connectImg" />
+												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
+											</hbox>
+										</bs-row>
+									</window>
+								</n:div>
+							</bs-row>
+
+							<!-- Temperature -->
+							<bs-row class="row py-0">
+								<!-- Chart -->
+								<window style="padding: 0px;"
+									apply="org.itri.view.humanhealth.personal.chart.TemperatureView">
+									<charts id="chart" type="spline"
+										title="" height="150" width="1080" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+
+								<!-- Current Status -->
+								<n:div sclass="col p-1"
+									style="min-width: 230px">
+									<window style="padding: 0px;"
+										apply="org.itri.view.humanhealth.personal.chart.TemperatureCurrentView">
+										<timer id="timer" delay="100"
+											running="true" repeats="true" />
+										<bs-row class="row col px-1">
+											<hbox class="col-10"
+												id="curHbox" pack="center" align="center">
+												<!-- left spec -->
+												<vbox
+													class="text-right px-3" width="60px" pack="center"
+													align="end" height="92px">
+													<label
+														id="tempLabel" class=" h6">
+														T °C
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														39.0
+													</label>
+													<label id="lowLabel"
+														class=" h6">
+														36.0
+													</label>
+												</vbox>
+
+												<!-- right value -->
+												<label class="h2 px-3" />
+												<textbox visible="false"
+													value="${each.id}" />
+											</hbox>
+											<!-- Device Status -->
+											<hbox id="devStatHbox"
+												class="col-2">
+												<vbox align="end">
+													<image
+														id="batteryImg" src="resources/image/icon2-battery-w.png" />
+													<image
+														id="connectImg" />
+												</vbox>
+												<label id="batteryLabel"
+													class=" h7" />
+											</hbox>
+										</bs-row>
+									</window>
+								</n:div>
+							</bs-row>
+
+							<!-- EWS -->
+							<bs-row class="row py-0">
+								<!-- Chart -->
+								<style>
+									.z-window-content { padding:0px;}
+								</style>
+								<window
+									style="padding: 0px; z-window-content"
+									apply="org.itri.view.humanhealth.personal.chart.EwsView">
+									<charts id="chart" type="spline"
+										height="150" width="1080" style="padding: 0px;" title="" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+
+								<n:div sclass="col p-1"
+									style="min-width: 230px">
+									<window style="padding: 0px"
+										apply="org.itri.view.humanhealth.personal.chart.EwsCurrentView">
+										<timer id="timer" delay="100"
+											running="true" repeats="true" />
+										<bs-row class="row col px-1 ">
+
+											<!-- Current Status -->
+											<hbox class="col-10"
+												id="curHbox" pack="center" align="center">
+												<!-- left spec -->
+												<vbox
+													class="text-right px-3" width="60px" pack="center"
+													align="end" height="92px">
+													<label
+														id="tempLabel" class=" h6">
+														EWS
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														4
+													</label>
+												</vbox>
+
+												<!-- right value -->
+												<label class="h1 px-3" />
+												<textbox visible="false"
+													value="${each.id}" />
+											</hbox>
+										</bs-row>
+									</window>
+								</n:div>
+							</bs-row>
+
+						</panelchildren>
+					</panel>
+
+				</n:div>
+
+			</template>
+		</vlayout>
+		<!--  
+			<timer id="timer1234" delay="300" running="true" repeats="true"
+			onTimer="@command('refreshPatientInfo')" />
+		-->
+	</nodom>
+</zk>

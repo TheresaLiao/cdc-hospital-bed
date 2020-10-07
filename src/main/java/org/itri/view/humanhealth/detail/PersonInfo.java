@@ -4,9 +4,9 @@ package org.itri.view.humanhealth.detail;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.itri.view.humanhealth.dao.PersonInfosDaoHibernateImpl;
-import org.itri.view.humanhealth.dao.PersonState;
 import org.itri.view.humanhealth.hibernate.Patient;
+import org.itri.view.humanhealth.personal.chart.Imp.PersonInfosDaoHibernateImpl;
+import org.itri.view.humanhealth.personal.chart.dao.PersonState;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;

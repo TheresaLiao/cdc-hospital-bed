@@ -51,9 +51,6 @@ public class LoginController extends SelectorComposer<Component> {
 		// check GatewayDeviceStatus connect
 		UserCredential cre = authService.getUserCredential();
 		if (!cre.getGatewayDeviceStatus().equals(deviceConnectionErrorNum)) {
-//			Messagebox.show("Gateway連接失敗，請聯繫系統人員。");
-//			Messagebox.show(messageCode, titleCode, buttons, icon);
-//			Messagebox.show(message, title, buttons, icon);
 			Messagebox.show("Gateway連接失敗，請聯繫系統人員。", "Warning", 1, "ERROR");
 			return;
 		}

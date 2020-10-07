@@ -1,5 +1,5 @@
 package org.itri.view.humanhealth.hibernate;
-// Generated 2020/4/24 �U�� 08:59:27 by Hibernate Tools 4.0.0.Final
+
 import javax.persistence.GeneratedValue;import javax.persistence.SequenceGenerator;import javax.persistence.GenerationType;
 import java.util.Date;
 import java.util.HashSet;
@@ -21,20 +21,11 @@ import javax.persistence.TemporalType;
 public class Users implements java.io.Serializable {
 
 	private long usersId;
-	private String email;
+	private String username;
 	private String password;
-	private String tmpKey;
-	private String osVersion;
-	private String appVersion;
-	private String userRole;
 	private Date timeCreated;
 	private Date lastUpdated;
-	private Date lastSync;
-	private Boolean isLogin;
 	private Date lastLogin;
-	private Date lastActive;
-	private Date tmpKeyLastUpdated;
-	private boolean isExpired;
 	private boolean isDeleted;
 	private Set<PatientInfo> patientInfos = new HashSet<PatientInfo>(0);
 	private Set<Room> rooms = new HashSet<Room>(0);
@@ -43,39 +34,26 @@ public class Users implements java.io.Serializable {
 	public Users() {
 	}
 
-	public Users(long usersId, String password, String osVersion, String appVersion, String userRole, Date timeCreated,
-			Date lastUpdated, Date lastLogin, boolean isExpired, boolean isDeleted) {
+	public Users(long usersId, String username, String password, Date timeCreated, Date lastUpdated, Date lastLogin,
+			boolean isDeleted) {
 		this.usersId = usersId;
+		this.username = username;
 		this.password = password;
-		this.osVersion = osVersion;
-		this.appVersion = appVersion;
-		this.userRole = userRole;
 		this.timeCreated = timeCreated;
 		this.lastUpdated = lastUpdated;
 		this.lastLogin = lastLogin;
-		this.isExpired = isExpired;
 		this.isDeleted = isDeleted;
 	}
 
-	public Users(long usersId, String email, String password, String tmpKey, String osVersion, String appVersion,
-			String userRole, Date timeCreated, Date lastUpdated, Date lastSync, Boolean isLogin, Date lastLogin,
-			Date lastActive, Date tmpKeyLastUpdated, boolean isExpired, boolean isDeleted,
-			Set<PatientInfo> patientInfos, Set<Room> rooms, Set<PatientThreshold> patientThresholds) {
+	public Users(long usersId, String username, String password, Date timeCreated, Date lastUpdated, Date lastLogin,
+			boolean isDeleted, Set<PatientInfo> patientInfos, Set<Room> rooms,
+			Set<PatientThreshold> patientThresholds) {
 		this.usersId = usersId;
-		this.email = email;
+		this.username = username;
 		this.password = password;
-		this.tmpKey = tmpKey;
-		this.osVersion = osVersion;
-		this.appVersion = appVersion;
-		this.userRole = userRole;
 		this.timeCreated = timeCreated;
 		this.lastUpdated = lastUpdated;
-		this.lastSync = lastSync;
-		this.isLogin = isLogin;
 		this.lastLogin = lastLogin;
-		this.lastActive = lastActive;
-		this.tmpKeyLastUpdated = tmpKeyLastUpdated;
-		this.isExpired = isExpired;
 		this.isDeleted = isDeleted;
 		this.patientInfos = patientInfos;
 		this.rooms = rooms;
@@ -93,13 +71,13 @@ public class Users implements java.io.Serializable {
 		this.usersId = usersId;
 	}
 
-	@Column(name = "email", length = 128)
-	public String getEmail() {
-		return this.email;
+	@Column(name = "username", nullable = false, length = 128)
+	public String getUsername() {
+		return this.username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	@Column(name = "password", nullable = false, length = 512)
@@ -109,42 +87,6 @@ public class Users implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@Column(name = "tmp_key", length = 128)
-	public String getTmpKey() {
-		return this.tmpKey;
-	}
-
-	public void setTmpKey(String tmpKey) {
-		this.tmpKey = tmpKey;
-	}
-
-	@Column(name = "os_version", nullable = false, length = 128)
-	public String getOsVersion() {
-		return this.osVersion;
-	}
-
-	public void setOsVersion(String osVersion) {
-		this.osVersion = osVersion;
-	}
-
-	@Column(name = "app_version", nullable = false, length = 128)
-	public String getAppVersion() {
-		return this.appVersion;
-	}
-
-	public void setAppVersion(String appVersion) {
-		this.appVersion = appVersion;
-	}
-
-	@Column(name = "user_role", nullable = false, length = 10)
-	public String getUserRole() {
-		return this.userRole;
-	}
-
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -168,25 +110,6 @@ public class Users implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "last_sync", length = 29)
-	public Date getLastSync() {
-		return this.lastSync;
-	}
-
-	public void setLastSync(Date lastSync) {
-		this.lastSync = lastSync;
-	}
-
-	@Column(name = "is_login")
-	public Boolean getIsLogin() {
-		return this.isLogin;
-	}
-
-	public void setIsLogin(Boolean isLogin) {
-		this.isLogin = isLogin;
-	}
-
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_login", nullable = false, length = 29)
 	public Date getLastLogin() {
 		return this.lastLogin;
@@ -194,35 +117,6 @@ public class Users implements java.io.Serializable {
 
 	public void setLastLogin(Date lastLogin) {
 		this.lastLogin = lastLogin;
-	}
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "last_active", length = 29)
-	public Date getLastActive() {
-		return this.lastActive;
-	}
-
-	public void setLastActive(Date lastActive) {
-		this.lastActive = lastActive;
-	}
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "tmp_key_last_updated", length = 29)
-	public Date getTmpKeyLastUpdated() {
-		return this.tmpKeyLastUpdated;
-	}
-
-	public void setTmpKeyLastUpdated(Date tmpKeyLastUpdated) {
-		this.tmpKeyLastUpdated = tmpKeyLastUpdated;
-	}
-
-	@Column(name = "is_expired", nullable = false)
-	public boolean isIsExpired() {
-		return this.isExpired;
-	}
-
-	public void setIsExpired(boolean isExpired) {
-		this.isExpired = isExpired;
 	}
 
 	@Column(name = "is_deleted", nullable = false)
