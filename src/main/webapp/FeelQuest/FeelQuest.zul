@@ -1,0 +1,27 @@
+<zk xmlns:n="native" xmlns:z="zul">
+	<nodom apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('org.itri.view.humanhealth.feelQuest.FeelQuest')">
+		<label value="今日感受" class="h6 px-3" style="color:white;" />
+
+		<grid model="@bind(vm.questList)" height="150px">
+			<rows>
+				<template name="model">
+					<row>
+						<label value="@bind(each.questLabel)" />
+						<radiogroup model="@load(each.itemList)"
+							selectedItem="@bind(vm.seleted_1)"
+							onCheck="@command('radioClick')">
+							<template name="model">
+								<radio label="@load(each.name)"
+									value="@load(each.id)">
+								</radio>
+							</template>
+						</radiogroup>
+					</row>
+				</template>
+			</rows>
+		</grid>
+
+		<button onClick="@command('buttonClick')">今日處存</button>
+	</nodom>
+</zk>

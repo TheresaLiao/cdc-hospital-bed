@@ -18,12 +18,12 @@
 					<label value="查詢起迄日" class="h6 px-3"
 						style="color:white;" />
 					<datebox lenient="false" buttonVisible="true"
-						width="100px" format="yyyy-MM-dd" value="@bind(vm.selectStrDate)" />
+						width="150px" format="yyyy-MM-dd" value="@bind(vm.selectStrDate)" />
 					<timebox format="HH:mm:ss" width="100px"
 						value="@bind(vm.selectStrTime)" />
 					<label value="~" style="color:white;" />
 					<datebox lenient="false" buttonVisible="true"
-						width="100px" format="yyyy-MM-dd" value="@bind(vm.selectEndDate)" />
+						width="150px" format="yyyy-MM-dd" value="@bind(vm.selectEndDate)" />
 					<timebox format="HH:mm:ss" width="100px"
 						value="@bind(vm.selectEndTime)" />
 				</hbox>

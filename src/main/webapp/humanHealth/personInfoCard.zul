@@ -34,7 +34,7 @@
 								<div id="heartBeatDiv">
 									<label id="heartBeatLabel"
 										class="h3">
-										Hr:${each.heartBeat} 
+										Hr:${each.heartBeat}
 									</label>
 									<textbox id="heartBeatStatusText"
 										visible="false" value="${each.heartRateStatus}" />
@@ -63,10 +63,19 @@
 								<!-- bodyTemperature -->
 								<div id="tempDiv">
 									<label id="tempLabel" class="h6">
-										Temp: ${each.bodyTemperature} 
+										Temp: ${each.bodyTemperature}
 									</label>
 									<textbox id="bodyTempStatusTextbox"
 										visible="false" value="${each.bodyTempStatus}" />
+								</div>
+
+								<!-- EWS -->
+								<div id="ewsDiv">
+									<label id="ewsLabel"  class="h6">
+										EWS: ${each.totalNewsScore}
+									</label>
+									<textbox id="ewsTextbox"
+										visible="false" value="${each.totalNewsScore}" />
 								</div>
 								<!-- 
 									<timer id="timer" delay="100"
@@ -83,6 +92,5 @@
 
 		<timer delay="1000" running="true" repeats="true"
 			onTimer="@command('refreshInfo')" />
-
 	</nodom>
 </zk>

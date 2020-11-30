@@ -97,5 +97,7 @@
 			class="org.itri.view.humanhealth.hibernate.SurveyQuestion" />
 		<mapping
 			class="org.itri.view.humanhealth.hibernate.SurveyResult" />
+		<mapping
+			class="org.itri.view.humanhealth.hibernate.SurveyQuestionChoice" />
 	</session-factory>
 </hibernate-configuration>

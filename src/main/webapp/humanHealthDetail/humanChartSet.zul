@@ -46,7 +46,6 @@
 										height="100" width="680" style="padding: 0px;" title="" />
 									<textbox id="textboxId"
 										visible="false" value="${each.id}" />
-									th
 									<timer id="timer" delay="1000"
 										running="true" repeats="true" />
 								</window>
@@ -240,6 +239,59 @@
 												<label
 													class="h2 px-3">
 												</label>
+												<textbox visible="false"
+													value="${each.id}" />
+											</hbox>
+										</bs-row>
+									</window>
+								</n:div>
+							</bs-row>
+
+							<!-- EWS -->
+							<bs-row class="row py-0">
+								<!-- Chart -->
+								<style>
+									.z-window-content { padding:0px;}
+								</style>
+								<window
+									style="padding: 0px; z-window-content"
+									apply="org.itri.view.humanhealth.detail.EwsView">
+									<charts id="chart" type="spline"
+										title="" height="100" width="680" />
+									<textbox id="textboxId"
+										visible="false" value="${each.id}" />
+									<textbox id="textboxHisDate"
+										visible="false" value="${each.historyDate}" />
+									<timer id="timer" delay="1000"
+										running="true" repeats="true" />
+								</window>
+
+								<!-- Current Status -->
+								<n:div sclass="col p-1"
+									style="min-width: 150px">
+									<window style="padding: 0px"
+										apply="org.itri.view.humanhealth.detail.EwsCurrentView">
+										<timer id="timer" delay="100"
+											running="true" repeats="true" />
+										<bs-row class="row col px-1 ">
+											<hbox class="col"
+												id="curHbox" pack="center" align="center">
+												<!-- left spec -->
+												<vbox
+													class="text-right px-3" width="60px" pack="center"
+													align="end" height="92px">
+													<label
+														id="tempLabel" class=" h6">
+														EWS
+													</label>
+													<label
+														id="heightLabel" class=" h6">
+														4
+													</label>
+												</vbox>
+
+												<!-- right value -->
+												<label class="h2 px-3" />
 												<textbox visible="false"
 													value="${each.id}" />
 											</hbox>

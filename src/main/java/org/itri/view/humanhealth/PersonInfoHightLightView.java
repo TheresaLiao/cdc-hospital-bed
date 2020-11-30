@@ -10,48 +10,49 @@ import org.zkoss.zul.Textbox;
 
 public class PersonInfoHightLightView extends SelectorComposer<Window> {
 
+	// heartBeat Component
 	@Wire("#heartBeatDiv")
 	private Div heartBeatDiv;
-
 	@Wire("#heartBeatDiv > label")
 	private Label heartBeatLabel;
-
 	@Wire("#heartBeatDiv > textbox")
 	private Textbox heartBeatStatusText;
 
+	// oximeter Component
 	@Wire("#oximeterDiv")
 	private Div oximeterDiv;
-
 	@Wire("#oximeterDiv > label")
 	private Label oximeterLabel;
-
 	@Wire("#oximeterDiv > textbox")
 	private Textbox oximeterStatusTextbox;
 
+	// breathRate Component
 	@Wire("#breathRateDiv")
 	private Div breathRateDiv;
-
 	@Wire("#breathRateDiv > label")
 	private Label breathRateLabel;
-
 	@Wire("#breathRateDiv > textbox")
 	private Textbox breathStatusTextbox;
 
+	// temp Component
 	@Wire("#tempDiv")
 	private Div tempDiv;
-
 	@Wire("#tempDiv > label")
 	private Label tempLabel;
-
 	@Wire("#tempDiv > textbox")
 	private Textbox bodyTempStatusTextbox;
 
+	// EWS Component
+	@Wire("#ewsDiv")
+	private Div ewsDiv;
+	@Wire("#ewsDiv > label")
+	private Label ewsLabel;
+	@Wire("#ewsDiv > textbox")
+	private Textbox ewsTextbox;
+
+	private static int earlyWarningScore = 7;
+
 	private String BLACK_HASH = "#000000";
-	//private String DANGER_HASH = "#ff4051";
-	//private String PRIMARY_HASH = "#0093f9";
-	//private String WHITE_HASH = "#ffffff";
-	//private String SUCCESS_HASH = "#15CAB4";
-	
 	private String GREEN_HASH = "#5CE498";
 	private String BLUE_HASH = "#73E9FF";
 	private String YELLOW_HASH = "#F8FF70";
@@ -63,6 +64,7 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 		super.doAfterCompose(comp);
 		comp.setContentStyle("background: " + BLACK_HASH);
 
+		// heartBeat
 		if (heartBeatStatusText.getValue().equals("W")) {
 			heartBeatDiv.setStyle("background-color: " + RED_HASH);
 			heartBeatLabel.setStyle("color: " + BLACK_HASH);
@@ -71,6 +73,7 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 			heartBeatLabel.setStyle("color: " + RED_HASH);
 		}
 
+		// oximeter
 		if (oximeterStatusTextbox.getValue().equals("W")) {
 			oximeterDiv.setStyle("background-color: " + BLUE_HASH);
 			oximeterLabel.setStyle("color: " + BLACK_HASH);
@@ -79,6 +82,7 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 			oximeterLabel.setStyle("color: " + BLUE_HASH);
 		}
 
+		// breath
 		if (breathStatusTextbox.getValue().equals("W")) {
 			breathRateDiv.setStyle("background-color: " + WHITE_HASH);
 			breathRateLabel.setStyle("color: " + BLACK_HASH);
@@ -87,12 +91,23 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 			breathRateLabel.setStyle("color: " + WHITE_HASH);
 		}
 
+		// bodyTemp
 		if (bodyTempStatusTextbox.getValue().equals("W")) {
 			tempDiv.setStyle("background-color: " + GREEN_HASH);
 			tempLabel.setStyle("color: " + BLACK_HASH);
 		} else {
 			tempDiv.setStyle("background-color: " + BLACK_HASH);
 			tempLabel.setStyle("color: " + GREEN_HASH);
+		}
+
+		// EWS
+		int totalNewsScore = Integer.valueOf(ewsTextbox.getValue());
+		if (totalNewsScore > earlyWarningScore) {
+			ewsDiv.setStyle("background-color: " + WHITE_HASH);
+			ewsLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			ewsDiv.setStyle("background-color: " + BLACK_HASH);
+			ewsLabel.setStyle("color: " + WHITE_HASH);
 		}
 	}
 
@@ -131,5 +146,14 @@ public class PersonInfoHightLightView extends SelectorComposer<Window> {
 			tempLabel.setStyle("color: " + GREEN_HASH);
 		}
 
+		// EWS
+		int totalNewsScore = Integer.valueOf(ewsTextbox.getValue());
+		if (totalNewsScore > earlyWarningScore) {
+			ewsDiv.setStyle("background-color: " + WHITE_HASH);
+			ewsLabel.setStyle("color: " + BLACK_HASH);
+		} else {
+			ewsDiv.setStyle("background-color: " + BLACK_HASH);
+			ewsLabel.setStyle("color: " + WHITE_HASH);
+		}
 	}
 }

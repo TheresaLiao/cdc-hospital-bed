@@ -34,7 +34,6 @@ public class PersonInfo {
 
 	AuthenticationService authService = new AuthenticationServiceImpl();
 
-
 	@Init
 	public void init() {
 		cre = authService.getUserCredential();
@@ -55,8 +54,6 @@ public class PersonInfo {
 		dateList.add(item5);
 		dateList.add(item6);
 		selectedDate = item1;
-
-		
 	}
 
 	/* Select data and refresh data */

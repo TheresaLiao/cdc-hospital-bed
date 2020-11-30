@@ -91,7 +91,7 @@ public class PersonInfoTable {
 		Map<Long, Double> teGroup = new HashMap<Long, Double>();
 		Map<Long, Double> ewsGroup = new HashMap<Long, Double>();
 
-		// Split data
+		// Split data by columns
 		for (PersonInfoTableDao item : dataList) {
 			hrGroup.put(item.getTimeCreated().getTime(), item.getHeartRateData());
 			oxGroup.put(item.getTimeCreated().getTime(), item.getOximeterData());
